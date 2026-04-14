@@ -1,0 +1,62 @@
+{
+  "citationKey": "MAO-2025",
+  "sourceDigest": "684c599c1e430f0eeb2c222dffbd59a35e3c4529",
+  "checkedClaims": [
+    {
+      "id": "03ed87a1bdf407d9c2fbe9f197f58b59b8f0ad26",
+      "claimText": "Recent neuro-symbolic work strengthens the case for typed, compositional, concept-level intermediate structures, and this repository uses that insight to define bounded LLMAgent-assisted normalization and explanation workflows that complement the deterministic frontier analysis [MAO-2025].",
+      "normalizedClaim": "recent neuro-symbolic work strengthens the case for typed compositional concept-level intermediate structures and this repository uses that insight to define bounded llmagent-assisted normalization and explanation workflows that complement the deterministic frontier analysis mao-2025",
+      "chapterFile": "ch1-introduction.md",
+      "status": "supported",
+      "profileId": "typed-neuro-symbolic-concepts",
+      "note": "Supports claims about typed, compositional neuro-symbolic concepts.",
+      "checkedAt": "2026-04-14T12:24:50.668Z",
+      "sourceDigest": "684c599c1e430f0eeb2c222dffbd59a35e3c4529"
+    },
+    {
+      "id": "3d04d3b59ae72bbf0526d5ccc72af24e71739c27",
+      "claimText": "A stronger learned observation layer could eventually enrich the normalization step and produce more nuanced conceptual explanations, while preserving typed, compositional neuro-symbolic concept structures throughout the workflow [MAO-2025].",
+      "normalizedClaim": "a stronger learned observation layer could eventually enrich the normalization step and produce more nuanced conceptual explanations while preserving typed compositional neuro-symbolic concept structures throughout the workflow mao-2025",
+      "chapterFile": "ch5-conclusion.md",
+      "status": "supported",
+      "profileId": "typed-neuro-symbolic-concepts",
+      "note": "Supports claims about typed, compositional neuro-symbolic concepts.",
+      "checkedAt": "2026-04-14T12:24:50.668Z",
+      "sourceDigest": "684c599c1e430f0eeb2c222dffbd59a35e3c4529"
+    },
+    {
+      "id": "6f5f4ba2eb789e231054ad4eea7bc8e10dc6957b",
+      "claimText": "Neuro-symbolic concept work contributes the insistence that learned components should still operate over typed and compositional conceptual structures [MAO-2025].",
+      "normalizedClaim": "neuro-symbolic concept work contributes the insistence that learned components should still operate over typed and compositional conceptual structures mao-2025",
+      "chapterFile": "ch5-conclusion.md",
+      "status": "supported",
+      "profileId": "typed-neuro-symbolic-concepts",
+      "note": null,
+      "checkedAt": "2026-04-14T15:09:22.006Z",
+      "sourceDigest": "684c599c1e430f0eeb2c222dffbd59a35e3c4529"
+    },
+    {
+      "id": "1e192049592cf97e9d9301e683039a911757752e",
+      "claimText": "Recent neuro-symbolic work argues for concept-centric systems in which objects, relations, and actions remain typed and compositional even when learned components are involved [MAO-2025].",
+      "normalizedClaim": "recent neuro-symbolic work argues for concept-centric systems in which objects relations and actions remain typed and compositional even when learned components are involved mao-2025",
+      "chapterFile": "ch1-introduction.md",
+      "status": "supported",
+      "profileId": "typed-neuro-symbolic-concepts",
+      "note": null,
+      "checkedAt": "2026-04-14T15:09:22.005Z",
+      "sourceDigest": "684c599c1e430f0eeb2c222dffbd59a35e3c4529"
+    },
+    {
+      "id": "aaa9928be36d76ab349f86ef7ccff58c012c5d9e",
+      "claimText": "A learned component may therefore help propose candidate event or relation structures, but those proposals must be converted into explicit typed and compositional neuro-symbolic concept records with provenance and uncertainty annotations before they can influence theory induction [MAO-2025].",
+      "normalizedClaim": "a learned component may therefore help propose candidate event or relation structures but those proposals must be converted into explicit typed and compositional neuro-symbolic concept records with provenance and uncertainty annotations before they can influence theory induction mao-2025",
+      "chapterFile": "ch2-architecture.md",
+      "status": "supported",
+      "profileId": "typed-neuro-symbolic-concepts",
+      "note": null,
+      "checkedAt": "2026-04-14T15:09:22.006Z",
+      "sourceDigest": "684c599c1e430f0eeb2c222dffbd59a35e3c4529"
+    }
+  ],
+  "lastValidatedAt": "2026-04-14T15:09:22.006Z"
+}

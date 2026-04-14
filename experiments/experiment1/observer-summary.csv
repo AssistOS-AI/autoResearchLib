@@ -1,0 +1,9 @@
+prefix_depth,observer_id,case_count,mean_accuracy,mean_entropy,mean_equivalence_compression,question_availability
+1,coarse,18,0.333,1.255,6,1
+1,rich,18,0.444,1.116,5.778,0.889
+2,coarse,18,0.333,1.245,4.167,1
+2,rich,18,0.833,0.344,3.722,0.278
+3,coarse,18,0.944,0.138,3.889,0.111
+3,rich,18,1,0.069,3.944,0.056
+4,coarse,18,1,0,4,0
+4,rich,18,1,0,3.722,0

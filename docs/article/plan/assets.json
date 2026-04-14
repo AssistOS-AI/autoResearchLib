@@ -1,0 +1,72 @@
+{
+  "assets": [
+    {
+      "id": "pipeline-overview",
+      "source": "assets-src/figure-1-pipeline.svg",
+      "output": "assets/figure-1-pipeline.svg",
+      "validation": {
+        "type": "concept",
+        "expectedRects": 4,
+        "expectedConnectorCount": 3
+      }
+    },
+    {
+      "id": "neighborhood-structure",
+      "source": "assets-src/figure-2-neighborhood.svg",
+      "output": "assets/figure-2-neighborhood.svg",
+      "validation": {
+        "type": "concept",
+        "expectedRects": 4,
+        "expectedConnectorCount": 4
+      }
+    },
+    {
+      "id": "observer-accuracy",
+      "source": "../../../experiments/experiment1/observer-accuracy.svg",
+      "output": "assets/figure-3-observer-accuracy.svg",
+      "validation": {
+        "type": "chart"
+      }
+    },
+    {
+      "id": "observer-entropy",
+      "source": "../../../experiments/experiment1/observer-entropy.svg",
+      "output": "assets/figure-4-observer-entropy.svg",
+      "validation": {
+        "type": "chart"
+      }
+    },
+    {
+      "id": "question-entropy",
+      "source": "../../../experiments/experiment2/question-entropy.svg",
+      "output": "assets/figure-5-question-entropy.svg",
+      "validation": {
+        "type": "chart"
+      }
+    },
+    {
+      "id": "question-accuracy",
+      "source": "../../../experiments/experiment2/question-accuracy.svg",
+      "output": "assets/figure-6-question-accuracy.svg",
+      "validation": {
+        "type": "chart"
+      }
+    },
+    {
+      "id": "experiment3-baseline-accuracy",
+      "source": "../../../experiments/experiment3/baseline-accuracy.svg",
+      "output": "assets/figure-7-baseline-accuracy.svg",
+      "validation": {
+        "type": "chart"
+      }
+    },
+    {
+      "id": "experiment3-question-recovery",
+      "source": "../../../experiments/experiment3/question-recovery.svg",
+      "output": "assets/figure-8-question-recovery.svg",
+      "validation": {
+        "type": "chart"
+      }
+    }
+  ]
+}

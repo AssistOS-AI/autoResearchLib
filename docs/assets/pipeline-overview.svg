@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="250" viewBox="0 0 900 250" role="img" aria-label="Pipeline overview">
+  <rect width="900" height="250" fill="#ffffff"/>
+  <text x="40" y="34" font-size="22" font-weight="700" fill="#111827">Pipeline overview</text>
+  <g font-family="sans-serif">
+    <rect x="40" y="80" width="180" height="90" rx="12" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="60" y="112" font-size="18" font-weight="700" fill="#1e3a8a">1. Observational lifting</text>
+    <text x="60" y="138" font-size="14" fill="#1f2937">Text becomes explicit cues,</text>
+    <text x="60" y="158" font-size="14" fill="#1f2937">provenance, and ambiguity.</text>
+
+    <rect x="250" y="80" width="180" height="90" rx="12" fill="#e9d5ff" stroke="#7c3aed"/>
+    <text x="270" y="112" font-size="18" font-weight="700" fill="#4c1d95">2. Theory induction</text>
+    <text x="270" y="138" font-size="14" fill="#1f2937">Domain bundles propose local</text>
+    <text x="270" y="158" font-size="14" fill="#1f2937">schemas, invariants, and rewrites.</text>
+
+    <rect x="460" y="80" width="180" height="90" rx="12" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="480" y="112" font-size="18" font-weight="700" fill="#166534">3. Local exploration</text>
+    <text x="480" y="138" font-size="14" fill="#1f2937">Refine, coarsen, and group</text>
+    <text x="480" y="158" font-size="14" fill="#1f2937">theories into a bounded frontier.</text>
+
+    <rect x="670" y="80" width="180" height="90" rx="12" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="690" y="112" font-size="18" font-weight="700" fill="#991b1b">4. Alignment and report</text>
+    <text x="690" y="138" font-size="14" fill="#1f2937">Lexicalize retained theories,</text>
+    <text x="690" y="158" font-size="14" fill="#1f2937">questions, and experiment outputs.</text>
+
+    <path d="M220 125 L250 125" stroke="#4b5563" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M430 125 L460 125" stroke="#4b5563" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M640 125 L670 125" stroke="#4b5563" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <text x="40" y="210" font-size="14" fill="#374151">The implementation keeps the distinction between report, observation, theory, and neighborhood explicit.</text>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#4b5563"/>
+    </marker>
+  </defs>
+</svg>

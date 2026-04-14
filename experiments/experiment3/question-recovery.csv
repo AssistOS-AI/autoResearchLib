@@ -1,0 +1,5 @@
+condition_id,prefix_depth,ambiguous_count,accuracy_before_question,accuracy_after_question,rescued_rate,entropy_before_question,entropy_after_question
+clean,2,5,0.4,0.6,0.2,1.239,0.6
+masked,2,18,0.333,0.667,0.333,1.243,0.667
+clean,3,1,1,1,0,1.239,0
+masked,3,15,0.267,0.667,0.4,1.241,0.733

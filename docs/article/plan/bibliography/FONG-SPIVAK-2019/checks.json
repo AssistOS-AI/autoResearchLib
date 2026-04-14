@@ -1,0 +1,51 @@
+{
+  "citationKey": "FONG-SPIVAK-2019",
+  "sourceDigest": "fed65ac41c10ac15fc22b1f8c04e16634e51e149",
+  "checkedClaims": [
+    {
+      "id": "e288941a799d1c2bd6b2ed3171fb6731967981f7",
+      "claimText": "Applied category theory matters here because local theories become reusable only when schemas, transformations, and composition rules remain explicit enough to compare and transport across domains [FONG-SPIVAK-2019].",
+      "normalizedClaim": "applied category theory matters here because local theories become reusable only when schemas transformations and composition rules remain explicit enough to compare and transport across domains fong-spivak-2019",
+      "chapterFile": "ch1-introduction.md",
+      "status": "supported",
+      "profileId": "composition-across-domains",
+      "note": "Supports claims about composition and structure-preserving work across multiple domains.",
+      "checkedAt": "2026-04-14T12:24:50.644Z",
+      "sourceDigest": "fed65ac41c10ac15fc22b1f8c04e16634e51e149"
+    },
+    {
+      "id": "895d7ac2040702c75cfcff2a9d5a8a8a2750ca69",
+      "claimText": "Applied category theory contributes disciplined composition and structure-preserving translation between structured regimes [FONG-SPIVAK-2019].",
+      "normalizedClaim": "applied category theory contributes disciplined composition and structure-preserving translation between structured regimes fong-spivak-2019",
+      "chapterFile": "ch5-conclusion.md",
+      "status": "supported",
+      "profileId": "composition-across-domains",
+      "note": null,
+      "checkedAt": "2026-04-14T15:09:21.982Z",
+      "sourceDigest": "fed65ac41c10ac15fc22b1f8c04e16634e51e149"
+    },
+    {
+      "id": "24c54963d381fff4508a6da3db683111d34b07ab",
+      "claimText": "Applied category theory studies disciplined composition and structure-preserving translation across domains [FONG-SPIVAK-2019].",
+      "normalizedClaim": "applied category theory studies disciplined composition and structure-preserving translation across domains fong-spivak-2019",
+      "chapterFile": "ch1-introduction.md",
+      "status": "supported",
+      "profileId": "composition-across-domains",
+      "note": null,
+      "checkedAt": "2026-04-14T15:09:21.982Z",
+      "sourceDigest": "fed65ac41c10ac15fc22b1f8c04e16634e51e149"
+    },
+    {
+      "id": "af6ba5bdef4790eace10404f91870f2fe65c2607",
+      "claimText": "It is a problem of category-level disciplined translation between structured regimes and of preserving meaningful relations under that translation [FONG-SPIVAK-2019].",
+      "normalizedClaim": "it is a problem of category-level disciplined translation between structured regimes and of preserving meaningful relations under that translation fong-spivak-2019",
+      "chapterFile": "ch2-architecture.md",
+      "status": "supported",
+      "profileId": "composition-across-domains",
+      "note": null,
+      "checkedAt": "2026-04-14T15:09:21.982Z",
+      "sourceDigest": "fed65ac41c10ac15fc22b1f8c04e16634e51e149"
+    }
+  ],
+  "lastValidatedAt": "2026-04-14T15:09:21.982Z"
+}

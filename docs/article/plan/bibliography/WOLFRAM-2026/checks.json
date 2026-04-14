@@ -1,0 +1,51 @@
+{
+  "citationKey": "WOLFRAM-2026",
+  "sourceDigest": "3ea306230b354d525256212831ce3d65e511ba55",
+  "checkedClaims": [
+    {
+      "id": "abf5473699df20c220501112cca98ca783180483",
+      "claimText": "Ruliology motivates the study of rule families and their consequences, which makes local exploration of nearby alternatives a productive organizing principle for the library [WOLFRAM-2026].",
+      "normalizedClaim": "ruliology motivates the study of rule families and their consequences which makes local exploration of nearby alternatives a productive organizing principle for the library wolfram-2026",
+      "chapterFile": "ch1-introduction.md",
+      "status": "supported",
+      "profileId": "rule-families-and-consequences",
+      "note": "Supports claims that ruliology studies rules and their consequences.",
+      "checkedAt": "2026-04-14T12:24:50.574Z",
+      "sourceDigest": "3ea306230b354d525256212831ce3d65e511ba55"
+    },
+    {
+      "id": "75e551ead8d1525d9ef7bec0712e8984afc50890",
+      "claimText": "Ruliology contributes the orientation toward spaces of possible rules and the consequences they generate [WOLFRAM-2026].",
+      "normalizedClaim": "ruliology contributes the orientation toward spaces of possible rules and the consequences they generate wolfram-2026",
+      "chapterFile": "ch5-conclusion.md",
+      "status": "supported",
+      "profileId": "rule-families-and-consequences",
+      "note": null,
+      "checkedAt": "2026-04-14T15:09:21.913Z",
+      "sourceDigest": "3ea306230b354d525256212831ce3d65e511ba55"
+    },
+    {
+      "id": "3890e9cabafc17b10b7cfcb792ca9a1dd13e0d22",
+      "claimText": "Ruliology studies what abstract rules do and how spaces of possible rules are organized [WOLFRAM-2026].",
+      "normalizedClaim": "ruliology studies what abstract rules do and how spaces of possible rules are organized wolfram-2026",
+      "chapterFile": "ch1-introduction.md",
+      "status": "supported",
+      "profileId": "rule-families-and-consequences",
+      "note": null,
+      "checkedAt": "2026-04-14T15:09:21.913Z",
+      "sourceDigest": "3ea306230b354d525256212831ce3d65e511ba55"
+    },
+    {
+      "id": "2420c32ddc2260cbee331f6679ebeb330ecf1195",
+      "claimText": "That neighborhood perspective is what makes the framework ruliological in an operational sense: it treats nearby spaces of possible rules as objects of study instead of rushing toward a single prematurely reified interpretation [WOLFRAM-2026].",
+      "normalizedClaim": "that neighborhood perspective is what makes the framework ruliological in an operational sense it treats nearby spaces of possible rules as objects of study instead of rushing toward a single prematurely reified interpretation wolfram-2026",
+      "chapterFile": "ch2-architecture.md",
+      "status": "supported",
+      "profileId": "rule-families-and-consequences",
+      "note": null,
+      "checkedAt": "2026-04-14T15:09:21.913Z",
+      "sourceDigest": "3ea306230b354d525256212831ce3d65e511ba55"
+    }
+  ],
+  "lastValidatedAt": "2026-04-14T15:09:21.913Z"
+}

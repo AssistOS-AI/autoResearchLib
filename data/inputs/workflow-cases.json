@@ -1,0 +1,326 @@
+[
+  {
+    "id": "package-routing",
+    "groundTruthDomain": "package",
+    "segments": [
+      "The item was registered and placed in the queue.",
+      "A routing label was attached and the record was updated.",
+      "A courier scanned it before dispatch.",
+      "Delivery to the recipient was confirmed."
+    ],
+    "answers": {
+      "package-dispatch": "yes",
+      "package-tracking": "yes",
+      "sample-temperature": "no",
+      "sample-assay": "no",
+      "manuscript-review": "no",
+      "manuscript-revision": "no"
+    }
+  },
+  {
+    "id": "package-generic",
+    "groundTruthDomain": "package",
+    "segments": [
+      "The item was recorded and placed in the staging area.",
+      "A label was attached and the status was updated.",
+      "The next handoff prepared it for the route.",
+      "The destination acknowledged delivery."
+    ],
+    "answers": {
+      "package-dispatch": "yes",
+      "package-tracking": "yes",
+      "sample-temperature": "no",
+      "sample-assay": "no",
+      "manuscript-review": "no",
+      "manuscript-revision": "no"
+    }
+  },
+  {
+    "id": "package-barcode",
+    "groundTruthDomain": "package",
+    "segments": [
+      "The item was entered in the system and placed in the tray.",
+      "A barcode was attached and the manifest was updated.",
+      "The driver scanned it at the depot before dispatch.",
+      "The recipient validated delivery."
+    ],
+    "answers": {
+      "package-dispatch": "yes",
+      "package-tracking": "yes",
+      "sample-temperature": "no",
+      "sample-assay": "no",
+      "manuscript-review": "no",
+      "manuscript-revision": "no"
+    }
+  },
+  {
+    "id": "package-manifest",
+    "groundTruthDomain": "package",
+    "segments": [
+      "The item was logged and placed in the queue.",
+      "A pickup manifest and tracking number were attached.",
+      "The carrier forwarded it from the depot toward the destination.",
+      "Delivery was acknowledged by the recipient."
+    ],
+    "answers": {
+      "package-dispatch": "yes",
+      "package-tracking": "yes",
+      "sample-temperature": "no",
+      "sample-assay": "no",
+      "manuscript-review": "no",
+      "manuscript-revision": "no"
+    }
+  },
+  {
+    "id": "package-return",
+    "groundTruthDomain": "package",
+    "segments": [
+      "The parcel was recorded and placed in the staging area.",
+      "A routing tag was attached and the record was updated.",
+      "A courier scanned it for return dispatch.",
+      "The sender acknowledged delivery."
+    ],
+    "answers": {
+      "package-dispatch": "yes",
+      "package-tracking": "yes",
+      "sample-temperature": "no",
+      "sample-assay": "no",
+      "manuscript-review": "no",
+      "manuscript-revision": "no"
+    }
+  },
+  {
+    "id": "package-transfer",
+    "groundTruthDomain": "package",
+    "segments": [
+      "The item was registered and placed in the queue.",
+      "A label was attached and the status was updated.",
+      "A tracking code was printed before dispatch.",
+      "The destination confirmed delivery."
+    ],
+    "answers": {
+      "package-dispatch": "yes",
+      "package-tracking": "yes",
+      "sample-temperature": "no",
+      "sample-assay": "no",
+      "manuscript-review": "no",
+      "manuscript-revision": "no"
+    }
+  },
+  {
+    "id": "sample-identified",
+    "groundTruthDomain": "sample",
+    "segments": [
+      "The item was registered and placed in the queue.",
+      "A specimen identifier was attached and the record was updated.",
+      "The temperature was logged before assay.",
+      "The sample was archived after analysis."
+    ],
+    "answers": {
+      "package-dispatch": "no",
+      "package-tracking": "no",
+      "sample-temperature": "yes",
+      "sample-assay": "yes",
+      "manuscript-review": "no",
+      "manuscript-revision": "no"
+    }
+  },
+  {
+    "id": "sample-generic",
+    "groundTruthDomain": "sample",
+    "segments": [
+      "The item was logged and placed in the staging area.",
+      "A label was attached and the record was updated.",
+      "It stayed under controlled conditions before analysis.",
+      "The specimen archive received it after analysis."
+    ],
+    "answers": {
+      "package-dispatch": "no",
+      "package-tracking": "no",
+      "sample-temperature": "yes",
+      "sample-assay": "yes",
+      "manuscript-review": "no",
+      "manuscript-revision": "no"
+    }
+  },
+  {
+    "id": "sample-freezer",
+    "groundTruthDomain": "sample",
+    "segments": [
+      "The specimen was entered in the system and placed in the tray.",
+      "A sample id was attached and the manifest was updated.",
+      "It remained in freezer storage before analysis.",
+      "The biobank archived the specimen after assay."
+    ],
+    "answers": {
+      "package-dispatch": "no",
+      "package-tracking": "no",
+      "sample-temperature": "yes",
+      "sample-assay": "yes",
+      "manuscript-review": "no",
+      "manuscript-revision": "no"
+    }
+  },
+  {
+    "id": "sample-aliquot",
+    "groundTruthDomain": "sample",
+    "segments": [
+      "The specimen was logged and placed in the queue.",
+      "A vial label was attached and the record was updated.",
+      "An aliquot was prepared after the temperature log was checked.",
+      "The sample archive stored it after analysis."
+    ],
+    "answers": {
+      "package-dispatch": "no",
+      "package-tracking": "no",
+      "sample-temperature": "yes",
+      "sample-assay": "yes",
+      "manuscript-review": "no",
+      "manuscript-revision": "no"
+    }
+  },
+  {
+    "id": "sample-cold-room",
+    "groundTruthDomain": "sample",
+    "segments": [
+      "The specimen was registered and placed in the queue.",
+      "A label was attached and the status was updated.",
+      "The cold room log was checked before analysis.",
+      "The biobank archive confirmed storage."
+    ],
+    "answers": {
+      "package-dispatch": "no",
+      "package-tracking": "no",
+      "sample-temperature": "yes",
+      "sample-assay": "yes",
+      "manuscript-review": "no",
+      "manuscript-revision": "no"
+    }
+  },
+  {
+    "id": "sample-centrifuge",
+    "groundTruthDomain": "sample",
+    "segments": [
+      "The item was recorded and placed in the staging area.",
+      "A specimen identifier was attached and the record was updated.",
+      "It was centrifuged after cold storage and before assay.",
+      "The specimen archive acknowledged receipt."
+    ],
+    "answers": {
+      "package-dispatch": "no",
+      "package-tracking": "no",
+      "sample-temperature": "yes",
+      "sample-assay": "yes",
+      "manuscript-review": "no",
+      "manuscript-revision": "no"
+    }
+  },
+  {
+    "id": "manuscript-submission",
+    "groundTruthDomain": "manuscript",
+    "segments": [
+      "The item was registered and placed in the queue.",
+      "A submission record was attached and the record was updated.",
+      "An editor sent it to reviewers for review.",
+      "The revised manuscript was accepted."
+    ],
+    "answers": {
+      "package-dispatch": "no",
+      "package-tracking": "no",
+      "sample-temperature": "no",
+      "sample-assay": "no",
+      "manuscript-review": "yes",
+      "manuscript-revision": "yes"
+    }
+  },
+  {
+    "id": "manuscript-generic",
+    "groundTruthDomain": "manuscript",
+    "segments": [
+      "The item was recorded and placed in the staging area.",
+      "A label was attached and the status was updated.",
+      "A reviewer cycle started after the editor logged it.",
+      "A decision letter confirmed acceptance after revision."
+    ],
+    "answers": {
+      "package-dispatch": "no",
+      "package-tracking": "no",
+      "sample-temperature": "no",
+      "sample-assay": "no",
+      "manuscript-review": "yes",
+      "manuscript-revision": "yes"
+    }
+  },
+  {
+    "id": "manuscript-editorial-queue",
+    "groundTruthDomain": "manuscript",
+    "segments": [
+      "The item was entered in the system and placed in the editorial queue.",
+      "A manuscript id was attached and the record was updated.",
+      "An associate editor sent it to peer review.",
+      "The decision letter confirmed acceptance after revision."
+    ],
+    "answers": {
+      "package-dispatch": "no",
+      "package-tracking": "no",
+      "sample-temperature": "no",
+      "sample-assay": "no",
+      "manuscript-review": "yes",
+      "manuscript-revision": "yes"
+    }
+  },
+  {
+    "id": "manuscript-peer-review",
+    "groundTruthDomain": "manuscript",
+    "segments": [
+      "The submission was logged and placed in the queue.",
+      "A submission record was attached and the status was updated.",
+      "Reviewers returned comments to the editor.",
+      "The revised paper was accepted by the journal."
+    ],
+    "answers": {
+      "package-dispatch": "no",
+      "package-tracking": "no",
+      "sample-temperature": "no",
+      "sample-assay": "no",
+      "manuscript-review": "yes",
+      "manuscript-revision": "yes"
+    }
+  },
+  {
+    "id": "manuscript-revision-cycle",
+    "groundTruthDomain": "manuscript",
+    "segments": [
+      "The manuscript was recorded and placed in the staging area.",
+      "A manuscript id was attached and the record was updated.",
+      "The editor requested revision after review.",
+      "A decision letter acknowledged the accepted revision."
+    ],
+    "answers": {
+      "package-dispatch": "no",
+      "package-tracking": "no",
+      "sample-temperature": "no",
+      "sample-assay": "no",
+      "manuscript-review": "yes",
+      "manuscript-revision": "yes"
+    }
+  },
+  {
+    "id": "manuscript-accepted",
+    "groundTruthDomain": "manuscript",
+    "segments": [
+      "The submission was registered and placed in the editorial queue.",
+      "A label was attached and the status was updated.",
+      "An associate editor started a review cycle.",
+      "The journal accepted the revised manuscript."
+    ],
+    "answers": {
+      "package-dispatch": "no",
+      "package-tracking": "no",
+      "sample-temperature": "no",
+      "sample-assay": "no",
+      "manuscript-review": "yes",
+      "manuscript-revision": "yes"
+    }
+  }
+]

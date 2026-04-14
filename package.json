@@ -1,0 +1,11 @@
+{
+  "name": "autoresearchlib",
+  "version": "0.1.0",
+  "description": "A dependency-free Node.js library for local rulial exploration from ambiguous textual observations.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test --test-concurrency=1",
+    "experiment:all": "node scripts/run-experiments.mjs",
+    "validate": "npm test && node scripts/run-experiments.mjs"
+  }
+}

@@ -1,0 +1,241 @@
+{
+  "skill": "article-build",
+  "articleRoot": "docs/article",
+  "force": true,
+  "generatedAt": "2026-04-14T15:09:22.033Z",
+  "chapters": [
+    {
+      "chapter": 1,
+      "target": "/home/salboaie/work/autoResearchLib/docs/article/plan/chapters/ch1-introduction.md",
+      "refreshed": true
+    },
+    {
+      "chapter": 2,
+      "target": "/home/salboaie/work/autoResearchLib/docs/article/plan/chapters/ch2-architecture.md",
+      "refreshed": true
+    },
+    {
+      "chapter": 3,
+      "target": "/home/salboaie/work/autoResearchLib/docs/article/plan/chapters/ch3-data-model.md",
+      "refreshed": true
+    },
+    {
+      "chapter": 4,
+      "target": "/home/salboaie/work/autoResearchLib/docs/article/plan/chapters/ch4-experiments.md",
+      "refreshed": true
+    },
+    {
+      "chapter": 5,
+      "target": "/home/salboaie/work/autoResearchLib/docs/article/plan/chapters/ch5-conclusion.md",
+      "refreshed": true
+    }
+  ],
+  "assets": [
+    {
+      "id": "pipeline-overview",
+      "source": "/home/salboaie/work/autoResearchLib/docs/article/plan/assets-src/figure-1-pipeline.svg",
+      "output": "/home/salboaie/work/autoResearchLib/docs/article/assets/figure-1-pipeline.svg",
+      "refreshed": true
+    },
+    {
+      "id": "neighborhood-structure",
+      "source": "/home/salboaie/work/autoResearchLib/docs/article/plan/assets-src/figure-2-neighborhood.svg",
+      "output": "/home/salboaie/work/autoResearchLib/docs/article/assets/figure-2-neighborhood.svg",
+      "refreshed": true
+    },
+    {
+      "id": "observer-accuracy",
+      "source": "/home/salboaie/work/autoResearchLib/experiments/experiment1/observer-accuracy.svg",
+      "output": "/home/salboaie/work/autoResearchLib/docs/article/assets/figure-3-observer-accuracy.svg",
+      "refreshed": true
+    },
+    {
+      "id": "observer-entropy",
+      "source": "/home/salboaie/work/autoResearchLib/experiments/experiment1/observer-entropy.svg",
+      "output": "/home/salboaie/work/autoResearchLib/docs/article/assets/figure-4-observer-entropy.svg",
+      "refreshed": true
+    },
+    {
+      "id": "question-entropy",
+      "source": "/home/salboaie/work/autoResearchLib/experiments/experiment2/question-entropy.svg",
+      "output": "/home/salboaie/work/autoResearchLib/docs/article/assets/figure-5-question-entropy.svg",
+      "refreshed": true
+    },
+    {
+      "id": "question-accuracy",
+      "source": "/home/salboaie/work/autoResearchLib/experiments/experiment2/question-accuracy.svg",
+      "output": "/home/salboaie/work/autoResearchLib/docs/article/assets/figure-6-question-accuracy.svg",
+      "refreshed": true
+    },
+    {
+      "id": "experiment3-baseline-accuracy",
+      "source": "/home/salboaie/work/autoResearchLib/experiments/experiment3/baseline-accuracy.svg",
+      "output": "/home/salboaie/work/autoResearchLib/docs/article/assets/figure-7-baseline-accuracy.svg",
+      "refreshed": true
+    },
+    {
+      "id": "experiment3-question-recovery",
+      "source": "/home/salboaie/work/autoResearchLib/experiments/experiment3/question-recovery.svg",
+      "output": "/home/salboaie/work/autoResearchLib/docs/article/assets/figure-8-question-recovery.svg",
+      "refreshed": true
+    }
+  ],
+  "assetValidation": [
+    {
+      "filePath": "/home/salboaie/work/autoResearchLib/docs/article/assets/figure-1-pipeline.svg",
+      "status": "valid",
+      "ruleType": "concept",
+      "assetId": "pipeline-overview",
+      "refreshed": true
+    },
+    {
+      "filePath": "/home/salboaie/work/autoResearchLib/docs/article/assets/figure-2-neighborhood.svg",
+      "status": "valid",
+      "ruleType": "concept",
+      "assetId": "neighborhood-structure",
+      "refreshed": true
+    },
+    {
+      "filePath": "/home/salboaie/work/autoResearchLib/docs/article/assets/figure-3-observer-accuracy.svg",
+      "status": "valid",
+      "ruleType": "chart",
+      "assetId": "observer-accuracy",
+      "refreshed": true
+    },
+    {
+      "filePath": "/home/salboaie/work/autoResearchLib/docs/article/assets/figure-4-observer-entropy.svg",
+      "status": "valid",
+      "ruleType": "chart",
+      "assetId": "observer-entropy",
+      "refreshed": true
+    },
+    {
+      "filePath": "/home/salboaie/work/autoResearchLib/docs/article/assets/figure-5-question-entropy.svg",
+      "status": "valid",
+      "ruleType": "chart",
+      "assetId": "question-entropy",
+      "refreshed": true
+    },
+    {
+      "filePath": "/home/salboaie/work/autoResearchLib/docs/article/assets/figure-6-question-accuracy.svg",
+      "status": "valid",
+      "ruleType": "chart",
+      "assetId": "question-accuracy",
+      "refreshed": true
+    },
+    {
+      "filePath": "/home/salboaie/work/autoResearchLib/docs/article/assets/figure-7-baseline-accuracy.svg",
+      "status": "valid",
+      "ruleType": "chart",
+      "assetId": "experiment3-baseline-accuracy",
+      "refreshed": true
+    },
+    {
+      "filePath": "/home/salboaie/work/autoResearchLib/docs/article/assets/figure-8-question-recovery.svg",
+      "status": "valid",
+      "ruleType": "chart",
+      "assetId": "experiment3-question-recovery",
+      "refreshed": true
+    }
+  ],
+  "bibliography": {
+    "bibliographyDir": "/home/salboaie/work/autoResearchLib/docs/article/plan/bibliography",
+    "bibliographyCatalogPath": "/home/salboaie/work/autoResearchLib/docs/article/plan/bibliography.md",
+    "references": [
+      "WOLFRAM-2026",
+      "FONG-SPIVAK-2019",
+      "MAO-2025",
+      "DUVAL-2011"
+    ],
+    "claims": [
+      {
+        "citationKey": "WOLFRAM-2026",
+        "claimText": "Ruliology studies what abstract rules do and how spaces of possible rules are organized [WOLFRAM-2026].",
+        "status": "verified",
+        "profileId": "rule-families-and-consequences",
+        "chapterFile": "ch1-introduction.md"
+      },
+      {
+        "citationKey": "WOLFRAM-2026",
+        "claimText": "That neighborhood perspective is what makes the framework ruliological in an operational sense: it treats nearby spaces of possible rules as objects of study instead of rushing toward a single prematurely reified interpretation [WOLFRAM-2026].",
+        "status": "verified",
+        "profileId": "rule-families-and-consequences",
+        "chapterFile": "ch2-architecture.md"
+      },
+      {
+        "citationKey": "WOLFRAM-2026",
+        "claimText": "Ruliology contributes the orientation toward spaces of possible rules and the consequences they generate [WOLFRAM-2026].",
+        "status": "verified",
+        "profileId": "rule-families-and-consequences",
+        "chapterFile": "ch5-conclusion.md"
+      },
+      {
+        "citationKey": "FONG-SPIVAK-2019",
+        "claimText": "Applied category theory studies disciplined composition and structure-preserving translation across domains [FONG-SPIVAK-2019].",
+        "status": "verified",
+        "profileId": "composition-across-domains",
+        "chapterFile": "ch1-introduction.md"
+      },
+      {
+        "citationKey": "FONG-SPIVAK-2019",
+        "claimText": "It is a problem of category-level disciplined translation between structured regimes and of preserving meaningful relations under that translation [FONG-SPIVAK-2019].",
+        "status": "verified",
+        "profileId": "composition-across-domains",
+        "chapterFile": "ch2-architecture.md"
+      },
+      {
+        "citationKey": "FONG-SPIVAK-2019",
+        "claimText": "Applied category theory contributes disciplined composition and structure-preserving translation between structured regimes [FONG-SPIVAK-2019].",
+        "status": "verified",
+        "profileId": "composition-across-domains",
+        "chapterFile": "ch5-conclusion.md"
+      },
+      {
+        "citationKey": "MAO-2025",
+        "claimText": "Recent neuro-symbolic work argues for concept-centric systems in which objects, relations, and actions remain typed and compositional even when learned components are involved [MAO-2025].",
+        "status": "verified",
+        "profileId": "typed-neuro-symbolic-concepts",
+        "chapterFile": "ch1-introduction.md"
+      },
+      {
+        "citationKey": "MAO-2025",
+        "claimText": "A learned component may therefore help propose candidate event or relation structures, but those proposals must be converted into explicit typed and compositional neuro-symbolic concept records with provenance and uncertainty annotations before they can influence theory induction [MAO-2025].",
+        "status": "verified",
+        "profileId": "typed-neuro-symbolic-concepts",
+        "chapterFile": "ch2-architecture.md"
+      },
+      {
+        "citationKey": "MAO-2025",
+        "claimText": "Neuro-symbolic concept work contributes the insistence that learned components should still operate over typed and compositional conceptual structures [MAO-2025].",
+        "status": "verified",
+        "profileId": "typed-neuro-symbolic-concepts",
+        "chapterFile": "ch5-conclusion.md"
+      },
+      {
+        "citationKey": "DUVAL-2011",
+        "claimText": "Categorical rewriting is treated as typed local transformation rather than as an unstructured state diff, which is why compatibility and composition become first-class concerns [DUVAL-2011].",
+        "status": "verified",
+        "profileId": "categorical-rewriting",
+        "chapterFile": "ch2-architecture.md"
+      },
+      {
+        "citationKey": "DUVAL-2011",
+        "claimText": "It also contains the transformation family `Mi` and the observer-relative equivalence classes `Ei`, so categorical local rewriting and structural compatibility remain explicit [DUVAL-2011].",
+        "status": "verified",
+        "profileId": "categorical-rewriting",
+        "chapterFile": "ch3-data-model.md"
+      },
+      {
+        "citationKey": "DUVAL-2011",
+        "claimText": "Categorical abstract rewriting contributes a precise language for typed local transformations and their compatibility [DUVAL-2011].",
+        "status": "verified",
+        "profileId": "categorical-rewriting",
+        "chapterFile": "ch5-conclusion.md"
+      }
+    ]
+  },
+  "html": {
+    "outputPath": "/home/salboaie/work/autoResearchLib/docs/article/index.html",
+    "refreshed": true
+  }
+}

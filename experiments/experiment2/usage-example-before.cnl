@@ -1,0 +1,455 @@
+RUN id="sample_generic_p2_rich"
+SOURCE doc="sample-generic" span="0-99" mode="segments"
+SEGMENT id="SEG1" span="0-50"
+SEGMENT id="SEG2" span="52-99"
+OBSERVER id="rich"
+BUDGET hypotheses=4 theories=8
+CONTEXT key="caseId" value="sample-generic"
+CONTEXT key="groundTruthDomain" value="sample"
+CONTEXT key="prefixDepth" value=2
+
+HYPOTHESIS id="rich-base" focus="all"
+OBSERVATION hypothesis="rich-base" status="explicit" cue="label" label="identifier attached" domain="shared" kind="workflow" specificity="generic" weight=0.14
+PROVENANCE hypothesis="rich-base" cue="label" source="label"
+OBSERVATION hypothesis="rich-base" status="explicit" cue="queued" label="queued or staged" domain="shared" kind="workflow" specificity="generic" weight=0.1
+PROVENANCE hypothesis="rich-base" cue="queued" source="staging area"
+OBSERVATION hypothesis="rich-base" status="explicit" cue="record-update" label="record updated" domain="shared" kind="workflow" specificity="generic" weight=0.12
+PROVENANCE hypothesis="rich-base" cue="record-update" source="record was updated"
+OBSERVATION hypothesis="rich-base" status="explicit" cue="registered" label="registration or logging" domain="shared" kind="workflow" specificity="generic" weight=0.14
+PROVENANCE hypothesis="rich-base" cue="registered" source="logged"
+HYPOTHESIS_SUPPORT hypothesis="rich-base" domain="manuscript" value=0.15
+HYPOTHESIS_SUPPORT hypothesis="rich-base" domain="package" value=0.15
+HYPOTHESIS_SUPPORT hypothesis="rich-base" domain="sample" value=0.15
+HYPOTHESIS_CONFIDENCE hypothesis="rich-base" coverage=0.208 ambiguity=1
+AMBIGUITY hypothesis="rich-base" domain="manuscript"
+AMBIGUITY hypothesis="rich-base" domain="package"
+AMBIGUITY hypothesis="rich-base" domain="sample"
+
+HYPOTHESIS id="rich-manuscript" focus="manuscript"
+OBSERVATION hypothesis="rich-manuscript" status="explicit" cue="label" label="identifier attached" domain="shared" kind="workflow" specificity="generic" weight=0.14
+PROVENANCE hypothesis="rich-manuscript" cue="label" source="label"
+OBSERVATION hypothesis="rich-manuscript" status="explicit" cue="queued" label="queued or staged" domain="shared" kind="workflow" specificity="generic" weight=0.1
+PROVENANCE hypothesis="rich-manuscript" cue="queued" source="staging area"
+OBSERVATION hypothesis="rich-manuscript" status="explicit" cue="record-update" label="record updated" domain="shared" kind="workflow" specificity="generic" weight=0.12
+PROVENANCE hypothesis="rich-manuscript" cue="record-update" source="record was updated"
+OBSERVATION hypothesis="rich-manuscript" status="explicit" cue="registered" label="registration or logging" domain="shared" kind="workflow" specificity="generic" weight=0.14
+PROVENANCE hypothesis="rich-manuscript" cue="registered" source="logged"
+HYPOTHESIS_SUPPORT hypothesis="rich-manuscript" domain="manuscript" value=0.15
+HYPOTHESIS_SUPPORT hypothesis="rich-manuscript" domain="package" value=0.15
+HYPOTHESIS_SUPPORT hypothesis="rich-manuscript" domain="sample" value=0.15
+HYPOTHESIS_CONFIDENCE hypothesis="rich-manuscript" coverage=0.208 ambiguity=1
+AMBIGUITY hypothesis="rich-manuscript" domain="manuscript"
+AMBIGUITY hypothesis="rich-manuscript" domain="package"
+AMBIGUITY hypothesis="rich-manuscript" domain="sample"
+
+HYPOTHESIS id="rich-package" focus="package"
+OBSERVATION hypothesis="rich-package" status="explicit" cue="label" label="identifier attached" domain="shared" kind="workflow" specificity="generic" weight=0.14
+PROVENANCE hypothesis="rich-package" cue="label" source="label"
+OBSERVATION hypothesis="rich-package" status="explicit" cue="queued" label="queued or staged" domain="shared" kind="workflow" specificity="generic" weight=0.1
+PROVENANCE hypothesis="rich-package" cue="queued" source="staging area"
+OBSERVATION hypothesis="rich-package" status="explicit" cue="record-update" label="record updated" domain="shared" kind="workflow" specificity="generic" weight=0.12
+PROVENANCE hypothesis="rich-package" cue="record-update" source="record was updated"
+OBSERVATION hypothesis="rich-package" status="explicit" cue="registered" label="registration or logging" domain="shared" kind="workflow" specificity="generic" weight=0.14
+PROVENANCE hypothesis="rich-package" cue="registered" source="logged"
+HYPOTHESIS_SUPPORT hypothesis="rich-package" domain="manuscript" value=0.15
+HYPOTHESIS_SUPPORT hypothesis="rich-package" domain="package" value=0.15
+HYPOTHESIS_SUPPORT hypothesis="rich-package" domain="sample" value=0.15
+HYPOTHESIS_CONFIDENCE hypothesis="rich-package" coverage=0.208 ambiguity=1
+AMBIGUITY hypothesis="rich-package" domain="manuscript"
+AMBIGUITY hypothesis="rich-package" domain="package"
+AMBIGUITY hypothesis="rich-package" domain="sample"
+
+HYPOTHESIS id="rich-sample" focus="sample"
+OBSERVATION hypothesis="rich-sample" status="explicit" cue="label" label="identifier attached" domain="shared" kind="workflow" specificity="generic" weight=0.14
+PROVENANCE hypothesis="rich-sample" cue="label" source="label"
+OBSERVATION hypothesis="rich-sample" status="explicit" cue="queued" label="queued or staged" domain="shared" kind="workflow" specificity="generic" weight=0.1
+PROVENANCE hypothesis="rich-sample" cue="queued" source="staging area"
+OBSERVATION hypothesis="rich-sample" status="explicit" cue="record-update" label="record updated" domain="shared" kind="workflow" specificity="generic" weight=0.12
+PROVENANCE hypothesis="rich-sample" cue="record-update" source="record was updated"
+OBSERVATION hypothesis="rich-sample" status="explicit" cue="registered" label="registration or logging" domain="shared" kind="workflow" specificity="generic" weight=0.14
+PROVENANCE hypothesis="rich-sample" cue="registered" source="logged"
+HYPOTHESIS_SUPPORT hypothesis="rich-sample" domain="manuscript" value=0.15
+HYPOTHESIS_SUPPORT hypothesis="rich-sample" domain="package" value=0.15
+HYPOTHESIS_SUPPORT hypothesis="rich-sample" domain="sample" value=0.15
+HYPOTHESIS_CONFIDENCE hypothesis="rich-sample" coverage=0.208 ambiguity=1
+AMBIGUITY hypothesis="rich-sample" domain="manuscript"
+AMBIGUITY hypothesis="rich-sample" domain="package"
+AMBIGUITY hypothesis="rich-sample" domain="sample"
+
+THEORY id="rich-manuscript:manuscript:base" from="rich-manuscript" domain="manuscript" variant="base"
+SCHEMA theory="rich-manuscript:manuscript:base" roles=["manuscript","author","editor","reviewer"] states=["registered","submitted","reviewed","revised","accepted"]
+MATCHED_STATE theory="rich-manuscript:manuscript:base" state="registered"
+MATCHED_STATE theory="rich-manuscript:manuscript:base" state="submitted"
+RULE theory="rich-manuscript:manuscript:base" template="register -> submit"
+RULE theory="rich-manuscript:manuscript:base" template="review -> revise"
+RULE theory="rich-manuscript:manuscript:base" template="revise -> accept"
+RULE theory="rich-manuscript:manuscript:base" template="submit -> review"
+INVARIANT theory="rich-manuscript:manuscript:base" text="acceptance only follows a complete decision path"
+INVARIANT theory="rich-manuscript:manuscript:base" text="artifact identity is preserved across the workflow"
+INVARIANT theory="rich-manuscript:manuscript:base" text="review precedes editorial revision"
+INVARIANT theory="rich-manuscript:manuscript:base" text="status transitions follow logged handoffs"
+COMPOSITION theory="rich-manuscript:manuscript:base" rule="decision states must preserve the submission identity"
+COMPOSITION theory="rich-manuscript:manuscript:base" rule="editorial roles mediate review-to-revision transitions"
+SUPPORT theory="rich-manuscript:manuscript:base" hypothesis="rich-manuscript"
+THEORY_EVIDENCE theory="rich-manuscript:manuscript:base" cue="label" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-manuscript:manuscript:base" cue="queued" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-manuscript:manuscript:base" cue="record-update" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-manuscript:manuscript:base" cue="registered" status="explicit" domain="shared"
+SCORE theory="rich-manuscript:manuscript:base" dimension="evidenceCoverage" value=0.183
+SCORE theory="rich-manuscript:manuscript:base" dimension="predictiveAdequacy" value=0.18
+SCORE theory="rich-manuscript:manuscript:base" dimension="compressionUtility" value=0.688
+SCORE theory="rich-manuscript:manuscript:base" dimension="compositionalSharpness" value=0.363
+SCORE theory="rich-manuscript:manuscript:base" dimension="stability" value=0.615
+SCORE theory="rich-manuscript:manuscript:base" dimension="alignmentUtility" value=0.25
+SCORE theory="rich-manuscript:manuscript:base" dimension="total" value=0.329
+
+THEORY id="rich-manuscript:manuscript:coarsened" from="rich-manuscript" domain="manuscript" variant="coarsened"
+SCHEMA theory="rich-manuscript:manuscript:coarsened" roles=["manuscript","author","editor","reviewer"] states=["registered","submitted","reviewed","revised","accepted"]
+MATCHED_STATE theory="rich-manuscript:manuscript:coarsened" state="registered"
+MATCHED_STATE theory="rich-manuscript:manuscript:coarsened" state="submitted"
+RULE theory="rich-manuscript:manuscript:coarsened" template="register -> submit"
+RULE theory="rich-manuscript:manuscript:coarsened" template="review -> revise"
+RULE theory="rich-manuscript:manuscript:coarsened" template="revise -> accept"
+RULE theory="rich-manuscript:manuscript:coarsened" template="submit -> review"
+INVARIANT theory="rich-manuscript:manuscript:coarsened" text="acceptance only follows a complete decision path"
+INVARIANT theory="rich-manuscript:manuscript:coarsened" text="artifact identity is preserved across the workflow"
+INVARIANT theory="rich-manuscript:manuscript:coarsened" text="review precedes editorial revision"
+INVARIANT theory="rich-manuscript:manuscript:coarsened" text="status transitions follow logged handoffs"
+COMPOSITION theory="rich-manuscript:manuscript:coarsened" rule="coarsened composition merges adjacent local states"
+COMPOSITION theory="rich-manuscript:manuscript:coarsened" rule="decision states must preserve the submission identity"
+COMPOSITION theory="rich-manuscript:manuscript:coarsened" rule="editorial roles mediate review-to-revision transitions"
+SUPPORT theory="rich-manuscript:manuscript:coarsened" hypothesis="rich-manuscript"
+THEORY_EVIDENCE theory="rich-manuscript:manuscript:coarsened" cue="label" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-manuscript:manuscript:coarsened" cue="queued" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-manuscript:manuscript:coarsened" cue="record-update" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-manuscript:manuscript:coarsened" cue="registered" status="explicit" domain="shared"
+SCORE theory="rich-manuscript:manuscript:coarsened" dimension="evidenceCoverage" value=0.183
+SCORE theory="rich-manuscript:manuscript:coarsened" dimension="predictiveAdequacy" value=0.15
+SCORE theory="rich-manuscript:manuscript:coarsened" dimension="compressionUtility" value=0.738
+SCORE theory="rich-manuscript:manuscript:coarsened" dimension="compositionalSharpness" value=0.303
+SCORE theory="rich-manuscript:manuscript:coarsened" dimension="stability" value=0.655
+SCORE theory="rich-manuscript:manuscript:coarsened" dimension="alignmentUtility" value=0.25
+SCORE theory="rich-manuscript:manuscript:coarsened" dimension="total" value=0.321
+
+THEORY id="rich-manuscript:manuscript:refactorized" from="rich-manuscript" domain="manuscript" variant="refactorized"
+SCHEMA theory="rich-manuscript:manuscript:refactorized" roles=["manuscript","author","editor","reviewer"] states=["registered","submitted","reviewed","revised","accepted"]
+MATCHED_STATE theory="rich-manuscript:manuscript:refactorized" state="registered"
+MATCHED_STATE theory="rich-manuscript:manuscript:refactorized" state="submitted"
+RULE theory="rich-manuscript:manuscript:refactorized" template="refactorize equivalent local rewrite blocks"
+RULE theory="rich-manuscript:manuscript:refactorized" template="register -> submit"
+RULE theory="rich-manuscript:manuscript:refactorized" template="review -> revise"
+RULE theory="rich-manuscript:manuscript:refactorized" template="revise -> accept"
+RULE theory="rich-manuscript:manuscript:refactorized" template="submit -> review"
+INVARIANT theory="rich-manuscript:manuscript:refactorized" text="acceptance only follows a complete decision path"
+INVARIANT theory="rich-manuscript:manuscript:refactorized" text="artifact identity is preserved across the workflow"
+INVARIANT theory="rich-manuscript:manuscript:refactorized" text="review precedes editorial revision"
+INVARIANT theory="rich-manuscript:manuscript:refactorized" text="status transitions follow logged handoffs"
+COMPOSITION theory="rich-manuscript:manuscript:refactorized" rule="decision states must preserve the submission identity"
+COMPOSITION theory="rich-manuscript:manuscript:refactorized" rule="editorial roles mediate review-to-revision transitions"
+SUPPORT theory="rich-manuscript:manuscript:refactorized" hypothesis="rich-manuscript"
+THEORY_EVIDENCE theory="rich-manuscript:manuscript:refactorized" cue="label" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-manuscript:manuscript:refactorized" cue="queued" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-manuscript:manuscript:refactorized" cue="record-update" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-manuscript:manuscript:refactorized" cue="registered" status="explicit" domain="shared"
+SCORE theory="rich-manuscript:manuscript:refactorized" dimension="evidenceCoverage" value=0.193
+SCORE theory="rich-manuscript:manuscript:refactorized" dimension="predictiveAdequacy" value=0.2
+SCORE theory="rich-manuscript:manuscript:refactorized" dimension="compressionUtility" value=0.668
+SCORE theory="rich-manuscript:manuscript:refactorized" dimension="compositionalSharpness" value=0.403
+SCORE theory="rich-manuscript:manuscript:refactorized" dimension="stability" value=0.615
+SCORE theory="rich-manuscript:manuscript:refactorized" dimension="alignmentUtility" value=0.3
+SCORE theory="rich-manuscript:manuscript:refactorized" dimension="total" value=0.346
+
+THEORY id="rich-manuscript:manuscript:refined" from="rich-manuscript" domain="manuscript" variant="refined"
+SCHEMA theory="rich-manuscript:manuscript:refined" roles=["manuscript","author","editor","reviewer"] states=["registered","submitted","reviewed","revised","accepted"]
+MATCHED_STATE theory="rich-manuscript:manuscript:refined" state="registered"
+MATCHED_STATE theory="rich-manuscript:manuscript:refined" state="submitted"
+RULE theory="rich-manuscript:manuscript:refined" template="register -> submit"
+RULE theory="rich-manuscript:manuscript:refined" template="review -> revise"
+RULE theory="rich-manuscript:manuscript:refined" template="revise -> accept"
+RULE theory="rich-manuscript:manuscript:refined" template="submit -> review"
+INVARIANT theory="rich-manuscript:manuscript:refined" text="acceptance only follows a complete decision path"
+INVARIANT theory="rich-manuscript:manuscript:refined" text="artifact identity is preserved across the workflow"
+INVARIANT theory="rich-manuscript:manuscript:refined" text="Editorial manuscript workflow keeps a finer-grained state boundary"
+INVARIANT theory="rich-manuscript:manuscript:refined" text="review precedes editorial revision"
+INVARIANT theory="rich-manuscript:manuscript:refined" text="status transitions follow logged handoffs"
+COMPOSITION theory="rich-manuscript:manuscript:refined" rule="decision states must preserve the submission identity"
+COMPOSITION theory="rich-manuscript:manuscript:refined" rule="editorial roles mediate review-to-revision transitions"
+SUPPORT theory="rich-manuscript:manuscript:refined" hypothesis="rich-manuscript"
+THEORY_EVIDENCE theory="rich-manuscript:manuscript:refined" cue="label" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-manuscript:manuscript:refined" cue="queued" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-manuscript:manuscript:refined" cue="record-update" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-manuscript:manuscript:refined" cue="registered" status="explicit" domain="shared"
+SCORE theory="rich-manuscript:manuscript:refined" dimension="evidenceCoverage" value=0.183
+SCORE theory="rich-manuscript:manuscript:refined" dimension="predictiveAdequacy" value=0.23
+SCORE theory="rich-manuscript:manuscript:refined" dimension="compressionUtility" value=0.628
+SCORE theory="rich-manuscript:manuscript:refined" dimension="compositionalSharpness" value=0.433
+SCORE theory="rich-manuscript:manuscript:refined" dimension="stability" value=0.615
+SCORE theory="rich-manuscript:manuscript:refined" dimension="alignmentUtility" value=0.28
+SCORE theory="rich-manuscript:manuscript:refined" dimension="total" value=0.351
+
+THEORY id="rich-package:package:base" from="rich-package" domain="package" variant="base"
+SCHEMA theory="rich-package:package:base" roles=["artifact","sender","recipient","carrier"] states=["registered","labeled","dispatched","in_transit","delivered"]
+MATCHED_STATE theory="rich-package:package:base" state="labeled"
+MATCHED_STATE theory="rich-package:package:base" state="registered"
+RULE theory="rich-package:package:base" template="dispatch -> deliver"
+RULE theory="rich-package:package:base" template="label -> dispatch"
+RULE theory="rich-package:package:base" template="register -> label"
+INVARIANT theory="rich-package:package:base" text="artifact identity is preserved across the workflow"
+INVARIANT theory="rich-package:package:base" text="dispatch precedes delivery"
+INVARIANT theory="rich-package:package:base" text="recipient-facing completion terminates the local flow"
+INVARIANT theory="rich-package:package:base" text="status transitions follow logged handoffs"
+COMPOSITION theory="rich-package:package:base" rule="delivery may only follow a dispatch-capable state"
+COMPOSITION theory="rich-package:package:base" rule="handoff events must keep the same artifact identifier"
+SUPPORT theory="rich-package:package:base" hypothesis="rich-package"
+THEORY_EVIDENCE theory="rich-package:package:base" cue="label" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-package:package:base" cue="queued" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-package:package:base" cue="record-update" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-package:package:base" cue="registered" status="explicit" domain="shared"
+SCORE theory="rich-package:package:base" dimension="evidenceCoverage" value=0.183
+SCORE theory="rich-package:package:base" dimension="predictiveAdequacy" value=0.225
+SCORE theory="rich-package:package:base" dimension="compressionUtility" value=0.708
+SCORE theory="rich-package:package:base" dimension="compositionalSharpness" value=0.408
+SCORE theory="rich-package:package:base" dimension="stability" value=0.63
+SCORE theory="rich-package:package:base" dimension="alignmentUtility" value=0.25
+SCORE theory="rich-package:package:base" dimension="total" value=0.353
+
+THEORY id="rich-package:package:coarsened" from="rich-package" domain="package" variant="coarsened"
+SCHEMA theory="rich-package:package:coarsened" roles=["artifact","sender","recipient","carrier"] states=["registered","labeled","dispatched","in_transit","delivered"]
+MATCHED_STATE theory="rich-package:package:coarsened" state="labeled"
+MATCHED_STATE theory="rich-package:package:coarsened" state="registered"
+RULE theory="rich-package:package:coarsened" template="dispatch -> deliver"
+RULE theory="rich-package:package:coarsened" template="label -> dispatch"
+RULE theory="rich-package:package:coarsened" template="register -> label"
+INVARIANT theory="rich-package:package:coarsened" text="artifact identity is preserved across the workflow"
+INVARIANT theory="rich-package:package:coarsened" text="dispatch precedes delivery"
+INVARIANT theory="rich-package:package:coarsened" text="recipient-facing completion terminates the local flow"
+INVARIANT theory="rich-package:package:coarsened" text="status transitions follow logged handoffs"
+COMPOSITION theory="rich-package:package:coarsened" rule="coarsened composition merges adjacent local states"
+COMPOSITION theory="rich-package:package:coarsened" rule="delivery may only follow a dispatch-capable state"
+COMPOSITION theory="rich-package:package:coarsened" rule="handoff events must keep the same artifact identifier"
+SUPPORT theory="rich-package:package:coarsened" hypothesis="rich-package"
+THEORY_EVIDENCE theory="rich-package:package:coarsened" cue="label" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-package:package:coarsened" cue="queued" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-package:package:coarsened" cue="record-update" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-package:package:coarsened" cue="registered" status="explicit" domain="shared"
+SCORE theory="rich-package:package:coarsened" dimension="evidenceCoverage" value=0.183
+SCORE theory="rich-package:package:coarsened" dimension="predictiveAdequacy" value=0.195
+SCORE theory="rich-package:package:coarsened" dimension="compressionUtility" value=0.758
+SCORE theory="rich-package:package:coarsened" dimension="compositionalSharpness" value=0.348
+SCORE theory="rich-package:package:coarsened" dimension="stability" value=0.67
+SCORE theory="rich-package:package:coarsened" dimension="alignmentUtility" value=0.25
+SCORE theory="rich-package:package:coarsened" dimension="total" value=0.345
+
+THEORY id="rich-package:package:refactorized" from="rich-package" domain="package" variant="refactorized"
+SCHEMA theory="rich-package:package:refactorized" roles=["artifact","sender","recipient","carrier"] states=["registered","labeled","dispatched","in_transit","delivered"]
+MATCHED_STATE theory="rich-package:package:refactorized" state="labeled"
+MATCHED_STATE theory="rich-package:package:refactorized" state="registered"
+RULE theory="rich-package:package:refactorized" template="dispatch -> deliver"
+RULE theory="rich-package:package:refactorized" template="label -> dispatch"
+RULE theory="rich-package:package:refactorized" template="refactorize equivalent local rewrite blocks"
+RULE theory="rich-package:package:refactorized" template="register -> label"
+INVARIANT theory="rich-package:package:refactorized" text="artifact identity is preserved across the workflow"
+INVARIANT theory="rich-package:package:refactorized" text="dispatch precedes delivery"
+INVARIANT theory="rich-package:package:refactorized" text="recipient-facing completion terminates the local flow"
+INVARIANT theory="rich-package:package:refactorized" text="status transitions follow logged handoffs"
+COMPOSITION theory="rich-package:package:refactorized" rule="delivery may only follow a dispatch-capable state"
+COMPOSITION theory="rich-package:package:refactorized" rule="handoff events must keep the same artifact identifier"
+SUPPORT theory="rich-package:package:refactorized" hypothesis="rich-package"
+THEORY_EVIDENCE theory="rich-package:package:refactorized" cue="label" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-package:package:refactorized" cue="queued" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-package:package:refactorized" cue="record-update" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-package:package:refactorized" cue="registered" status="explicit" domain="shared"
+SCORE theory="rich-package:package:refactorized" dimension="evidenceCoverage" value=0.193
+SCORE theory="rich-package:package:refactorized" dimension="predictiveAdequacy" value=0.245
+SCORE theory="rich-package:package:refactorized" dimension="compressionUtility" value=0.688
+SCORE theory="rich-package:package:refactorized" dimension="compositionalSharpness" value=0.448
+SCORE theory="rich-package:package:refactorized" dimension="stability" value=0.63
+SCORE theory="rich-package:package:refactorized" dimension="alignmentUtility" value=0.3
+SCORE theory="rich-package:package:refactorized" dimension="total" value=0.37
+
+THEORY id="rich-package:package:refined" from="rich-package" domain="package" variant="refined"
+SCHEMA theory="rich-package:package:refined" roles=["artifact","sender","recipient","carrier"] states=["registered","labeled","dispatched","in_transit","delivered"]
+MATCHED_STATE theory="rich-package:package:refined" state="labeled"
+MATCHED_STATE theory="rich-package:package:refined" state="registered"
+RULE theory="rich-package:package:refined" template="dispatch -> deliver"
+RULE theory="rich-package:package:refined" template="label -> dispatch"
+RULE theory="rich-package:package:refined" template="register -> label"
+INVARIANT theory="rich-package:package:refined" text="artifact identity is preserved across the workflow"
+INVARIANT theory="rich-package:package:refined" text="dispatch precedes delivery"
+INVARIANT theory="rich-package:package:refined" text="Package handling keeps a finer-grained state boundary"
+INVARIANT theory="rich-package:package:refined" text="recipient-facing completion terminates the local flow"
+INVARIANT theory="rich-package:package:refined" text="status transitions follow logged handoffs"
+COMPOSITION theory="rich-package:package:refined" rule="delivery may only follow a dispatch-capable state"
+COMPOSITION theory="rich-package:package:refined" rule="handoff events must keep the same artifact identifier"
+SUPPORT theory="rich-package:package:refined" hypothesis="rich-package"
+THEORY_EVIDENCE theory="rich-package:package:refined" cue="label" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-package:package:refined" cue="queued" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-package:package:refined" cue="record-update" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-package:package:refined" cue="registered" status="explicit" domain="shared"
+SCORE theory="rich-package:package:refined" dimension="evidenceCoverage" value=0.183
+SCORE theory="rich-package:package:refined" dimension="predictiveAdequacy" value=0.275
+SCORE theory="rich-package:package:refined" dimension="compressionUtility" value=0.648
+SCORE theory="rich-package:package:refined" dimension="compositionalSharpness" value=0.478
+SCORE theory="rich-package:package:refined" dimension="stability" value=0.63
+SCORE theory="rich-package:package:refined" dimension="alignmentUtility" value=0.28
+SCORE theory="rich-package:package:refined" dimension="total" value=0.375
+
+THEORY id="rich-sample:sample:base" from="rich-sample" domain="sample" variant="base"
+SCHEMA theory="rich-sample:sample:base" roles=["specimen","technician","lab","storage"] states=["registered","labeled","stored","assayed","archived"]
+MATCHED_STATE theory="rich-sample:sample:base" state="labeled"
+MATCHED_STATE theory="rich-sample:sample:base" state="registered"
+RULE theory="rich-sample:sample:base" template="assay -> archive"
+RULE theory="rich-sample:sample:base" template="label -> store"
+RULE theory="rich-sample:sample:base" template="register -> label"
+RULE theory="rich-sample:sample:base" template="store -> assay"
+INVARIANT theory="rich-sample:sample:base" text="analysis consumes a tracked specimen state"
+INVARIANT theory="rich-sample:sample:base" text="artifact identity is preserved across the workflow"
+INVARIANT theory="rich-sample:sample:base" text="status transitions follow logged handoffs"
+INVARIANT theory="rich-sample:sample:base" text="storage constraints must hold before assay"
+COMPOSITION theory="rich-sample:sample:base" rule="sample handling must preserve traceability between label and assay"
+COMPOSITION theory="rich-sample:sample:base" rule="storage and assay states may not be conflated without losing explanatory value"
+SUPPORT theory="rich-sample:sample:base" hypothesis="rich-sample"
+THEORY_EVIDENCE theory="rich-sample:sample:base" cue="label" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-sample:sample:base" cue="queued" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-sample:sample:base" cue="record-update" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-sample:sample:base" cue="registered" status="explicit" domain="shared"
+SCORE theory="rich-sample:sample:base" dimension="evidenceCoverage" value=0.183
+SCORE theory="rich-sample:sample:base" dimension="predictiveAdequacy" value=0.18
+SCORE theory="rich-sample:sample:base" dimension="compressionUtility" value=0.688
+SCORE theory="rich-sample:sample:base" dimension="compositionalSharpness" value=0.363
+SCORE theory="rich-sample:sample:base" dimension="stability" value=0.615
+SCORE theory="rich-sample:sample:base" dimension="alignmentUtility" value=0.25
+SCORE theory="rich-sample:sample:base" dimension="total" value=0.329
+
+THEORY id="rich-sample:sample:coarsened" from="rich-sample" domain="sample" variant="coarsened"
+SCHEMA theory="rich-sample:sample:coarsened" roles=["specimen","technician","lab","storage"] states=["registered","labeled","stored","assayed","archived"]
+MATCHED_STATE theory="rich-sample:sample:coarsened" state="labeled"
+MATCHED_STATE theory="rich-sample:sample:coarsened" state="registered"
+RULE theory="rich-sample:sample:coarsened" template="assay -> archive"
+RULE theory="rich-sample:sample:coarsened" template="label -> store"
+RULE theory="rich-sample:sample:coarsened" template="register -> label"
+RULE theory="rich-sample:sample:coarsened" template="store -> assay"
+INVARIANT theory="rich-sample:sample:coarsened" text="analysis consumes a tracked specimen state"
+INVARIANT theory="rich-sample:sample:coarsened" text="artifact identity is preserved across the workflow"
+INVARIANT theory="rich-sample:sample:coarsened" text="status transitions follow logged handoffs"
+INVARIANT theory="rich-sample:sample:coarsened" text="storage constraints must hold before assay"
+COMPOSITION theory="rich-sample:sample:coarsened" rule="coarsened composition merges adjacent local states"
+COMPOSITION theory="rich-sample:sample:coarsened" rule="sample handling must preserve traceability between label and assay"
+COMPOSITION theory="rich-sample:sample:coarsened" rule="storage and assay states may not be conflated without losing explanatory value"
+SUPPORT theory="rich-sample:sample:coarsened" hypothesis="rich-sample"
+THEORY_EVIDENCE theory="rich-sample:sample:coarsened" cue="label" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-sample:sample:coarsened" cue="queued" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-sample:sample:coarsened" cue="record-update" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-sample:sample:coarsened" cue="registered" status="explicit" domain="shared"
+SCORE theory="rich-sample:sample:coarsened" dimension="evidenceCoverage" value=0.183
+SCORE theory="rich-sample:sample:coarsened" dimension="predictiveAdequacy" value=0.15
+SCORE theory="rich-sample:sample:coarsened" dimension="compressionUtility" value=0.738
+SCORE theory="rich-sample:sample:coarsened" dimension="compositionalSharpness" value=0.303
+SCORE theory="rich-sample:sample:coarsened" dimension="stability" value=0.655
+SCORE theory="rich-sample:sample:coarsened" dimension="alignmentUtility" value=0.25
+SCORE theory="rich-sample:sample:coarsened" dimension="total" value=0.321
+
+THEORY id="rich-sample:sample:refactorized" from="rich-sample" domain="sample" variant="refactorized"
+SCHEMA theory="rich-sample:sample:refactorized" roles=["specimen","technician","lab","storage"] states=["registered","labeled","stored","assayed","archived"]
+MATCHED_STATE theory="rich-sample:sample:refactorized" state="labeled"
+MATCHED_STATE theory="rich-sample:sample:refactorized" state="registered"
+RULE theory="rich-sample:sample:refactorized" template="assay -> archive"
+RULE theory="rich-sample:sample:refactorized" template="label -> store"
+RULE theory="rich-sample:sample:refactorized" template="refactorize equivalent local rewrite blocks"
+RULE theory="rich-sample:sample:refactorized" template="register -> label"
+RULE theory="rich-sample:sample:refactorized" template="store -> assay"
+INVARIANT theory="rich-sample:sample:refactorized" text="analysis consumes a tracked specimen state"
+INVARIANT theory="rich-sample:sample:refactorized" text="artifact identity is preserved across the workflow"
+INVARIANT theory="rich-sample:sample:refactorized" text="status transitions follow logged handoffs"
+INVARIANT theory="rich-sample:sample:refactorized" text="storage constraints must hold before assay"
+COMPOSITION theory="rich-sample:sample:refactorized" rule="sample handling must preserve traceability between label and assay"
+COMPOSITION theory="rich-sample:sample:refactorized" rule="storage and assay states may not be conflated without losing explanatory value"
+SUPPORT theory="rich-sample:sample:refactorized" hypothesis="rich-sample"
+THEORY_EVIDENCE theory="rich-sample:sample:refactorized" cue="label" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-sample:sample:refactorized" cue="queued" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-sample:sample:refactorized" cue="record-update" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-sample:sample:refactorized" cue="registered" status="explicit" domain="shared"
+SCORE theory="rich-sample:sample:refactorized" dimension="evidenceCoverage" value=0.193
+SCORE theory="rich-sample:sample:refactorized" dimension="predictiveAdequacy" value=0.2
+SCORE theory="rich-sample:sample:refactorized" dimension="compressionUtility" value=0.668
+SCORE theory="rich-sample:sample:refactorized" dimension="compositionalSharpness" value=0.403
+SCORE theory="rich-sample:sample:refactorized" dimension="stability" value=0.615
+SCORE theory="rich-sample:sample:refactorized" dimension="alignmentUtility" value=0.3
+SCORE theory="rich-sample:sample:refactorized" dimension="total" value=0.346
+
+THEORY id="rich-sample:sample:refined" from="rich-sample" domain="sample" variant="refined"
+SCHEMA theory="rich-sample:sample:refined" roles=["specimen","technician","lab","storage"] states=["registered","labeled","stored","assayed","archived"]
+MATCHED_STATE theory="rich-sample:sample:refined" state="labeled"
+MATCHED_STATE theory="rich-sample:sample:refined" state="registered"
+RULE theory="rich-sample:sample:refined" template="assay -> archive"
+RULE theory="rich-sample:sample:refined" template="label -> store"
+RULE theory="rich-sample:sample:refined" template="register -> label"
+RULE theory="rich-sample:sample:refined" template="store -> assay"
+INVARIANT theory="rich-sample:sample:refined" text="analysis consumes a tracked specimen state"
+INVARIANT theory="rich-sample:sample:refined" text="artifact identity is preserved across the workflow"
+INVARIANT theory="rich-sample:sample:refined" text="Laboratory sample handling keeps a finer-grained state boundary"
+INVARIANT theory="rich-sample:sample:refined" text="status transitions follow logged handoffs"
+INVARIANT theory="rich-sample:sample:refined" text="storage constraints must hold before assay"
+COMPOSITION theory="rich-sample:sample:refined" rule="sample handling must preserve traceability between label and assay"
+COMPOSITION theory="rich-sample:sample:refined" rule="storage and assay states may not be conflated without losing explanatory value"
+SUPPORT theory="rich-sample:sample:refined" hypothesis="rich-sample"
+THEORY_EVIDENCE theory="rich-sample:sample:refined" cue="label" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-sample:sample:refined" cue="queued" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-sample:sample:refined" cue="record-update" status="explicit" domain="shared"
+THEORY_EVIDENCE theory="rich-sample:sample:refined" cue="registered" status="explicit" domain="shared"
+SCORE theory="rich-sample:sample:refined" dimension="evidenceCoverage" value=0.183
+SCORE theory="rich-sample:sample:refined" dimension="predictiveAdequacy" value=0.23
+SCORE theory="rich-sample:sample:refined" dimension="compressionUtility" value=0.628
+SCORE theory="rich-sample:sample:refined" dimension="compositionalSharpness" value=0.433
+SCORE theory="rich-sample:sample:refined" dimension="stability" value=0.615
+SCORE theory="rich-sample:sample:refined" dimension="alignmentUtility" value=0.28
+SCORE theory="rich-sample:sample:refined" dimension="total" value=0.351
+
+TRANSFORM from="rich-manuscript:manuscript:base" to="rich-manuscript:manuscript:coarsened" type="coarsening"
+TRANSFORM from="rich-package:package:base" to="rich-package:package:coarsened" type="coarsening"
+TRANSFORM from="rich-sample:sample:base" to="rich-sample:sample:coarsened" type="coarsening"
+TRANSFORM from="rich-manuscript:manuscript:base" to="rich-manuscript:manuscript:refactorized" type="refactorization"
+TRANSFORM from="rich-package:package:base" to="rich-package:package:refactorized" type="refactorization"
+TRANSFORM from="rich-sample:sample:base" to="rich-sample:sample:refactorized" type="refactorization"
+TRANSFORM from="rich-manuscript:manuscript:base" to="rich-manuscript:manuscript:refined" type="refinement"
+TRANSFORM from="rich-package:package:base" to="rich-package:package:refined" type="refinement"
+TRANSFORM from="rich-sample:sample:base" to="rich-sample:sample:refined" type="refinement"
+EQUIVALENCE id="eq-1" theories=["rich-package:package:base","rich-package:package:coarsened","rich-package:package:refactorized","rich-package:package:refined","rich-sample:sample:refined"] domains=["package","sample"] signature="shared:label|shared:queued|shared:record-update|shared:registered::registered>labeled"
+EQUIVALENCE id="eq-2" theories=["rich-manuscript:manuscript:refined"] domains=["manuscript"] signature="shared:label|shared:queued|shared:record-update|shared:registered::registered>submitted"
+CONSEQUENCE kind="robust" text="artifact identity is preserved across the workflow"
+CONSEQUENCE kind="robust" text="status transitions follow logged handoffs"
+CONSEQUENCE kind="theory-sensitive" theory="rich-manuscript:manuscript:refined" domain="manuscript" text="acceptance only follows a complete decision path"
+CONSEQUENCE kind="theory-sensitive" theory="rich-manuscript:manuscript:refined" domain="manuscript" text="Editorial manuscript workflow keeps a finer-grained state boundary"
+CONSEQUENCE kind="theory-sensitive" theory="rich-manuscript:manuscript:refined" domain="manuscript" text="review precedes editorial revision"
+CONSEQUENCE kind="theory-sensitive" theory="rich-package:package:base" domain="package" text="dispatch precedes delivery"
+CONSEQUENCE kind="theory-sensitive" theory="rich-package:package:base" domain="package" text="recipient-facing completion terminates the local flow"
+CONSEQUENCE kind="theory-sensitive" theory="rich-package:package:coarsened" domain="package" text="dispatch precedes delivery"
+CONSEQUENCE kind="theory-sensitive" theory="rich-package:package:coarsened" domain="package" text="recipient-facing completion terminates the local flow"
+CONSEQUENCE kind="theory-sensitive" theory="rich-package:package:refactorized" domain="package" text="dispatch precedes delivery"
+CONSEQUENCE kind="theory-sensitive" theory="rich-package:package:refactorized" domain="package" text="recipient-facing completion terminates the local flow"
+CONSEQUENCE kind="theory-sensitive" theory="rich-package:package:refined" domain="package" text="dispatch precedes delivery"
+CONSEQUENCE kind="theory-sensitive" theory="rich-package:package:refined" domain="package" text="Package handling keeps a finer-grained state boundary"
+CONSEQUENCE kind="theory-sensitive" theory="rich-package:package:refined" domain="package" text="recipient-facing completion terminates the local flow"
+CONSEQUENCE kind="theory-sensitive" theory="rich-sample:sample:refined" domain="sample" text="analysis consumes a tracked specimen state"
+CONSEQUENCE kind="theory-sensitive" theory="rich-sample:sample:refined" domain="sample" text="Laboratory sample handling keeps a finer-grained state boundary"
+CONSEQUENCE kind="theory-sensitive" theory="rich-sample:sample:refined" domain="sample" text="storage constraints must hold before assay"
+
+FRONTIER theories=["rich-package:package:refined","rich-package:package:refactorized","rich-package:package:base","rich-manuscript:manuscript:refined","rich-sample:sample:refined","rich-package:package:coarsened"] domains=["package","manuscript","sample"] domain_entropy=1.239 theory_entropy=2.584
+FRONTIER_MEMBER rank=1 theory="rich-package:package:refined" domain="package" weight=0.175
+FRONTIER_MEMBER rank=2 theory="rich-package:package:refactorized" domain="package" weight=0.172
+FRONTIER_MEMBER rank=3 theory="rich-package:package:base" domain="package" weight=0.164
+FRONTIER_MEMBER rank=4 theory="rich-manuscript:manuscript:refined" domain="manuscript" weight=0.164
+FRONTIER_MEMBER rank=5 theory="rich-sample:sample:refined" domain="sample" weight=0.164
+FRONTIER_MEMBER rank=6 theory="rich-package:package:coarsened" domain="package" weight=0.161
+DOMAIN_WEIGHT domain="package" weight=0.673
+DOMAIN_WEIGHT domain="manuscript" weight=0.164
+DOMAIN_WEIGHT domain="sample" weight=0.164
+QUESTION id="package-dispatch" cue="dispatch" prompt="Is there evidence that it was dispatched to a recipient or destination?" expected_gain=0.912 prior_entropy=2.584 expected_entropy=1.672
+QUESTION_CLASS question="package-dispatch" answer="no"
+QUESTION_CLASS question="package-dispatch" answer="yes"
+ALIGNMENT theory="rich-manuscript:manuscript:refined" domain="manuscript" title="Editorial manuscript workflow" summary="An editorial workflow in which a submission enters review, receives revision, and eventually reaches a decision."
+ALIGNMENT theory="rich-package:package:base" domain="package" title="Package handling" summary="A logistics workflow in which a labeled item is routed, dispatched, and delivered to a recipient."
+ALIGNMENT theory="rich-package:package:coarsened" domain="package" title="Package handling" summary="A logistics workflow in which a labeled item is routed, dispatched, and delivered to a recipient."
+ALIGNMENT theory="rich-package:package:refactorized" domain="package" title="Package handling" summary="A logistics workflow in which a labeled item is routed, dispatched, and delivered to a recipient."
+ALIGNMENT theory="rich-package:package:refined" domain="package" title="Package handling" summary="A logistics workflow in which a labeled item is routed, dispatched, and delivered to a recipient."
+ALIGNMENT theory="rich-sample:sample:refined" domain="sample" title="Laboratory sample handling" summary="A laboratory workflow in which a labeled specimen is stored under constraints, assayed, and archived."

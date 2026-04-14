@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="320" viewBox="0 0 900 320" role="img" aria-label="Neighborhood structure">
+  <rect width="900" height="320" fill="#ffffff"/>
+  <text x="40" y="34" font-size="22" font-weight="700" fill="#111827">Local neighborhood structure</text>
+  <g font-family="sans-serif" font-size="14">
+    <rect x="80" y="120" width="170" height="72" rx="12" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="112" y="150" font-size="18" font-weight="700" fill="#1e3a8a">Package family</text>
+    <text x="100" y="174" fill="#1f2937">dispatch-oriented theories</text>
+
+    <rect x="365" y="60" width="170" height="72" rx="12" fill="#e9d5ff" stroke="#7c3aed"/>
+    <text x="396" y="90" font-size="18" font-weight="700" fill="#4c1d95">Sample family</text>
+    <text x="386" y="114" fill="#1f2937">storage and assay theories</text>
+
+    <rect x="365" y="190" width="170" height="72" rx="12" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="376" y="220" font-size="18" font-weight="700" fill="#991b1b">Manuscript family</text>
+    <text x="387" y="244" fill="#1f2937">review and revision theories</text>
+
+    <rect x="650" y="120" width="170" height="72" rx="12" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="688" y="150" font-size="18" font-weight="700" fill="#166534">Question layer</text>
+    <text x="673" y="174" fill="#1f2937">best next discriminating cue</text>
+
+    <path d="M250 156 L365 96" stroke="#4b5563" stroke-width="3" marker-end="url(#arrow2)"/>
+    <path d="M250 156 L365 226" stroke="#4b5563" stroke-width="3" marker-end="url(#arrow2)"/>
+    <path d="M535 96 L650 156" stroke="#4b5563" stroke-width="3" marker-end="url(#arrow2)"/>
+    <path d="M535 226 L650 156" stroke="#4b5563" stroke-width="3" marker-end="url(#arrow2)"/>
+    <path d="M365 156 C310 156 310 156 250 156" stroke="#16a34a" stroke-width="3" fill="none" stroke-dasharray="8 6"/>
+
+    <text x="280" y="152" fill="#166534">observer-relative equivalence</text>
+    <text x="555" y="82" fill="#374151">refinement / coarsening / refactorization</text>
+    <text x="560" y="274" fill="#374151">question outcome updates the frontier</text>
+  </g>
+  <defs>
+    <marker id="arrow2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#4b5563"/>
+    </marker>
+  </defs>
+</svg>
