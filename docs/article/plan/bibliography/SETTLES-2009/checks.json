@@ -1,0 +1,18 @@
+{
+  "citationKey": "SETTLES-2009",
+  "sourceDigest": "5ada6a52e63d9e429ad97793a0b0bdbc695c0a3e",
+  "checkedClaims": [
+    {
+      "id": "1ed1f28f6f785727340f71db7ed96b769b2438bb",
+      "claimText": "Discriminating questions are then selected by expected information gain, `IG(q) = H(F) - sum_a P(a | q) H(F | a)`, which is the reduction in frontier uncertainty expected from asking question `q` [SETTLES-2009].",
+      "normalizedClaim": "discriminating questions are then selected by expected information gain ig q h f - sum a p a q h f a which is the reduction in frontier uncertainty expected from asking question q settles-2009",
+      "chapterFile": "ch3-data-model.md",
+      "status": "supported",
+      "profileId": "active-query-selection",
+      "note": null,
+      "checkedAt": "2026-04-14T16:18:03.157Z",
+      "sourceDigest": "5ada6a52e63d9e429ad97793a0b0bdbc695c0a3e"
+    }
+  ],
+  "lastValidatedAt": "2026-04-14T16:18:03.158Z"
+}

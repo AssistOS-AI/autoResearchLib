@@ -8,6 +8,11 @@ The implementation should resolve AchillesAgentLib dynamically through `src/deps
 
 Task routing should use explicit metadata tags. Two task families matter immediately. Ingestion normalization is the optional pre-processing step that converts inconsistent raw text into a cleaner representation for observational lifting. Conceptual explanation is the optional post-processing step that turns the retained frontier into definitions, reusable rules, and cautions for a human reader. Each task family should publish an `intent`, a stable list of tags, and a preferred model tier so invoker strategies can route work predictably.
 
+| Task family | Intent | Required tags | Preferred default tier |
+| --- | --- | --- | --- |
+| Ingestion normalization | `normalize-ingestion` | `ingestion`, `normalization`, `pre-lift`, `bounded-llm` | `plan` |
+| Conceptual explanation | `conceptual-explanation` | `post-frontier`, `conceptualization`, `bounded-llm` | `write` |
+
 The required model tiers are as follows:
 
 | Tier | Role | Typical tasks |

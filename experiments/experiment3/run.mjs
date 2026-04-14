@@ -9,51 +9,7 @@ import {
 } from '../../src/index.mjs';
 import { createGroupedBarChartSvg } from '../../src/reporting/svgCharts.mjs';
 import { buildPrefixText, readCases, topDomain } from '../shared/cases.mjs';
-
-const CUE_MASK_REPLACEMENTS = [
-  ['decision letter', 'notice'],
-  ['associate editor', 'coordinator'],
-  ['editorial queue', 'queue'],
-  ['submission record', 'record'],
-  ['specimen identifier', 'identifier'],
-  ['temperature log', 'record'],
-  ['freezer storage', 'storage'],
-  ['sample archive', 'archive'],
-  ['specimen archive', 'archive'],
-  ['routing number', 'record number'],
-  ['tracking number', 'record number'],
-  ['tracking code', 'code'],
-  ['routing label', 'label'],
-  ['routing tag', 'tag'],
-  ['pickup manifest', 'manifest'],
-  ['sample id', 'identifier'],
-  ['vial label', 'label'],
-  ['cold room', 'storage'],
-  ['peer review', 'evaluation'],
-  ['review cycle', 'cycle'],
-  ['reviewers', 'team'],
-  ['reviewer', 'team member'],
-  ['manuscript id', 'identifier'],
-  ['manuscript', 'document'],
-  ['revision', 'update'],
-  ['courier', 'handler'],
-  ['carrier', 'team'],
-  ['dispatch', 'handoff'],
-  ['delivery', 'completion'],
-  ['recipient', 'receiver'],
-  ['barcode', 'marker'],
-  ['temperature', 'conditions'],
-  ['analysis', 'processing'],
-  ['assay', 'processing'],
-  ['aliquot', 'portion'],
-  ['centrifuged', 'prepared'],
-  ['editor', 'coordinator'],
-  ['journal', 'office'],
-  ['paper', 'document'],
-  ['accepted', 'approved'],
-  ['review', 'evaluation'],
-  ['biobank', 'archive']
-];
+import { maskText } from '../shared/cueMasking.mjs';
 
 const CONDITION_LABELS = {
   clean: 'Clean',
@@ -64,18 +20,6 @@ const CONDITION_ORDER = {
   clean: 0,
   masked: 1
 };
-
-function escapePattern(value) {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
-function maskText(text) {
-  return CUE_MASK_REPLACEMENTS.reduce(
-    (current, [pattern, replacement]) =>
-      current.replace(new RegExp(`\\b${escapePattern(pattern)}\\b`, 'gi'), replacement),
-    text
-  );
-}
 
 function lexicalBaselineDomain(analysis) {
   const baseHypothesis = analysis.hypotheses.find((hypothesis) => hypothesis.focusDomain === null) ?? analysis.hypotheses[0];

@@ -7,6 +7,8 @@ description: Refresh a research article rooted at an article folder that contain
 
 Use this skill when the user wants to rebuild an article, review whether it is still defensible, or iteratively improve its structure after validation finds substantive gaps.
 
+The skill must remain reusable. It operates from an explicit article root and its own plan material. It must not rely on repository runtime configuration, hidden environment assumptions, or helper imports from the host project's `src/` tree.
+
 ## Expected article-root layout
 
 The skill assumes an **article root** with this structure:
@@ -36,6 +38,7 @@ Inside `<articleRoot>/plan/`, the current convention is:
 7. Verify citation support through `<articleRoot>/plan/bibliography/<citation-key>/`.
 8. Rebuild `<articleRoot>/index.html` only when the plan files, bibliography source, generated chapters, copied assets, or bibliography validation artifacts are newer than the HTML output.
 9. Write or refresh `<articleRoot>/plan/build-manifest.json` with chapter refresh status, asset refresh status, bibliography checks, and the final HTML status.
+10. Emit browser-side article controls, including a print or save-PDF button, from the generated HTML.
 
 ## Agent review loop
 
@@ -62,6 +65,7 @@ The repository build code should remain deterministic. Structural review, plan r
 - Chart SVGs must not embed their own titles; the title belongs in the surrounding prose and Markdown caption. Legends must be laid out so labels do not overlap, stacking items vertically when that is the cleaner layout.
 - Bibliography verification should reuse cached checks whenever the claim text and cached source digest still match; new claims must be checked before the article is emitted.
 - Bibliography metadata and asset declarations must live under `<articleRoot>/plan/`, not as hardcoded data inside the skill implementation.
+- Generated HTML should include a native print or save-PDF path, but the skill must document honestly that final browser header and footer behavior remains browser-controlled.
 
 ## Validation
 

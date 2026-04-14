@@ -1,4 +1,6 @@
+export { createAnalysisPolicy, DEFAULT_ANALYSIS_POLICY } from './config/analysisPolicy.mjs';
 export { analyzeText, applyDiscriminatingAnswer } from './pipeline/analyze.mjs';
+export { applyQuestionToAnalysis } from './pipeline/analyze.mjs';
 export {
   analyzeEvidence,
   applyEvidenceUpdate,
@@ -24,7 +26,7 @@ export { loadAchillesAgentLib, loadLLMAgentClass, resolveDependencyCandidates } 
 export { runArticleBuildSkill } from '../skills/article-build/skill.mjs';
 export { buildNeighborhood, summarizeNeighborhood } from './core/neighborhood.mjs';
 export { observationalLift } from './core/observation.mjs';
-export { applyQuestionAnswer, suggestDiscriminatingQuestion } from './core/questioning.mjs';
+export { applyQuestionAnswer, scoreDiscriminatingQuestions, suggestDiscriminatingQuestion } from './core/questioning.mjs';
 export { induceLocalTheories } from './core/theory.mjs';
 export {
   defaultDomains,

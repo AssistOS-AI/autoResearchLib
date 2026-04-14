@@ -1,8 +1,10 @@
 {
   "skill": "article-build",
   "articleRoot": "docs/article",
+  "articleRootPath": "/home/salboaie/work/autoResearchLib/docs/article",
+  "baseDir": "/home/salboaie/work/autoResearchLib",
   "force": true,
-  "generatedAt": "2026-04-14T15:09:22.033Z",
+  "generatedAt": "2026-04-14T16:18:03.640Z",
   "chapters": [
     {
       "chapter": 1,
@@ -78,6 +80,42 @@
       "source": "/home/salboaie/work/autoResearchLib/experiments/experiment3/question-recovery.svg",
       "output": "/home/salboaie/work/autoResearchLib/docs/article/assets/figure-8-question-recovery.svg",
       "refreshed": true
+    },
+    {
+      "id": "experiment4-ablation-effects",
+      "source": "/home/salboaie/work/autoResearchLib/experiments/experiment4/ablation-effects.svg",
+      "output": "/home/salboaie/work/autoResearchLib/docs/article/assets/figure-9-ablation-effects.svg",
+      "refreshed": true
+    },
+    {
+      "id": "experiment4-policy-sensitivity",
+      "source": "/home/salboaie/work/autoResearchLib/experiments/experiment4/policy-sensitivity.svg",
+      "output": "/home/salboaie/work/autoResearchLib/docs/article/assets/figure-10-policy-sensitivity.svg",
+      "refreshed": true
+    },
+    {
+      "id": "experiment5-benchmark-accuracy",
+      "source": "/home/salboaie/work/autoResearchLib/experiments/experiment5/benchmark-accuracy.svg",
+      "output": "/home/salboaie/work/autoResearchLib/docs/article/assets/figure-11-benchmark-accuracy.svg",
+      "refreshed": true
+    },
+    {
+      "id": "experiment6-novelty-response",
+      "source": "/home/salboaie/work/autoResearchLib/experiments/experiment6/novelty-response.svg",
+      "output": "/home/salboaie/work/autoResearchLib/docs/article/assets/figure-12-novelty-response.svg",
+      "refreshed": true
+    },
+    {
+      "id": "experiment7-accuracy-budget",
+      "source": "/home/salboaie/work/autoResearchLib/experiments/experiment7/accuracy-vs-budget.svg",
+      "output": "/home/salboaie/work/autoResearchLib/docs/article/assets/figure-13-accuracy-budget.svg",
+      "refreshed": true
+    },
+    {
+      "id": "experiment7-entropy-budget",
+      "source": "/home/salboaie/work/autoResearchLib/experiments/experiment7/entropy-vs-budget.svg",
+      "output": "/home/salboaie/work/autoResearchLib/docs/article/assets/figure-14-entropy-budget.svg",
+      "refreshed": true
     }
   ],
   "assetValidation": [
@@ -136,6 +174,48 @@
       "ruleType": "chart",
       "assetId": "experiment3-question-recovery",
       "refreshed": true
+    },
+    {
+      "filePath": "/home/salboaie/work/autoResearchLib/docs/article/assets/figure-9-ablation-effects.svg",
+      "status": "valid",
+      "ruleType": "chart",
+      "assetId": "experiment4-ablation-effects",
+      "refreshed": true
+    },
+    {
+      "filePath": "/home/salboaie/work/autoResearchLib/docs/article/assets/figure-10-policy-sensitivity.svg",
+      "status": "valid",
+      "ruleType": "chart",
+      "assetId": "experiment4-policy-sensitivity",
+      "refreshed": true
+    },
+    {
+      "filePath": "/home/salboaie/work/autoResearchLib/docs/article/assets/figure-11-benchmark-accuracy.svg",
+      "status": "valid",
+      "ruleType": "chart",
+      "assetId": "experiment5-benchmark-accuracy",
+      "refreshed": true
+    },
+    {
+      "filePath": "/home/salboaie/work/autoResearchLib/docs/article/assets/figure-12-novelty-response.svg",
+      "status": "valid",
+      "ruleType": "chart",
+      "assetId": "experiment6-novelty-response",
+      "refreshed": true
+    },
+    {
+      "filePath": "/home/salboaie/work/autoResearchLib/docs/article/assets/figure-13-accuracy-budget.svg",
+      "status": "valid",
+      "ruleType": "chart",
+      "assetId": "experiment7-accuracy-budget",
+      "refreshed": true
+    },
+    {
+      "filePath": "/home/salboaie/work/autoResearchLib/docs/article/assets/figure-14-entropy-budget.svg",
+      "status": "valid",
+      "ruleType": "chart",
+      "assetId": "experiment7-entropy-budget",
+      "refreshed": true
     }
   ],
   "bibliography": {
@@ -145,7 +225,11 @@
       "WOLFRAM-2026",
       "FONG-SPIVAK-2019",
       "MAO-2025",
-      "DUVAL-2011"
+      "DUVAL-2011",
+      "SHANNON-1948",
+      "SETTLES-2009",
+      "GUO-2017",
+      "SCHEIRER-2013"
     ],
     "claims": [
       {
@@ -157,7 +241,7 @@
       },
       {
         "citationKey": "WOLFRAM-2026",
-        "claimText": "That neighborhood perspective is what makes the framework ruliological in an operational sense: it treats nearby spaces of possible rules as objects of study instead of rushing toward a single prematurely reified interpretation [WOLFRAM-2026].",
+        "claimText": "That neighborhood perspective is what makes the framework ruliological in practice: it studies nearby rule-bearing possibilities instead of rushing toward one prematurely reified interpretation [WOLFRAM-2026].",
         "status": "verified",
         "profileId": "rule-families-and-consequences",
         "chapterFile": "ch2-architecture.md"
@@ -178,7 +262,7 @@
       },
       {
         "citationKey": "FONG-SPIVAK-2019",
-        "claimText": "It is a problem of category-level disciplined translation between structured regimes and of preserving meaningful relations under that translation [FONG-SPIVAK-2019].",
+        "claimText": "It is category-level disciplined translation between structured domains, with preservation of the relations that matter under that translation [FONG-SPIVAK-2019].",
         "status": "verified",
         "profileId": "composition-across-domains",
         "chapterFile": "ch2-architecture.md"
@@ -192,14 +276,14 @@
       },
       {
         "citationKey": "MAO-2025",
-        "claimText": "Recent neuro-symbolic work argues for concept-centric systems in which objects, relations, and actions remain typed and compositional even when learned components are involved [MAO-2025].",
+        "claimText": "Recent neuro-symbolic work argues that learned systems are most useful when they still operate over typed and compositional conceptual carriers [MAO-2025].",
         "status": "verified",
         "profileId": "typed-neuro-symbolic-concepts",
         "chapterFile": "ch1-introduction.md"
       },
       {
         "citationKey": "MAO-2025",
-        "claimText": "A learned component may therefore help propose candidate event or relation structures, but those proposals must be converted into explicit typed and compositional neuro-symbolic concept records with provenance and uncertainty annotations before they can influence theory induction [MAO-2025].",
+        "claimText": "A learned component may therefore help normalize or propose candidate observational fragments, but those fragments must be turned into typed, compositional symbolic concept objects with provenance before they can affect theory induction [MAO-2025].",
         "status": "verified",
         "profileId": "typed-neuro-symbolic-concepts",
         "chapterFile": "ch2-architecture.md"
@@ -220,7 +304,7 @@
       },
       {
         "citationKey": "DUVAL-2011",
-        "claimText": "It also contains the transformation family `Mi` and the observer-relative equivalence classes `Ei`, so categorical local rewriting and structural compatibility remain explicit [DUVAL-2011].",
+        "claimText": "Typed local transformation and compatibility therefore remain explicit as part of a categorical rewriting view rather than being hidden in a monolithic score [DUVAL-2011].",
         "status": "verified",
         "profileId": "categorical-rewriting",
         "chapterFile": "ch3-data-model.md"
@@ -231,6 +315,34 @@
         "status": "verified",
         "profileId": "categorical-rewriting",
         "chapterFile": "ch5-conclusion.md"
+      },
+      {
+        "citationKey": "SHANNON-1948",
+        "claimText": "The frontier is summarized with entropy over the retained domain distribution, `H(F) = - sum_d p(d) log p(d)`, where `p(d)` is the normalized retained-domain mass [SHANNON-1948].",
+        "status": "verified",
+        "profileId": "entropy-and-information",
+        "chapterFile": "ch3-data-model.md"
+      },
+      {
+        "citationKey": "SETTLES-2009",
+        "claimText": "Discriminating questions are then selected by expected information gain, `IG(q) = H(F) - sum_a P(a | q) H(F | a)`, which is the reduction in frontier uncertainty expected from asking question `q` [SETTLES-2009].",
+        "status": "verified",
+        "profileId": "active-query-selection",
+        "chapterFile": "ch3-data-model.md"
+      },
+      {
+        "citationKey": "GUO-2017",
+        "claimText": "Calibration is also reported through expected calibration error to track how confidence matches empirical accuracy [GUO-2017].",
+        "status": "verified",
+        "profileId": "confidence-calibration",
+        "chapterFile": "ch4-experiments.md"
+      },
+      {
+        "citationKey": "SCHEIRER-2013",
+        "claimText": "Experiment 6 asks a narrower question than full theory induction: when the trace is genuinely unseen or hybrid, does the frontier behave like a healthy open-set uncertainty mechanism rather than a forced closed-set commitment [SCHEIRER-2013]?",
+        "status": "verified",
+        "profileId": "open-set-uncertainty",
+        "chapterFile": "ch4-experiments.md"
       }
     ]
   },

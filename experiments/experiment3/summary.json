@@ -49,7 +49,7 @@
       "inputText": "The item was registered and placed in the queue. A label was attached and the record was updated.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "package-routing_masked_p2_rich",
-      "cnlLineCount": 437,
+      "cnlLineCount": 442,
       "updateCnlLineCount": 418,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 0,
@@ -69,7 +69,7 @@
       "rescuedByQuestion": 0,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 0,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "package-routing",
@@ -111,7 +111,7 @@
       "inputText": "The item was registered and placed in the queue. A label was attached and the record was updated. A handler scanned it before handoff.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "package-routing_masked_p3_rich",
-      "cnlLineCount": 437,
+      "cnlLineCount": 442,
       "updateCnlLineCount": 418,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 0,
@@ -131,7 +131,7 @@
       "rescuedByQuestion": 0,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 0,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "package-generic",
@@ -142,7 +142,7 @@
       "inputText": "The item was recorded and placed in the staging area. A label was attached and the status was updated.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "package-generic_clean_p2_rich",
-      "cnlLineCount": 417,
+      "cnlLineCount": 422,
       "updateCnlLineCount": 398,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 0,
@@ -162,7 +162,7 @@
       "rescuedByQuestion": 0,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 0,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "package-generic",
@@ -173,7 +173,7 @@
       "inputText": "The item was recorded and placed in the staging area. A label was attached and the status was updated.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "package-generic_masked_p2_rich",
-      "cnlLineCount": 417,
+      "cnlLineCount": 422,
       "updateCnlLineCount": 398,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 0,
@@ -193,7 +193,7 @@
       "rescuedByQuestion": 0,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 0,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "package-generic",
@@ -204,7 +204,7 @@
       "inputText": "The item was recorded and placed in the staging area. A label was attached and the status was updated. The next handoff prepared it for the route.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "package-generic_clean_p3_rich",
-      "cnlLineCount": 417,
+      "cnlLineCount": 422,
       "updateCnlLineCount": 398,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 0,
@@ -224,7 +224,7 @@
       "rescuedByQuestion": 0,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 0,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "package-generic",
@@ -235,7 +235,7 @@
       "inputText": "The item was recorded and placed in the staging area. A label was attached and the status was updated. The next handoff prepared it for the route.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "package-generic_masked_p3_rich",
-      "cnlLineCount": 417,
+      "cnlLineCount": 422,
       "updateCnlLineCount": 398,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 0,
@@ -255,7 +255,7 @@
       "rescuedByQuestion": 0,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 0,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "package-barcode",
@@ -297,7 +297,7 @@
       "inputText": "The item was entered in the system and placed in the tray. A marker was attached and the manifest was updated.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "package-barcode_masked_p2_rich",
-      "cnlLineCount": 404,
+      "cnlLineCount": 409,
       "updateCnlLineCount": 386,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 0,
@@ -317,7 +317,7 @@
       "rescuedByQuestion": 0,
       "domainEntropyBefore": 1.255,
       "domainEntropyAfter": 0,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "package-barcode",
@@ -421,7 +421,7 @@
       "inputText": "The item was logged and placed in the queue. A manifest and record number were attached.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "package-manifest_masked_p2_rich",
-      "cnlLineCount": 384,
+      "cnlLineCount": 389,
       "updateCnlLineCount": 366,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 0,
@@ -441,7 +441,7 @@
       "rescuedByQuestion": 0,
       "domainEntropyBefore": 1.255,
       "domainEntropyAfter": 0,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "package-manifest",
@@ -545,7 +545,7 @@
       "inputText": "The parcel was recorded and placed in the staging area. A tag was attached and the record was updated.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "package-return_masked_p2_rich",
-      "cnlLineCount": 437,
+      "cnlLineCount": 442,
       "updateCnlLineCount": 418,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 0,
@@ -565,7 +565,7 @@
       "rescuedByQuestion": 0,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 0,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "package-return",
@@ -607,7 +607,7 @@
       "inputText": "The parcel was recorded and placed in the staging area. A tag was attached and the record was updated. A handler scanned it for return handoff.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "package-return_masked_p3_rich",
-      "cnlLineCount": 437,
+      "cnlLineCount": 442,
       "updateCnlLineCount": 418,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 0,
@@ -627,7 +627,7 @@
       "rescuedByQuestion": 0,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 0,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "package-transfer",
@@ -638,7 +638,7 @@
       "inputText": "The item was registered and placed in the queue. A label was attached and the status was updated.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "package-transfer_clean_p2_rich",
-      "cnlLineCount": 417,
+      "cnlLineCount": 422,
       "updateCnlLineCount": 398,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 0,
@@ -658,7 +658,7 @@
       "rescuedByQuestion": 0,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 0,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "package-transfer",
@@ -669,7 +669,7 @@
       "inputText": "The item was registered and placed in the queue. A label was attached and the status was updated.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "package-transfer_masked_p2_rich",
-      "cnlLineCount": 417,
+      "cnlLineCount": 422,
       "updateCnlLineCount": 398,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 0,
@@ -689,7 +689,7 @@
       "rescuedByQuestion": 0,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 0,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "package-transfer",
@@ -731,7 +731,7 @@
       "inputText": "The item was registered and placed in the queue. A label was attached and the status was updated. A code was printed before handoff.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "package-transfer_masked_p3_rich",
-      "cnlLineCount": 417,
+      "cnlLineCount": 422,
       "updateCnlLineCount": 398,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 0,
@@ -751,7 +751,7 @@
       "rescuedByQuestion": 0,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 0,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "sample-identified",
@@ -793,8 +793,8 @@
       "inputText": "The item was registered and placed in the queue. A identifier was attached and the record was updated.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "sample-identified_masked_p2_rich",
-      "cnlLineCount": 437,
-      "updateCnlLineCount": 447,
+      "cnlLineCount": 442,
+      "updateCnlLineCount": 451,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 0,
       "singleTheoryDomain": "package",
@@ -813,7 +813,7 @@
       "rescuedByQuestion": 0,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 1,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "sample-identified",
@@ -855,8 +855,8 @@
       "inputText": "The item was registered and placed in the queue. A identifier was attached and the record was updated. The conditions was logged before processing.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "sample-identified_masked_p3_rich",
-      "cnlLineCount": 437,
-      "updateCnlLineCount": 447,
+      "cnlLineCount": 442,
+      "updateCnlLineCount": 451,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 0,
       "singleTheoryDomain": "package",
@@ -875,7 +875,7 @@
       "rescuedByQuestion": 0,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 1,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "sample-generic",
@@ -886,8 +886,8 @@
       "inputText": "The item was logged and placed in the staging area. A label was attached and the record was updated.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "sample-generic_clean_p2_rich",
-      "cnlLineCount": 437,
-      "updateCnlLineCount": 447,
+      "cnlLineCount": 442,
+      "updateCnlLineCount": 451,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 0,
       "singleTheoryDomain": "package",
@@ -906,7 +906,7 @@
       "rescuedByQuestion": 0,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 1,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "sample-generic",
@@ -917,8 +917,8 @@
       "inputText": "The item was logged and placed in the staging area. A label was attached and the record was updated.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "sample-generic_masked_p2_rich",
-      "cnlLineCount": 437,
-      "updateCnlLineCount": 447,
+      "cnlLineCount": 442,
+      "updateCnlLineCount": 451,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 0,
       "singleTheoryDomain": "package",
@@ -937,7 +937,7 @@
       "rescuedByQuestion": 0,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 1,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "sample-generic",
@@ -979,8 +979,8 @@
       "inputText": "The item was logged and placed in the staging area. A label was attached and the record was updated. It stayed under controlled conditions before processing.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "sample-generic_masked_p3_rich",
-      "cnlLineCount": 437,
-      "updateCnlLineCount": 447,
+      "cnlLineCount": 442,
+      "updateCnlLineCount": 451,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 0,
       "singleTheoryDomain": "package",
@@ -999,7 +999,7 @@
       "rescuedByQuestion": 0,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 1,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "sample-freezer",
@@ -1041,8 +1041,8 @@
       "inputText": "The specimen was entered in the system and placed in the tray. A identifier was attached and the manifest was updated.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "sample-freezer_masked_p2_rich",
-      "cnlLineCount": 437,
-      "updateCnlLineCount": 447,
+      "cnlLineCount": 442,
+      "updateCnlLineCount": 451,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 0,
       "singleTheoryDomain": "package",
@@ -1061,7 +1061,7 @@
       "rescuedByQuestion": 0,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 1,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "sample-freezer",
@@ -1103,8 +1103,8 @@
       "inputText": "The specimen was entered in the system and placed in the tray. A identifier was attached and the manifest was updated. It remained in storage before processing.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "sample-freezer_masked_p3_rich",
-      "cnlLineCount": 437,
-      "updateCnlLineCount": 447,
+      "cnlLineCount": 442,
+      "updateCnlLineCount": 451,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 0,
       "singleTheoryDomain": "package",
@@ -1123,7 +1123,7 @@
       "rescuedByQuestion": 0,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 1,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "sample-aliquot",
@@ -1165,8 +1165,8 @@
       "inputText": "The specimen was logged and placed in the queue. A label was attached and the record was updated.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "sample-aliquot_masked_p2_rich",
-      "cnlLineCount": 437,
-      "updateCnlLineCount": 447,
+      "cnlLineCount": 442,
+      "updateCnlLineCount": 451,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 0,
       "singleTheoryDomain": "package",
@@ -1185,7 +1185,7 @@
       "rescuedByQuestion": 0,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 1,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "sample-aliquot",
@@ -1227,8 +1227,8 @@
       "inputText": "The specimen was logged and placed in the queue. A label was attached and the record was updated. An portion was prepared after the record was checked.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "sample-aliquot_masked_p3_rich",
-      "cnlLineCount": 437,
-      "updateCnlLineCount": 447,
+      "cnlLineCount": 442,
+      "updateCnlLineCount": 451,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 0,
       "singleTheoryDomain": "package",
@@ -1247,7 +1247,7 @@
       "rescuedByQuestion": 0,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 1,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "sample-cold-room",
@@ -1258,8 +1258,8 @@
       "inputText": "The specimen was registered and placed in the queue. A label was attached and the status was updated.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "sample-cold-room_clean_p2_rich",
-      "cnlLineCount": 417,
-      "updateCnlLineCount": 427,
+      "cnlLineCount": 422,
+      "updateCnlLineCount": 431,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 0,
       "singleTheoryDomain": "package",
@@ -1278,7 +1278,7 @@
       "rescuedByQuestion": 0,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 1,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "sample-cold-room",
@@ -1289,8 +1289,8 @@
       "inputText": "The specimen was registered and placed in the queue. A label was attached and the status was updated.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "sample-cold-room_masked_p2_rich",
-      "cnlLineCount": 417,
-      "updateCnlLineCount": 427,
+      "cnlLineCount": 422,
+      "updateCnlLineCount": 431,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 0,
       "singleTheoryDomain": "package",
@@ -1309,7 +1309,7 @@
       "rescuedByQuestion": 0,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 1,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "sample-cold-room",
@@ -1351,8 +1351,8 @@
       "inputText": "The specimen was registered and placed in the queue. A label was attached and the status was updated. The storage log was checked before processing.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "sample-cold-room_masked_p3_rich",
-      "cnlLineCount": 417,
-      "updateCnlLineCount": 427,
+      "cnlLineCount": 422,
+      "updateCnlLineCount": 431,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 0,
       "singleTheoryDomain": "package",
@@ -1371,7 +1371,7 @@
       "rescuedByQuestion": 0,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 1,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "sample-centrifuge",
@@ -1413,8 +1413,8 @@
       "inputText": "The item was recorded and placed in the staging area. A identifier was attached and the record was updated.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "sample-centrifuge_masked_p2_rich",
-      "cnlLineCount": 437,
-      "updateCnlLineCount": 447,
+      "cnlLineCount": 442,
+      "updateCnlLineCount": 451,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 0,
       "singleTheoryDomain": "package",
@@ -1433,7 +1433,7 @@
       "rescuedByQuestion": 0,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 1,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "sample-centrifuge",
@@ -1537,8 +1537,8 @@
       "inputText": "The item was registered and placed in the queue. A record was attached and the record was updated.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "manuscript-submission_masked_p2_rich",
-      "cnlLineCount": 404,
-      "updateCnlLineCount": 414,
+      "cnlLineCount": 409,
+      "updateCnlLineCount": 418,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 1,
       "singleTheoryDomain": "package",
@@ -1557,7 +1557,7 @@
       "rescuedByQuestion": 1,
       "domainEntropyBefore": 1.255,
       "domainEntropyAfter": 1,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "manuscript-submission",
@@ -1599,8 +1599,8 @@
       "inputText": "The item was registered and placed in the queue. A record was attached and the record was updated. An coordinator sent it to team for evaluation.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "manuscript-submission_masked_p3_rich",
-      "cnlLineCount": 424,
-      "updateCnlLineCount": 434,
+      "cnlLineCount": 429,
+      "updateCnlLineCount": 438,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 1,
       "singleTheoryDomain": "package",
@@ -1619,7 +1619,7 @@
       "rescuedByQuestion": 1,
       "domainEntropyBefore": 1.255,
       "domainEntropyAfter": 1,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "manuscript-generic",
@@ -1630,8 +1630,8 @@
       "inputText": "The item was recorded and placed in the staging area. A label was attached and the status was updated.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "manuscript-generic_clean_p2_rich",
-      "cnlLineCount": 417,
-      "updateCnlLineCount": 427,
+      "cnlLineCount": 422,
+      "updateCnlLineCount": 431,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 1,
       "singleTheoryDomain": "package",
@@ -1650,7 +1650,7 @@
       "rescuedByQuestion": 1,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 1,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "manuscript-generic",
@@ -1661,8 +1661,8 @@
       "inputText": "The item was recorded and placed in the staging area. A label was attached and the status was updated.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "manuscript-generic_masked_p2_rich",
-      "cnlLineCount": 417,
-      "updateCnlLineCount": 427,
+      "cnlLineCount": 422,
+      "updateCnlLineCount": 431,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 1,
       "singleTheoryDomain": "package",
@@ -1681,7 +1681,7 @@
       "rescuedByQuestion": 1,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 1,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "manuscript-generic",
@@ -1723,8 +1723,8 @@
       "inputText": "The item was recorded and placed in the staging area. A label was attached and the status was updated. A team member cycle started after the coordinator logged it.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "manuscript-generic_masked_p3_rich",
-      "cnlLineCount": 417,
-      "updateCnlLineCount": 427,
+      "cnlLineCount": 422,
+      "updateCnlLineCount": 431,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 1,
       "singleTheoryDomain": "package",
@@ -1743,7 +1743,7 @@
       "rescuedByQuestion": 1,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 1,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "manuscript-editorial-queue",
@@ -1785,8 +1785,8 @@
       "inputText": "The item was entered in the system and placed in the queue. A identifier was attached and the record was updated.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "manuscript-editorial-queue_masked_p2_rich",
-      "cnlLineCount": 437,
-      "updateCnlLineCount": 447,
+      "cnlLineCount": 442,
+      "updateCnlLineCount": 451,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 1,
       "singleTheoryDomain": "package",
@@ -1805,7 +1805,7 @@
       "rescuedByQuestion": 1,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 1,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "manuscript-editorial-queue",
@@ -1847,8 +1847,8 @@
       "inputText": "The item was entered in the system and placed in the queue. A identifier was attached and the record was updated. An coordinator sent it to evaluation.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "manuscript-editorial-queue_masked_p3_rich",
-      "cnlLineCount": 457,
-      "updateCnlLineCount": 467,
+      "cnlLineCount": 462,
+      "updateCnlLineCount": 471,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 1,
       "singleTheoryDomain": "package",
@@ -1867,7 +1867,7 @@
       "rescuedByQuestion": 1,
       "domainEntropyBefore": 1.24,
       "domainEntropyAfter": 1,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "manuscript-peer-review",
@@ -1909,8 +1909,8 @@
       "inputText": "The submission was logged and placed in the queue. A record was attached and the status was updated.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "manuscript-peer-review_masked_p2_rich",
-      "cnlLineCount": 384,
-      "updateCnlLineCount": 394,
+      "cnlLineCount": 389,
+      "updateCnlLineCount": 398,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 1,
       "singleTheoryDomain": "package",
@@ -1929,7 +1929,7 @@
       "rescuedByQuestion": 1,
       "domainEntropyBefore": 1.255,
       "domainEntropyAfter": 1,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "manuscript-peer-review",
@@ -1971,8 +1971,8 @@
       "inputText": "The submission was logged and placed in the queue. A record was attached and the status was updated. team returned comments to the coordinator.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "manuscript-peer-review_masked_p3_rich",
-      "cnlLineCount": 384,
-      "updateCnlLineCount": 394,
+      "cnlLineCount": 389,
+      "updateCnlLineCount": 398,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 1,
       "singleTheoryDomain": "package",
@@ -1991,7 +1991,7 @@
       "rescuedByQuestion": 1,
       "domainEntropyBefore": 1.255,
       "domainEntropyAfter": 1,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "manuscript-revision-cycle",
@@ -2033,8 +2033,8 @@
       "inputText": "The document was recorded and placed in the staging area. A identifier was attached and the record was updated.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "manuscript-revision-cycle_masked_p2_rich",
-      "cnlLineCount": 437,
-      "updateCnlLineCount": 447,
+      "cnlLineCount": 442,
+      "updateCnlLineCount": 451,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 1,
       "singleTheoryDomain": "package",
@@ -2053,7 +2053,7 @@
       "rescuedByQuestion": 1,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 1,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "manuscript-revision-cycle",
@@ -2095,8 +2095,8 @@
       "inputText": "The document was recorded and placed in the staging area. A identifier was attached and the record was updated. The coordinator requested update after evaluation.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "manuscript-revision-cycle_masked_p3_rich",
-      "cnlLineCount": 437,
-      "updateCnlLineCount": 447,
+      "cnlLineCount": 442,
+      "updateCnlLineCount": 451,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 1,
       "singleTheoryDomain": "package",
@@ -2115,7 +2115,7 @@
       "rescuedByQuestion": 1,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 1,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "manuscript-accepted",
@@ -2157,8 +2157,8 @@
       "inputText": "The submission was registered and placed in the queue. A label was attached and the status was updated.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "manuscript-accepted_masked_p2_rich",
-      "cnlLineCount": 417,
-      "updateCnlLineCount": 427,
+      "cnlLineCount": 422,
+      "updateCnlLineCount": 431,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 1,
       "singleTheoryDomain": "package",
@@ -2177,7 +2177,7 @@
       "rescuedByQuestion": 1,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 1,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     },
     {
       "caseId": "manuscript-accepted",
@@ -2219,8 +2219,8 @@
       "inputText": "The submission was registered and placed in the queue. A label was attached and the status was updated. An coordinator started a cycle.",
       "usageMode": "canonical-cnl",
       "canonicalRunId": "manuscript-accepted_masked_p3_rich",
-      "cnlLineCount": 417,
-      "updateCnlLineCount": 427,
+      "cnlLineCount": 422,
+      "updateCnlLineCount": 431,
       "lexicalDomain": "manuscript",
       "lexicalAccuracy": 1,
       "singleTheoryDomain": "package",
@@ -2239,7 +2239,7 @@
       "rescuedByQuestion": 1,
       "domainEntropyBefore": 1.239,
       "domainEntropyAfter": 1,
-      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;ALIGNMENT"
+      "canonicalFamilies": "RUN;SOURCE;SEGMENT;OBSERVER;BUDGET;CONTEXT;HYPOTHESIS;OBSERVATION;PROVENANCE;HYPOTHESIS_SUPPORT;HYPOTHESIS_CONFIDENCE;AMBIGUITY;THEORY;SCHEMA;MATCHED_STATE;RULE;INVARIANT;COMPOSITION;SUPPORT;THEORY_EVIDENCE;SCORE;TRANSFORM;EQUIVALENCE;CONSEQUENCE;FRONTIER;FRONTIER_MEMBER;DOMAIN_WEIGHT;QUESTION;QUESTION_CLASS;QUESTION_ANSWER;QUESTION_PARTITION;ALIGNMENT"
     }
   ],
   "summaryRows": [

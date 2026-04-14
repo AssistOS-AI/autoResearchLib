@@ -1,0 +1,18 @@
+{
+  "citationKey": "GUO-2017",
+  "sourceDigest": "edbe03ba5087d847eeaa253ff1fff795fe208cf7",
+  "checkedClaims": [
+    {
+      "id": "92f05f66d0228df1612fa7ce95bfd4a80e453801",
+      "claimText": "Calibration is also reported through expected calibration error to track how confidence matches empirical accuracy [GUO-2017].",
+      "normalizedClaim": "calibration is also reported through expected calibration error to track how confidence matches empirical accuracy guo-2017",
+      "chapterFile": "ch4-experiments.md",
+      "status": "supported",
+      "profileId": "confidence-calibration",
+      "note": null,
+      "checkedAt": "2026-04-14T16:18:03.178Z",
+      "sourceDigest": "edbe03ba5087d847eeaa253ff1fff795fe208cf7"
+    }
+  ],
+  "lastValidatedAt": "2026-04-14T16:18:03.178Z"
+}

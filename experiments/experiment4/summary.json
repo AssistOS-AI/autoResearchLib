@@ -1,0 +1,706 @@
+{
+  "experimentId": "experiment4",
+  "title": "Sensitivity analysis and structural ablations",
+  "evaluationCaseCount": 51,
+  "traceCount": 153,
+  "ablations": [
+    {
+      "id": "baseline",
+      "label": "Baseline policy",
+      "traceCount": 153,
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "meanEntropy": 0.073,
+      "meanFrontierWidth": 4.105,
+      "prematureCollapseRate": 0,
+      "questionAvailability": 0.052,
+      "agreementWithBaseline": 1,
+      "topAccuracyCiLow": 0.956,
+      "topAccuracyCiHigh": 1,
+      "truthRetentionCiLow": 1,
+      "truthRetentionCiHigh": 1
+    },
+    {
+      "id": "coarse-observer",
+      "label": "Coarse observer",
+      "traceCount": 153,
+      "topAccuracy": 0.614,
+      "truthRetentionRate": 0.922,
+      "meanEntropy": 0.854,
+      "meanFrontierWidth": 5.817,
+      "prematureCollapseRate": 0,
+      "questionAvailability": 0.549,
+      "agreementWithBaseline": 0.634,
+      "topAccuracyCiLow": 0.542,
+      "topAccuracyCiHigh": 0.685,
+      "truthRetentionCiLow": 0.871,
+      "truthRetentionCiHigh": 0.961
+    },
+    {
+      "id": "no-inferred-cues",
+      "label": "No inferred cues",
+      "traceCount": 153,
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "meanEntropy": 0.103,
+      "meanFrontierWidth": 4.176,
+      "prematureCollapseRate": 0,
+      "questionAvailability": 0.098,
+      "agreementWithBaseline": 1,
+      "topAccuracyCiLow": 0.956,
+      "topAccuracyCiHigh": 1,
+      "truthRetentionCiLow": 1,
+      "truthRetentionCiHigh": 1
+    },
+    {
+      "id": "frontier-4",
+      "label": "Frontier limit 4",
+      "traceCount": 153,
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 0.98,
+      "meanEntropy": 0.031,
+      "meanFrontierWidth": 3.974,
+      "prematureCollapseRate": 0.02,
+      "questionAvailability": 0.039,
+      "agreementWithBaseline": 1,
+      "topAccuracyCiLow": 0.956,
+      "topAccuracyCiHigh": 1,
+      "truthRetentionCiLow": 0.956,
+      "truthRetentionCiHigh": 1
+    },
+    {
+      "id": "frontier-12",
+      "label": "Frontier limit 12",
+      "traceCount": 153,
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "meanEntropy": 0.073,
+      "meanFrontierWidth": 4.105,
+      "prematureCollapseRate": 0,
+      "questionAvailability": 0.052,
+      "agreementWithBaseline": 1,
+      "topAccuracyCiLow": 0.956,
+      "topAccuracyCiHigh": 1,
+      "truthRetentionCiLow": 1,
+      "truthRetentionCiHigh": 1
+    },
+    {
+      "id": "no-domain-rescue",
+      "label": "No domain rescue",
+      "traceCount": 153,
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 0.98,
+      "meanEntropy": 0,
+      "meanFrontierWidth": 3.974,
+      "prematureCollapseRate": 0.02,
+      "questionAvailability": 0,
+      "agreementWithBaseline": 1,
+      "topAccuracyCiLow": 0.956,
+      "topAccuracyCiHigh": 1,
+      "truthRetentionCiLow": 0.956,
+      "truthRetentionCiHigh": 1
+    },
+    {
+      "id": "no-equivalence",
+      "label": "No equivalence classes",
+      "traceCount": 153,
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "meanEntropy": 0.073,
+      "meanFrontierWidth": 4.105,
+      "prematureCollapseRate": 0,
+      "questionAvailability": 0.052,
+      "agreementWithBaseline": 1,
+      "topAccuracyCiLow": 0.956,
+      "topAccuracyCiHigh": 1,
+      "truthRetentionCiLow": 1,
+      "truthRetentionCiHigh": 1
+    },
+    {
+      "id": "no-alignment",
+      "label": "No alignment utility",
+      "traceCount": 153,
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "meanEntropy": 0.073,
+      "meanFrontierWidth": 4.105,
+      "prematureCollapseRate": 0,
+      "questionAvailability": 0.052,
+      "agreementWithBaseline": 1,
+      "topAccuracyCiLow": 0.956,
+      "topAccuracyCiHigh": 1,
+      "truthRetentionCiLow": 1,
+      "truthRetentionCiHigh": 1
+    },
+    {
+      "id": "no-questions",
+      "label": "No discriminating questions",
+      "traceCount": 153,
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "meanEntropy": 0.073,
+      "meanFrontierWidth": 4.105,
+      "prematureCollapseRate": 0,
+      "questionAvailability": 0,
+      "agreementWithBaseline": 1,
+      "topAccuracyCiLow": 0.956,
+      "topAccuracyCiHigh": 1,
+      "truthRetentionCiLow": 1,
+      "truthRetentionCiHigh": 1
+    }
+  ],
+  "sensitivitySamples": [
+    {
+      "id": "sample-1",
+      "label": "Sample 1",
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "agreementWithBaseline": 1,
+      "meanEntropy": 0.073,
+      "meanFrontierWidth": 4.105,
+      "rescueTolerance": 0.0709,
+      "supportWeights": {
+        "generic": 0.2742,
+        "explicit": 1,
+        "inferred": 0.9114
+      },
+      "scoreWeights": {
+        "evidenceCoverage": 0.24433299899699099,
+        "predictiveAdequacy": 0.2791374122367101,
+        "compressionUtility": 0.12166499498495487,
+        "compositionalSharpness": 0.12266800401203612,
+        "stability": 0.1637913741223671,
+        "alignmentUtility": 0.06840521564694083
+      }
+    },
+    {
+      "id": "sample-2",
+      "label": "Sample 2",
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "agreementWithBaseline": 1,
+      "meanEntropy": 0.08,
+      "meanFrontierWidth": 4.118,
+      "rescueTolerance": 0.0854,
+      "supportWeights": {
+        "generic": 0.2764,
+        "explicit": 1,
+        "inferred": 0.5829
+      },
+      "scoreWeights": {
+        "evidenceCoverage": 0.2187946301056841,
+        "predictiveAdequacy": 0.262115586023041,
+        "compressionUtility": 0.05807864419689612,
+        "compositionalSharpness": 0.18309054555841187,
+        "stability": 0.15033799866704753,
+        "alignmentUtility": 0.12758259544891937
+      }
+    },
+    {
+      "id": "sample-3",
+      "label": "Sample 3",
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "agreementWithBaseline": 1,
+      "meanEntropy": 0.049,
+      "meanFrontierWidth": 4.046,
+      "rescueTolerance": 0.0289,
+      "supportWeights": {
+        "generic": 0.2218,
+        "explicit": 1,
+        "inferred": 0.5589
+      },
+      "scoreWeights": {
+        "evidenceCoverage": 0.2097829178121149,
+        "predictiveAdequacy": 0.278130628495592,
+        "compressionUtility": 0.09688122096881222,
+        "compositionalSharpness": 0.16949473883780453,
+        "stability": 0.14721774575789173,
+        "alignmentUtility": 0.09849274812778464
+      }
+    },
+    {
+      "id": "sample-4",
+      "label": "Sample 4",
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "agreementWithBaseline": 1,
+      "meanEntropy": 0.049,
+      "meanFrontierWidth": 4.052,
+      "rescueTolerance": 0.0409,
+      "supportWeights": {
+        "generic": 0.2663,
+        "explicit": 1,
+        "inferred": 0.7151
+      },
+      "scoreWeights": {
+        "evidenceCoverage": 0.2538932146829811,
+        "predictiveAdequacy": 0.2834631071560994,
+        "compressionUtility": 0.06720430107526881,
+        "compositionalSharpness": 0.14794215795328142,
+        "stability": 0.14219503151649981,
+        "alignmentUtility": 0.10530218761586949
+      }
+    },
+    {
+      "id": "sample-5",
+      "label": "Sample 5",
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "agreementWithBaseline": 1,
+      "meanEntropy": 0.064,
+      "meanFrontierWidth": 4.085,
+      "rescueTolerance": 0.0706,
+      "supportWeights": {
+        "generic": 0.197,
+        "explicit": 1,
+        "inferred": 0.8522
+      },
+      "scoreWeights": {
+        "evidenceCoverage": 0.23072258716523497,
+        "predictiveAdequacy": 0.3169277412834765,
+        "compressionUtility": 0.1033855482566953,
+        "compositionalSharpness": 0.1438100050530571,
+        "stability": 0.11975745325922182,
+        "alignmentUtility": 0.0853966649823143
+      }
+    },
+    {
+      "id": "sample-6",
+      "label": "Sample 6",
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "agreementWithBaseline": 1,
+      "meanEntropy": 0.048,
+      "meanFrontierWidth": 4.052,
+      "rescueTolerance": 0.0302,
+      "supportWeights": {
+        "generic": 0.3522,
+        "explicit": 1,
+        "inferred": 0.6239
+      },
+      "scoreWeights": {
+        "evidenceCoverage": 0.22333069932832872,
+        "predictiveAdequacy": 0.28269458711971557,
+        "compressionUtility": 0.1360134334255235,
+        "compositionalSharpness": 0.13542078229948637,
+        "stability": 0.14687870406953774,
+        "alignmentUtility": 0.07566179375740814
+      }
+    },
+    {
+      "id": "sample-7",
+      "label": "Sample 7",
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "agreementWithBaseline": 1,
+      "meanEntropy": 0.049,
+      "meanFrontierWidth": 4.059,
+      "rescueTolerance": 0.0492,
+      "supportWeights": {
+        "generic": 0.3888,
+        "explicit": 1,
+        "inferred": 0.6739
+      },
+      "scoreWeights": {
+        "evidenceCoverage": 0.25335416283771367,
+        "predictiveAdequacy": 0.2721926116522698,
+        "compressionUtility": 0.061845249035103834,
+        "compositionalSharpness": 0.1530968571953685,
+        "stability": 0.13756662378239293,
+        "alignmentUtility": 0.12194449549715126
+      }
+    },
+    {
+      "id": "sample-8",
+      "label": "Sample 8",
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "agreementWithBaseline": 1,
+      "meanEntropy": 0.049,
+      "meanFrontierWidth": 4.059,
+      "rescueTolerance": 0.0531,
+      "supportWeights": {
+        "generic": 0.371,
+        "explicit": 1,
+        "inferred": 0.4993
+      },
+      "scoreWeights": {
+        "evidenceCoverage": 0.19437866776485122,
+        "predictiveAdequacy": 0.2905384536188613,
+        "compressionUtility": 0.10254298363018634,
+        "compositionalSharpness": 0.19540821579326675,
+        "stability": 0.13775352620199732,
+        "alignmentUtility": 0.07937815299083702
+      }
+    },
+    {
+      "id": "sample-9",
+      "label": "Sample 9",
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "agreementWithBaseline": 1,
+      "meanEntropy": 0.12,
+      "meanFrontierWidth": 4.183,
+      "rescueTolerance": 0.0922,
+      "supportWeights": {
+        "generic": 0.2461,
+        "explicit": 1,
+        "inferred": 0.7893
+      },
+      "scoreWeights": {
+        "evidenceCoverage": 0.16267262388302195,
+        "predictiveAdequacy": 0.30584890333062553,
+        "compressionUtility": 0.09697400487408611,
+        "compositionalSharpness": 0.19648659626320064,
+        "stability": 0.11372867587327376,
+        "alignmentUtility": 0.12428919577579203
+      }
+    },
+    {
+      "id": "sample-10",
+      "label": "Sample 10",
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "agreementWithBaseline": 1,
+      "meanEntropy": 0.049,
+      "meanFrontierWidth": 4.052,
+      "rescueTolerance": 0.0476,
+      "supportWeights": {
+        "generic": 0.3141,
+        "explicit": 1,
+        "inferred": 0.7648
+      },
+      "scoreWeights": {
+        "evidenceCoverage": 0.25760554151455584,
+        "predictiveAdequacy": 0.2269025554619489,
+        "compressionUtility": 0.08518206496302537,
+        "compositionalSharpness": 0.18646447627071047,
+        "stability": 0.11410652438453617,
+        "alignmentUtility": 0.12973883740522324
+      }
+    },
+    {
+      "id": "sample-11",
+      "label": "Sample 11",
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "agreementWithBaseline": 1,
+      "meanEntropy": 0.049,
+      "meanFrontierWidth": 4.046,
+      "rescueTolerance": 0.0292,
+      "supportWeights": {
+        "generic": 0.2245,
+        "explicit": 1,
+        "inferred": 0.5604
+      },
+      "scoreWeights": {
+        "evidenceCoverage": 0.19683106449453244,
+        "predictiveAdequacy": 0.32593171167150187,
+        "compressionUtility": 0.0883731309975452,
+        "compositionalSharpness": 0.13445659451015396,
+        "stability": 0.17462619950903813,
+        "alignmentUtility": 0.07978129881722829
+      }
+    },
+    {
+      "id": "sample-12",
+      "label": "Sample 12",
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "agreementWithBaseline": 1,
+      "meanEntropy": 0.064,
+      "meanFrontierWidth": 4.092,
+      "rescueTolerance": 0.073,
+      "supportWeights": {
+        "generic": 0.2466,
+        "explicit": 1,
+        "inferred": 0.5579
+      },
+      "scoreWeights": {
+        "evidenceCoverage": 0.26547402659523583,
+        "predictiveAdequacy": 0.2522720750023916,
+        "compressionUtility": 0.12159188749641249,
+        "compositionalSharpness": 0.12044389170573042,
+        "stability": 0.11259925380273604,
+        "alignmentUtility": 0.1276188653974935
+      }
+    },
+    {
+      "id": "sample-13",
+      "label": "Sample 13",
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "agreementWithBaseline": 1,
+      "meanEntropy": 0.144,
+      "meanFrontierWidth": 4.248,
+      "rescueTolerance": 0.0981,
+      "supportWeights": {
+        "generic": 0.3137,
+        "explicit": 1,
+        "inferred": 0.9122
+      },
+      "scoreWeights": {
+        "evidenceCoverage": 0.24709329804329333,
+        "predictiveAdequacy": 0.2900085074203611,
+        "compressionUtility": 0.08261650439550051,
+        "compositionalSharpness": 0.14528783438888362,
+        "stability": 0.16277530957557423,
+        "alignmentUtility": 0.07221854617638718
+      }
+    },
+    {
+      "id": "sample-14",
+      "label": "Sample 14",
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "agreementWithBaseline": 1,
+      "meanEntropy": 0.098,
+      "meanFrontierWidth": 4.144,
+      "rescueTolerance": 0.0965,
+      "supportWeights": {
+        "generic": 0.2552,
+        "explicit": 1,
+        "inferred": 0.7802
+      },
+      "scoreWeights": {
+        "evidenceCoverage": 0.19769484083424807,
+        "predictiveAdequacy": 0.2713501646542261,
+        "compressionUtility": 0.10406147091108671,
+        "compositionalSharpness": 0.19934138309549945,
+        "stability": 0.14390779363336992,
+        "alignmentUtility": 0.0836443468715697
+      }
+    },
+    {
+      "id": "sample-15",
+      "label": "Sample 15",
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "agreementWithBaseline": 1,
+      "meanEntropy": 0.049,
+      "meanFrontierWidth": 4.052,
+      "rescueTolerance": 0.0347,
+      "supportWeights": {
+        "generic": 0.2951,
+        "explicit": 1,
+        "inferred": 0.4925
+      },
+      "scoreWeights": {
+        "evidenceCoverage": 0.25657272555324384,
+        "predictiveAdequacy": 0.28806506525439757,
+        "compressionUtility": 0.061944391904671846,
+        "compositionalSharpness": 0.17353886892377532,
+        "stability": 0.09608473614526197,
+        "alignmentUtility": 0.12379421221864952
+      }
+    },
+    {
+      "id": "sample-16",
+      "label": "Sample 16",
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "agreementWithBaseline": 1,
+      "meanEntropy": 0.049,
+      "meanFrontierWidth": 4.046,
+      "rescueTolerance": 0.0365,
+      "supportWeights": {
+        "generic": 0.1846,
+        "explicit": 1,
+        "inferred": 0.7816
+      },
+      "scoreWeights": {
+        "evidenceCoverage": 0.25636942675159236,
+        "predictiveAdequacy": 0.2691082802547771,
+        "compressionUtility": 0.10236578707916288,
+        "compositionalSharpness": 0.1412647861692448,
+        "stability": 0.11499090081892631,
+        "alignmentUtility": 0.11590081892629665
+      }
+    },
+    {
+      "id": "sample-17",
+      "label": "Sample 17",
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "agreementWithBaseline": 1,
+      "meanEntropy": 0.115,
+      "meanFrontierWidth": 4.176,
+      "rescueTolerance": 0.093,
+      "supportWeights": {
+        "generic": 0.3463,
+        "explicit": 1,
+        "inferred": 0.7876
+      },
+      "scoreWeights": {
+        "evidenceCoverage": 0.24984152857013495,
+        "predictiveAdequacy": 0.2965679616046365,
+        "compressionUtility": 0.09508285791904375,
+        "compositionalSharpness": 0.17830299737390204,
+        "stability": 0.09109843339672191,
+        "alignmentUtility": 0.089106221135561
+      }
+    },
+    {
+      "id": "sample-18",
+      "label": "Sample 18",
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "agreementWithBaseline": 1,
+      "meanEntropy": 0.049,
+      "meanFrontierWidth": 4.046,
+      "rescueTolerance": 0.0462,
+      "supportWeights": {
+        "generic": 0.2275,
+        "explicit": 1,
+        "inferred": 0.7689
+      },
+      "scoreWeights": {
+        "evidenceCoverage": 0.16811712910822157,
+        "predictiveAdequacy": 0.2791031022831985,
+        "compressionUtility": 0.121941230674721,
+        "compositionalSharpness": 0.17948192894440465,
+        "stability": 0.12511518378212347,
+        "alignmentUtility": 0.1262414252073308
+      }
+    },
+    {
+      "id": "sample-19",
+      "label": "Sample 19",
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "agreementWithBaseline": 1,
+      "meanEntropy": 0.081,
+      "meanFrontierWidth": 4.118,
+      "rescueTolerance": 0.0746,
+      "supportWeights": {
+        "generic": 0.3442,
+        "explicit": 1,
+        "inferred": 0.8482
+      },
+      "scoreWeights": {
+        "evidenceCoverage": 0.1884495698334249,
+        "predictiveAdequacy": 0.29535053999633903,
+        "compressionUtility": 0.11916529379461838,
+        "compositionalSharpness": 0.17270730367929713,
+        "stability": 0.1468057843675636,
+        "alignmentUtility": 0.07752150832875711
+      }
+    },
+    {
+      "id": "sample-20",
+      "label": "Sample 20",
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "agreementWithBaseline": 1,
+      "meanEntropy": 0.049,
+      "meanFrontierWidth": 4.059,
+      "rescueTolerance": 0.0494,
+      "supportWeights": {
+        "generic": 0.3742,
+        "explicit": 1,
+        "inferred": 0.4851
+      },
+      "scoreWeights": {
+        "evidenceCoverage": 0.2366142098891889,
+        "predictiveAdequacy": 0.2899711332526306,
+        "compressionUtility": 0.08036129993481701,
+        "compositionalSharpness": 0.1826054567464382,
+        "stability": 0.09321165844119562,
+        "alignmentUtility": 0.1172362417357296
+      }
+    },
+    {
+      "id": "sample-21",
+      "label": "Sample 21",
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "agreementWithBaseline": 1,
+      "meanEntropy": 0.049,
+      "meanFrontierWidth": 4.052,
+      "rescueTolerance": 0.029,
+      "supportWeights": {
+        "generic": 0.3316,
+        "explicit": 1,
+        "inferred": 0.6526
+      },
+      "scoreWeights": {
+        "evidenceCoverage": 0.22827971489115775,
+        "predictiveAdequacy": 0.3118859564631092,
+        "compressionUtility": 0.06434213061067232,
+        "compositionalSharpness": 0.16605663648622615,
+        "stability": 0.13224812174918127,
+        "alignmentUtility": 0.09718743979965325
+      }
+    },
+    {
+      "id": "sample-22",
+      "label": "Sample 22",
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "agreementWithBaseline": 1,
+      "meanEntropy": 0.049,
+      "meanFrontierWidth": 4.046,
+      "rescueTolerance": 0.0471,
+      "supportWeights": {
+        "generic": 0.1874,
+        "explicit": 1,
+        "inferred": 0.6278
+      },
+      "scoreWeights": {
+        "evidenceCoverage": 0.21871225494750535,
+        "predictiveAdequacy": 0.28607265632258666,
+        "compressionUtility": 0.08389854129889436,
+        "compositionalSharpness": 0.18470686611539533,
+        "stability": 0.10573260243426554,
+        "alignmentUtility": 0.12087707888135277
+      }
+    },
+    {
+      "id": "sample-23",
+      "label": "Sample 23",
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "agreementWithBaseline": 1,
+      "meanEntropy": 0.105,
+      "meanFrontierWidth": 4.157,
+      "rescueTolerance": 0.0928,
+      "supportWeights": {
+        "generic": 0.309,
+        "explicit": 1,
+        "inferred": 0.647
+      },
+      "scoreWeights": {
+        "evidenceCoverage": 0.23339607421349828,
+        "predictiveAdequacy": 0.24863314511069284,
+        "compressionUtility": 0.12494398135699561,
+        "compositionalSharpness": 0.17692928206507127,
+        "stability": 0.1378506767052075,
+        "alignmentUtility": 0.07824684054853456
+      }
+    },
+    {
+      "id": "sample-24",
+      "label": "Sample 24",
+      "topAccuracy": 0.98,
+      "truthRetentionRate": 1,
+      "agreementWithBaseline": 1,
+      "meanEntropy": 0.049,
+      "meanFrontierWidth": 4.046,
+      "rescueTolerance": 0.0533,
+      "supportWeights": {
+        "generic": 0.2163,
+        "explicit": 1,
+        "inferred": 0.6462
+      },
+      "scoreWeights": {
+        "evidenceCoverage": 0.24834315169366714,
+        "predictiveAdequacy": 0.27457658321060385,
+        "compressionUtility": 0.07087628865979381,
+        "compositionalSharpness": 0.16338365243004416,
+        "stability": 0.12067378497790868,
+        "alignmentUtility": 0.12214653902798234
+      }
+    }
+  ]
+}

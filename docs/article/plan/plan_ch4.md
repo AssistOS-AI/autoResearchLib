@@ -1,9 +1,11 @@
 ---
 chapter: 4
-title: Experimental validation
+title: Validation ladder and empirical results
 target: chapters/ch4-experiments.md
 dependsOn:
   - ../../specs/DS003-experimental-protocol.md
+  - ../../specs/DS008-expanded-validation.md
+  - ../../specs/DS009-auditability-study.md
   - ../../../experiments/experiment1/description.md
   - ../../../experiments/experiment1/results.md
   - ../../../experiments/experiment1/summary.json
@@ -13,87 +15,118 @@ dependsOn:
   - ../../../experiments/experiment3/description.md
   - ../../../experiments/experiment3/results.md
   - ../../../experiments/experiment3/summary.json
+  - ../../../experiments/experiment4/description.md
+  - ../../../experiments/experiment4/results.md
+  - ../../../experiments/experiment4/summary.json
+  - ../../../experiments/experiment5/description.md
+  - ../../../experiments/experiment5/results.md
+  - ../../../experiments/experiment5/summary.json
+  - ../../../experiments/experiment6/description.md
+  - ../../../experiments/experiment6/results.md
+  - ../../../experiments/experiment6/summary.json
+  - ../../../experiments/experiment7/description.md
+  - ../../../experiments/experiment7/results.md
+  - ../../../experiments/experiment7/summary.json
+  - ./bibliography.md
 ---
 
-# Plan CH4 - Experimental validation
+# Plan CH4 - Validation ladder and empirical results
 
 ## Chapter Intent
-Show that the paper is backed by real, controlled evidence rather than decorative metrics. The chapter should explain what enters each experiment, what the pipeline emits, which structural claim is being tested, how the new 18-case corpus changes the strength of the evidence, and where the evidence remains partial even after the new baseline study.
+Present the experiments as a staged empirical ladder rather than as a loose collection of plots. The chapter must distinguish what the early structural studies show, what the expanded benchmark and ablations add, what the novelty study does and does not prove, and where multi-step questioning still breaks. The tone should remain sober and protocol-oriented.
 
 ## Paragraph Plan
 
 | Paragraph | Source files | Guidance |
 | --- | --- | --- |
-| P1 | `DS003 Introduction` | Open by stating that the current repository validates three structural claims of the broader theory, not the whole framework. |
-| P2 | `experiment1/description.md`, `experiment1/summary.json`, `DS003 Core Content` | Explain the full input/output shape of Experiment 1, including corpus size, prefixing, observer families, measured artifacts, and the fact that the experiment uses the public evidence-analysis contract rather than internal helpers. |
-| P3 | `experiment1/results.md`, `experiment1/summary.json` | Introduce Table 3 with concrete values. Mention what changes at Prefix 1, Prefix 2, and Prefix 3. |
-| P4 | `experiment1/summary.json`, `experiment1/results.md` | Use Figure 3 to explain the accuracy trajectory and why earlier typed cues matter. |
-| P5 | `experiment1/summary.json`, `experiment1/results.md` | Use Figure 4 to explain entropy contraction, then interpret the rich-observer signal carefully, including the remaining ambiguous generic cases. |
-| P6 | `experiment2/description.md`, `experiment2/summary.json`, `experiment2/results.md` | Explain Experiment 2 in human terms: ambiguous frontier, selected question, gold answer, updated frontier, emitted before/after metrics, and representative canonical traces. Introduce Table 4. |
-| P7 | `experiment2/summary.json`, `experiment2/results.md` | Use Figures 5 and 6 to explain entropy reduction, accuracy gains, and the cases where one question still leaves residual ambiguity. |
-| P8 | `experiment3/description.md`, `experiment3/summary.json`, `experiment3/results.md` | Explain Experiment 3 as a cue-masking robustness test with lexical and single-theory baselines plus the frontier-and-question pipeline, again using the same high-level usage contract. |
-| P9 | `experiment3/summary.json`, `experiment3/results.md` | Introduce Table 5 with the masked and unmasked comparisons. Highlight resolved accuracy after one question and retained-frontier truth rate. |
-| P10 | `experiment3/summary.json`, `experiment3/results.md` | Use Figure 7 to compare the policies and Figure 8 to explain why questioning matters once the frontier preserves recoverable alternatives. |
-| P11 | `DS003 Conclusion` | Close by stating exactly what the experiments support and what they do not yet prove. |
+| P1 | `DS003 Introduction`, `DS008 Introduction` | Open by stating that the paper validates a ladder of claims rather than the whole theory at once. |
+| P2 | `DS003 Core Content`, `experiment5/summary.json`, `experiment6/summary.json`, `experiment7/summary.json` | Describe the three dataset layers: original 18-case corpus, expanded 102-case benchmark, and novelty set. |
+| P3 | `DS003 Core Content`, all experiment descriptions | Introduce a compact table that summarizes the seven experiments, their role, and their trace counts. |
+| P4 | `experiment1/results.md`, `experiment2/results.md`, `experiment3/results.md` | Summarize the structural foundation from Experiments 1–3 without spending the whole chapter there. |
+| P5 | `experiment4/description.md`, `experiment4/summary.json`, `experiment4/results.md` | Explain sensitivity and ablation as a direct response to hardcoded-weight criticism. Introduce Table 4 and Figures 9 and 10. |
+| P6 | `experiment5/description.md`, `experiment5/summary.json`, `experiment5/results.md` | Explain the expanded benchmark, the external baselines, and calibration. Cite Guo only for calibration language. Introduce Table 5 and Figure 11. |
+| P7 | `experiment6/description.md`, `experiment6/summary.json`, `experiment6/results.md` | Explain novelty handling as open-set uncertainty management rather than full new-theory synthesis. Cite Scheirer only for the open-set framing. Introduce Table 6 and Figure 12. |
+| P8 | `experiment7/description.md`, `experiment7/summary.json`, `experiment7/results.md` | Explain multi-step questioning budgets, clean and noisy recovery, and the adversarial failure mode. Introduce Table 7 and Figures 13 and 14. |
+| P9 | `DS008 Core Content`, `DS009 Core Content` | Close with failure analysis and the optional auditability study as future work rather than current evidence. |
 
 ## Generated Chapter Template
 
-# 4. Experimental validation
+# 4. Validation ladder and empirical results
 
-The current repository validates three structural claims of the broader framework rather than the whole theory at once. The first claim is representational: richer observation should sharpen the retained frontier earlier than coarse observation. The second claim is managerial: when several local theories remain plausible, the system should be able to ask a useful next question and update the frontier transparently. The third claim is recoverability under weak evidence: when strong cues are masked, preserving a frontier should still be more useful than collapsing immediately to a single early answer.
+The paper now validates a ladder of claims rather than one undifferentiated promise. The early experiments still test the structural core of the framework: richer observation, question-driven frontier contraction, and recoverability under cue masking. The newer experiments then test robustness to policy variation, transfer across a larger benchmark, healthy uncertainty under novelty, and multi-step recoverability under different questioning conditions. This matters because the architecture is broader than the current implementation, and the article should not imply that one experiment settles every aspect of the proposal.
 
-All three experiments exercise the same public evidence-analysis and evidence-update contract that the library exposes to downstream users. Each run records canonical run metadata and CNL-family coverage alongside the ordinary quantitative outputs, so the experiments validate the intended usage surface of the library rather than only repository-internal helper calls.
+The empirical program now has three dataset layers. The first is the original eighteen-case controlled corpus across package, sample, and manuscript workflows. The second is an expanded seven-domain benchmark with controlled, paraphrased, and noisy strata, yielding {{JSON:../../../experiments/experiment5/summary.json#benchmarkCaseCount}} benchmark cases and {{JSON:../../../experiments/experiment5/summary.json#traceCount}} evaluated test traces over four prefix depths. The third is a novelty layer with unseen and hybrid cases evaluated against the same deterministic core. Multi-step questioning then reuses the paraphrased and noisy benchmark slices to test budgeted recovery over time.
 
-## Experiment 1. Observer richness and frontier shape
+Table 3 summarizes the seven experiments and their role in the validation ladder.
 
-Experiment 1 uses {{JSON:../../../experiments/experiment1/summary.json#caseCount}} controlled workflow cases distributed across package handling, laboratory sample handling, and manuscript processing. Each case is exposed through four textual prefixes, and each prefix is analyzed twice: once with a coarse observer and once with a richer observer. The input to each run is therefore a prefix string plus an observer family, while the output is a full retained frontier summary: ranked domain distribution, frontier entropy, equivalence compression, question availability, and top-domain accuracy. In other words, the experiment records not only which family is ranked first, but also how much structured ambiguity remains and whether further questioning is still needed.
+| Experiment | Role | Trace count | Main signal |
+| --- | --- | --- | --- |
+| Experiment 1 | Observer richness | 18 cases × 4 prefixes × 2 observers | Rich observers contract the frontier earlier. |
+| Experiment 2 | Single-step questioning | {{JSON:../../../experiments/experiment2/summary.json#caseCount}} ambiguous traces | One discriminating question lowers entropy and improves ranking. |
+| Experiment 3 | Cue masking and recovery | {{JSON:../../../experiments/experiment3/summary.json#traceCount}} traces | Retained frontiers preserve recoverability under masked cues. |
+| Experiment 4 | Sensitivity and ablation | {{JSON:../../../experiments/experiment4/summary.json#traceCount}} traces | Nearby policy choices preserve conclusions; coarse observation and rescue removal matter. |
+| Experiment 5 | Expanded benchmark transfer | {{JSON:../../../experiments/experiment5/summary.json#traceCount}} traces | Frontier retention transfers across seven domains and three lexical strata. |
+| Experiment 6 | Open-set novelty | {{JSON:../../../experiments/experiment6/summary.json#traceCount}} traces | Novelty increases uncertainty and question demand more than in-domain traces. |
+| Experiment 7 | Multi-step questioning | {{JSON:../../../experiments/experiment7/summary.json#traceCount}} traces | Clean and noisy recovery improve with budget; adversarial answers remain hard. |
 
-Table 3 summarizes the aggregate observer-comparison results. The clearest separation appears at Prefix 2: the rich observer raises mean top-domain accuracy from {{JSON:../../../experiments/experiment1/summary.json#summaryRows[prefixDepth=2,observerId=coarse].meanAccuracy}} to {{JSON:../../../experiments/experiment1/summary.json#summaryRows[prefixDepth=2,observerId=rich].meanAccuracy}} while reducing mean frontier entropy from {{JSON:../../../experiments/experiment1/summary.json#summaryRows[prefixDepth=2,observerId=coarse].meanEntropy}} to {{JSON:../../../experiments/experiment1/summary.json#summaryRows[prefixDepth=2,observerId=rich].meanEntropy}}. At Prefix 1 both observers are still mostly generic; by Prefix 3 the rich observer reaches {{JSON:../../../experiments/experiment1/summary.json#summaryRows[prefixDepth=3,observerId=rich].meanAccuracy}} accuracy and the coarse observer catches up to {{JSON:../../../experiments/experiment1/summary.json#summaryRows[prefixDepth=3,observerId=coarse].meanAccuracy}} once stronger procedural evidence arrives.
+Experiments 1 through 3 still provide the structural foundation. On Prefix 2 traces, the rich observer raises mean top-domain accuracy above the coarse observer while lowering frontier entropy. Single-step questioning then lowers entropy further on the retained ambiguous subset. Under cue masking, the lexical and single-theory baselines collapse early, but the retained frontier still preserves enough structure for one question to recover a substantially better answer. Those three studies establish that the retained frontier is not decorative. It changes what can still be recovered later.
 
-{{JSON_TABLE:../../../experiments/experiment1/summary.json#summaryRows|Prefix=prefixDepth;Observer=observerId;Cases=caseCount;Accuracy=meanAccuracy;Entropy=meanEntropy;Equivalence compression=meanEquivalenceCompression;Question availability=questionAvailability}}
+## Experiment 4. Sensitivity analysis and structural ablations
 
-Figure 3 isolates the accuracy trajectory. At Prefix 1 both observers remain limited because only macro-structural workflow language is visible. At Prefix 2 the rich observer starts separating the cases where typed domain markers are already present, while the coarse observer still sees a broad package-like explanation. By Prefix 3 most cases are resolved, but the rich observer reaches the correct top-ranked domain earlier and more consistently.
+Experiment 4 answers the most immediate skepticism about the symbolic core: do the results depend on one narrow set of constants or on one hidden structural shortcut? The baseline policy is evaluated against ablations that weaken observer richness, inferred cues, domain rescue, equivalence compression, alignment utility, or discriminating questions, and against a sampled neighborhood of nearby policy settings.
 
-![Observer accuracy by prefix](assets/figure-3-observer-accuracy.svg)
-*Figure 3. Mean domain accuracy by prefix depth for coarse and rich observers.*
+Table 4 shows the ablation results. The baseline keeps top accuracy at {{JSON:../../../experiments/experiment4/summary.json#ablations[id=baseline].topAccuracy}} with truth retention at {{JSON:../../../experiments/experiment4/summary.json#ablations[id=baseline].truthRetentionRate}}. Coarse observation is the strongest degrading ablation: accuracy falls to {{JSON:../../../experiments/experiment4/summary.json#ablations[id=coarse-observer].topAccuracy}} and entropy rises to {{JSON:../../../experiments/experiment4/summary.json#ablations[id=coarse-observer].meanEntropy}}. Removing domain rescue keeps top accuracy almost unchanged but lowers truth retention to {{JSON:../../../experiments/experiment4/summary.json#ablations[id=no-domain-rescue].truthRetentionRate}} and introduces a non-zero premature-collapse rate.
 
-Figure 4 complements the accuracy chart with the quantity that matters more for this paper: frontier entropy. A system may improve its top-ranked answer without making the retained neighborhood substantially more disciplined. Here the entropy drop shows that the richer observer is not only guessing better; it is retaining a smaller and sharper set of plausible local theories once typed cues appear.
+{{JSON_TABLE:../../../experiments/experiment4/summary.json#ablations|Condition=label;Accuracy=topAccuracy;Truth retained=truthRetentionRate;Entropy=meanEntropy;Premature collapse=prematureCollapseRate;Agreement=agreementWithBaseline}}
 
-![Observer entropy by prefix](assets/figure-4-observer-entropy.svg)
-*Figure 4. Mean domain entropy by prefix depth for coarse and rich observers.*
+Figure 9 shows the structural ablation profile directly, and Figure 10 shows the sampled policy region. Across the sampled neighborhood, top accuracy never drops below {{JSON:../../../experiments/experiment4/summary.json#sensitivitySamples.23.topAccuracy}} and agreement with the baseline remains at {{JSON:../../../experiments/experiment4/summary.json#sensitivitySamples.23.agreementWithBaseline}}. The result is not that every component is equally important. The result is that the framework is stable across a broad local region while still revealing which structural pieces carry most of the epistemic load.
 
-The observer-richness result should be read carefully. It does not show magical understanding. Generic sample and manuscript prefixes can still remain ambiguous when the decisive cue has not yet appeared. What the experiment demonstrates is that once the relevant cue does appear, a richer observer converts it into earlier frontier contraction and lower question demand. That is the practical value of observational lifting in the current deterministic implementation.
+![Structural ablations on the expanded benchmark](assets/figure-9-ablation-effects.svg)
+*Figure 9. Accuracy, truth retention, and premature collapse across the main structural ablations.*
 
-## Experiment 2. Discriminating questions and frontier update
+![Policy sensitivity across sampled configurations](assets/figure-10-policy-sensitivity.svg)
+*Figure 10. Stability of accuracy, truth retention, and agreement with the baseline across sampled nearby policy configurations.*
 
-Experiment 2 keeps the ambiguous traces that survive the initial analysis. For each such trace, the system receives the current frontier, selects the question with the highest expected information gain, applies the gold answer from the case metadata, and recomputes the frontier. The emitted outputs include the before/after domain distribution, entropy before and after questioning, accuracy before and after questioning, the selected question text, the probed cue, the resulting information gain, and representative canonical before/after traces. The current corpus makes this process easy to interpret because the selected question often probes evidence of dispatch or destination, which separates package-like behavior from the other workflow families.
+## Experiment 5. Expanded benchmark transfer
 
-Table 4 shows that on Prefix 2 traces a single discriminating question lowers mean entropy from {{JSON:../../../experiments/experiment2/summary.json#summaryRows[prefixDepth=2].meanEntropyBefore}} to {{JSON:../../../experiments/experiment2/summary.json#summaryRows[prefixDepth=2].meanEntropyAfter}} while improving mean accuracy from {{JSON:../../../experiments/experiment2/summary.json#summaryRows[prefixDepth=2].meanAccuracyBefore}} to {{JSON:../../../experiments/experiment2/summary.json#summaryRows[prefixDepth=2].meanAccuracyAfter}}. On Prefix 3 traces, the remaining ambiguous subset still benefits: entropy falls from {{JSON:../../../experiments/experiment2/summary.json#summaryRows[prefixDepth=3].meanEntropyBefore}} to {{JSON:../../../experiments/experiment2/summary.json#summaryRows[prefixDepth=3].meanEntropyAfter}} and accuracy rises from {{JSON:../../../experiments/experiment2/summary.json#summaryRows[prefixDepth=3].meanAccuracyBefore}} to {{JSON:../../../experiments/experiment2/summary.json#summaryRows[prefixDepth=3].meanAccuracyAfter}}.
+Experiment 5 broadens the corpus from the original controlled set to a seven-domain benchmark with controlled, paraphrased, and noisy strata. It compares the frontier against cue-vote lexical classification, multinomial naive Bayes, and single-best-theory ranking. Calibration is also reported through expected calibration error to track how confidence matches empirical accuracy [GUO-2017].
 
-{{JSON_TABLE:../../../experiments/experiment2/summary.json#summaryRows|Prefix=prefixDepth;Cases=caseCount;Entropy before=meanEntropyBefore;Entropy after=meanEntropyAfter;Accuracy before=meanAccuracyBefore;Accuracy after=meanAccuracyAfter;Information gain=meanInformationGain}}
+Table 5 shows the stratum-level summary. Across all three strata, frontier-top accuracy stays at {{JSON:../../../experiments/experiment5/summary.json#summaryByStratum[stratum=controlled].frontierTopAccuracy}} or above, while truth retention remains even higher: {{JSON:../../../experiments/experiment5/summary.json#summaryByStratum[stratum=controlled].frontierRetentionRate}} for controlled wording, {{JSON:../../../experiments/experiment5/summary.json#summaryByStratum[stratum=paraphrased].frontierRetentionRate}} for paraphrased wording, and {{JSON:../../../experiments/experiment5/summary.json#summaryByStratum[stratum=noisy].frontierRetentionRate}} for noisy wording. The gap between frontier-top accuracy and truth retention is precisely the point: the retained frontier continues to preserve the correct family more often than the immediate top-ranked answer reveals.
 
-Figure 5 shows the entropy effect directly, and Figure 6 shows how much of that contraction becomes better top-ranked accuracy. The drop is large at both retained prefix depths because the selected question is designed to cut across the dominant ambiguity. The Prefix 2 result remains intentionally partial rather than perfect. A negative answer to the package-oriented question removes the package family, but it can still leave sample and manuscript explanations insufficiently separated in the current bundle design. That is why the mean Prefix 2 accuracy rises to {{JSON:../../../experiments/experiment2/summary.json#summaryRows[prefixDepth=2].meanAccuracyAfter}} rather than to 1.0.
+{{JSON_TABLE:../../../experiments/experiment5/summary.json#summaryByStratum|Stratum=stratum;Traces=traceCount;Cue vote=cueVoteAccuracy;Naive Bayes=naiveBayesAccuracy;Single theory=singleTheoryAccuracy;Frontier top=frontierTopAccuracy;Truth retained=frontierRetentionRate;Frontier ECE=frontierCalibrationEce}}
 
-![Entropy before and after questioning](assets/figure-5-question-entropy.svg)
-*Figure 5. Mean frontier entropy before and after applying the best discriminating question.*
+Figure 11 compares the main policies across the three strata. The benchmark also shows the expected prefix-depth story: at Prefix 1 the frontier still preserves truth better than it ranks it, while later prefixes let both ranking and retention approach full resolution. This is a stronger empirical basis than the original eighteen-case corpus because the benchmark now includes broader lexical variation, more workflow families, and explicit external baselines.
 
-![Accuracy before and after questioning](assets/figure-6-question-accuracy.svg)
-*Figure 6. Mean top-domain accuracy before and after applying the best discriminating question.*
+![Expanded benchmark accuracy by stratum](assets/figure-11-benchmark-accuracy.svg)
+*Figure 11. Accuracy and frontier-truth retention across controlled, paraphrased, and noisy benchmark strata.*
 
-## Experiment 3. Cue masking, baselines, and recoverability
+## Experiment 6. Open-set novelty and false-closure control
 
-Experiment 3 stresses the same framework under weaker lexical evidence. It reuses the full {{JSON:../../../experiments/experiment3/summary.json#caseCount}}-case corpus, restricts attention to Prefix 2 and Prefix 3, and evaluates every trace in clean form and in a cue-masked form where the most specific domain markers are rewritten into more generic administrative language. The experiment produces {{JSON:../../../experiments/experiment3/summary.json#traceCount}} analyzed traces and compares four policy levels: a lexical-support baseline, a single-best-theory baseline, the immediate frontier top domain, and the full frontier result after one question when a discriminating question is available.
+Experiment 6 asks a narrower question than full theory induction: when the trace is genuinely unseen or hybrid, does the frontier behave like a healthy open-set uncertainty mechanism rather than a forced closed-set commitment [SCHEIRER-2013]? The current novelty layer does not synthesize a brand-new theory family. It measures whether novelty increases uncertainty, frontier width, and question demand without producing the same warning profile on ordinary in-domain traces.
 
-Table 5 shows why this matters. Under masked Prefix 2 traces, the lexical baseline falls to {{JSON:../../../experiments/experiment3/summary.json#summaryRows[conditionId=masked,prefixDepth=2].lexicalAccuracy}} and the single-theory baseline to {{JSON:../../../experiments/experiment3/summary.json#summaryRows[conditionId=masked,prefixDepth=2].singleTheoryAccuracy}}. The immediate frontier top remains equally conservative at {{JSON:../../../experiments/experiment3/summary.json#summaryRows[conditionId=masked,prefixDepth=2].frontierTopAccuracy}}, but the frontier still retains the correct domain somewhere on the active neighborhood for all masked Prefix 2 traces. Because the retained frontier keeps those alternatives alive, one discriminating question lifts the end-to-end pipeline to {{JSON:../../../experiments/experiment3/summary.json#summaryRows[conditionId=masked,prefixDepth=2].resolvedAccuracy}}.
+Table 6 shows the result. In-domain traces are flagged as open-set candidates only {{JSON:../../../experiments/experiment6/summary.json#summaryByGroup[caseGroup=in-domain].openSetCandidateRate}} of the time, while open-set traces are flagged at {{JSON:../../../experiments/experiment6/summary.json#summaryByGroup[caseGroup=open-set].openSetCandidateRate}} and hybrid traces at {{JSON:../../../experiments/experiment6/summary.json#summaryByGroup[caseGroup=hybrid].openSetCandidateRate}}. Mean entropy rises from {{JSON:../../../experiments/experiment6/summary.json#summaryByGroup[caseGroup=in-domain].meanEntropy}} in-domain to {{JSON:../../../experiments/experiment6/summary.json#summaryByGroup[caseGroup=open-set].meanEntropy}} on open-set traces. This is the right direction for a commitment-control mechanism.
 
-{{JSON_TABLE:../../../experiments/experiment3/summary.json#summaryRows|Condition=label;Cases=caseCount;Lexical baseline=lexicalAccuracy;Single theory=singleTheoryAccuracy;Frontier top=frontierTopAccuracy;Frontier + one question=resolvedAccuracy;Truth retained on frontier=frontierRetentionRate}}
+{{JSON_TABLE:../../../experiments/experiment6/summary.json#summaryByGroup|Condition=caseGroup;Traces=traceCount;Open-set flag=openSetCandidateRate;False closure=falseClosureRate;Questions=questionAvailability;Entropy=meanEntropy}}
 
-Figure 7 compares the policy levels directly, while Figure 8 isolates the ambiguous-trace recovery effect. The masked Prefix 3 traces are particularly instructive: the immediate frontier top remains at {{JSON:../../../experiments/experiment3/summary.json#summaryRows[conditionId=masked,prefixDepth=3].frontierTopAccuracy}}, but one question lifts the full pipeline to {{JSON:../../../experiments/experiment3/summary.json#summaryRows[conditionId=masked,prefixDepth=3].resolvedAccuracy}}. On the ambiguous masked subset, question accuracy rises from {{JSON:../../../experiments/experiment3/summary.json#summaryRows[conditionId=masked,prefixDepth=3].questionAccuracyBefore}} to {{JSON:../../../experiments/experiment3/summary.json#summaryRows[conditionId=masked,prefixDepth=3].questionAccuracyAfter}}. This is the strongest current evidence for the frontier discipline: its main value is recoverability under incomplete cues, not just immediate top-label confidence.
+Figure 12 shows the same comparison graphically. The strongest novelty response appears at earlier prefixes, where the framework retains wider frontiers and more question demand. Later prefixes can still collapse incorrectly on some unseen cases, which is why the article should describe this as healthy uncertainty management rather than as proof of new local-theory synthesis.
 
-![Baseline comparison under cue masking](assets/figure-7-baseline-accuracy.svg)
-*Figure 7. Policy comparison on clean and cue-masked traces, including the full frontier result after one discriminating question when available.*
+![Novelty response versus in-domain behavior](assets/figure-12-novelty-response.svg)
+*Figure 12. Open-set warning rate, false-closure risk, and question availability on in-domain, hybrid, and open-set traces.*
 
-![Question recovery on ambiguous traces](assets/figure-8-question-recovery.svg)
-*Figure 8. Accuracy before and after questioning on ambiguous traces, together with the fraction rescued by one discriminating answer.*
+## Experiment 7. Multi-step questioning budgets
 
-Taken together, the three experiments support the current structural thesis of the repository. Richer observation changes the frontier earlier, explicit questioning reduces frontier uncertainty further when ambiguity remains, and frontier retention preserves recoverability when decisive cues are masked. They do not yet prove full theory induction under open-ended semantics or broad competitiveness against external learning systems. They show that the proposed objects and update rules already have measurable value on a controlled but substantially stronger deterministic corpus.
+Experiment 7 extends the single-step questioning result into an explicit budgeted protocol. The benchmark traces are evaluated under budgets of 0, 1, 2, and 3 questions and under three question policies: information gain, a cheaper top-domain heuristic, and a random policy. The study contrasts clean evidence, masked evidence with noisy answers, and masked evidence with adversarial answers.
+
+Table 7 shows the noisy condition, where the comparison is most useful. Under masked noisy evidence, the information-gain policy raises final accuracy from {{JSON:../../../experiments/experiment7/summary.json#summaryRows[conditionId=masked-noisy,questionPolicy=information-gain,budget=0].finalAccuracy}} at budget 0 to {{JSON:../../../experiments/experiment7/summary.json#summaryRows[conditionId=masked-noisy,questionPolicy=information-gain,budget=2].finalAccuracy}} at budget 2, while the random policy reaches only {{JSON:../../../experiments/experiment7/summary.json#summaryRows[conditionId=masked-noisy,questionPolicy=random,budget=2].finalAccuracy}} at the same budget. Clean evidence reaches full recovery quickly, which confirms that the multi-step protocol is not merely adding redundant queries.
+
+{{JSON_TABLE:../../../experiments/experiment7/summary.json#noisyRows|Policy=questionPolicy;Budget=budget;Accuracy=finalAccuracy;Truth retained=truthRetentionRate;Entropy=meanEntropy;Rescued=rescuedFromWrongRate}}
+
+Figure 13 shows accuracy versus budget under the hardest adversarial condition, and Figure 14 shows the corresponding entropy curve. The important negative result is visible as well as the positive one: under adversarial answers, all policies degrade sharply after budget 0. Information gain still drives entropy lower than the random policy, but it does not recover accuracy in the same way it does under clean or noisy answers. This is a real current limitation of the implementation, not a rhetorical footnote.
+
+![Accuracy versus question budget under adversarial evidence](assets/figure-13-accuracy-budget.svg)
+*Figure 13. Accuracy versus question budget under masked adversarial evidence for information-gain, top-domain, and random questioning policies.*
+
+![Entropy versus question budget under adversarial evidence](assets/figure-14-entropy-budget.svg)
+*Figure 14. Entropy versus question budget under masked adversarial evidence. Information-gain questioning still contracts uncertainty more efficiently than the random policy, but adversarial answers remain hard.*
+
+Taken together, the seven experiments support a stronger and more defensible claim than the earlier three-experiment article draft. The current implementation now supports structural validity, local robustness, broader benchmark transfer, healthier uncertainty on novelty cases, and meaningful question-budget effects under clean and noisy evidence. It still does not support full open-ended theory induction, synthesis of new domain families, or robust adversarial multi-step recovery. The optional auditability study defined elsewhere remains future work rather than current evidence, and it should remain described that way.

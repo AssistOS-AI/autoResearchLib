@@ -21,7 +21,7 @@
       "status": "supported",
       "profileId": "rule-families-and-consequences",
       "note": null,
-      "checkedAt": "2026-04-14T15:09:21.913Z",
+      "checkedAt": "2026-04-14T16:18:01.374Z",
       "sourceDigest": "3ea306230b354d525256212831ce3d65e511ba55"
     },
     {
@@ -32,7 +32,7 @@
       "status": "supported",
       "profileId": "rule-families-and-consequences",
       "note": null,
-      "checkedAt": "2026-04-14T15:09:21.913Z",
+      "checkedAt": "2026-04-14T16:18:01.374Z",
       "sourceDigest": "3ea306230b354d525256212831ce3d65e511ba55"
     },
     {
@@ -43,9 +43,20 @@
       "status": "supported",
       "profileId": "rule-families-and-consequences",
       "note": null,
-      "checkedAt": "2026-04-14T15:09:21.913Z",
+      "checkedAt": "2026-04-14T15:48:05.383Z",
+      "sourceDigest": "3ea306230b354d525256212831ce3d65e511ba55"
+    },
+    {
+      "id": "117032b960e841bb46c7b1f130ad326e8b577ac8",
+      "claimText": "That neighborhood perspective is what makes the framework ruliological in practice: it studies nearby rule-bearing possibilities instead of rushing toward one prematurely reified interpretation [WOLFRAM-2026].",
+      "normalizedClaim": "that neighborhood perspective is what makes the framework ruliological in practice it studies nearby rule-bearing possibilities instead of rushing toward one prematurely reified interpretation wolfram-2026",
+      "chapterFile": "ch2-architecture.md",
+      "status": "supported",
+      "profileId": "rule-families-and-consequences",
+      "note": null,
+      "checkedAt": "2026-04-14T16:18:01.374Z",
       "sourceDigest": "3ea306230b354d525256212831ce3d65e511ba55"
     }
   ],
-  "lastValidatedAt": "2026-04-14T15:09:21.913Z"
+  "lastValidatedAt": "2026-04-14T16:18:01.374Z"
 }

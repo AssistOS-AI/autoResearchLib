@@ -133,6 +133,77 @@ function matchesSupportProfile(claimText, supportProfile) {
   );
 }
 
+function locateSentences(sourceText) {
+  const sentences = splitClaimSentences(sourceText);
+  const located = [];
+  let cursor = 0;
+
+  for (const sentence of sentences) {
+    const start = sourceText.indexOf(sentence, cursor);
+    const safeStart = start >= 0 ? start : cursor;
+    const end = safeStart + sentence.length;
+    located.push({
+      text: sentence,
+      start: safeStart,
+      end,
+      normalized: normalizeClaimText(sentence)
+    });
+    cursor = end;
+  }
+
+  return located;
+}
+
+function buildSupportPassages(sourceText) {
+  const sentences = locateSentences(sourceText);
+  const passages = [];
+
+  for (let index = 0; index < sentences.length; index += 1) {
+    const first = sentences[index];
+    passages.push(first);
+
+    if (index + 1 < sentences.length) {
+      const second = sentences[index + 1];
+      passages.push({
+        text: `${first.text} ${second.text}`,
+        start: first.start,
+        end: second.end,
+        normalized: normalizeClaimText(`${first.text} ${second.text}`)
+      });
+    }
+  }
+
+  return passages.sort((left, right) => left.text.length - right.text.length);
+}
+
+function findSupportingSnippet(sourceText, supportProfile) {
+  const passages = buildSupportPassages(sourceText);
+
+  for (const passage of passages) {
+    const matchedKeywords = [];
+    const supported = supportProfile.requiredAnyGroups.every((group) => {
+      const keyword = group.find((entry) => passage.normalized.includes(entry.toLowerCase()));
+
+      if (keyword) {
+        matchedKeywords.push(keyword);
+        return true;
+      }
+
+      return false;
+    });
+
+    if (supported) {
+      return {
+        text: passage.text,
+        span: `${passage.start}-${Math.max(passage.start, passage.end - 1)}`,
+        matchedKeywords
+      };
+    }
+  }
+
+  return null;
+}
+
 async function ensureDir(path) {
   await mkdir(path, { recursive: true });
 }
@@ -157,7 +228,7 @@ async function fileExists(filePath) {
 async function fetchReferenceSource(reference) {
   const response = await fetch(reference.url, {
     headers: {
-      'user-agent': 'autoResearchLib/0.1.0'
+      'user-agent': 'article-build-skill/1.0'
     }
   });
 
@@ -173,7 +244,7 @@ async function fetchReferenceSource(reference) {
   };
 }
 
-async function ensureReferenceCache(baseDir, references, citationKey, force = false) {
+async function ensureReferenceCache(baseDir, references, citationKey, force = false, { allowBootstrapFallback = false } = {}) {
   const reference = references[citationKey];
 
   if (!reference) {
@@ -185,10 +256,11 @@ async function ensureReferenceCache(baseDir, references, citationKey, force = fa
   const sourceHtmlPath = resolve(referenceDir, 'source.html');
   const sourceTextPath = resolve(referenceDir, 'source.txt');
   const existingMetadata = await loadJson(metadataPath, null);
+  const hasCachedSource = (await fileExists(sourceHtmlPath)) && (await fileExists(sourceTextPath));
 
   await ensureDir(referenceDir);
 
-  if (!force && existingMetadata) {
+  if (!force && existingMetadata && hasCachedSource) {
     return {
       citationKey,
       reference,
@@ -209,9 +281,21 @@ async function ensureReferenceCache(baseDir, references, citationKey, force = fa
     html = fetched.html;
     text = fetched.text;
     fetchStatus = 'fetched';
-  } catch {
-    html = `<!-- bootstrap fallback for ${citationKey} -->`;
-    text = reference.bootstrapText;
+  } catch (error) {
+    if (hasCachedSource) {
+      html = await readFile(sourceHtmlPath, 'utf8');
+      text = await readFile(sourceTextPath, 'utf8');
+      fetchStatus = 'cached';
+    } else if (allowBootstrapFallback) {
+      html = `<!-- bootstrap fallback for ${citationKey} -->`;
+      text = reference.bootstrapText;
+      fetchStatus = 'bootstrap';
+    } else {
+      throw new Error(
+        `Could not refresh source cache for ${citationKey} from ${reference.url}: ${error.message}. ` +
+          'A cached source file or an explicit bootstrap override is required.'
+      );
+    }
   }
 
   const sourceDigest = createHash('sha1').update(text).digest('hex');
@@ -221,6 +305,7 @@ async function ensureReferenceCache(baseDir, references, citationKey, force = fa
     title: reference.title,
     fetchedAt: new Date().toISOString(),
     fetchStatus,
+    bootstrapOnly: fetchStatus === 'bootstrap',
     sourceDigest
   };
 
@@ -244,16 +329,21 @@ async function verifyCitationClaims({
   bibliographyDir,
   bibliographyCatalogPath,
   references: preloadedReferences,
-  force = false
+  force = false,
+  allowBootstrapFallback = false
 }) {
   const references = preloadedReferences ?? (await loadReferenceCatalog(bibliographyCatalogPath));
   const allClaims = chapters.flatMap((chapter) => extractCitationClaims(basename(chapter.filePath), chapter.markdown));
   const usedKeys = [...new Set(allClaims.map((claim) => claim.citationKey))];
   const results = [];
+  const referenceSummaries = [];
 
   for (const citationKey of usedKeys) {
-    const cache = await ensureReferenceCache(bibliographyDir, references, citationKey, force);
+    const cache = await ensureReferenceCache(bibliographyDir, references, citationKey, force, {
+      allowBootstrapFallback
+    });
     const metadata = await loadJson(cache.metadataPath, null);
+    const sourceText = await readFile(cache.sourceTextPath, 'utf8');
     const checks = await loadJson(cache.checksPath, {
       citationKey,
       sourceDigest: metadata?.sourceDigest ?? null,
@@ -263,19 +353,32 @@ async function verifyCitationClaims({
     let checksChanged = !checksFileExists;
     const relevantClaims = allClaims.filter((claim) => claim.citationKey === citationKey);
 
+    if (metadata?.fetchStatus === 'bootstrap' && !allowBootstrapFallback) {
+      throw new Error(
+        `Citation ${citationKey} only has bootstrap text in ${cache.referenceDir}. Refresh the cached source or explicitly allow bootstrap fallback before publication builds.`
+      );
+    }
+
     for (const claim of relevantClaims) {
       const id = claimId(citationKey, claim.sentence);
       const existing = checks.checkedClaims.find(
-        (entry) => entry.id === id && entry.sourceDigest === metadata?.sourceDigest && entry.status === 'supported'
+        (entry) =>
+          entry.id === id &&
+          entry.sourceDigest === metadata?.sourceDigest &&
+          entry.status === 'supported' &&
+          entry.supportSnippet &&
+          entry.supportSpan
       );
 
       if (existing && !force) {
         results.push({
           citationKey,
           claimText: claim.sentence,
-          status: 'cached',
+          status: existing.supportStatus ?? 'cached-source-supported',
           profileId: existing.profileId,
-          chapterFile: claim.chapterFile
+          chapterFile: claim.chapterFile,
+          supportSnippet: existing.supportSnippet,
+          supportSpan: existing.supportSpan
         });
         continue;
       }
@@ -290,16 +393,39 @@ async function verifyCitationClaims({
         );
       }
 
+      const supportingSnippet = findSupportingSnippet(sourceText, profile);
+      const previousSupport = checks.checkedClaims.find((entry) => entry.id === id && entry.status === 'supported');
+
+      if (!supportingSnippet) {
+        const degradedMessage =
+          previousSupport && previousSupport.sourceDigest && previousSupport.sourceDigest !== metadata?.sourceDigest
+            ? ` The claim was previously supported against source digest ${previousSupport.sourceDigest} but the refreshed source no longer matches profile ${profile.id}.`
+            : '';
+        throw new Error(
+          `Citation verification failed for ${citationKey} in ${claim.chapterFile}: no supporting passage was found in the cached source for "${claim.sentence}".${degradedMessage}`
+        );
+      }
+
+      const supportStatus = metadata?.fetchStatus === 'bootstrap' ? 'bootstrap-supported' : 'cached-source-supported';
+
       const record = {
         id,
         claimText: claim.sentence,
         normalizedClaim: claim.normalizedClaim,
         chapterFile: claim.chapterFile,
         status: 'supported',
+        supportStatus,
         profileId: profile.id,
-        note: null,
+        note:
+          supportStatus === 'bootstrap-supported'
+            ? 'Verified against bootstrap text; refresh the cached source before final publication.'
+            : null,
         checkedAt: new Date().toISOString(),
-        sourceDigest: metadata?.sourceDigest ?? null
+        sourceDigest: metadata?.sourceDigest ?? null,
+        sourceStatus: metadata?.fetchStatus ?? 'unknown',
+        supportSnippet: supportingSnippet.text,
+        supportSpan: supportingSnippet.span,
+        matchedKeywords: supportingSnippet.matchedKeywords
       };
       const existingIndex = checks.checkedClaims.findIndex((entry) => entry.id === id);
 
@@ -314,9 +440,11 @@ async function verifyCitationClaims({
       results.push({
         citationKey,
         claimText: claim.sentence,
-        status: 'verified',
+        status: supportStatus,
         profileId: record.profileId,
-        chapterFile: claim.chapterFile
+        chapterFile: claim.chapterFile,
+        supportSnippet: record.supportSnippet,
+        supportSpan: record.supportSpan
       });
     }
 
@@ -329,13 +457,22 @@ async function verifyCitationClaims({
       checks.lastValidatedAt = new Date().toISOString();
       await writeFile(cache.checksPath, JSON.stringify(checks, null, 2));
     }
+
+    referenceSummaries.push({
+      citationKey,
+      fetchStatus: metadata?.fetchStatus ?? 'unknown',
+      bootstrapOnly: metadata?.bootstrapOnly ?? false,
+      claimCount: relevantClaims.length
+    });
   }
 
   return {
     bibliographyDir,
     bibliographyCatalogPath,
     references: usedKeys,
-    claims: results
+    claims: results,
+    referenceSummaries,
+    bootstrapReferences: referenceSummaries.filter((entry) => entry.bootstrapOnly).map((entry) => entry.citationKey)
   };
 }
 

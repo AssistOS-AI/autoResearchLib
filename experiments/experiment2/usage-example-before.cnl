@@ -10,13 +10,13 @@ CONTEXT key="prefixDepth" value=2
 
 HYPOTHESIS id="rich-base" focus="all"
 OBSERVATION hypothesis="rich-base" status="explicit" cue="label" label="identifier attached" domain="shared" kind="workflow" specificity="generic" weight=0.14
-PROVENANCE hypothesis="rich-base" cue="label" source="label"
+PROVENANCE hypothesis="rich-base" cue="label" kind="matched-span" source="label" segment="SEG2" span="54-58"
 OBSERVATION hypothesis="rich-base" status="explicit" cue="queued" label="queued or staged" domain="shared" kind="workflow" specificity="generic" weight=0.1
-PROVENANCE hypothesis="rich-base" cue="queued" source="staging area"
+PROVENANCE hypothesis="rich-base" cue="queued" kind="matched-span" source="staging area" segment="SEG1" span="38-49"
 OBSERVATION hypothesis="rich-base" status="explicit" cue="record-update" label="record updated" domain="shared" kind="workflow" specificity="generic" weight=0.12
-PROVENANCE hypothesis="rich-base" cue="record-update" source="record was updated"
+PROVENANCE hypothesis="rich-base" cue="record-update" kind="matched-span" source="record was updated" segment="SEG2" span="81-98"
 OBSERVATION hypothesis="rich-base" status="explicit" cue="registered" label="registration or logging" domain="shared" kind="workflow" specificity="generic" weight=0.14
-PROVENANCE hypothesis="rich-base" cue="registered" source="logged"
+PROVENANCE hypothesis="rich-base" cue="registered" kind="matched-span" source="logged" segment="SEG1" span="13-18"
 HYPOTHESIS_SUPPORT hypothesis="rich-base" domain="manuscript" value=0.15
 HYPOTHESIS_SUPPORT hypothesis="rich-base" domain="package" value=0.15
 HYPOTHESIS_SUPPORT hypothesis="rich-base" domain="sample" value=0.15
@@ -27,13 +27,13 @@ AMBIGUITY hypothesis="rich-base" domain="sample"
 
 HYPOTHESIS id="rich-manuscript" focus="manuscript"
 OBSERVATION hypothesis="rich-manuscript" status="explicit" cue="label" label="identifier attached" domain="shared" kind="workflow" specificity="generic" weight=0.14
-PROVENANCE hypothesis="rich-manuscript" cue="label" source="label"
+PROVENANCE hypothesis="rich-manuscript" cue="label" kind="matched-span" source="label" segment="SEG2" span="54-58"
 OBSERVATION hypothesis="rich-manuscript" status="explicit" cue="queued" label="queued or staged" domain="shared" kind="workflow" specificity="generic" weight=0.1
-PROVENANCE hypothesis="rich-manuscript" cue="queued" source="staging area"
+PROVENANCE hypothesis="rich-manuscript" cue="queued" kind="matched-span" source="staging area" segment="SEG1" span="38-49"
 OBSERVATION hypothesis="rich-manuscript" status="explicit" cue="record-update" label="record updated" domain="shared" kind="workflow" specificity="generic" weight=0.12
-PROVENANCE hypothesis="rich-manuscript" cue="record-update" source="record was updated"
+PROVENANCE hypothesis="rich-manuscript" cue="record-update" kind="matched-span" source="record was updated" segment="SEG2" span="81-98"
 OBSERVATION hypothesis="rich-manuscript" status="explicit" cue="registered" label="registration or logging" domain="shared" kind="workflow" specificity="generic" weight=0.14
-PROVENANCE hypothesis="rich-manuscript" cue="registered" source="logged"
+PROVENANCE hypothesis="rich-manuscript" cue="registered" kind="matched-span" source="logged" segment="SEG1" span="13-18"
 HYPOTHESIS_SUPPORT hypothesis="rich-manuscript" domain="manuscript" value=0.15
 HYPOTHESIS_SUPPORT hypothesis="rich-manuscript" domain="package" value=0.15
 HYPOTHESIS_SUPPORT hypothesis="rich-manuscript" domain="sample" value=0.15
@@ -44,13 +44,13 @@ AMBIGUITY hypothesis="rich-manuscript" domain="sample"
 
 HYPOTHESIS id="rich-package" focus="package"
 OBSERVATION hypothesis="rich-package" status="explicit" cue="label" label="identifier attached" domain="shared" kind="workflow" specificity="generic" weight=0.14
-PROVENANCE hypothesis="rich-package" cue="label" source="label"
+PROVENANCE hypothesis="rich-package" cue="label" kind="matched-span" source="label" segment="SEG2" span="54-58"
 OBSERVATION hypothesis="rich-package" status="explicit" cue="queued" label="queued or staged" domain="shared" kind="workflow" specificity="generic" weight=0.1
-PROVENANCE hypothesis="rich-package" cue="queued" source="staging area"
+PROVENANCE hypothesis="rich-package" cue="queued" kind="matched-span" source="staging area" segment="SEG1" span="38-49"
 OBSERVATION hypothesis="rich-package" status="explicit" cue="record-update" label="record updated" domain="shared" kind="workflow" specificity="generic" weight=0.12
-PROVENANCE hypothesis="rich-package" cue="record-update" source="record was updated"
+PROVENANCE hypothesis="rich-package" cue="record-update" kind="matched-span" source="record was updated" segment="SEG2" span="81-98"
 OBSERVATION hypothesis="rich-package" status="explicit" cue="registered" label="registration or logging" domain="shared" kind="workflow" specificity="generic" weight=0.14
-PROVENANCE hypothesis="rich-package" cue="registered" source="logged"
+PROVENANCE hypothesis="rich-package" cue="registered" kind="matched-span" source="logged" segment="SEG1" span="13-18"
 HYPOTHESIS_SUPPORT hypothesis="rich-package" domain="manuscript" value=0.15
 HYPOTHESIS_SUPPORT hypothesis="rich-package" domain="package" value=0.15
 HYPOTHESIS_SUPPORT hypothesis="rich-package" domain="sample" value=0.15
@@ -61,13 +61,13 @@ AMBIGUITY hypothesis="rich-package" domain="sample"
 
 HYPOTHESIS id="rich-sample" focus="sample"
 OBSERVATION hypothesis="rich-sample" status="explicit" cue="label" label="identifier attached" domain="shared" kind="workflow" specificity="generic" weight=0.14
-PROVENANCE hypothesis="rich-sample" cue="label" source="label"
+PROVENANCE hypothesis="rich-sample" cue="label" kind="matched-span" source="label" segment="SEG2" span="54-58"
 OBSERVATION hypothesis="rich-sample" status="explicit" cue="queued" label="queued or staged" domain="shared" kind="workflow" specificity="generic" weight=0.1
-PROVENANCE hypothesis="rich-sample" cue="queued" source="staging area"
+PROVENANCE hypothesis="rich-sample" cue="queued" kind="matched-span" source="staging area" segment="SEG1" span="38-49"
 OBSERVATION hypothesis="rich-sample" status="explicit" cue="record-update" label="record updated" domain="shared" kind="workflow" specificity="generic" weight=0.12
-PROVENANCE hypothesis="rich-sample" cue="record-update" source="record was updated"
+PROVENANCE hypothesis="rich-sample" cue="record-update" kind="matched-span" source="record was updated" segment="SEG2" span="81-98"
 OBSERVATION hypothesis="rich-sample" status="explicit" cue="registered" label="registration or logging" domain="shared" kind="workflow" specificity="generic" weight=0.14
-PROVENANCE hypothesis="rich-sample" cue="registered" source="logged"
+PROVENANCE hypothesis="rich-sample" cue="registered" kind="matched-span" source="logged" segment="SEG1" span="13-18"
 HYPOTHESIS_SUPPORT hypothesis="rich-sample" domain="manuscript" value=0.15
 HYPOTHESIS_SUPPORT hypothesis="rich-sample" domain="package" value=0.15
 HYPOTHESIS_SUPPORT hypothesis="rich-sample" domain="sample" value=0.15
@@ -444,9 +444,14 @@ FRONTIER_MEMBER rank=6 theory="rich-package:package:coarsened" domain="package" 
 DOMAIN_WEIGHT domain="package" weight=0.673
 DOMAIN_WEIGHT domain="manuscript" weight=0.164
 DOMAIN_WEIGHT domain="sample" weight=0.164
-QUESTION id="package-dispatch" cue="dispatch" prompt="Is there evidence that it was dispatched to a recipient or destination?" expected_gain=0.912 prior_entropy=2.584 expected_entropy=1.672
+QUESTION id="package-dispatch" cue="dispatch" prompt="Is there evidence that it was dispatched to a recipient or destination?" expected_gain=0.912 prior_entropy=1.239 expected_entropy=0.327
 QUESTION_CLASS question="package-dispatch" answer="no"
 QUESTION_CLASS question="package-dispatch" answer="yes"
+QUESTION_ANSWER question="package-dispatch" domain="manuscript" answer="no"
+QUESTION_ANSWER question="package-dispatch" domain="package" answer="yes"
+QUESTION_ANSWER question="package-dispatch" domain="sample" answer="no"
+QUESTION_PARTITION question="package-dispatch" answer="no" domains=["manuscript","sample"] weight=0.327
+QUESTION_PARTITION question="package-dispatch" answer="yes" domains=["package"] weight=0.673
 ALIGNMENT theory="rich-manuscript:manuscript:refined" domain="manuscript" title="Editorial manuscript workflow" summary="An editorial workflow in which a submission enters review, receives revision, and eventually reaches a decision."
 ALIGNMENT theory="rich-package:package:base" domain="package" title="Package handling" summary="A logistics workflow in which a labeled item is routed, dispatched, and delivered to a recipient."
 ALIGNMENT theory="rich-package:package:coarsened" domain="package" title="Package handling" summary="A logistics workflow in which a labeled item is routed, dispatched, and delivered to a recipient."

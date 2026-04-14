@@ -2,6 +2,7 @@ import { observationalLift } from '../core/observation.mjs';
 import { buildNeighborhood, summarizeNeighborhood } from '../core/neighborhood.mjs';
 import { applyQuestionAnswer } from '../core/questioning.mjs';
 import { induceLocalTheories } from '../core/theory.mjs';
+import { createAnalysisPolicy } from '../config/analysisPolicy.mjs';
 import {
   defaultDomains,
   getDomainById,
@@ -9,9 +10,13 @@ import {
   sharedCueLexicon
 } from '../domains/defaultDomains.mjs';
 
-function lexicalizeFrontier(frontier) {
+function lexicalizeFrontier(frontier, domains, policy) {
+  if (policy?.features?.alignment === false) {
+    return [];
+  }
+
   return frontier.map((theory) => {
-    const domain = getDomainById(theory.domainId);
+    const domain = domains.find((entry) => entry.id === theory.domainId) ?? getDomainById(theory.domainId);
 
     return {
       theoryId: theory.id,
@@ -33,39 +38,49 @@ function analyzeText(
     observerId = 'coarse',
     domains = defaultDomains,
     maxHypotheses = 4,
-    frontierLimit = 8
+    frontierLimit = 8,
+    policy: policyOverrides = {},
+    segmentSpans = []
   } = {}
 ) {
   const observer = getObserverProfile(observerId);
+  const policy = createAnalysisPolicy(policyOverrides);
   const lifted = observationalLift(text, {
     observer,
     domains,
     sharedCueLexicon,
-    maxHypotheses
+    maxHypotheses,
+    policy,
+    segmentSpans
   });
-  const baseTheories = induceLocalTheories(lifted.hypotheses, domains);
+  const baseTheories = induceLocalTheories(lifted.hypotheses, domains, policy);
   const neighborhood = buildNeighborhood({
     baseTheories,
     observer,
     domains,
-    frontierLimit
+    frontierLimit,
+    policy
   });
 
   return {
     text,
     observer,
     domains,
+    policy,
     hypotheses: lifted.hypotheses,
     rawCues: lifted.rawCues,
     baseTheories,
     neighborhood,
-    alignments: lexicalizeFrontier(neighborhood.frontier)
+    alignments: lexicalizeFrontier(neighborhood.frontier, domains, policy)
   };
 }
 
-function applyDiscriminatingAnswer(analysis, observedAnswer, frontierLimit = analysis.neighborhood.frontierLimit) {
-  const question = analysis.neighborhood.recommendedQuestion;
-
+function applyQuestionToAnalysis(
+  analysis,
+  question,
+  observedAnswer,
+  frontierLimit = analysis.neighborhood.frontierLimit
+) {
   if (!question) {
     return {
       ...analysis,
@@ -73,19 +88,26 @@ function applyDiscriminatingAnswer(analysis, observedAnswer, frontierLimit = ana
     };
   }
 
-  const updated = applyQuestionAnswer(analysis.neighborhood.theories, question, observedAnswer, frontierLimit);
+  const updated = applyQuestionAnswer(
+    analysis.neighborhood.theories,
+    question,
+    observedAnswer,
+    frontierLimit,
+    analysis.policy
+  );
   const neighborhood = summarizeNeighborhood({
     theories: updated.theories,
     transformations: analysis.neighborhood.transformations,
     observer: analysis.observer,
     domains: analysis.domains,
-    frontierLimit
+    frontierLimit,
+    policy: analysis.policy
   });
 
   return {
     ...analysis,
     neighborhood,
-    alignments: lexicalizeFrontier(neighborhood.frontier),
+    alignments: lexicalizeFrontier(neighborhood.frontier, analysis.domains, analysis.policy),
     questionUpdate: {
       questionId: question.id,
       prompt: question.prompt,
@@ -98,4 +120,13 @@ function applyDiscriminatingAnswer(analysis, observedAnswer, frontierLimit = ana
   };
 }
 
-export { analyzeText, applyDiscriminatingAnswer };
+function applyDiscriminatingAnswer(analysis, observedAnswer, frontierLimit = analysis.neighborhood.frontierLimit) {
+  return applyQuestionToAnalysis(
+    analysis,
+    analysis.neighborhood.recommendedQuestion,
+    observedAnswer,
+    frontierLimit
+  );
+}
+
+export { analyzeText, applyDiscriminatingAnswer, applyQuestionToAnalysis };

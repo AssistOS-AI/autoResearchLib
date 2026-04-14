@@ -50,4 +50,7 @@ test('optional LLM helpers report skipped status when features are disabled', as
 
   assert.equal(result.status, 'skipped');
   assert.equal(result.normalizedText, 'plain text');
+  assert.equal(result.intent, 'normalize-ingestion');
+  assert.equal(result.tier, 'plan');
+  assert.deepEqual(result.tags, ['ingestion', 'normalization', 'pre-lift', 'bounded-llm']);
 });

@@ -1,0 +1,8 @@
+domain_id,support,predicted,precision,recall,f1,mean_truth_rank
+compliance,24,18,1,0.75,0.857,1.545
+incident,24,18,1,0.75,0.857,1.87
+maintenance,24,18,1,0.75,0.857,1
+manuscript,36,41,0.78,0.889,0.831,1.111
+package,36,67,0.507,0.944,0.66,1.056
+procurement,24,18,1,0.75,0.857,1
+sample,36,24,1,0.667,0.8,1.667

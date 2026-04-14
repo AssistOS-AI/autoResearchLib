@@ -64,9 +64,13 @@ The article build is intentionally agent-orchestrated through the reusable `arti
 | `tests/` | Node.js test suite for frontier behavior and experiment summaries |
 | `data/inputs/` | Controlled workflow cases used by the reproducible experiments |
 | `experiments/experiment1/` | Observer comparison outputs, CSV tables, SVG figures, and generated Markdown report |
-| `experiments/experiment2/` | Discriminating-question outputs, CSV tables, SVG figures, and generated Markdown report |
-| `experiments/experiment3/` | Cue-masking baseline comparison, recovery outputs, SVG figures, and generated Markdown report |
-| `docs/specs/` | Vision, architecture, data model, LLM strategy, library usage, best-practice, and article synchronization specs |
+| `experiments/experiment2/` | Single-step discriminating-question outputs, CSV tables, SVG figures, and generated Markdown report |
+| `experiments/experiment3/` | Cue-masking baseline comparison and recovery outputs |
+| `experiments/experiment4/` | Sensitivity-analysis and structural-ablation outputs |
+| `experiments/experiment5/` | Expanded seven-domain benchmark outputs and external baseline comparisons |
+| `experiments/experiment6/` | Open-set novelty and false-closure outputs |
+| `experiments/experiment7/` | Multi-step questioning-budget and recoverability outputs |
+| `docs/specs/` | Vision, architecture, data model, experimental protocol, article synchronization, LLM strategy, usage, and validation specs |
 | `skills/article-build/` | Reusable article build skill implementation owned by the agent workflow |
 | `docs/article/index.html` | Generated article built from chapter markdown, experiment outputs, and external SVGs |
 | `docs/article/assets/` | Article-facing external SVG assets referenced by the generated HTML |
@@ -79,9 +83,14 @@ The article build is intentionally agent-orchestrated through the reusable `arti
 
 ## Current experimental signal
 
-The current corpus contains 18 controlled workflow cases across package, sample, and manuscript domains. On Prefix 2, the rich observer improves mean top-domain accuracy from `0.333` to `0.833` and reduces mean frontier entropy from `1.245` to `0.344`. On ambiguous Prefix 2 traces, a single discriminating question lowers mean entropy from `1.244` to `0.652` while improving mean accuracy from `0.348` to `0.652`. Under cue masking at Prefix 2, both the lexical baseline and the single-theory baseline fall to `0.333`, while one frontier-guided question lifts end-to-end accuracy to `0.667`.
+The repository now carries a seven-experiment validation ladder. The original three experiments still establish the structural core: richer observers contract the frontier earlier, one discriminating question lowers entropy on ambiguous traces, and retained frontiers preserve recoverability under cue masking. The newer experiments extend that claim in four directions.
 
-These numbers validate selected structural claims of the architecture on a controlled deterministic corpus. The current implementation establishes a reproducible baseline for a broader theoretical program rather than claiming exhaustive coverage of the full framework.
+1. Sensitivity and ablation show that the default deterministic policy is stable across a nearby region of parameter settings, while coarse observation and removal of domain rescue visibly reduce frontier quality.
+2. The expanded benchmark evaluates 102 benchmark cases over seven workflow families and three lexical strata. Frontier truth retention stays above frontier-top accuracy across all three strata.
+3. The novelty study shows that open-set warnings and uncertainty rise on unseen or hybrid traces much more often than on ordinary in-domain traces.
+4. The multi-step questioning study shows useful recovery under clean and noisy evidence, while adversarial answers remain a current weakness and are reported as such.
+
+These results support a stronger but still bounded claim: the current implementation is a reproducible theory-frontier engine with meaningful robustness, transfer, and uncertainty-management behavior. It is not yet a claim of full open-ended theory induction.
 
 ## Configuration and LLM support
 
@@ -95,7 +104,6 @@ Relevant environment variables include:
 | `AUTORESEARCHLIB_LLM_INGESTION_ENABLED` | Allow optional ingestion normalization |
 | `AUTORESEARCHLIB_LLM_CONCEPTUALIZATION_ENABLED` | Allow optional conceptual explanation |
 | `AUTORESEARCHLIB_LLM_*_TIER` / `AUTORESEARCHLIB_LLM_*_MODEL` | Select tier and explicit model for each task family |
-| `AUTORESEARCHLIB_ARTICLE_ROOT` | Override the default article root used by the article-build skill |
 | `LLM_MODELS_CONFIG_PATH` | Override AchillesAgentLib model catalog path |
 
-For article generation, the reusable workflow is described in `skills/article-build/SKILL.md`. The build is incremental: if the article-root plans, their declared dependencies, the bibliography source file, the bibliography verification caches, and the SVG inputs are unchanged, a second run leaves the generated chapter markdown files and HTML untouched. The intended way to trigger that workflow is through the agent, which can inspect the rebuilt article, revise plans when validation finds substantive gaps, and rerun the deterministic build until the article is defensible.
+For article generation, the reusable workflow is described in `skills/article-build/SKILL.md`. The build is incremental: if the article-root plans, their declared dependencies, the bibliography source file, the bibliography verification caches, and the SVG inputs are unchanged, a second run leaves the generated chapter markdown files and HTML untouched. The skill now works from explicit `articleRoot` and `baseDir` inputs rather than from repository runtime configuration. The intended way to trigger that workflow is through the agent, which can inspect the rebuilt article, revise plans when validation finds substantive gaps, and rerun the deterministic build until the article is defensible.

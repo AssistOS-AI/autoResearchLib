@@ -1,8 +1,96 @@
 import { clamp } from './frontier.mjs';
-import { normalizeText, phraseMatches, tokenize, uniqueValues } from './text.mjs';
+import { normalizeText, phraseMatches, tokenize } from './text.mjs';
 
-function addCue(targetMap, cue, matchPhrase, domainId, evidenceType = 'explicit') {
+function escapePattern(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function parseSpan(span) {
+  if (typeof span !== 'string') {
+    return { start: 0, end: 0 };
+  }
+
+  const [rawStart, rawEnd] = span.split('-').map((value) => Number(value));
+  return {
+    start: Number.isFinite(rawStart) ? rawStart : 0,
+    end: Number.isFinite(rawEnd) ? rawEnd : rawStart
+  };
+}
+
+function normalizeSources(sourceRecords) {
+  if (Array.isArray(sourceRecords)) {
+    return sourceRecords;
+  }
+
+  if (sourceRecords === null || sourceRecords === undefined) {
+    return [];
+  }
+
+  if (typeof sourceRecords === 'string') {
+    return [
+      {
+        kind: 'matched-phrase',
+        text: sourceRecords
+      }
+    ];
+  }
+
+  return [sourceRecords];
+}
+
+function mergeSources(existingSources, additionalSources) {
+  const seen = new Set(existingSources.map((source) => JSON.stringify(source)));
+
+  for (const source of additionalSources) {
+    const key = JSON.stringify(source);
+
+    if (seen.has(key)) {
+      continue;
+    }
+
+    existingSources.push(source);
+    seen.add(key);
+  }
+
+  return existingSources;
+}
+
+function buildExplicitSources(segmentSpans = [], phrase) {
+  const pattern = new RegExp(`\\b${escapePattern(String(phrase).toLowerCase())}\\b`, 'g');
+  const matches = [];
+
+  for (const segment of segmentSpans) {
+    const lowered = segment.text.toLowerCase();
+    let match;
+
+    while ((match = pattern.exec(lowered)) !== null) {
+      const segmentSpan = parseSpan(segment.span);
+      const start = segmentSpan.start + match.index;
+      const end = start + phrase.length - 1;
+      matches.push({
+        kind: 'matched-span',
+        segmentId: segment.id,
+        span: `${start}-${end}`,
+        text: phrase
+      });
+    }
+
+    pattern.lastIndex = 0;
+  }
+
+  return matches.length > 0
+    ? matches
+    : [
+        {
+          kind: 'matched-phrase',
+          text: phrase
+        }
+      ];
+}
+
+function addCue(targetMap, cue, sourceRecords, domainId, evidenceType = 'explicit') {
   const key = `${domainId ?? 'shared'}:${cue.id}:${evidenceType}`;
+  const normalizedSources = normalizeSources(sourceRecords);
 
   if (!targetMap.has(key)) {
     targetMap.set(key, {
@@ -11,26 +99,26 @@ function addCue(targetMap, cue, matchPhrase, domainId, evidenceType = 'explicit'
       kind: cue.kind,
       specificity: cue.specificity,
       weight: cue.weight,
-      visibleTo: cue.visibleTo,
-      domainId,
-      evidenceType,
-      sources: [matchPhrase]
-    });
-    return;
-  }
+       visibleTo: cue.visibleTo,
+       domainId,
+       evidenceType,
+       sources: normalizedSources
+     });
+     return;
+   }
 
   const existing = targetMap.get(key);
-  existing.sources = uniqueValues([...existing.sources, matchPhrase]);
+  existing.sources = mergeSources(existing.sources, normalizedSources);
 }
 
-function extractExplicitCues(normalizedText, observer, domains, sharedCueLexicon) {
+function extractExplicitCues(normalizedText, observer, domains, sharedCueLexicon, segmentSpans = []) {
   const cues = new Map();
 
   for (const cue of sharedCueLexicon) {
     const matchedPhrase = cue.phrases.find((phrase) => phraseMatches(normalizedText, phrase));
 
     if (matchedPhrase) {
-      addCue(cues, cue, matchedPhrase, null, 'explicit');
+      addCue(cues, cue, buildExplicitSources(segmentSpans, matchedPhrase), null, 'explicit');
     }
   }
 
@@ -43,7 +131,7 @@ function extractExplicitCues(normalizedText, observer, domains, sharedCueLexicon
       const matchedPhrase = cue.phrases.find((phrase) => phraseMatches(normalizedText, phrase));
 
       if (matchedPhrase) {
-        addCue(cues, cue, matchedPhrase, domain.id, 'explicit');
+        addCue(cues, cue, buildExplicitSources(segmentSpans, matchedPhrase), domain.id, 'explicit');
       }
     }
   }
@@ -51,7 +139,11 @@ function extractExplicitCues(normalizedText, observer, domains, sharedCueLexicon
   return [...cues.values()];
 }
 
-function inferCues(explicitCues, domains) {
+function inferCues(explicitCues, domains, enabled = true) {
+  if (!enabled) {
+    return [];
+  }
+
   const cues = new Map();
   const cueIds = new Set(explicitCues.map((cue) => cue.id));
 
@@ -66,17 +158,29 @@ function inferCues(explicitCues, domains) {
         continue;
       }
 
-      addCue(cues, rule.inferredCue, rule.id, domain.id, 'inferred');
+      addCue(
+        cues,
+        rule.inferredCue,
+        {
+          kind: 'inference-rule',
+          ruleId: rule.id
+        },
+        domain.id,
+        'inferred'
+      );
     }
   }
 
   return [...cues.values()];
 }
 
-function supportByDomain(allCues, domains) {
+function supportByDomain(allCues, domains, signalWeights) {
   const genericSignal = allCues
     .filter((cue) => cue.domainId === null)
     .reduce((sum, cue) => sum + cue.weight, 0);
+  const genericWeight = signalWeights?.generic ?? 0.3;
+  const explicitWeight = signalWeights?.explicit ?? 1;
+  const inferredWeight = signalWeights?.inferred ?? 0.7;
 
   const result = {};
 
@@ -88,7 +192,7 @@ function supportByDomain(allCues, domains) {
       .filter((cue) => cue.domainId === domain.id && cue.evidenceType === 'inferred')
       .reduce((sum, cue) => sum + cue.weight, 0);
 
-    result[domain.id] = genericSignal * 0.3 + explicitSignal + inferredSignal * 0.7;
+    result[domain.id] = genericSignal * genericWeight + explicitSignal * explicitWeight + inferredSignal * inferredWeight;
   }
 
   return result;
@@ -107,10 +211,10 @@ function buildConfidenceProfile(allCues, domainSupport) {
   };
 }
 
-function pickFocusedDomains(domainSupport, maxHypotheses) {
+function pickFocusedDomains(domainSupport, maxHypotheses, focusRatio = 0.6) {
   const ordered = Object.entries(domainSupport).sort((left, right) => right[1] - left[1]);
   const bestSupport = ordered[0]?.[1] ?? 0;
-  const threshold = bestSupport > 0 ? bestSupport * 0.6 : 0;
+  const threshold = bestSupport > 0 ? bestSupport * focusRatio : 0;
   const focused = ordered
     .filter(([, support]) => support >= threshold)
     .slice(0, Math.max(1, maxHypotheses - 1))
@@ -132,7 +236,8 @@ function buildHypothesis({
   explicitCues,
   inferredCues,
   domainSupport,
-  focusDomain
+  focusDomain,
+  ambiguityRatio = 0.75
 }) {
   const selectedCues =
     focusDomain === null
@@ -142,7 +247,7 @@ function buildHypothesis({
     .sort((left, right) => right[1] - left[1])
     .filter(([, support], index, entries) => {
       const best = entries[0]?.[1] ?? 0;
-      return best === 0 ? index < 3 : support >= best * 0.75;
+      return best === 0 ? index < 3 : support >= best * ambiguityRatio;
     })
     .map(([domainId]) => domainId);
 
@@ -167,14 +272,16 @@ function observationalLift(
     observer,
     domains,
     sharedCueLexicon,
-    maxHypotheses = 4
+    maxHypotheses = 4,
+    policy,
+    segmentSpans = []
   }
 ) {
   const normalizedText = normalizeText(text);
   const tokens = tokenize(text);
-  const explicitCues = extractExplicitCues(normalizedText, observer, domains, sharedCueLexicon);
-  const inferredCues = inferCues(explicitCues, domains);
-  const domainSupport = supportByDomain([...explicitCues, ...inferredCues], domains);
+  const explicitCues = extractExplicitCues(normalizedText, observer, domains, sharedCueLexicon, segmentSpans);
+  const inferredCues = inferCues(explicitCues, domains, policy?.features?.inferredCues !== false);
+  const domainSupport = supportByDomain([...explicitCues, ...inferredCues], domains, policy?.supportWeights);
   const hypotheses = [
     buildHypothesis({
       id: `${observer.id}-base`,
@@ -185,11 +292,12 @@ function observationalLift(
       explicitCues,
       inferredCues,
       domainSupport,
-      focusDomain: null
+      focusDomain: null,
+      ambiguityRatio: policy?.hypothesisSelection?.ambiguityRatio
     })
   ];
 
-  for (const domainId of pickFocusedDomains(domainSupport, maxHypotheses)) {
+  for (const domainId of pickFocusedDomains(domainSupport, maxHypotheses, policy?.hypothesisSelection?.focusRatio)) {
     hypotheses.push(
       buildHypothesis({
         id: `${observer.id}-${domainId}`,
@@ -200,7 +308,8 @@ function observationalLift(
         explicitCues,
         inferredCues,
         domainSupport,
-        focusDomain: domainId
+        focusDomain: domainId,
+        ambiguityRatio: policy?.hypothesisSelection?.ambiguityRatio
       })
     );
   }

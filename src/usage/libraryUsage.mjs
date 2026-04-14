@@ -1,4 +1,4 @@
-import { analyzeText, applyDiscriminatingAnswer } from '../pipeline/analyze.mjs';
+import { analyzeText, applyDiscriminatingAnswer, applyQuestionToAnalysis } from '../pipeline/analyze.mjs';
 import { roundNumber } from '../reporting/tabular.mjs';
 
 const SCORE_DIMENSIONS = [
@@ -150,6 +150,10 @@ function sortStrings(values) {
   return [...values].sort((left, right) => left.localeCompare(right));
 }
 
+function sortSources(sources) {
+  return [...sources].sort((left, right) => JSON.stringify(left).localeCompare(JSON.stringify(right)));
+}
+
 function sortCues(cues) {
   return [...cues].sort((left, right) => {
     const domainDelta = (left.domainId ?? 'shared').localeCompare(right.domainId ?? 'shared');
@@ -275,14 +279,18 @@ function serializeAnalysisToCNL({ analysis, inputRecord, runRecord, previousAnal
         })
       );
 
-      for (const source of sortStrings(cue.sources ?? [])) {
-        lines.push(
-          cnlLine('PROVENANCE', {
-            hypothesis: hypothesis.id,
-            cue: cue.id,
-            source
-          })
-        );
+      for (const source of sortSources(cue.sources ?? [])) {
+        const provenanceFields =
+          typeof source === 'string'
+            ? { source }
+            : {
+                kind: source.kind,
+                source: source.text ?? source.ruleId ?? source.segmentId ?? source.kind,
+                segment: source.segmentId,
+                span: source.span,
+                rule: source.ruleId
+              };
+        lines.push(cnlLine('PROVENANCE', { hypothesis: hypothesis.id, cue: cue.id, ...provenanceFields }));
       }
     }
 
@@ -441,6 +449,25 @@ function serializeAnalysisToCNL({ analysis, inputRecord, runRecord, previousAnal
     for (const answerClass of sortStrings(question.answerClasses ?? [])) {
       lines.push(cnlLine('QUESTION_CLASS', { question: question.id, answer: answerClass }));
     }
+
+    for (const [domainId, answer] of Object.entries(question.predictedAnswersByDomain ?? {}).sort(([left], [right]) =>
+      left.localeCompare(right)
+    )) {
+      lines.push(cnlLine('QUESTION_ANSWER', { question: question.id, domain: domainId, answer }));
+    }
+
+    for (const partition of [...(question.answerPartitions ?? [])].sort((left, right) =>
+      left.answer.localeCompare(right.answer)
+    )) {
+      lines.push(
+        cnlLine('QUESTION_PARTITION', {
+          question: question.id,
+          answer: partition.answer,
+          domains: partition.domains ?? [],
+          weight: partition.weight
+        })
+      );
+    }
   }
 
   for (const alignment of [...(analysis.alignments ?? [])].sort((left, right) => left.theoryId.localeCompare(right.theoryId))) {
@@ -503,7 +530,9 @@ function analyzeEvidence(input, options = {}) {
     observerId: runRecord.observerId,
     domains: options.domains,
     maxHypotheses: runRecord.maxHypotheses,
-    frontierLimit: runRecord.frontierLimit
+    frontierLimit: runRecord.frontierLimit,
+    policy: options.policy,
+    segmentSpans: inputRecord.segmentSpans
   });
   const serialized = serializeAnalysisToCNL({
     analysis,
@@ -521,14 +550,21 @@ function analyzeEvidence(input, options = {}) {
 }
 
 function applyEvidenceUpdate(bundle, observedAnswer, options = {}) {
-  const updatedAnalysis = applyDiscriminatingAnswer(
-    bundle.analysis,
-    observedAnswer,
-    options.frontierLimit ?? bundle.run.frontierLimit
-  );
+  const frontierLimit = options.frontierLimit ?? bundle.run.frontierLimit;
+  const selectedQuestion = options.questionId
+    ? bundle.analysis.neighborhood.questionCandidates?.find((question) => question.id === options.questionId) ?? null
+    : bundle.analysis.neighborhood.recommendedQuestion;
+
+  if (options.questionId && !selectedQuestion) {
+    throw new Error(`Question "${options.questionId}" is not available on the current frontier.`);
+  }
+
+  const updatedAnalysis = options.questionId
+    ? applyQuestionToAnalysis(bundle.analysis, selectedQuestion, observedAnswer, frontierLimit)
+    : applyDiscriminatingAnswer(bundle.analysis, observedAnswer, frontierLimit);
   const updatedRunRecord = {
     ...bundle.run,
-    frontierLimit: options.frontierLimit ?? bundle.run.frontierLimit
+    frontierLimit
   };
   const serialized = serializeAnalysisToCNL({
     analysis: updatedAnalysis,

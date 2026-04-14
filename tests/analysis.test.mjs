@@ -63,6 +63,9 @@ test('analyzeEvidence returns a canonical CNL bundle over the symbolic analysis'
   assert.equal(bundle.run.id, 'sample_generic_p2_rich');
   assert.ok(bundle.canonicalLines.length > 0);
   assert.match(bundle.canonicalCnl, /^RUN id="sample_generic_p2_rich"$/m);
+  assert.match(bundle.canonicalCnl, /^PROVENANCE .*segment="SEG1".*span="\d+-\d+"/m);
+  assert.match(bundle.canonicalCnl, /^QUESTION_ANSWER /m);
+  assert.match(bundle.canonicalCnl, /^QUESTION_PARTITION /m);
 
   for (const family of [
     'RUN',
@@ -79,6 +82,23 @@ test('analyzeEvidence returns a canonical CNL bundle over the symbolic analysis'
   ]) {
     assert.ok(bundle.canonicalFamilies.includes(family));
   }
+});
+
+test('alignment feature flag removes alignment utility from ranking weights', () => {
+  const analysis = analyzeText(
+    'The item was registered and placed in the queue. A label was attached and the record was updated.',
+    {
+      observerId: 'coarse',
+      policy: {
+        features: {
+          alignment: false
+        }
+      }
+    }
+  );
+
+  assert.equal(analysis.policy.scoreWeights.alignmentUtility, 0);
+  assert.equal(analysis.alignments.length, 0);
 });
 
 test('applyEvidenceUpdate emits canonical update families after an answered question', () => {

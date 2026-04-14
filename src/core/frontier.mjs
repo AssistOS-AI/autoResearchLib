@@ -1,3 +1,5 @@
+import { DEFAULT_SCORE_WEIGHTS } from '../config/analysisPolicy.mjs';
+
 const SCORE_DIMENSIONS = [
   'evidenceCoverage',
   'predictiveAdequacy',
@@ -7,32 +9,23 @@ const SCORE_DIMENSIONS = [
   'alignmentUtility'
 ];
 
-const SCORE_WEIGHTS = {
-  evidenceCoverage: 0.22,
-  predictiveAdequacy: 0.28,
-  compressionUtility: 0.1,
-  compositionalSharpness: 0.16,
-  stability: 0.14,
-  alignmentUtility: 0.1
-};
-
 function clamp(value, min = 0, max = 1) {
   return Math.max(min, Math.min(max, value));
 }
 
-function computeScoreTotal(scoreProfile) {
+function computeScoreTotal(scoreProfile, scoreWeights = DEFAULT_SCORE_WEIGHTS) {
   const total = SCORE_DIMENSIONS.reduce(
-    (sum, dimension) => sum + (scoreProfile[dimension] ?? 0) * SCORE_WEIGHTS[dimension],
+    (sum, dimension) => sum + (scoreProfile[dimension] ?? 0) * (scoreWeights[dimension] ?? 0),
     0
   );
 
   return clamp(total);
 }
 
-function withComputedTotal(scoreProfile) {
+function withComputedTotal(scoreProfile, scoreWeights = DEFAULT_SCORE_WEIGHTS) {
   return {
     ...scoreProfile,
-    total: computeScoreTotal(scoreProfile)
+    total: computeScoreTotal(scoreProfile, scoreWeights)
   };
 }
 

@@ -15,11 +15,35 @@
       --accent: #1d4ed8;
     }
     * { box-sizing: border-box; }
+    html {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
     body {
       margin: 0;
       background: #eef2ff;
       color: var(--text);
       font: 16px/1.7 Georgia, "Times New Roman", serif;
+    }
+    .page-tools {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: flex-end;
+      padding: 14px 18px 0;
+    }
+    .page-tools__button {
+      border: 1px solid var(--accent);
+      background: #eff6ff;
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 10px 16px;
+      font: 600 0.95rem/1.2 Arial, Helvetica, sans-serif;
+      cursor: pointer;
+    }
+    .page-tools__button:hover {
+      background: #dbeafe;
     }
     main {
       max-width: 1024px;
@@ -107,163 +131,246 @@
       font-size: 0.95rem;
     }
     .references li { margin-bottom: 12px; }
+    @page {
+      size: A4;
+      margin: 14mm 14mm 16mm;
+    }
+    @media print {
+      body {
+        background: #ffffff;
+      }
+      .page-tools {
+        display: none !important;
+      }
+      main {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      figure {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      table, pre {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+    }
   </style>
   </head>
   <body>
+    <div class="page-tools">
+      <button type="button" class="page-tools__button" data-article-action="print">Print / Save PDF</button>
+    </div>
     <main>
       <header>
         <h1>A Meta-Rational Neuro-Symbolic Architecture for Ruliologic Exploration</h1>
-        <p class="lead">This article studies three concrete validation modes for a meta-rational neuro-symbolic architecture. The first asks whether richer observers narrow the plausible frontier earlier while preserving structured alternatives that still deserve retention. The second asks whether discriminating questions reduce uncertainty and improve the ranking of local theories once ambiguous prefixes have already been lifted into explicit observations. The third asks whether the retained frontier remains useful when the strongest domain cues are masked and early collapse policies become fragile. The resulting evidence supports a practical conclusion: a theory-guided pipeline can preserve plural structure during early induction, recover from masked or delayed cues through explicit questioning, and remain auditable throughout the update loop. Ruliology provides the orientation toward rule spaces, applied category theory provides disciplined composition and translation, and neuro-symbolic AI provides typed and compositional conceptual carriers for the retained frontier.</p>
+        <p class="lead">The article studies how a theory-first neuro-symbolic architecture can move from ambiguous reports to a bounded frontier of local theories without collapsing uncertainty too early. The paper starts from a concrete workflow example in which short administrative text does not yet determine a unique local organization, then develops a four-stage pipeline that separates observational lifting, local theory induction, local rulial exploration, and late conceptual alignment. The current validation ladder contains seven experiments: three structural studies on the original controlled corpus, a sensitivity-and-ablation study, an expanded seven-domain benchmark with lexical variation and external baselines, an open-set novelty study, and a multi-step questioning study. The resulting evidence supports a defensible but bounded claim: retained frontiers improve transfer, uncertainty management, and recoverability on controlled and expanded workflow evidence, while novelty synthesis and adversarial multi-step recovery remain open problems rather than hidden assumptions.</p>
       </header>
       <nav class="toc">
         <strong>Contents</strong>
-        <ol><li><a href="#chapter-1">Problem and research objective</a></li><li><a href="#chapter-2">Neuro-symbolic pipeline</a></li><li><a href="#chapter-3">Formal model and frontier management</a></li><li><a href="#chapter-4">Experimental validation</a></li><li><a href="#chapter-5">Interpretation, scope, and conclusion</a></li></ol>
+        <ol><li><a href="#chapter-1">Problem, example, and contributions</a></li><li><a href="#chapter-2">Neuro-symbolic pipeline and epistemic labor</a></li><li><a href="#chapter-3">Formal objects, budgets, and update rules</a></li><li><a href="#chapter-4">Validation ladder and empirical results</a></li><li><a href="#chapter-5">Interpretation, limits, and next studies</a></li></ol>
       </nav>
       <section id="chapter-1">
-<h2>1. Problem and research objective</h2>
-<h3>Three ingredients</h3>
+<h2>1. Problem, example, and contributions</h2>
+<p>Consider the short workflow note: &quot;The item was logged, labeled, and the record was updated.&quot; That report already suggests structure, but it does not yet determine whether the local organization is package handling, sample handling, manuscript processing, procurement, or another workflow family. A useful system should therefore not jump directly from text to final theory. It should preserve a structured observation, induce several compatible local theories, and retain them long enough for later evidence to justify stronger commitment.</p>
 <p>Ruliology studies what abstract rules do and how spaces of possible rules are organized <a class="citation" href="#ref-wolfram-2026">[WOLFRAM-2026]</a>.</p>
 <p>Applied category theory studies disciplined composition and structure-preserving translation across domains <a class="citation" href="#ref-fong-spivak-2019">[FONG-SPIVAK-2019]</a>.</p>
-<p>Recent neuro-symbolic work argues for concept-centric systems in which objects, relations, and actions remain typed and compositional even when learned components are involved <a class="citation" href="#ref-mao-2025">[MAO-2025]</a>.</p>
-<h3>The methodological gap</h3>
-<p>These three directions become genuinely compatible only if one basic distinction is preserved. When the input is natural-language text, the system does not observe a phenomenon directly. It observes a description of an observation, and in some cases it observes a description of a theory about that phenomenon. A direct passage from text to final theory is therefore methodologically unsound because it conflates what was said, what may have been observed, and what is being inferred.</p>
-<h3>Research objective</h3>
-<p>The objective of the proposed architecture is not to infer one privileged theory from text. The objective is to construct, under explicit uncertainty, a bounded local region of theory space around the available evidence. The system should first lift text into structured observational hypotheses. It should then induce several candidate local theories compatible with those hypotheses. It should finally organize those theories into a local neighborhood with explicit relations of refinement, coarsening, refactorization, and observer-relative equivalence.</p>
-<p>The result is not a single ontology that pretends to settle the matter too early. The result is a managed family of plausible local theories together with robust consequences and theory-sensitive consequences. That is the sense in which the framework is ruliological in practice: it studies nearby rule-bearing possibilities instead of collapsing them immediately into one final descriptive winner.</p>
-<h3>Meta-rational stance</h3>
-<p>This architecture is meta-rational in a precise and operational sense. Early abstractions are not treated as final merely because they are available. Several candidates remain active for as long as the evidence, the task, or the cost model does not justify stronger commitment. Meta-rationality here is therefore not vagueness. It is disciplined non-reification backed by explicit retention rules, explicit score profiles, and explicit neighborhood structure.</p>
-<h3>Reference implementation</h3>
-<p>The rest of the article develops this thesis in concrete form. It explains the four-stage neuro-symbolic pipeline, the formal objects and update rules that make the frontier auditable, and the controlled experiments that test the current structural claims. <code>autoResearchLib</code> appears in that discussion as the reference implementation and as the location of the reproducible experiments, not as the paper's main subject.</p>
+<p>Recent neuro-symbolic work argues that learned systems are most useful when they still operate over typed and compositional conceptual carriers <a class="citation" href="#ref-mao-2025">[MAO-2025]</a>.</p>
+<p>These three ingredients become jointly useful only if one methodological distinction is preserved. A natural-language report is not yet the phenomenon itself, and it is not yet a theory of that phenomenon. A direct passage from text to final theory therefore conflates what was stated, what may have been observed, and what is being inferred. The central problem of the paper is how to move between those levels without erasing structure too early.</p>
+<p>The proposed objective is not final-label prediction. The objective is construction of a bounded local region of theory space around the available evidence. The system should first lift text into structured observational hypotheses, then induce several candidate local theories, then organize those theories into a neighborhood with explicit relations of refinement, coarsening, refactorization, and observer-relative equivalence.</p>
+<p>This is the operational meaning of meta-rationality in the paper. Meta-rationality is disciplined non-reification. The earliest available abstraction is not treated as final merely because it is available. Several candidates remain active for as long as the evidence, the task, or the budget does not justify stronger commitment. The retained frontier is therefore the operational form of epistemic restraint rather than a vague appeal to pluralism.</p>
+<p>The paper makes three distinct contributions. First, it proposes a conceptual architecture that separates report, observation, local theory, neighborhood geometry, and lexicalized explanation. Second, it gives these stages explicit formal objects and update rules. Third, it validates those objects through a seven-experiment ladder that covers structural observer effects, questioning, cue-masking recovery, sensitivity and ablation, broader benchmark transfer, novelty handling, and multi-step questioning.</p>
+<p><code>autoResearchLib</code> is the reference implementation of this proposal, not the proposal itself. The current implementation now supports stronger claims than the earlier three-experiment prototype, but those claims remain bounded. The experiments support frontier contraction under richer observation, question-driven recovery on ambiguous traces, transfer over a broader seven-domain benchmark, and healthier uncertainty on novelty cases. They do not yet support full open-ended theory induction, synthesis of genuinely new domain families, or strong adversarial multi-step recovery. The rest of the article develops that stronger but still measured claim in detail.</p>
 </section>
 <section id="chapter-2">
-<h2>2. Neuro-symbolic pipeline</h2>
-<p>The architecture is organized around staged commitment. Structured evidence is not forced immediately into one final ontology. Instead, the system passes through four stages that progressively change what kind of object is being manipulated and what kind of commitment is justified at that point.</p>
-<p>Figure 1 summarizes this pipeline. The labels inside the boxes are intentionally brief. Their job is to identify the stage, while the surrounding prose explains the epistemic work performed inside each one.</p>
-<figure><img src="assets/figure-1-pipeline.svg" alt="Pipeline overview" /><figcaption>Figure 1. The four-stage pipeline from report to aligned local theory neighborhood. The figure uses short labels and internal glyphs; the text explains the theoretical role of each stage.</figcaption></figure>
+<h2>2. Neuro-symbolic pipeline and epistemic labor</h2>
+<p>The pipeline exists to prevent premature collapse. The ambiguous workflow prefix from Chapter 1 should not move directly from text into a final ontology. Instead, it passes through four stages that change both the internal object being manipulated and the kind of epistemic commitment that is justified at that moment.</p>
+<p>Figure 1 summarizes the pipeline. The stage labels inside the figure remain intentionally short. Their purpose is orientation. The surrounding prose explains what each stage actually contributes.</p>
+<figure><img src="assets/figure-1-pipeline.svg" alt="Pipeline overview" /><figcaption>Figure 1. The four-stage pipeline from report to aligned local theory neighborhood. The figure keeps labels short so the text can explain the epistemic role of each stage in full.</figcaption></figure>
 <h3>Stage 1. Observational lifting</h3>
-<p>Observational lifting converts a report into several candidate observational hypotheses. This stage is naturally neuro-symbolic because natural language contains ellipsis, presupposition, lexical variation, coreference, and underdetermined event structure. A learned component may therefore help propose candidate event or relation structures, but those proposals must be converted into explicit typed and compositional neuro-symbolic concept records with provenance and uncertainty annotations before they can influence theory induction <a class="citation" href="#ref-mao-2025">[MAO-2025]</a>.</p>
-<p>The output of observational lifting is not a theory. It is a structured hypothesis about what may have been observed or asserted. This is the first safeguard against methodological collapse.</p>
+<p>Observational lifting converts a report into several candidate observational hypotheses. This is the natural site of bounded learned assistance because raw text contains ellipsis, lexical variation, underdetermined event structure, and missing local roles. A learned component may therefore help normalize or propose candidate observational fragments, but those fragments must be turned into typed, compositional symbolic concept objects with provenance before they can affect theory induction <a class="citation" href="#ref-mao-2025">[MAO-2025]</a>.</p>
+<p>The output of observational lifting is not a theory. It is a structured candidate account of what may have been observed, what was stated explicitly, and what remains unresolved. That separation is the first safeguard against methodological collapse.</p>
 <h3>Stage 2. Local theory induction</h3>
-<p>For each observational hypothesis, the system induces one or more candidate local theories. A local theory proposes a typed state schema, a family of rewrite templates, a set of invariants, and a discipline of admissible composition. This is the point where the symbolic side of the architecture dominates. Categorical rewriting is treated as typed local transformation rather than as an unstructured state diff, which is why compatibility and composition become first-class concerns <a class="citation" href="#ref-duval-2011">[DUVAL-2011]</a>.</p>
+<p>For each observational hypothesis, the system induces one or more candidate local theories. A local theory proposes a typed state schema, a family of rewrite templates, a set of invariants, and a discipline of admissible composition. This is the stage where the symbolic side of the architecture dominates. Categorical rewriting is treated as typed local transformation rather than as an unstructured state diff, which is why compatibility and composition become first-class concerns <a class="citation" href="#ref-duval-2011">[DUVAL-2011]</a>.</p>
 <h3>Stage 3. Local rulial exploration</h3>
-<p>Theories induced from the same observation are not treated as isolated outputs. They are organized into a local neighborhood through refinement, coarsening, refactorization, and observer shift. This stage separates robust consequences from theory-sensitive consequences and maintains a bounded frontier of theories that remain worth retaining. That neighborhood perspective is what makes the framework ruliological in an operational sense: it treats nearby spaces of possible rules as objects of study instead of rushing toward a single prematurely reified interpretation <a class="citation" href="#ref-wolfram-2026">[WOLFRAM-2026]</a>.</p>
+<p>Theories induced from the same observation are not treated as isolated outputs. They are organized into a local neighborhood through refinement, coarsening, refactorization, and observer shift. The neighborhood separates robust consequences from theory-sensitive consequences and retains a bounded frontier of theories that remain worth tracking. That neighborhood perspective is what makes the framework ruliological in practice: it studies nearby rule-bearing possibilities instead of rushing toward one prematurely reified interpretation <a class="citation" href="#ref-wolfram-2026">[WOLFRAM-2026]</a>.</p>
 <h3>Stage 4. Alignment and lexicalization</h3>
-<p>Only after a retained neighborhood exists does alignment become appropriate. At that point the system may compare a local theory with an external ontology, a domain model, or a previously learned concept library. Applied category theory matters here because the problem is not merely one of naming. It is a problem of category-level disciplined translation between structured regimes and of preserving meaningful relations under that translation <a class="citation" href="#ref-fong-spivak-2019">[FONG-SPIVAK-2019]</a>.</p>
+<p>Only after a retained neighborhood exists does alignment become appropriate. At that point the system may compare retained theories with external ontologies, prior concept libraries, or domain repertoires. Applied category theory matters here because alignment is not merely naming. It is category-level disciplined translation between structured domains, with preservation of the relations that matter under that translation <a class="citation" href="#ref-fong-spivak-2019">[FONG-SPIVAK-2019]</a>.</p>
 <p>Table 1 summarizes the epistemic role of the four stages.</p>
-<table><thead><tr><th>Stage</th><th>Input</th><th>Output</th><th>Why this stage stays separate</th></tr></thead><tbody><tr><td>Observational lifting</td><td>Report text or other structured evidence</td><td>Several observational hypotheses</td><td>It keeps report and theory distinct.</td></tr><tr><td>Local theory induction</td><td>One observational hypothesis</td><td>Several candidate local theories</td><td>It keeps typed schemas, rewrites, and invariants explicit.</td></tr><tr><td>Local rulial exploration</td><td>Candidate theories plus observer/query family</td><td>Local theory neighborhood and retained frontier</td><td>It preserves plural local structure under bounded commitment.</td></tr><tr><td>Alignment and lexicalization</td><td>Retained neighborhood</td><td>Aligned conceptual descriptions</td><td>It delays naming until symbolic structure already exists.</td></tr></tbody></table>
-<p>In the reference implementation, learned assistance is confined to bounded lifting-friendly normalization before observational lifting and to late conceptual articulation after the frontier has already been retained. The retained frontier, the score profile, and the experiment metrics remain authoritative products of the symbolic core.</p>
-<p>The same staged discipline appears at the public usage surface. A host application supplies source text or segmented evidence together with source metadata, an observer profile, and explicit budgets. The system returns a bounded frontier bundle whose canonical projection still distinguishes source context, observations, local theories, transforms, equivalence classes, consequences, questions, and updates. This matters because the architecture is intended to be used as an auditable theory-frontier engine, not as a hidden text-to-label shortcut.</p>
+<table><thead><tr><th>Stage</th><th>Input</th><th>Output</th><th>Why the stage stays separate</th></tr></thead><tbody><tr><td>Observational lifting</td><td>Report text or structured evidence</td><td>Several observational hypotheses</td><td>It keeps report and theory distinct.</td></tr><tr><td>Local theory induction</td><td>One observational hypothesis</td><td>Several candidate local theories</td><td>It keeps schemas, rewrites, and invariants explicit.</td></tr><tr><td>Local rulial exploration</td><td>Candidate theories plus observer and question family</td><td>Retained neighborhood and frontier</td><td>It preserves plural local structure under bounded commitment.</td></tr><tr><td>Alignment and lexicalization</td><td>Retained neighborhood</td><td>Aligned conceptual articulation</td><td>It delays naming until symbolic structure exists.</td></tr></tbody></table>
+<p>The same staged discipline governs the public usage surface. A host application supplies source evidence, source metadata, an observer profile, and optional policy overrides. The system returns a canonical frontier bundle whose stable projection still distinguishes source context, observations, local theories, transforms, equivalence classes, questions, updates, and consequences. Optional Achilles-backed LLM calls remain configurable through explicit task tags, model tiers, and manual overrides, but they do not override the authoritative symbolic frontier.</p>
 </section>
 <section id="chapter-3">
-<h2>3. Formal model and frontier management</h2>
-<p>The framework revolves around four explicit objects. <code>O(x) = {O0, O1, ..., On}</code> stores observational hypotheses derived from a report. <code>T = (Sigma, I, R, C, S)</code> stores a local theory with a state schema, invariants, rewrite templates, a compositional discipline, and a decomposed score profile. <code>N(Oi) = (Ti, Mi, Ei, Qi)</code> stores the local neighborhood retained for one observational hypothesis. <code>F</code> stores the active frontier of theories that remain worth retaining under the current evidence and budget. The point of these objects is practical: every transition from text to theory remains inspectable.</p>
-<p>The observation layer is already operational rather than metaphorical. Each observational hypothesis stores explicit cues, inferred cues, source spans, a domain-support map, and a bounded focus policy. In the current implementation the support for a domain is <code>0.3 * genericSignal + explicitSignal + 0.7 * inferredSignal</code>. The base hypothesis keeps all cues, while focused hypotheses keep generic cues plus the cues of domains that remain close enough to the best current support. This is why the architecture can preserve several structured observation candidates without pretending that the earliest prefix already determines the case uniquely.</p>
-<p>The same objects are also exposed through a canonical CNL projection. Source context, observations, hypotheses, theories, transforms, equivalence classes, consequences, questions, and updates are serialized as deterministic keyword-led lines so the library, the experiments, and the article all refer to the same operational state rather than to three different descriptive layers. The CNL is therefore a stable audit surface for the model, not a second theory beside it.</p>
-<p>The local theory is equally explicit. For each retained hypothesis and each domain family, the system materializes a state schema, invariant set, rewrite family, composition discipline, and a six-part score profile. The named dimensions are <code>evidenceCoverage</code>, <code>predictiveAdequacy</code>, <code>compressionUtility</code>, <code>compositionalSharpness</code>, <code>stability</code>, and <code>alignmentUtility</code>. The current scalar total is <code>0.22 * evidenceCoverage + 0.28 * predictiveAdequacy + 0.10 * compressionUtility + 0.16 * compositionalSharpness + 0.14 * stability + 0.10 * alignmentUtility</code>. The total matters for ranking and entropy, but it does not replace the named dimensions because different theories remain useful for different reasons.</p>
-<p>Table 2 summarizes the score dimensions used in the current framework.</p>
-<table><thead><tr><th>Score dimension</th><th>Meaning in the current implementation</th><th>Weight in total</th></tr></thead><tbody><tr><td>Evidence coverage</td><td>Fraction of the available observational signal explained by the theory</td><td>0.22</td></tr><tr><td>Predictive adequacy</td><td>Compatibility of the theory with the matched local state evolution</td><td>0.28</td></tr><tr><td>Compression utility</td><td>Structured summary value without gratuitous local complexity</td><td>0.10</td></tr><tr><td>Compositional sharpness</td><td>Clarity of typed rewrites and admissible compositions</td><td>0.16</td></tr><tr><td>Stability</td><td>Resistance to perturbation and later evidence updates</td><td>0.14</td></tr><tr><td>Alignment utility</td><td>Utility for later conceptual articulation and comparison</td><td>0.10</td></tr></tbody></table>
-<p>Figure 2 depicts the neighborhood in abstract form. The figure is intentionally generic so that the chapter explains the geometry of the method rather than one domain-specific example. What matters is that the neighborhood contains more than a list of competing theories. It also contains the transformation family <code>Mi</code> and the observer-relative equivalence classes <code>Ei</code>, so categorical local rewriting and structural compatibility remain explicit <a class="citation" href="#ref-duval-2011">[DUVAL-2011]</a>. The consequence profile <code>Qi</code> then separates robust consequences from theory-sensitive ones across the retained frontier.</p>
-<figure><img src="assets/figure-2-neighborhood.svg" alt="Neighborhood structure" /><figcaption>Figure 2. The local neighborhood links observational hypotheses, retained theories, transformation families, and consequence profiles without collapsing them into one undifferentiated state.</figcaption></figure>
-<p>The frontier rule is the point where meta-rationality becomes operational. A theory survives the strict frontier only if no other theory is at least as good on every named score dimension and strictly better on at least one of them. The current implementation then applies one rescue rule: if a whole domain would disappear from the strict frontier, but its best surviving theory is still within a small total-score tolerance of the best frontier score, that best theory is reintroduced. The resulting frontier remains bounded, yet it does not erase still-plausible local families merely because one nearby candidate currently ranks first.</p>
-<h3>Worked example</h3>
-<p>Consider the generic prefix: &quot;The item was logged and placed in the staging area. A label was attached and the record was updated.&quot; At this point the rich observer sees generic workflow cues but no decisive package, sample, or manuscript marker. The induced frontier therefore keeps package, manuscript, and sample theories alive, even though the package family currently ranks first. This is the intended behavior: the frontier records that the text is still compatible with several local explanations.</p>
-<p>The best next question asks for dispatch evidence because that cue would separate package-like theories from the other two families. If the observed answer is &quot;no&quot;, the update does not restart the analysis from scratch. It applies a local frontier revision: package-oriented theories lose predictive adequacy and stability, the package family drops out, and the frontier contracts to a smaller manuscript/sample region. The point of the example is not that one question must finish induction. The point is that uncertainty is reduced by an explicit, typed intervention on a retained neighborhood.</p>
-<h3>Core algorithms</h3>
-<p>The operational loop is intentionally split into three algorithms because the framework treats extraction, neighborhood construction, and evidence revision as different epistemic acts. The first step lifts a report into auditable observations. The second step expands those observations into a local theory neighborhood with explicit scores, transformations, and equivalence classes. The third step revises that neighborhood when new evidence arrives. Keeping these stages separate makes it possible to inspect where uncertainty is introduced, where it is reduced, and where it is intentionally retained.</p>
-<p><code>OBSERVATIONAL_LIFT</code> is the gate from report space into structured evidence. Its role is not to force one premature interpretation, but to preserve several bounded observational candidates together with provenance and inference strength. That is why the output is <code>O(x)</code> rather than a single canonical graph: later stages need to know which distinctions were explicit in the text and which were only inferred under current observer assumptions.</p>
-<pre><code>OBSERVATIONAL_LIFT(x, B)
-Input:
-  x = natural-language report
-  B = resource budget
-Output:
-  O = {O0, ..., On} observational hypotheses
-
+<h2>3. Formal objects, budgets, and update rules</h2>
+<p>The framework revolves around four explicit objects. <code>O(x)</code> stores observational hypotheses derived from a report. <code>T(Oi, d)</code> stores a local theory for one observational hypothesis and one domain family. <code>N(Oi)</code> stores the local neighborhood around that hypothesis, including nearby theories, typed transforms, equivalence classes, consequence profiles, and question candidates. <code>F</code> stores the active frontier. The point of these objects is practical: every transition from report to retained theory remains inspectable.</p>
+<p>An observational hypothesis is already structured rather than rhetorical. It stores normalized source text, explicit and inferred typed cues, a domain-support map, ambiguity notes, and provenance. The same state is exposed through a canonical CNL projection, so the library surface, the experiment outputs, and the article all refer to the same operational objects rather than to separate descriptive layers.</p>
+<p>Three budget objects control how much structure is retained at each stage. <code>B_lift</code> governs which focused hypotheses survive observational lifting. <code>B_frontier</code> governs how many theories remain on the retained frontier after non-domination and rescue. <code>B_query</code> governs how many questioning steps the caller is willing to spend after the initial frontier has been built. Keeping these budgets distinct matters because early observational plurality, retained theory plurality, and question-driven revision are different epistemic acts.</p>
+<p>For each retained hypothesis and each active domain family, the system induces a local theory with six named score dimensions: <code>evidenceCoverage</code>, <code>predictiveAdequacy</code>, <code>compressionUtility</code>, <code>compositionalSharpness</code>, <code>stability</code>, and <code>alignmentUtility</code>. The weighted scalar total used for ranking is <code>0.22 * evidenceCoverage + 0.28 * predictiveAdequacy + 0.10 * compressionUtility + 0.16 * compositionalSharpness + 0.14 * stability + 0.10 * alignmentUtility</code>. The total matters for ranking and entropy summaries, but it does not replace the named dimensions because several retained theories can remain useful for different reasons.</p>
+<p>Table 2 summarizes the operational meaning of the score dimensions.</p>
+<table><thead><tr><th>Score dimension</th><th>Meaning in the current implementation</th><th>Weight</th></tr></thead><tbody><tr><td><code>evidenceCoverage</code></td><td>Fraction of the observational signal explained by the theory</td><td>0.22</td></tr><tr><td><code>predictiveAdequacy</code></td><td>Compatibility with the matched local state evolution</td><td>0.28</td></tr><tr><td><code>compressionUtility</code></td><td>Structured summary value without gratuitous local complexity</td><td>0.10</td></tr><tr><td><code>compositionalSharpness</code></td><td>Clarity of typed rewrites and admissible compositions</td><td>0.16</td></tr><tr><td><code>stability</code></td><td>Resistance to perturbation and later updates</td><td>0.14</td></tr><tr><td><code>alignmentUtility</code></td><td>Utility for later conceptual articulation and comparison</td><td>0.10</td></tr></tbody></table>
+<p>Figure 2 depicts the neighborhood in abstract form. The important point is that the neighborhood contains more than a list of candidate theories. It also contains the transform family <code>Mi</code>, the observer-relative equivalence classes <code>Ei</code>, the consequence profile <code>Qi</code>, and the active question family over the current frontier. Typed local transformation and compatibility therefore remain explicit as part of a categorical rewriting view rather than being hidden in a monolithic score <a class="citation" href="#ref-duval-2011">[DUVAL-2011]</a>.</p>
+<figure><img src="assets/figure-2-neighborhood.svg" alt="Neighborhood structure" /><figcaption>Figure 2. The local neighborhood links observational hypotheses, retained theories, transform families, equivalence classes, consequence profiles, and question candidates without collapsing them into one undifferentiated state.</figcaption></figure>
+<p>The frontier is summarized with entropy over the retained domain distribution, <code>H(F) = - sum_d p(d) log p(d)</code>, where <code>p(d)</code> is the normalized retained-domain mass <a class="citation" href="#ref-shannon-1948">[SHANNON-1948]</a>. Discriminating questions are then selected by expected information gain, <code>IG(q) = H(F) - sum_a P(a | q) H(F | a)</code>, which is the reduction in frontier uncertainty expected from asking question <code>q</code> <a class="citation" href="#ref-settles-2009">[SETTLES-2009]</a>. The practical frontier is also widened by one rescue rule: if an entire domain disappears from the strict frontier but its best theory remains within rescue tolerance <code>tau_rescue = 0.08</code> of the best strict-frontier score, that theory is reintroduced. Rescue is therefore the operational safeguard against premature elimination of a still-plausible local family.</p>
+<p>Alignment has one precise role in the current implementation. It is a score dimension that estimates how useful a retained theory would be for later conceptual articulation or comparison against an external repertoire. It is not a hidden ontology matcher and it is not a late-stage LLM rewrite of the symbolic result. When alignment is disabled, only that utility contribution is removed from ranking; the canonical frontier object remains intact.</p>
+<p>The worked example from Chapter 1 now becomes operational. After the prefix &quot;The item was logged, labeled, and the record was updated,&quot; the rich observer sees generic workflow signal but no decisive package, sample, manuscript, procurement, maintenance, incident, or compliance cue. The retained frontier therefore keeps several domain families alive even if one of them is currently ranked first. That is the intended behavior. The system is recording structured uncertainty rather than pretending the case is already resolved.</p>
+<p>If the best next question asks for dispatch evidence and the observed answer is &quot;no,&quot; the update does not restart the analysis from scratch. It applies a local frontier revision. Package-oriented theories lose predictive adequacy and stability, the frontier contracts, and the surviving neighborhood becomes smaller and sharper. The value of the question is therefore not only a better answer. It is an explicit record of which retained possibilities were ruled out and why.</p>
+<p>The same logic is visible in the three core algorithms.</p>
+<pre><code>OBSERVATIONAL_LIFT(x, B_lift)
 1. Normalize the report and extract explicit typed cues.
-2. Infer additional cues through local cue-completion rules.
-3. Compute domain-support values from generic, explicit, and inferred signal.
-4. Build the base hypothesis O0 with full provenance and cue typing.
-5. Build focused hypotheses for the domains that remain within the budgeted support band.
-6. Return the bounded family O.</code></pre>
-<p>In practice this means the lift stage already constrains later theory search. A theory can only claim support from evidence that has a traceable observational path, and hypothetical or inferred elements remain marked instead of masquerading as observed fact. The bounded family keeps the process finite without pretending that early evidence uniquely determines the case.</p>
-<p><code>LOCAL_RULIAL_EXPLORATION</code> starts from each retained observational hypothesis and asks which local theories remain structurally compatible with it. This is the point where the framework stops behaving like a labeler and starts behaving like a neighborhood explorer. Refinement, coarsening, and refactorization generate nearby alternatives, while the decomposed score profile explains why some alternatives remain useful even when they are not top-ranked on every dimension.</p>
-<pre><code>LOCAL_RULIAL_EXPLORATION(O, Q, B)
-Input:
-  O = observational hypotheses
-  Q = observer/query family
-  B = resource budget
-Output:
-  N = family of local rulial neighborhoods
-
-1. For each observational hypothesis Oi:
-2.     Induce one base theory for each active domain family.
-3.     Generate nearby theories by refinement, coarsening, and refactorization.
-4.     Score every theory on the six named dimensions and compute its total.
-5.     Build observer-relative equivalence classes from visible cues and visible states.
-6.     Compute robust consequences and theory-sensitive consequences.
-7.     Retain a bounded frontier using non-domination plus domain rescue.
-8. Return N.</code></pre>
-<p>The crucial point is that equivalence classes and frontier rescue are not cosmetic additions. Equivalence classes prevent the frontier from being cluttered with theories that differ internally but answer the current questions in the same way. Rescue prevents the strict Pareto rule from erasing an entire family when it is still close enough to remain explanatory under the current evidence.</p>
-<p><code>RULIAL_NEIGHBORHOOD_UPDATE</code> governs what happens after the system receives a new answer, a new observation, or a later workflow prefix. The update is not a complete restart. It is a controlled revision of the already retained neighborhood: the best discriminating question is chosen by information gain, answer-dependent score deltas are applied, the frontier is re-summarized, and the new neighborhood can explain exactly why a family was refined, rescued, or removed.</p>
-<pre><code>RULIAL_NEIGHBORHOOD_UPDATE(N_t, DeltaE, Q, B)
-Input:
-  N_t    = current local neighborhoods
-  DeltaE = new evidence or answered question
-  Q      = observer/query family
-  B      = resource budget
-Output:
-  N_t+1  = updated neighborhoods
-
-1. Select the highest-information-gain question over the current frontier when a question is available.
-2. Apply answer-dependent score deltas to the retained theories.
-3. Recompute the frontier under non-domination and domain rescue.
-4. Rebuild equivalence classes and robust/theory-sensitive consequences.
-5. Update theory and domain entropies.
-6. Return N_t+1.</code></pre>
-<p>This distinction matters for engineering use. A restart-based pipeline can tell the user only that the answer changed. An update-based frontier can show which part of the neighborhood became untenable, which distinctions collapsed into equivalence, and which theory became newly dominant because a previously missing cue was supplied. The frontier is therefore not only a data structure. It is the operational form of epistemic restraint inside the framework.</p>
+2. Infer additional bounded cues through local completion rules.
+3. Compute domain support values.
+4. Build the base hypothesis with full provenance.
+5. Build focused hypotheses that remain within the lift budget.
+6. Return O(x).</code></pre>
+<pre><code>LOCAL_RULIAL_EXPLORATION(O, Q, B_frontier)
+1. Induce one base theory for each active domain family.
+2. Generate nearby variants by refinement, coarsening, and refactorization.
+3. Score theories on the six named dimensions.
+4. Build equivalence classes and consequence profiles.
+5. Retain the frontier through non-domination plus rescue.
+6. Return N(Oi) and F.</code></pre>
+<pre><code>RULIAL_NEIGHBORHOOD_UPDATE(N_t, DeltaE, Q, B_query)
+1. Choose the highest-information-gain question when a question is available.
+2. Apply answer-dependent score deltas to retained theories.
+3. Recompute the frontier under non-domination and rescue.
+4. Rebuild equivalence classes and consequence profiles.
+5. Refresh entropies and return N_t+1.</code></pre>
+<p>The frontier is therefore not only a data structure. It is the operational form of epistemic restraint inside the framework. It records why several explanations survive, why some collapse, and how later evidence changes that balance without hiding the transition.</p>
 </section>
 <section id="chapter-4">
-<h2>4. Experimental validation</h2>
-<p>The current repository validates three structural claims of the broader framework rather than the whole theory at once. The first claim is representational: richer observation should sharpen the retained frontier earlier than coarse observation. The second claim is managerial: when several local theories remain plausible, the system should be able to ask a useful next question and update the frontier transparently. The third claim is recoverability under weak evidence: when strong cues are masked, preserving a frontier should still be more useful than collapsing immediately to a single early answer.</p>
-<p>All three experiments exercise the same public evidence-analysis and evidence-update contract that the library exposes to downstream users. Each run records canonical run metadata and CNL-family coverage alongside the ordinary quantitative outputs, so the experiments validate the intended usage surface of the library rather than only repository-internal helper calls.</p>
-<h3>Experiment 1. Observer richness and frontier shape</h3>
-<p>Experiment 1 uses 18 controlled workflow cases distributed across package handling, laboratory sample handling, and manuscript processing. Each case is exposed through four textual prefixes, and each prefix is analyzed twice: once with a coarse observer and once with a richer observer. The input to each run is therefore a prefix string plus an observer family, while the output is a full retained frontier summary: ranked domain distribution, frontier entropy, equivalence compression, question availability, and top-domain accuracy. In other words, the experiment records not only which family is ranked first, but also how much structured ambiguity remains and whether further questioning is still needed.</p>
-<p>Table 3 summarizes the aggregate observer-comparison results. The clearest separation appears at Prefix 2: the rich observer raises mean top-domain accuracy from 0.333 to 0.833 while reducing mean frontier entropy from 1.245 to 0.344. At Prefix 1 both observers are still mostly generic; by Prefix 3 the rich observer reaches 1 accuracy and the coarse observer catches up to 0.944 once stronger procedural evidence arrives.</p>
-<table><thead><tr><th>Prefix</th><th>Observer</th><th>Cases</th><th>Accuracy</th><th>Entropy</th><th>Equivalence compression</th><th>Question availability</th></tr></thead><tbody><tr><td>1</td><td>coarse</td><td>18</td><td>0.333</td><td>1.255</td><td>6</td><td>1</td></tr><tr><td>1</td><td>rich</td><td>18</td><td>0.444</td><td>1.116</td><td>5.778</td><td>0.889</td></tr><tr><td>2</td><td>coarse</td><td>18</td><td>0.333</td><td>1.245</td><td>4.167</td><td>1</td></tr><tr><td>2</td><td>rich</td><td>18</td><td>0.833</td><td>0.344</td><td>3.722</td><td>0.278</td></tr><tr><td>3</td><td>coarse</td><td>18</td><td>0.944</td><td>0.138</td><td>3.889</td><td>0.111</td></tr><tr><td>3</td><td>rich</td><td>18</td><td>1</td><td>0.069</td><td>3.944</td><td>0.056</td></tr><tr><td>4</td><td>coarse</td><td>18</td><td>1</td><td>0</td><td>4</td><td>0</td></tr><tr><td>4</td><td>rich</td><td>18</td><td>1</td><td>0</td><td>3.722</td><td>0</td></tr></tbody></table>
-<p>Figure 3 isolates the accuracy trajectory. At Prefix 1 both observers remain limited because only macro-structural workflow language is visible. At Prefix 2 the rich observer starts separating the cases where typed domain markers are already present, while the coarse observer still sees a broad package-like explanation. By Prefix 3 most cases are resolved, but the rich observer reaches the correct top-ranked domain earlier and more consistently.</p>
-<figure><img src="assets/figure-3-observer-accuracy.svg" alt="Observer accuracy by prefix" /><figcaption>Figure 3. Mean domain accuracy by prefix depth for coarse and rich observers.</figcaption></figure>
-<p>Figure 4 complements the accuracy chart with the quantity that matters more for this paper: frontier entropy. A system may improve its top-ranked answer without making the retained neighborhood substantially more disciplined. Here the entropy drop shows that the richer observer is not only guessing better; it is retaining a smaller and sharper set of plausible local theories once typed cues appear.</p>
-<figure><img src="assets/figure-4-observer-entropy.svg" alt="Observer entropy by prefix" /><figcaption>Figure 4. Mean domain entropy by prefix depth for coarse and rich observers.</figcaption></figure>
-<p>The observer-richness result should be read carefully. It does not show magical understanding. Generic sample and manuscript prefixes can still remain ambiguous when the decisive cue has not yet appeared. What the experiment demonstrates is that once the relevant cue does appear, a richer observer converts it into earlier frontier contraction and lower question demand. That is the practical value of observational lifting in the current deterministic implementation.</p>
-<h3>Experiment 2. Discriminating questions and frontier update</h3>
-<p>Experiment 2 keeps the ambiguous traces that survive the initial analysis. For each such trace, the system receives the current frontier, selects the question with the highest expected information gain, applies the gold answer from the case metadata, and recomputes the frontier. The emitted outputs include the before/after domain distribution, entropy before and after questioning, accuracy before and after questioning, the selected question text, the probed cue, the resulting information gain, and representative canonical before/after traces. The current corpus makes this process easy to interpret because the selected question often probes evidence of dispatch or destination, which separates package-like behavior from the other workflow families.</p>
-<p>Table 4 shows that on Prefix 2 traces a single discriminating question lowers mean entropy from 1.244 to 0.652 while improving mean accuracy from 0.348 to 0.652. On Prefix 3 traces, the remaining ambiguous subset still benefits: entropy falls from 1.239 to 0.333 and accuracy rises from 0.667 to 1.</p>
-<table><thead><tr><th>Prefix</th><th>Cases</th><th>Entropy before</th><th>Entropy after</th><th>Accuracy before</th><th>Accuracy after</th><th>Information gain</th></tr></thead><tbody><tr><td>2</td><td>23</td><td>1.244</td><td>0.652</td><td>0.348</td><td>0.652</td><td>0.914</td></tr><tr><td>3</td><td>3</td><td>1.239</td><td>0.333</td><td>0.667</td><td>1</td><td>0.912</td></tr></tbody></table>
-<p>Figure 5 shows the entropy effect directly, and Figure 6 shows how much of that contraction becomes better top-ranked accuracy. The drop is large at both retained prefix depths because the selected question is designed to cut across the dominant ambiguity. The Prefix 2 result remains intentionally partial rather than perfect. A negative answer to the package-oriented question removes the package family, but it can still leave sample and manuscript explanations insufficiently separated in the current bundle design. That is why the mean Prefix 2 accuracy rises to 0.652 rather than to 1.0.</p>
-<figure><img src="assets/figure-5-question-entropy.svg" alt="Entropy before and after questioning" /><figcaption>Figure 5. Mean frontier entropy before and after applying the best discriminating question.</figcaption></figure>
-<figure><img src="assets/figure-6-question-accuracy.svg" alt="Accuracy before and after questioning" /><figcaption>Figure 6. Mean top-domain accuracy before and after applying the best discriminating question.</figcaption></figure>
-<h3>Experiment 3. Cue masking, baselines, and recoverability</h3>
-<p>Experiment 3 stresses the same framework under weaker lexical evidence. It reuses the full 18-case corpus, restricts attention to Prefix 2 and Prefix 3, and evaluates every trace in clean form and in a cue-masked form where the most specific domain markers are rewritten into more generic administrative language. The experiment produces 72 analyzed traces and compares four policy levels: a lexical-support baseline, a single-best-theory baseline, the immediate frontier top domain, and the full frontier result after one question when a discriminating question is available.</p>
-<p>Table 5 shows why this matters. Under masked Prefix 2 traces, the lexical baseline falls to 0.333 and the single-theory baseline to 0.333. The immediate frontier top remains equally conservative at 0.333, but the frontier still retains the correct domain somewhere on the active neighborhood for all masked Prefix 2 traces. Because the retained frontier keeps those alternatives alive, one discriminating question lifts the end-to-end pipeline to 0.667.</p>
-<table><thead><tr><th>Condition</th><th>Cases</th><th>Lexical baseline</th><th>Single theory</th><th>Frontier top</th><th>Frontier + one question</th><th>Truth retained on frontier</th></tr></thead><tbody><tr><td>Clean P2</td><td>18</td><td>0.778</td><td>0.833</td><td>0.833</td><td>0.889</td><td>1</td></tr><tr><td>Masked P2</td><td>18</td><td>0.333</td><td>0.333</td><td>0.333</td><td>0.667</td><td>1</td></tr><tr><td>Clean P3</td><td>18</td><td>0.944</td><td>1</td><td>1</td><td>1</td><td>1</td></tr><tr><td>Masked P3</td><td>18</td><td>0.5</td><td>0.389</td><td>0.389</td><td>0.722</td><td>1</td></tr></tbody></table>
-<p>Figure 7 compares the policy levels directly, while Figure 8 isolates the ambiguous-trace recovery effect. The masked Prefix 3 traces are particularly instructive: the immediate frontier top remains at 0.389, but one question lifts the full pipeline to 0.722. On the ambiguous masked subset, question accuracy rises from 0.267 to 0.667. This is the strongest current evidence for the frontier discipline: its main value is recoverability under incomplete cues, not just immediate top-label confidence.</p>
-<figure><img src="assets/figure-7-baseline-accuracy.svg" alt="Baseline comparison under cue masking" /><figcaption>Figure 7. Policy comparison on clean and cue-masked traces, including the full frontier result after one discriminating question when available.</figcaption></figure>
-<figure><img src="assets/figure-8-question-recovery.svg" alt="Question recovery on ambiguous traces" /><figcaption>Figure 8. Accuracy before and after questioning on ambiguous traces, together with the fraction rescued by one discriminating answer.</figcaption></figure>
-<p>Taken together, the three experiments support the current structural thesis of the repository. Richer observation changes the frontier earlier, explicit questioning reduces frontier uncertainty further when ambiguity remains, and frontier retention preserves recoverability when decisive cues are masked. They do not yet prove full theory induction under open-ended semantics or broad competitiveness against external learning systems. They show that the proposed objects and update rules already have measurable value on a controlled but substantially stronger deterministic corpus.</p>
+<h2>4. Validation ladder and empirical results</h2>
+<p>The paper now validates a ladder of claims rather than one undifferentiated promise. The early experiments still test the structural core of the framework: richer observation, question-driven frontier contraction, and recoverability under cue masking. The newer experiments then test robustness to policy variation, transfer across a larger benchmark, healthy uncertainty under novelty, and multi-step recoverability under different questioning conditions. This matters because the architecture is broader than the current implementation, and the article should not imply that one experiment settles every aspect of the proposal.</p>
+<p>The empirical program now has three dataset layers. The first is the original eighteen-case controlled corpus across package, sample, and manuscript workflows. The second is an expanded seven-domain benchmark with controlled, paraphrased, and noisy strata, yielding 102 benchmark cases and 204 evaluated test traces over four prefix depths. The third is a novelty layer with unseen and hybrid cases evaluated against the same deterministic core. Multi-step questioning then reuses the paraphrased and noisy benchmark slices to test budgeted recovery over time.</p>
+<p>Table 3 summarizes the seven experiments and their role in the validation ladder.</p>
+<table><thead><tr><th>Experiment</th><th>Role</th><th>Trace count</th><th>Main signal</th></tr></thead><tbody><tr><td>Experiment 1</td><td>Observer richness</td><td>18 cases × 4 prefixes × 2 observers</td><td>Rich observers contract the frontier earlier.</td></tr><tr><td>Experiment 2</td><td>Single-step questioning</td><td>26 ambiguous traces</td><td>One discriminating question lowers entropy and improves ranking.</td></tr><tr><td>Experiment 3</td><td>Cue masking and recovery</td><td>72 traces</td><td>Retained frontiers preserve recoverability under masked cues.</td></tr><tr><td>Experiment 4</td><td>Sensitivity and ablation</td><td>153 traces</td><td>Nearby policy choices preserve conclusions; coarse observation and rescue removal matter.</td></tr><tr><td>Experiment 5</td><td>Expanded benchmark transfer</td><td>204 traces</td><td>Frontier retention transfers across seven domains and three lexical strata.</td></tr><tr><td>Experiment 6</td><td>Open-set novelty</td><td>171 traces</td><td>Novelty increases uncertainty and question demand more than in-domain traces.</td></tr><tr><td>Experiment 7</td><td>Multi-step questioning</td><td>2448 traces</td><td>Clean and noisy recovery improve with budget; adversarial answers remain hard.</td></tr></tbody></table>
+<p>Experiments 1 through 3 still provide the structural foundation. On Prefix 2 traces, the rich observer raises mean top-domain accuracy above the coarse observer while lowering frontier entropy. Single-step questioning then lowers entropy further on the retained ambiguous subset. Under cue masking, the lexical and single-theory baselines collapse early, but the retained frontier still preserves enough structure for one question to recover a substantially better answer. Those three studies establish that the retained frontier is not decorative. It changes what can still be recovered later.</p>
+<h3>Experiment 4. Sensitivity analysis and structural ablations</h3>
+<p>Experiment 4 answers the most immediate skepticism about the symbolic core: do the results depend on one narrow set of constants or on one hidden structural shortcut? The baseline policy is evaluated against ablations that weaken observer richness, inferred cues, domain rescue, equivalence compression, alignment utility, or discriminating questions, and against a sampled neighborhood of nearby policy settings.</p>
+<p>Table 4 shows the ablation results. The baseline keeps top accuracy at 0.98 with truth retention at 1. Coarse observation is the strongest degrading ablation: accuracy falls to 0.614 and entropy rises to 0.854. Removing domain rescue keeps top accuracy almost unchanged but lowers truth retention to 0.98 and introduces a non-zero premature-collapse rate.</p>
+<table><thead><tr><th>Condition</th><th>Accuracy</th><th>Truth retained</th><th>Entropy</th><th>Premature collapse</th><th>Agreement</th></tr></thead><tbody><tr><td>Baseline policy</td><td>0.98</td><td>1</td><td>0.073</td><td>0</td><td>1</td></tr><tr><td>Coarse observer</td><td>0.614</td><td>0.922</td><td>0.854</td><td>0</td><td>0.634</td></tr><tr><td>No inferred cues</td><td>0.98</td><td>1</td><td>0.103</td><td>0</td><td>1</td></tr><tr><td>No domain rescue</td><td>0.98</td><td>0.98</td><td>0</td><td>0.02</td><td>1</td></tr><tr><td>No equivalence classes</td><td>0.98</td><td>1</td><td>0.073</td><td>0</td><td>1</td></tr><tr><td>No alignment utility</td><td>0.98</td><td>1</td><td>0.073</td><td>0</td><td>1</td></tr><tr><td>No discriminating questions</td><td>0.98</td><td>1</td><td>0.073</td><td>0</td><td>1</td></tr></tbody></table>
+<p>Figure 9 shows the structural ablation profile directly, and Figure 10 shows the sampled policy region. Across the sampled neighborhood, top accuracy never drops below 0.98 and agreement with the baseline remains at 1. The result is not that every component is equally important. The result is that the framework is stable across a broad local region while still revealing which structural pieces carry most of the epistemic load.</p>
+<figure><img src="assets/figure-9-ablation-effects.svg" alt="Structural ablations on the expanded benchmark" /><figcaption>Figure 9. Accuracy, truth retention, and premature collapse across the main structural ablations.</figcaption></figure>
+<figure><img src="assets/figure-10-policy-sensitivity.svg" alt="Policy sensitivity across sampled configurations" /><figcaption>Figure 10. Stability of accuracy, truth retention, and agreement with the baseline across sampled nearby policy configurations.</figcaption></figure>
+<h3>Experiment 5. Expanded benchmark transfer</h3>
+<p>Experiment 5 broadens the corpus from the original controlled set to a seven-domain benchmark with controlled, paraphrased, and noisy strata. It compares the frontier against cue-vote lexical classification, multinomial naive Bayes, and single-best-theory ranking. Calibration is also reported through expected calibration error to track how confidence matches empirical accuracy <a class="citation" href="#ref-guo-2017">[GUO-2017]</a>.</p>
+<p>Table 5 shows the stratum-level summary. Across all three strata, frontier-top accuracy stays at 0.794 or above, while truth retention remains even higher: 0.941 for controlled wording, 0.912 for paraphrased wording, and 0.926 for noisy wording. The gap between frontier-top accuracy and truth retention is precisely the point: the retained frontier continues to preserve the correct family more often than the immediate top-ranked answer reveals.</p>
+<table><thead><tr><th>Stratum</th><th>Traces</th><th>Cue vote</th><th>Naive Bayes</th><th>Single theory</th><th>Frontier top</th><th>Truth retained</th><th>Frontier ECE</th></tr></thead><tbody><tr><td>controlled</td><td>68</td><td>0.765</td><td>0.765</td><td>0.794</td><td>0.794</td><td>0.941</td><td>0.079</td></tr><tr><td>noisy</td><td>68</td><td>0.765</td><td>0.765</td><td>0.794</td><td>0.794</td><td>0.926</td><td>0.073</td></tr><tr><td>paraphrased</td><td>68</td><td>0.765</td><td>0.779</td><td>0.794</td><td>0.794</td><td>0.912</td><td>0.067</td></tr></tbody></table>
+<p>Figure 11 compares the main policies across the three strata. The benchmark also shows the expected prefix-depth story: at Prefix 1 the frontier still preserves truth better than it ranks it, while later prefixes let both ranking and retention approach full resolution. This is a stronger empirical basis than the original eighteen-case corpus because the benchmark now includes broader lexical variation, more workflow families, and explicit external baselines.</p>
+<figure><img src="assets/figure-11-benchmark-accuracy.svg" alt="Expanded benchmark accuracy by stratum" /><figcaption>Figure 11. Accuracy and frontier-truth retention across controlled, paraphrased, and noisy benchmark strata.</figcaption></figure>
+<h3>Experiment 6. Open-set novelty and false-closure control</h3>
+<p>Experiment 6 asks a narrower question than full theory induction: when the trace is genuinely unseen or hybrid, does the frontier behave like a healthy open-set uncertainty mechanism rather than a forced closed-set commitment <a class="citation" href="#ref-scheirer-2013">[SCHEIRER-2013]</a>? The current novelty layer does not synthesize a brand-new theory family. It measures whether novelty increases uncertainty, frontier width, and question demand without producing the same warning profile on ordinary in-domain traces.</p>
+<p>Table 6 shows the result. In-domain traces are flagged as open-set candidates only 0.052 of the time, while open-set traces are flagged at 0.667 and hybrid traces at 0.5. Mean entropy rises from 0.073 in-domain to 1.288 on open-set traces. This is the right direction for a commitment-control mechanism.</p>
+<table><thead><tr><th>Condition</th><th>Traces</th><th>Open-set flag</th><th>False closure</th><th>Questions</th><th>Entropy</th></tr></thead><tbody><tr><td>hybrid</td><td>6</td><td>0.5</td><td>0</td><td>0.5</td><td>0.397</td></tr><tr><td>in-domain</td><td>153</td><td>0.052</td><td>0</td><td>0.052</td><td>0.073</td></tr><tr><td>open-set</td><td>12</td><td>0.667</td><td>0</td><td>0.667</td><td>1.288</td></tr></tbody></table>
+<p>Figure 12 shows the same comparison graphically. The strongest novelty response appears at earlier prefixes, where the framework retains wider frontiers and more question demand. Later prefixes can still collapse incorrectly on some unseen cases, which is why the article should describe this as healthy uncertainty management rather than as proof of new local-theory synthesis.</p>
+<figure><img src="assets/figure-12-novelty-response.svg" alt="Novelty response versus in-domain behavior" /><figcaption>Figure 12. Open-set warning rate, false-closure risk, and question availability on in-domain, hybrid, and open-set traces.</figcaption></figure>
+<h3>Experiment 7. Multi-step questioning budgets</h3>
+<p>Experiment 7 extends the single-step questioning result into an explicit budgeted protocol. The benchmark traces are evaluated under budgets of 0, 1, 2, and 3 questions and under three question policies: information gain, a cheaper top-domain heuristic, and a random policy. The study contrasts clean evidence, masked evidence with noisy answers, and masked evidence with adversarial answers.</p>
+<p>Table 7 shows the noisy condition, where the comparison is most useful. Under masked noisy evidence, the information-gain policy raises final accuracy from 0.5 at budget 0 to 0.691 at budget 2, while the random policy reaches only 0.588 at the same budget. Clean evidence reaches full recovery quickly, which confirms that the multi-step protocol is not merely adding redundant queries.</p>
+<table><thead><tr><th>Policy</th><th>Budget</th><th>Accuracy</th><th>Truth retained</th><th>Entropy</th><th>Rescued</th></tr></thead><tbody><tr><td>information-gain</td><td>0</td><td>0.5</td><td>0.897</td><td>1.107</td><td>0</td></tr><tr><td>information-gain</td><td>1</td><td>0.647</td><td>0.838</td><td>0.628</td><td>0.294</td></tr><tr><td>information-gain</td><td>2</td><td>0.691</td><td>0.824</td><td>0.534</td><td>0.382</td></tr><tr><td>information-gain</td><td>3</td><td>0.691</td><td>0.809</td><td>0.427</td><td>0.382</td></tr><tr><td>random</td><td>0</td><td>0.5</td><td>0.897</td><td>1.107</td><td>0</td></tr><tr><td>random</td><td>1</td><td>0.618</td><td>0.779</td><td>0.61</td><td>0.265</td></tr><tr><td>random</td><td>2</td><td>0.588</td><td>0.706</td><td>0.498</td><td>0.235</td></tr><tr><td>random</td><td>3</td><td>0.574</td><td>0.706</td><td>0.356</td><td>0.206</td></tr><tr><td>top-domain</td><td>0</td><td>0.5</td><td>0.897</td><td>1.107</td><td>0</td></tr><tr><td>top-domain</td><td>1</td><td>0.574</td><td>0.676</td><td>0.452</td><td>0.235</td></tr><tr><td>top-domain</td><td>2</td><td>0.603</td><td>0.676</td><td>0.408</td><td>0.294</td></tr><tr><td>top-domain</td><td>3</td><td>0.603</td><td>0.706</td><td>0.343</td><td>0.294</td></tr></tbody></table>
+<p>Figure 13 shows accuracy versus budget under the hardest adversarial condition, and Figure 14 shows the corresponding entropy curve. The important negative result is visible as well as the positive one: under adversarial answers, all policies degrade sharply after budget 0. Information gain still drives entropy lower than the random policy, but it does not recover accuracy in the same way it does under clean or noisy answers. This is a real current limitation of the implementation, not a rhetorical footnote.</p>
+<figure><img src="assets/figure-13-accuracy-budget.svg" alt="Accuracy versus question budget under adversarial evidence" /><figcaption>Figure 13. Accuracy versus question budget under masked adversarial evidence for information-gain, top-domain, and random questioning policies.</figcaption></figure>
+<figure><img src="assets/figure-14-entropy-budget.svg" alt="Entropy versus question budget under adversarial evidence" /><figcaption>Figure 14. Entropy versus question budget under masked adversarial evidence. Information-gain questioning still contracts uncertainty more efficiently than the random policy, but adversarial answers remain hard.</figcaption></figure>
+<p>Taken together, the seven experiments support a stronger and more defensible claim than the earlier three-experiment article draft. The current implementation now supports structural validity, local robustness, broader benchmark transfer, healthier uncertainty on novelty cases, and meaningful question-budget effects under clean and noisy evidence. It still does not support full open-ended theory induction, synthesis of new domain families, or robust adversarial multi-step recovery. The optional auditability study defined elsewhere remains future work rather than current evidence, and it should remain described that way.</p>
 </section>
 <section id="chapter-5">
-<h2>5. Interpretation, scope, and conclusion</h2>
-<p>The framework is meta-rational in a substantive sense because it gives operational form to epistemic restraint. The frontier is not an implementation convenience for deferring a decision. It is the explicit record that several structured explanatory candidates remain plausible and useful at once. That record matters whenever evidence is finite, observer access is partial, and several local organizations of the same behavior remain defensible.</p>
-<p>The current controlled studies validate three parts of this broader thesis. Richer observers sharpen the frontier earlier than coarse observers, explicit follow-up questions reduce frontier entropy further when ambiguity remains, and frontier retention preserves recoverability when decisive cues are masked. That is enough to support the representation, theory-management, and recoverability claims of the architecture on the present corpus. It is not yet a claim that the current repository solves open-ended theory induction in full generality.</p>
-<p>This makes the framework useful beyond the current implementation target. The same architecture is relevant to workflow mining, protocol analysis, scientific traces, document or compliance intelligence, and agent memory formation. In all of these settings the value lies in maintaining several structured local theories, their transformations, and their robust versus theory-sensitive consequences.</p>
-<p>Good use of the framework therefore follows a simple discipline. Preserve source structure instead of flattening it away, keep the retained frontier plural but bounded, and treat discriminating questions as normal update actions rather than as emergency prompts. In practice this means carrying source metadata, observer choice, and explicit budgets into the analysis, then preserving the resulting frontier trace long enough for later comparison and revision.</p>
-<p><code>autoResearchLib</code> is the reference implementation used in this paper, but it is not the theoretical endpoint of the proposal. Its role is to provide executable objects, reproducible experiments, canonical CNL traces, and a concrete place where the frontier discipline can be inspected. Any learned assistance remains bounded to normalization and conceptual articulation around the deterministic core.</p>
+<h2>5. Interpretation, limits, and next studies</h2>
+<p>The framework is meta-rational in a substantive sense because it gives operational form to epistemic restraint. The retained frontier is not an implementation convenience for delaying a decision. It is the explicit record that several structured explanatory candidates remain plausible and useful at once. That record matters whenever evidence is finite, observer access is partial, and several local organizations of the same behavior remain defensible.</p>
+<p>The seven-experiment ladder now supports a stronger but still bounded claim than the earlier draft of the work. Richer observers sharpen the frontier earlier than coarse observers. Explicit questions contract that frontier further and improve recovery on ambiguous traces. Retained frontiers remain useful under cue masking, remain robust across a nearby policy region, transfer across a broader seven-domain benchmark, and trigger more uncertainty on novelty cases than on ordinary in-domain traces. Budgeted questioning also shows meaningful recovery under clean and noisy evidence.</p>
+<p>Those strengths do not erase the current limits. The implementation does not yet demonstrate full open-ended theory induction. The novelty study measures healthy uncertainty management rather than synthesis of genuinely new local theory families. The multi-step questioning study also shows a real weakness: adversarial answers can overwhelm the current information-gain policy even when that policy still reduces entropy more efficiently than random questioning. These limits should be treated as current engineering and scientific constraints, not as temporary wording problems.</p>
+<p>This still leaves the framework useful for a wide range of practical settings. Workflow mining, protocol analysis, scientific traces, compliance intelligence, and agent memory all benefit from preserving several structured local theories, their transforms, and their robust versus theory-sensitive consequences. Good use of the framework therefore follows a simple discipline: preserve source structure, keep the retained frontier plural but bounded, and treat discriminating questions as normal update actions rather than as emergency prompts.</p>
+<p>Optional learned assistance remains bounded to two tasks: normalization before observational lifting and conceptual articulation after the symbolic frontier already exists. Those auxiliary paths are valuable because raw input and human-facing explanation both benefit from flexible language handling. They remain bounded because the authoritative outputs of the system are still the symbolic frontier, the named score profile, the update trace, and the canonical CNL projection.</p>
+<p>The optional auditability study is the right next human-facing experiment, but it is not part of the current empirical claim. Its role is to test whether retained-frontier reports are actually easier for technical readers to justify, inspect, and revise than forced single-theory reports. Until evaluator data exists, that study should remain future work rather than implied evidence.</p>
 <p>Ruliology contributes the orientation toward spaces of possible rules and the consequences they generate <a class="citation" href="#ref-wolfram-2026">[WOLFRAM-2026]</a>.</p>
 <p>Applied category theory contributes disciplined composition and structure-preserving translation between structured regimes <a class="citation" href="#ref-fong-spivak-2019">[FONG-SPIVAK-2019]</a>.</p>
 <p>Categorical abstract rewriting contributes a precise language for typed local transformations and their compatibility <a class="citation" href="#ref-duval-2011">[DUVAL-2011]</a>.</p>
 <p>Neuro-symbolic concept work contributes the insistence that learned components should still operate over typed and compositional conceptual structures <a class="citation" href="#ref-mao-2025">[MAO-2025]</a>.</p>
-<p>The resulting proposal is therefore best understood as a machine for inducing, maintaining, comparing, and aligning local theories under bounded commitment. That is already a strong objective, and the current repository provides a concrete and reproducible first implementation of it.</p>
+<p><code>autoResearchLib</code> is the current reference implementation of this proposal. Its value is not that it finishes the research program. Its value is that it makes the current frontier discipline executable, reproducible, and inspectable enough for the next round of theory and experiment to be argued from evidence rather than from aspiration.</p>
 </section>
-      <section id="bibliography"><h2>References</h2><ol class="references"><li id="ref-wolfram-2026"><strong>[WOLFRAM-2026]</strong> Stephen Wolfram. <em>What Is Ruliology?</em>. 2026. <a href="https://writings.stephenwolfram.com/2026/01/what-is-ruliology/">https://writings.stephenwolfram.com/2026/01/what-is-ruliology/</a>.</li><li id="ref-fong-spivak-2019"><strong>[FONG-SPIVAK-2019]</strong> Brendan Fong and David I. Spivak. <em>Seven Sketches in Compositionality: An Invitation to Applied Category Theory</em>. 2019. <a href="https://arxiv.org/abs/1803.05316">https://arxiv.org/abs/1803.05316</a>.</li><li id="ref-mao-2025"><strong>[MAO-2025]</strong> Jiayuan Mao, Joshua B. Tenenbaum, and Jiajun Wu. <em>Neuro-Symbolic Concepts</em>. 2025. <a href="https://arxiv.org/abs/2505.06191">https://arxiv.org/abs/2505.06191</a>.</li><li id="ref-duval-2011"><strong>[DUVAL-2011]</strong> Dominique Duval, Rachid Echahed, and Frederic Prost. <em>Categorical Abstract Rewriting Systems and Functoriality of Graph Transformation</em>. 2011. <a href="https://arxiv.org/abs/1101.3417">https://arxiv.org/abs/1101.3417</a>.</li></ol></section>
+      <section id="bibliography"><h2>References</h2><ol class="references"><li id="ref-wolfram-2026"><strong>[WOLFRAM-2026]</strong> Stephen Wolfram. <em>What Is Ruliology?</em>. 2026. <a href="https://writings.stephenwolfram.com/2026/01/what-is-ruliology/">https://writings.stephenwolfram.com/2026/01/what-is-ruliology/</a>.</li><li id="ref-fong-spivak-2019"><strong>[FONG-SPIVAK-2019]</strong> Brendan Fong and David I. Spivak. <em>Seven Sketches in Compositionality: An Invitation to Applied Category Theory</em>. 2019. <a href="https://arxiv.org/abs/1803.05316">https://arxiv.org/abs/1803.05316</a>.</li><li id="ref-mao-2025"><strong>[MAO-2025]</strong> Jiayuan Mao, Joshua B. Tenenbaum, and Jiajun Wu. <em>Neuro-Symbolic Concepts</em>. 2025. <a href="https://arxiv.org/abs/2505.06191">https://arxiv.org/abs/2505.06191</a>.</li><li id="ref-duval-2011"><strong>[DUVAL-2011]</strong> Dominique Duval, Rachid Echahed, and Frederic Prost. <em>Categorical Abstract Rewriting Systems and Functoriality of Graph Transformation</em>. 2011. <a href="https://arxiv.org/abs/1101.3417">https://arxiv.org/abs/1101.3417</a>.</li><li id="ref-shannon-1948"><strong>[SHANNON-1948]</strong> Claude E. Shannon. <em>A Mathematical Theory of Communication</em>. 1948. <a href="https://people.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf">https://people.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf</a>.</li><li id="ref-settles-2009"><strong>[SETTLES-2009]</strong> Burr Settles. <em>Active Learning Literature Survey</em>. 2009. <a href="https://minds.wisconsin.edu/handle/1793/60660">https://minds.wisconsin.edu/handle/1793/60660</a>.</li><li id="ref-guo-2017"><strong>[GUO-2017]</strong> Chuan Guo, Geoff Pleiss, Yu Sun, and Kilian Q. Weinberger. <em>On Calibration of Modern Neural Networks</em>. 2017. <a href="https://arxiv.org/abs/1706.04599">https://arxiv.org/abs/1706.04599</a>.</li><li id="ref-scheirer-2013"><strong>[SCHEIRER-2013]</strong> Walter J. Scheirer, Anderson Rocha, Archana Sapkota, and Terrance E. Boult. <em>Toward Open Set Recognition</em>. 2013. <a href="https://ieeexplore.ieee.org/document/6480851">https://ieeexplore.ieee.org/document/6480851</a>.</li></ol></section>
     </main>
+    <script>
+    (() => {
+      const PRINT_FRAME_ID = 'article-print-frame';
+
+      async function waitForPrintableResources(printDocument) {
+        const pendingImages = Array.from(printDocument.images).filter((image) => !image.complete);
+        const imageLoads = pendingImages.map(
+          (image) =>
+            new Promise((resolve) => {
+              image.addEventListener('load', resolve, { once: true });
+              image.addEventListener('error', resolve, { once: true });
+            })
+        );
+
+        await Promise.all([printDocument.fonts?.ready ?? Promise.resolve(), ...imageLoads]);
+      }
+
+      async function exportArticlePdf() {
+        document.getElementById(PRINT_FRAME_ID)?.remove();
+
+        const frame = document.createElement('iframe');
+        frame.id = PRINT_FRAME_ID;
+        frame.setAttribute('aria-hidden', 'true');
+        frame.style.position = 'fixed';
+        frame.style.right = '0';
+        frame.style.bottom = '0';
+        frame.style.width = '0';
+        frame.style.height = '0';
+        frame.style.border = '0';
+
+        const styles = Array.from(document.querySelectorAll('style'))
+          .map((style) => style.textContent ?? '')
+          .join('\n');
+        const mainMarkup = document.querySelector('main')?.outerHTML ?? document.body.innerHTML;
+
+        frame.srcdoc = `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8" /><title>${document.title}</title><base href="${document.baseURI}" /><style>${styles}</style></head><body class="print-export-root">${mainMarkup}</body></html>`;
+        document.body.append(frame);
+
+        await new Promise((resolve) => {
+          frame.addEventListener('load', resolve, { once: true });
+        });
+
+        const printWindow = frame.contentWindow;
+        const printDocument = printWindow?.document;
+
+        if (!printWindow || !printDocument) {
+          frame.remove();
+          return;
+        }
+
+        await waitForPrintableResources(printDocument);
+
+        const cleanup = () => {
+          printWindow.removeEventListener('afterprint', cleanup);
+          setTimeout(() => frame.remove(), 250);
+        };
+
+        printWindow.addEventListener('afterprint', cleanup);
+        printWindow.focus();
+        printWindow.print();
+      }
+
+      document.addEventListener('click', (event) => {
+        const trigger = event.target.closest('[data-article-action="print"]');
+
+        if (!trigger) {
+          return;
+        }
+
+        event.preventDefault();
+        exportArticlePdf();
+      });
+
+      window.__articlePrint = {
+        exportPdf: exportArticlePdf
+      };
+    })();
+  </script>
   </body>
 </html>

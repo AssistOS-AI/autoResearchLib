@@ -21,7 +21,7 @@
       "status": "supported",
       "profileId": "composition-across-domains",
       "note": null,
-      "checkedAt": "2026-04-14T15:09:21.982Z",
+      "checkedAt": "2026-04-14T16:18:01.449Z",
       "sourceDigest": "fed65ac41c10ac15fc22b1f8c04e16634e51e149"
     },
     {
@@ -32,7 +32,7 @@
       "status": "supported",
       "profileId": "composition-across-domains",
       "note": null,
-      "checkedAt": "2026-04-14T15:09:21.982Z",
+      "checkedAt": "2026-04-14T16:18:01.449Z",
       "sourceDigest": "fed65ac41c10ac15fc22b1f8c04e16634e51e149"
     },
     {
@@ -43,9 +43,20 @@
       "status": "supported",
       "profileId": "composition-across-domains",
       "note": null,
-      "checkedAt": "2026-04-14T15:09:21.982Z",
+      "checkedAt": "2026-04-14T15:48:05.413Z",
+      "sourceDigest": "fed65ac41c10ac15fc22b1f8c04e16634e51e149"
+    },
+    {
+      "id": "886434e5c7ede2c5ff64374bc055be78f787ffcc",
+      "claimText": "It is category-level disciplined translation between structured domains, with preservation of the relations that matter under that translation [FONG-SPIVAK-2019].",
+      "normalizedClaim": "it is category-level disciplined translation between structured domains with preservation of the relations that matter under that translation fong-spivak-2019",
+      "chapterFile": "ch2-architecture.md",
+      "status": "supported",
+      "profileId": "composition-across-domains",
+      "note": null,
+      "checkedAt": "2026-04-14T16:18:01.449Z",
       "sourceDigest": "fed65ac41c10ac15fc22b1f8c04e16634e51e149"
     }
   ],
-  "lastValidatedAt": "2026-04-14T15:09:21.982Z"
+  "lastValidatedAt": "2026-04-14T16:18:01.449Z"
 }

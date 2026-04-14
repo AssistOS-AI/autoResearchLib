@@ -1,21 +1,31 @@
 import { copyFile, mkdir, readFile, readdir, stat, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { createRuntimeConfig } from '../../src/config/runtimeConfig.mjs';
 import { renderArticleHtml } from './renderHtml.mjs';
 import { validateSvgFile } from './svgValidation.mjs';
 import { verifyCitationClaims } from './bibliography.mjs';
 import { loadReferenceCatalog } from './referenceCatalog.mjs';
 
-const currentDir = dirname(fileURLToPath(import.meta.url));
-const repoRoot = resolve(currentDir, '..', '..');
+const skillSourcePath = fileURLToPath(import.meta.url);
+const renderHtmlSourcePath = fileURLToPath(new URL('./renderHtml.mjs', import.meta.url));
 
-function repoPath(...parts) {
-  return resolve(repoRoot, ...parts);
+function normalizeBuildOptions(options = {}) {
+  const articleBuildOverrides = {
+    ...(options.configOverrides?.articleBuild ?? {}),
+    ...(options.manualOverrides?.articleBuild ?? {})
+  };
+
+  return {
+    articleRoot: options.articleRoot ?? articleBuildOverrides.articleRoot ?? 'docs/article',
+    baseDir: resolve(options.baseDir ?? articleBuildOverrides.baseDir ?? process.cwd()),
+    incremental: options.incremental ?? articleBuildOverrides.incremental ?? true,
+    skillName: options.skillName ?? articleBuildOverrides.skillName ?? 'article-build',
+    allowBootstrapFallback: Boolean(options.allowBootstrapFallback ?? articleBuildOverrides.allowBootstrapFallback)
+  };
 }
 
-function resolveArticlePaths(config) {
-  const articleRoot = repoPath(config.articleBuild.articleRoot);
+function resolveArticlePaths(buildOptions) {
+  const articleRoot = resolve(buildOptions.baseDir, buildOptions.articleRoot);
   const planDir = resolve(articleRoot, 'plan');
 
   return {
@@ -406,6 +416,35 @@ async function resolveTemplate(markdown, planPath) {
   return resolved;
 }
 
+function collectTemplateDependencyPaths(markdown, planPath) {
+  const planDir = dirname(planPath);
+  const dependencies = new Set();
+
+  for (const match of markdown.matchAll(/\{\{FILE:([^}]+)\}\}/g)) {
+    dependencies.add(resolve(planDir, match[1].trim()));
+  }
+
+  for (const match of markdown.matchAll(/\{\{JSON_TABLE:([^}]+)\}\}/g)) {
+    const spec = parseJsonTableSpec(match[1].trim());
+    dependencies.add(resolve(planDir, spec.filePath));
+  }
+
+  for (const match of markdown.matchAll(/\{\{JSON:([^}]+)\}\}/g)) {
+    const spec = parseJsonSourceSpec(match[1].trim());
+    dependencies.add(resolve(planDir, spec.filePath));
+  }
+
+  return [...dependencies];
+}
+
+async function assertExistingPaths(paths, context) {
+  for (const candidatePath of paths) {
+    if (!(await fileExists(candidatePath))) {
+      throw new Error(`${context} declares dependency ${candidatePath}, but that file does not exist.`);
+    }
+  }
+}
+
 async function listChapterPlanPaths(planDir) {
   const entries = await readdir(planDir, { withFileTypes: true });
 
@@ -453,7 +492,7 @@ async function loadAssetSpecs(paths) {
     return {
       id: asset.id ?? asset.output,
       output: resolve(paths.articleRoot, asset.output),
-      source: resolve(paths.planDir, asset.source),
+      source: resolve(dirname(paths.assetSpecPath), asset.source),
       validation: asset.validation ?? { type: 'generic' }
     };
   });
@@ -522,11 +561,23 @@ async function refreshChapterDrafts({ force = false, paths }) {
   await mkdir(paths.chapterDir, { recursive: true });
 
   for (const entry of chapterEntries) {
+    const template = extractSection(entry.body, 'Generated Chapter Template');
+
+    if (!template) {
+      throw new Error(`Plan file ${entry.planPath} is missing a "## Generated Chapter Template" section.`);
+    }
+    const declaredDependencies = (entry.metadata.dependsOn ?? []).map((relativePath) =>
+      resolve(dirname(entry.planPath), relativePath)
+    );
+    const templateDependencies = collectTemplateDependencyPaths(template, entry.planPath);
     const dependencyPaths = [
       entry.planPath,
-      ...((entry.metadata.dependsOn ?? []).map((relativePath) => resolve(dirname(entry.planPath), relativePath))),
-      fileURLToPath(import.meta.url)
+      ...declaredDependencies,
+      ...templateDependencies,
+      skillSourcePath
     ];
+    await assertExistingPaths(declaredDependencies, `Chapter plan ${entry.planPath}`);
+    await assertExistingPaths(templateDependencies, `Generated chapter template in ${entry.planPath}`);
     const shouldWrite = await needsRefresh(entry.targetPath, dependencyPaths, force);
 
     if (!shouldWrite) {
@@ -536,12 +587,6 @@ async function refreshChapterDrafts({ force = false, paths }) {
         refreshed: false
       });
       continue;
-    }
-
-    const template = extractSection(entry.body, 'Generated Chapter Template');
-
-    if (!template) {
-      throw new Error(`Plan file ${entry.planPath} is missing a "## Generated Chapter Template" section.`);
     }
 
     const resolvedDraft = await resolveTemplate(template, entry.planPath);
@@ -574,7 +619,8 @@ async function buildHtml({ force = false, paths, references, chapters, assetResu
     ...chapters.map((chapter) => chapter.filePath),
     ...assetResults.map((asset) => asset.output),
     ...(await listFilesRecursively(paths.bibliographyDir)),
-    fileURLToPath(import.meta.url)
+    skillSourcePath,
+    renderHtmlSourcePath
   ];
   const shouldWrite = await needsRefresh(paths.outputHtmlPath, dependencyPaths, force);
 
@@ -593,7 +639,13 @@ async function buildHtml({ force = false, paths, references, chapters, assetResu
       title: chapter.title,
       markdown: chapter.markdown
     })),
-    references
+    references,
+    provenance: {
+      generator: 'article-build skill v1.0',
+      generatedAt: new Date().toISOString(),
+      articleRoot: paths.articleRoot,
+      planDir: paths.planDir
+    }
   });
 
   await mkdir(paths.articleRoot, { recursive: true });
@@ -626,21 +678,9 @@ async function loadBuiltChapters(chapterResults) {
 }
 
 async function runArticleBuildSkill(options = {}) {
-  const configOverrides = {
-    ...(options.configOverrides ?? {}),
-    ...(options.manualOverrides ?? {})
-  };
-
-  if (options.articleRoot) {
-    configOverrides.articleBuild = {
-      ...(configOverrides.articleBuild ?? {}),
-      articleRoot: options.articleRoot
-    };
-  }
-
-  const config = createRuntimeConfig(configOverrides);
-  const force = Boolean(options.force) || config.articleBuild.incremental === false;
-  const paths = resolveArticlePaths(config);
+  const buildOptions = normalizeBuildOptions(options);
+  const force = Boolean(options.force) || buildOptions.incremental === false;
+  const paths = resolveArticlePaths(buildOptions);
   const references = await loadReferenceCatalog(paths.bibliographyCatalogPath);
   const assetResults = await refreshArticleAssets({ force, paths });
   const assetValidation = await validateArticleAssets(assetResults);
@@ -651,7 +691,8 @@ async function runArticleBuildSkill(options = {}) {
     bibliographyDir: paths.bibliographyDir,
     bibliographyCatalogPath: paths.bibliographyCatalogPath,
     references,
-    force
+    force,
+    allowBootstrapFallback: buildOptions.allowBootstrapFallback
   });
   const html = await buildHtml({
     force,
@@ -661,8 +702,10 @@ async function runArticleBuildSkill(options = {}) {
     assetResults
   });
   const manifest = {
-    skill: config.articleBuild.skillName,
-    articleRoot: config.articleBuild.articleRoot,
+    skill: buildOptions.skillName,
+    articleRoot: buildOptions.articleRoot,
+    articleRootPath: paths.articleRoot,
+    baseDir: buildOptions.baseDir,
     force,
     generatedAt: new Date().toISOString(),
     chapters: chapterResults.map((entry) => ({

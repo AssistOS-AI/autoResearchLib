@@ -1,0 +1,4 @@
+stratum,trace_count,cue_vote_accuracy,naive_bayes_accuracy,single_theory_accuracy,frontier_top_accuracy,frontier_retention_rate,mean_entropy,mean_frontier_width,premature_collapse_rate,question_availability,frontier_calibration_ece,naive_bayes_calibration_ece
+controlled,68,0.765,0.765,0.794,0.794,0.941,0.513,4.971,0,0.265,0.079,0.071
+noisy,68,0.765,0.765,0.794,0.794,0.926,0.499,5.044,0,0.279,0.073,0.07
+paraphrased,68,0.765,0.779,0.794,0.794,0.912,0.48,5.044,0,0.279,0.067,0.065

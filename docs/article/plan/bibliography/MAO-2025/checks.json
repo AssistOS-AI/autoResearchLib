@@ -32,7 +32,7 @@
       "status": "supported",
       "profileId": "typed-neuro-symbolic-concepts",
       "note": null,
-      "checkedAt": "2026-04-14T15:09:22.006Z",
+      "checkedAt": "2026-04-14T16:18:01.470Z",
       "sourceDigest": "684c599c1e430f0eeb2c222dffbd59a35e3c4529"
     },
     {
@@ -43,7 +43,7 @@
       "status": "supported",
       "profileId": "typed-neuro-symbolic-concepts",
       "note": null,
-      "checkedAt": "2026-04-14T15:09:22.005Z",
+      "checkedAt": "2026-04-14T15:48:05.438Z",
       "sourceDigest": "684c599c1e430f0eeb2c222dffbd59a35e3c4529"
     },
     {
@@ -54,9 +54,31 @@
       "status": "supported",
       "profileId": "typed-neuro-symbolic-concepts",
       "note": null,
-      "checkedAt": "2026-04-14T15:09:22.006Z",
+      "checkedAt": "2026-04-14T15:48:05.438Z",
+      "sourceDigest": "684c599c1e430f0eeb2c222dffbd59a35e3c4529"
+    },
+    {
+      "id": "8e165b75ee7c9db2d9880a60a6a672e1c04ec587",
+      "claimText": "Recent neuro-symbolic work argues that learned systems are most useful when they still operate over typed and compositional conceptual carriers [MAO-2025].",
+      "normalizedClaim": "recent neuro-symbolic work argues that learned systems are most useful when they still operate over typed and compositional conceptual carriers mao-2025",
+      "chapterFile": "ch1-introduction.md",
+      "status": "supported",
+      "profileId": "typed-neuro-symbolic-concepts",
+      "note": null,
+      "checkedAt": "2026-04-14T16:18:01.470Z",
+      "sourceDigest": "684c599c1e430f0eeb2c222dffbd59a35e3c4529"
+    },
+    {
+      "id": "7cf6b9043351e58a4f3ef96083c2d590d4ce1155",
+      "claimText": "A learned component may therefore help normalize or propose candidate observational fragments, but those fragments must be turned into typed, compositional symbolic concept objects with provenance before they can affect theory induction [MAO-2025].",
+      "normalizedClaim": "a learned component may therefore help normalize or propose candidate observational fragments but those fragments must be turned into typed compositional symbolic concept objects with provenance before they can affect theory induction mao-2025",
+      "chapterFile": "ch2-architecture.md",
+      "status": "supported",
+      "profileId": "typed-neuro-symbolic-concepts",
+      "note": null,
+      "checkedAt": "2026-04-14T16:18:01.470Z",
       "sourceDigest": "684c599c1e430f0eeb2c222dffbd59a35e3c4529"
     }
   ],
-  "lastValidatedAt": "2026-04-14T15:09:22.006Z"
+  "lastValidatedAt": "2026-04-14T16:18:01.471Z"
 }

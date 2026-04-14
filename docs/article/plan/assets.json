@@ -67,6 +67,54 @@
       "validation": {
         "type": "chart"
       }
+    },
+    {
+      "id": "experiment4-ablation-effects",
+      "source": "../../../experiments/experiment4/ablation-effects.svg",
+      "output": "assets/figure-9-ablation-effects.svg",
+      "validation": {
+        "type": "chart"
+      }
+    },
+    {
+      "id": "experiment4-policy-sensitivity",
+      "source": "../../../experiments/experiment4/policy-sensitivity.svg",
+      "output": "assets/figure-10-policy-sensitivity.svg",
+      "validation": {
+        "type": "chart"
+      }
+    },
+    {
+      "id": "experiment5-benchmark-accuracy",
+      "source": "../../../experiments/experiment5/benchmark-accuracy.svg",
+      "output": "assets/figure-11-benchmark-accuracy.svg",
+      "validation": {
+        "type": "chart"
+      }
+    },
+    {
+      "id": "experiment6-novelty-response",
+      "source": "../../../experiments/experiment6/novelty-response.svg",
+      "output": "assets/figure-12-novelty-response.svg",
+      "validation": {
+        "type": "chart"
+      }
+    },
+    {
+      "id": "experiment7-accuracy-budget",
+      "source": "../../../experiments/experiment7/accuracy-vs-budget.svg",
+      "output": "assets/figure-13-accuracy-budget.svg",
+      "validation": {
+        "type": "chart"
+      }
+    },
+    {
+      "id": "experiment7-entropy-budget",
+      "source": "../../../experiments/experiment7/entropy-vs-budget.svg",
+      "output": "assets/figure-14-entropy-budget.svg",
+      "validation": {
+        "type": "chart"
+      }
     }
   ]
 }

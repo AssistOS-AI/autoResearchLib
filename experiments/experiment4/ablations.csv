@@ -1,0 +1,10 @@
+condition,trace_count,top_accuracy,top_accuracy_ci_low,top_accuracy_ci_high,truth_retention_rate,truth_retention_ci_low,truth_retention_ci_high,mean_entropy,mean_frontier_width,premature_collapse_rate,question_availability,agreement_with_baseline
+Baseline policy,153,0.98,0.956,1,1,1,1,0.073,4.105,0,0.052,1
+Coarse observer,153,0.614,0.542,0.685,0.922,0.871,0.961,0.854,5.817,0,0.549,0.634
+No inferred cues,153,0.98,0.956,1,1,1,1,0.103,4.176,0,0.098,1
+Frontier limit 4,153,0.98,0.956,1,0.98,0.956,1,0.031,3.974,0.02,0.039,1
+Frontier limit 12,153,0.98,0.956,1,1,1,1,0.073,4.105,0,0.052,1
+No domain rescue,153,0.98,0.956,1,0.98,0.956,1,0,3.974,0.02,0,1
+No equivalence classes,153,0.98,0.956,1,1,1,1,0.073,4.105,0,0.052,1
+No alignment utility,153,0.98,0.956,1,1,1,1,0.073,4.105,0,0.052,1
+No discriminating questions,153,0.98,0.956,1,1,1,1,0.073,4.105,0,0,1

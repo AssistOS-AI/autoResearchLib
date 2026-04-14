@@ -1,0 +1,18 @@
+{
+  "citationKey": "SHANNON-1948",
+  "sourceDigest": "7fc2e0172f7dd75b9322ce4a62276640321f0506",
+  "checkedClaims": [
+    {
+      "id": "92a9f107147b7835fe970c4e4da8bce9245f94ce",
+      "claimText": "The frontier is summarized with entropy over the retained domain distribution, `H(F) = - sum_d p(d) log p(d)`, where `p(d)` is the normalized retained-domain mass [SHANNON-1948].",
+      "normalizedClaim": "the frontier is summarized with entropy over the retained domain distribution h f - sum d p d log p d where p d is the normalized retained-domain mass shannon-1948",
+      "chapterFile": "ch3-data-model.md",
+      "status": "supported",
+      "profileId": "entropy-and-information",
+      "note": null,
+      "checkedAt": "2026-04-14T16:18:02.412Z",
+      "sourceDigest": "7fc2e0172f7dd75b9322ce4a62276640321f0506"
+    }
+  ],
+  "lastValidatedAt": "2026-04-14T16:18:02.412Z"
+}

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>autoResearchLib Docs</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f4efe7;
+        --panel: #fffdf8;
+        --panel-soft: #f7f1e7;
+        --text: #1f1a17;
+        --muted: #6a5c52;
+        --line: #d7c7b8;
+        --accent: #8c3b2a;
+        --accent-strong: #6b2518;
+        --shadow: 0 18px 40px rgba(61, 39, 24, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at top left, rgba(140, 59, 42, 0.14), transparent 30%),
+          linear-gradient(180deg, #f8f3ec 0%, var(--bg) 100%);
+        color: var(--text);
+        font: 16px/1.6 Georgia, "Times New Roman", serif;
+      }
+
+      main {
+        width: min(1040px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 48px 0 64px;
+      }
+
+      .hero {
+        margin-bottom: 28px;
+        padding: 28px;
+        border: 1px solid rgba(140, 59, 42, 0.18);
+        border-radius: 28px;
+        background: rgba(255, 253, 248, 0.82);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(10px);
+      }
+
+      .eyebrow {
+        margin: 0 0 10px;
+        color: var(--accent);
+        font: 700 0.8rem/1.2 Arial, Helvetica, sans-serif;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        font-size: clamp(2.2rem, 5vw, 4rem);
+        line-height: 0.98;
+      }
+
+      .intro {
+        max-width: 58rem;
+        margin: 0;
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+
+      .article-link {
+        display: block;
+        margin-top: 24px;
+        padding: 24px 26px;
+        border: 1px solid rgba(140, 59, 42, 0.3);
+        border-radius: 24px;
+        background: linear-gradient(135deg, #8c3b2a 0%, #b55a34 100%);
+        color: #fff9f3;
+        text-decoration: none;
+        box-shadow: 0 16px 32px rgba(107, 37, 24, 0.24);
+        transition:
+          transform 160ms ease,
+          box-shadow 160ms ease,
+          filter 160ms ease;
+      }
+
+      .article-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 22px 38px rgba(107, 37, 24, 0.28);
+        filter: saturate(1.05);
+      }
+
+      .article-link strong {
+        display: block;
+        margin-bottom: 6px;
+        font: 700 1.35rem/1.2 Arial, Helvetica, sans-serif;
+      }
+
+      .article-link span {
+        display: block;
+        max-width: 44rem;
+        color: rgba(255, 249, 243, 0.86);
+      }
+
+      .section {
+        padding: 24px 26px 28px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+      }
+
+      .section h2 {
+        margin: 0 0 8px;
+        font: 700 1.05rem/1.2 Arial, Helvetica, sans-serif;
+        letter-spacing: 0.03em;
+      }
+
+      .section p {
+        margin: 0 0 18px;
+        color: var(--muted);
+      }
+
+      .spec-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 10px;
+      }
+
+      .spec-link {
+        display: block;
+        padding: 12px 14px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--panel-soft);
+        color: var(--text);
+        text-decoration: none;
+        transition:
+          border-color 140ms ease,
+          background 140ms ease,
+          transform 140ms ease;
+      }
+
+      .spec-link:hover {
+        border-color: rgba(140, 59, 42, 0.45);
+        background: #fbf5ec;
+        transform: translateY(-1px);
+      }
+
+      .spec-link strong {
+        display: block;
+        margin-bottom: 4px;
+        font: 700 0.92rem/1.2 Arial, Helvetica, sans-serif;
+      }
+
+      .spec-link span {
+        display: block;
+        color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.45;
+      }
+
+      @media (max-width: 640px) {
+        main {
+          width: min(100%, calc(100% - 20px));
+          padding-top: 20px;
+          padding-bottom: 28px;
+        }
+
+        .hero,
+        .section {
+          padding: 20px;
+          border-radius: 20px;
+        }
+
+        .article-link {
+          padding: 20px;
+          border-radius: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Documentation Entry</p>
+        <h1>autoResearchLib</h1>
+        <p class="intro">
+          Main entry for the generated research article and the design-specification documents.
+        </p>
+
+        <a class="article-link" href="./article/index.html">
+          <strong>Open The Article</strong>
+          <span>
+            Read the generated article first. This is the primary reading path for the scientific summary.
+          </span>
+        </a>
+      </section>
+
+      <section class="section">
+        <h2>Design Specifications</h2>
+        <p>
+          The DS files remain the design source of truth, but they are intentionally presented here with lower visual
+          priority than the article.
+        </p>
+
+        <div class="spec-grid">
+          <a class="spec-link" href="./viewer.html?doc=specs/DS000-vision.md">
+            <strong>DS000</strong>
+            <span>Vision</span>
+          </a>
+          <a class="spec-link" href="./viewer.html?doc=specs/DS001-library-architecture.md">
+            <strong>DS001</strong>
+            <span>Library Architecture</span>
+          </a>
+          <a class="spec-link" href="./viewer.html?doc=specs/DS002-data-model.md">
+            <strong>DS002</strong>
+            <span>Data Model</span>
+          </a>
+          <a class="spec-link" href="./viewer.html?doc=specs/DS003-experimental-protocol.md">
+            <strong>DS003</strong>
+            <span>Experimental Protocol</span>
+          </a>
+          <a class="spec-link" href="./viewer.html?doc=specs/DS004-article-synchronization.md">
+            <strong>DS004</strong>
+            <span>Article Synchronization</span>
+          </a>
+          <a class="spec-link" href="./viewer.html?doc=specs/DS005-llm-model-strategy.md">
+            <strong>DS005</strong>
+            <span>LLM Model Strategy</span>
+          </a>
+          <a class="spec-link" href="./viewer.html?doc=specs/DS006-library-usage.md">
+            <strong>DS006</strong>
+            <span>Library Usage</span>
+          </a>
+          <a class="spec-link" href="./viewer.html?doc=specs/DS007-usage-best-practices.md">
+            <strong>DS007</strong>
+            <span>Usage Best Practices</span>
+          </a>
+          <a class="spec-link" href="./viewer.html?doc=specs/DS008-expanded-validation.md">
+            <strong>DS008</strong>
+            <span>Expanded Validation</span>
+          </a>
+          <a class="spec-link" href="./viewer.html?doc=specs/DS009-auditability-study.md">
+            <strong>DS009</strong>
+            <span>Auditability Study</span>
+          </a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

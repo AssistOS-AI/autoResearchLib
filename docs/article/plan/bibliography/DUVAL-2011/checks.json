@@ -43,7 +43,7 @@
       "status": "supported",
       "profileId": "categorical-rewriting",
       "note": null,
-      "checkedAt": "2026-04-14T15:09:22.029Z",
+      "checkedAt": "2026-04-14T16:18:01.492Z",
       "sourceDigest": "b1a07f0e039c4968f5c95ab4b6017663634f6c45"
     },
     {
@@ -54,7 +54,7 @@
       "status": "supported",
       "profileId": "categorical-rewriting",
       "note": null,
-      "checkedAt": "2026-04-14T15:09:22.029Z",
+      "checkedAt": "2026-04-14T16:18:01.492Z",
       "sourceDigest": "b1a07f0e039c4968f5c95ab4b6017663634f6c45"
     },
     {
@@ -65,9 +65,20 @@
       "status": "supported",
       "profileId": "categorical-rewriting",
       "note": null,
-      "checkedAt": "2026-04-14T15:09:22.029Z",
+      "checkedAt": "2026-04-14T15:48:05.463Z",
+      "sourceDigest": "b1a07f0e039c4968f5c95ab4b6017663634f6c45"
+    },
+    {
+      "id": "07ac92bdad8c3be84a5beaf974141141ed5e7279",
+      "claimText": "Typed local transformation and compatibility therefore remain explicit as part of a categorical rewriting view rather than being hidden in a monolithic score [DUVAL-2011].",
+      "normalizedClaim": "typed local transformation and compatibility therefore remain explicit as part of a categorical rewriting view rather than being hidden in a monolithic score duval-2011",
+      "chapterFile": "ch3-data-model.md",
+      "status": "supported",
+      "profileId": "categorical-rewriting",
+      "note": null,
+      "checkedAt": "2026-04-14T16:18:01.492Z",
       "sourceDigest": "b1a07f0e039c4968f5c95ab4b6017663634f6c45"
     }
   ],
-  "lastValidatedAt": "2026-04-14T15:09:22.029Z"
+  "lastValidatedAt": "2026-04-14T16:18:01.492Z"
 }

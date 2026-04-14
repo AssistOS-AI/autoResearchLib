@@ -5,7 +5,7 @@ import {
   retainNonDominated,
   sortByScore
 } from './frontier.mjs';
-import { suggestDiscriminatingQuestion } from './questioning.mjs';
+import { scoreDiscriminatingQuestions } from './questioning.mjs';
 import { expandTheoryFamily } from './theory.mjs';
 
 function buildVisibleSignature(theory, observer) {
@@ -18,7 +18,16 @@ function buildVisibleSignature(theory, observer) {
   return `${visibleCueIds.join('|')}::${visibleStates.join('>')}`;
 }
 
-function buildEquivalenceClasses(frontier, observer) {
+function buildEquivalenceClasses(frontier, observer, enabled = true) {
+  if (!enabled) {
+    return frontier.map((theory, index) => ({
+      id: `eq-${index + 1}`,
+      signature: theory.id,
+      theoryIds: [theory.id],
+      domains: [theory.domainId]
+    }));
+  }
+
   const classes = new Map();
 
   for (const theory of frontier) {
@@ -60,12 +69,17 @@ function summarizeConsequences(frontier) {
   };
 }
 
-function retainFrontierWithAlternatives(theories, frontierLimit) {
+function retainFrontierWithAlternatives(theories, frontierLimit, policy) {
   const strictFrontier = retainNonDominated(theories, frontierLimit);
+
+  if (policy?.features?.domainRescue === false) {
+    return strictFrontier;
+  }
+
   const rescued = new Map(strictFrontier.map((theory) => [theory.id, theory]));
   const distinctDomains = [...new Set(theories.map((theory) => theory.domainId))];
   const bestTotal = strictFrontier[0]?.scoreProfile.total ?? 0;
-  const tolerance = 0.08;
+  const tolerance = policy?.frontier?.rescueTolerance ?? 0.08;
 
   for (const domainId of distinctDomains) {
     if (strictFrontier.some((theory) => theory.domainId === domainId)) {
@@ -86,30 +100,34 @@ function retainFrontierWithAlternatives(theories, frontierLimit) {
   return sortByScore([...rescued.values()]).slice(0, frontierLimit);
 }
 
-function summarizeNeighborhood({ theories, transformations, observer, domains, frontierLimit = 8 }) {
-  const frontier = retainFrontierWithAlternatives(theories, frontierLimit);
+function summarizeNeighborhood({ theories, transformations, observer, domains, frontierLimit = 8, policy }) {
+  const frontier = retainFrontierWithAlternatives(theories, frontierLimit, policy);
   const theoryDistribution = computeTheoryDistribution(frontier);
   const domainDistribution = computeDomainDistribution(frontier);
   const { robustInvariants, theorySensitiveConsequences } = summarizeConsequences(frontier);
+  const questionCandidates = scoreDiscriminatingQuestions(frontier, domains, policy).filter(
+    (question) => question.informationGain > 0.0001
+  );
 
   return {
     theories,
     frontier,
     frontierLimit,
     transformations,
-    equivalenceClasses: buildEquivalenceClasses(frontier, observer),
+    equivalenceClasses: buildEquivalenceClasses(frontier, observer, policy?.features?.equivalenceClasses !== false),
     robustInvariants,
     theorySensitiveConsequences,
     theoryEntropy: computeEntropy(theoryDistribution.map((entry) => entry.weight)),
     domainEntropy: computeEntropy(domainDistribution.map((entry) => entry.weight)),
     theoryDistribution,
     domainDistribution,
-    recommendedQuestion: suggestDiscriminatingQuestion(frontier, domains)
+    questionCandidates,
+    recommendedQuestion: questionCandidates[0] ?? null
   };
 }
 
-function buildNeighborhood({ baseTheories, observer, domains, frontierLimit = 8 }) {
-  const expansions = baseTheories.map((theory) => expandTheoryFamily(theory));
+function buildNeighborhood({ baseTheories, observer, domains, frontierLimit = 8, policy }) {
+  const expansions = baseTheories.map((theory) => expandTheoryFamily(theory, policy));
   const theories = expansions.flatMap((entry) => entry.theories);
   const transformations = expansions.flatMap((entry) => entry.transformations);
 
@@ -118,7 +136,8 @@ function buildNeighborhood({ baseTheories, observer, domains, frontierLimit = 8 
     transformations,
     observer,
     domains,
-    frontierLimit
+    frontierLimit,
+    policy
   });
 }
 

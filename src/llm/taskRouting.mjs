@@ -2,14 +2,14 @@ const TASK_ROUTES = {
   'ingestion-normalization': {
     feature: 'ingestionNormalization',
     tierKey: 'ingestionNormalization',
-    intent: 'normalize-observation-input',
-    tags: ['ingestion', 'normalization', 'observational-lifting']
+    intent: 'normalize-ingestion',
+    tags: ['ingestion', 'normalization', 'pre-lift', 'bounded-llm']
   },
   'conceptual-explanation': {
     feature: 'conceptualExplanation',
     tierKey: 'conceptualExplanation',
-    intent: 'conceptualize-analysis-result',
-    tags: ['conceptualization', 'definitions', 'rules', 'explanation']
+    intent: 'conceptual-explanation',
+    tags: ['post-frontier', 'conceptualization', 'bounded-llm']
   }
 };
 
@@ -28,6 +28,7 @@ function buildTaskOptions(taskType, config, extraContext = {}) {
   const tierConfig = config.llm.tiers[route.tierKey];
 
   return {
+    taskFamily: taskType,
     tier: tierConfig?.tier ?? 'fast',
     model: tierConfig?.model ?? null,
     tags: [...route.tags],

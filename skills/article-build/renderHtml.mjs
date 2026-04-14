@@ -1,4 +1,11 @@
-import { escapeHtml } from '../../src/reporting/tabular.mjs';
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
 
 function citationId(label) {
   return `ref-${label.toLowerCase()}`;
@@ -180,11 +187,44 @@ function articleCss() {
       --accent: #1d4ed8;
     }
     * { box-sizing: border-box; }
+    html {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
     body {
       margin: 0;
       background: #eef2ff;
       color: var(--text);
       font: 16px/1.7 Georgia, "Times New Roman", serif;
+    }
+    .page-tools {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+      padding: 14px 18px 0;
+    }
+    .page-tools__button {
+      border: 1px solid var(--accent);
+      background: #eff6ff;
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 10px 16px;
+      font: 600 0.95rem/1.2 Arial, Helvetica, sans-serif;
+      cursor: pointer;
+    }
+    .page-tools__button:hover {
+      background: #dbeafe;
+    }
+    .page-tools__note {
+      max-width: 380px;
+      margin: 0;
+      color: var(--muted);
+      font: 0.84rem/1.4 Arial, Helvetica, sans-serif;
+      text-align: right;
     }
     main {
       max-width: 1024px;
@@ -272,6 +312,117 @@ function articleCss() {
       font-size: 0.95rem;
     }
     .references li { margin-bottom: 12px; }
+    @page {
+      size: A4;
+      margin: 14mm 14mm 16mm;
+    }
+    @media print {
+      body {
+        background: #ffffff;
+      }
+      .page-tools {
+        display: none !important;
+      }
+      main {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      figure {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      table, pre {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+    }
+  `;
+}
+
+function articlePrintScript() {
+  return `
+    (() => {
+      const PRINT_FRAME_ID = 'article-print-frame';
+
+      async function waitForPrintableResources(printDocument) {
+        const pendingImages = Array.from(printDocument.images).filter((image) => !image.complete);
+        const imageLoads = pendingImages.map(
+          (image) =>
+            new Promise((resolve) => {
+              image.addEventListener('load', resolve, { once: true });
+              image.addEventListener('error', resolve, { once: true });
+            })
+        );
+
+        await Promise.all([printDocument.fonts?.ready ?? Promise.resolve(), ...imageLoads]);
+      }
+
+      async function exportArticlePdf() {
+        document.getElementById(PRINT_FRAME_ID)?.remove();
+
+        const frame = document.createElement('iframe');
+        frame.id = PRINT_FRAME_ID;
+        frame.setAttribute('aria-hidden', 'true');
+        frame.style.position = 'fixed';
+        frame.style.right = '0';
+        frame.style.bottom = '0';
+        frame.style.width = '0';
+        frame.style.height = '0';
+        frame.style.border = '0';
+
+        const styles = Array.from(document.querySelectorAll('style'))
+          .map((style) => style.textContent ?? '')
+          .join('\\n');
+        const mainMarkup = document.querySelector('main')?.outerHTML ?? document.body.innerHTML;
+
+        frame.srcdoc = \`<!DOCTYPE html><html lang="en"><head><meta charset="utf-8" /><title>\${document.title}</title><base href="\${document.baseURI}" /><style>\${styles}</style></head><body class="print-export-root">\${mainMarkup}</body></html>\`;
+        document.body.append(frame);
+
+        await new Promise((resolve) => {
+          frame.addEventListener('load', resolve, { once: true });
+        });
+
+        const printWindow = frame.contentWindow;
+        const printDocument = printWindow?.document;
+
+        if (!printWindow || !printDocument) {
+          frame.remove();
+          return;
+        }
+
+        await waitForPrintableResources(printDocument);
+
+        const cleanup = () => {
+          printWindow.removeEventListener('afterprint', cleanup);
+          setTimeout(() => frame.remove(), 250);
+        };
+
+        printWindow.addEventListener('afterprint', cleanup);
+        printWindow.focus();
+        printWindow.print();
+      }
+
+      document.addEventListener('click', (event) => {
+        const trigger = event.target.closest('[data-article-action="print"]');
+
+        if (!trigger) {
+          return;
+        }
+
+        event.preventDefault();
+        exportArticlePdf();
+      });
+
+      window.__articlePrint = {
+        exportPdf: exportArticlePdf
+      };
+    })();
   `;
 }
 
@@ -281,17 +432,19 @@ function renderBibliography(usedKeys, references) {
   }
 
   return `<section id="bibliography"><h2>References</h2><ol class="references">${usedKeys
-    .map((label) => {
-      const reference = references[label];
+      .map((label) => {
+        const reference = references[label];
 
-      return `<li id="${citationId(label)}"><strong>[${label}]</strong> ${escapeHtml(
-        reference.authors
-      )}. <em>${escapeHtml(reference.title)}</em>. ${escapeHtml(reference.year)}. <a href="${reference.url}">${reference.url}</a>.</li>`;
-    })
+        return `<li id="${citationId(label)}"><strong>[${label}]</strong> ${escapeHtml(
+          reference.authors
+        )}. <em>${escapeHtml(reference.title)}</em>. ${escapeHtml(reference.year)}. <a href="${escapeHtml(
+          reference.url
+        )}">${escapeHtml(reference.url)}</a>.</li>`;
+      })
     .join('')}</ol></section>`;
 }
 
-function renderArticleHtml({ title, abstract, chapters, references }) {
+function renderArticleHtml({ title, abstract, chapters, references, provenance = {} }) {
   const chapterLinks = chapters
     .map((chapter) => `<li><a href="#chapter-${chapter.number}">${renderInline(chapter.title, references)}</a></li>`)
     .join('');
@@ -307,10 +460,20 @@ function renderArticleHtml({ title, abstract, chapters, references }) {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content="${escapeHtml(provenance.generator ?? 'article-build skill')}" />
     <title>${escapeHtml(title)}</title>
     <style>${articleCss()}</style>
   </head>
   <body>
+    <!-- Generated by ${escapeHtml(provenance.generator ?? 'article-build skill')} at ${escapeHtml(
+      provenance.generatedAt ?? 'unknown-time'
+    )}; articleRoot=${escapeHtml(provenance.articleRoot ?? 'unknown-root')}; plans=${escapeHtml(
+      provenance.planDir ?? 'unknown-plan-dir'
+    )} -->
+    <div class="page-tools">
+      <button type="button" class="page-tools__button" data-article-action="print">Print / Save PDF</button>
+      <p class="page-tools__note">Note: browser-managed PDF headers and footers remain browser-controlled and may include URL, title, or timestamp.</p>
+    </div>
     <main>
       <header>
         <h1>${escapeHtml(title)}</h1>
@@ -329,6 +492,7 @@ ${renderMarkdown(chapter.markdown, references)}
         .join('\n')}
       ${renderBibliography(usedKeys, references)}
     </main>
+    <script>${articlePrintScript()}</script>
   </body>
 </html>`;
 }

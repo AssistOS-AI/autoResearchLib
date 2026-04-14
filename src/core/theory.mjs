@@ -1,3 +1,4 @@
+import { DEFAULT_SCORE_WEIGHTS } from '../config/analysisPolicy.mjs';
 import { clamp, withComputedTotal } from './frontier.mjs';
 
 function cueSetForDomain(hypothesis, domainId) {
@@ -44,8 +45,10 @@ function buildScoreProfile({
   genericSignal,
   domainSignal,
   inferenceSignal,
-  sequenceCoverage
+  sequenceCoverage,
+  policy
 }) {
+  const scoreWeights = policy?.scoreWeights ?? DEFAULT_SCORE_WEIGHTS;
   const genericNorm = clamp(genericSignal / 0.82);
   const domainNorm = clamp(domainSignal / domain.maxDomainSignal);
   const inferenceNorm = clamp(inferenceSignal / Math.max(domain.maxInferredSignal, 0.16));
@@ -53,17 +56,22 @@ function buildScoreProfile({
   const ambiguityPenalty = 1 - supportShare;
   const focusBonus = hypothesis.focusDomain === domain.id ? 1 : 0.35;
 
-  return withComputedTotal({
-    evidenceCoverage: clamp(genericNorm * 0.3 + domainNorm * 0.7),
-    predictiveAdequacy: clamp(sequenceCoverage * 0.45 + domainNorm * 0.35 + inferenceNorm * 0.2),
-    compressionUtility: clamp(0.5 + genericNorm * 0.15 + supportShare * 0.2 + sequenceCoverage * 0.15 - (1 - sequenceCoverage) * 0.05),
-    compositionalSharpness: clamp(sequenceCoverage * 0.45 + domainNorm * 0.3 + focusBonus * 0.15 + supportShare * 0.1),
-    stability: clamp(0.45 + genericNorm * 0.2 + sequenceCoverage * 0.15 + supportShare * 0.15 - ambiguityPenalty * 0.1),
-    alignmentUtility: clamp(domainNorm * 0.45 + focusBonus * 0.2 + inferenceNorm * 0.2 + supportShare * 0.15)
-  });
+  return withComputedTotal(
+    {
+      evidenceCoverage: clamp(genericNorm * 0.3 + domainNorm * 0.7),
+      predictiveAdequacy: clamp(sequenceCoverage * 0.45 + domainNorm * 0.35 + inferenceNorm * 0.2),
+      compressionUtility: clamp(
+        0.5 + genericNorm * 0.15 + supportShare * 0.2 + sequenceCoverage * 0.15 - (1 - sequenceCoverage) * 0.05
+      ),
+      compositionalSharpness: clamp(sequenceCoverage * 0.45 + domainNorm * 0.3 + focusBonus * 0.15 + supportShare * 0.1),
+      stability: clamp(0.45 + genericNorm * 0.2 + sequenceCoverage * 0.15 + supportShare * 0.15 - ambiguityPenalty * 0.1),
+      alignmentUtility: clamp(domainNorm * 0.45 + focusBonus * 0.2 + inferenceNorm * 0.2 + supportShare * 0.15)
+    },
+    scoreWeights
+  );
 }
 
-function buildTheoryCandidate(hypothesis, domain) {
+function buildTheoryCandidate(hypothesis, domain, policy) {
   const matchedCues = cueSetForDomain(hypothesis, domain.id);
   const matchedCueIds = new Set(matchedCues.map((cue) => cue.id));
   const genericSignal = sumCueWeights(matchedCues, (cue) => cue.domainId === null);
@@ -108,33 +116,38 @@ function buildTheoryCandidate(hypothesis, domain) {
       genericSignal,
       domainSignal,
       inferenceSignal,
-      sequenceCoverage
+      sequenceCoverage,
+      policy
     })
   };
 }
 
-function adjustScoreProfile(scoreProfile, deltas) {
-  return withComputedTotal({
-    evidenceCoverage: clamp(scoreProfile.evidenceCoverage + (deltas.evidenceCoverage ?? 0)),
-    predictiveAdequacy: clamp(scoreProfile.predictiveAdequacy + (deltas.predictiveAdequacy ?? 0)),
-    compressionUtility: clamp(scoreProfile.compressionUtility + (deltas.compressionUtility ?? 0)),
-    compositionalSharpness: clamp(scoreProfile.compositionalSharpness + (deltas.compositionalSharpness ?? 0)),
-    stability: clamp(scoreProfile.stability + (deltas.stability ?? 0)),
-    alignmentUtility: clamp(scoreProfile.alignmentUtility + (deltas.alignmentUtility ?? 0))
-  });
+function adjustScoreProfile(scoreProfile, deltas, scoreWeights = DEFAULT_SCORE_WEIGHTS) {
+  return withComputedTotal(
+    {
+      evidenceCoverage: clamp(scoreProfile.evidenceCoverage + (deltas.evidenceCoverage ?? 0)),
+      predictiveAdequacy: clamp(scoreProfile.predictiveAdequacy + (deltas.predictiveAdequacy ?? 0)),
+      compressionUtility: clamp(scoreProfile.compressionUtility + (deltas.compressionUtility ?? 0)),
+      compositionalSharpness: clamp(scoreProfile.compositionalSharpness + (deltas.compositionalSharpness ?? 0)),
+      stability: clamp(scoreProfile.stability + (deltas.stability ?? 0)),
+      alignmentUtility: clamp(scoreProfile.alignmentUtility + (deltas.alignmentUtility ?? 0))
+    },
+    scoreWeights
+  );
 }
 
-function buildVariant(baseTheory, variant, deltas, additions = {}) {
+function buildVariant(baseTheory, variant, deltas, additions = {}, scoreWeights = DEFAULT_SCORE_WEIGHTS) {
   return {
     ...baseTheory,
     ...additions,
     id: `${baseTheory.hypothesisId}:${baseTheory.domainId}:${variant}`,
     variant,
-    scoreProfile: adjustScoreProfile(baseTheory.scoreProfile, deltas)
+    scoreProfile: adjustScoreProfile(baseTheory.scoreProfile, deltas, scoreWeights)
   };
 }
 
-function expandTheoryFamily(baseTheory) {
+function expandTheoryFamily(baseTheory, policy) {
+  const scoreWeights = policy?.scoreWeights ?? DEFAULT_SCORE_WEIGHTS;
   const refined = buildVariant(
     baseTheory,
     'refined',
@@ -146,7 +159,8 @@ function expandTheoryFamily(baseTheory) {
     },
     {
       invariants: [...baseTheory.invariants, `${baseTheory.domainLabel} keeps a finer-grained state boundary`]
-    }
+    },
+    scoreWeights
   );
   const coarsened = buildVariant(
     baseTheory,
@@ -159,7 +173,8 @@ function expandTheoryFamily(baseTheory) {
     },
     {
       compositionRules: [...baseTheory.compositionRules, 'coarsened composition merges adjacent local states']
-    }
+    },
+    scoreWeights
   );
   const refactorized = buildVariant(
     baseTheory,
@@ -173,7 +188,8 @@ function expandTheoryFamily(baseTheory) {
     },
     {
       rewriteTemplates: [...baseTheory.rewriteTemplates, 'refactorize equivalent local rewrite blocks']
-    }
+    },
+    scoreWeights
   );
 
   return {
@@ -198,8 +214,8 @@ function expandTheoryFamily(baseTheory) {
   };
 }
 
-function induceLocalTheories(hypotheses, domains) {
-  return domains.map((domain) => buildTheoryCandidate(selectHypothesisForDomain(hypotheses, domain.id), domain));
+function induceLocalTheories(hypotheses, domains, policy) {
+  return domains.map((domain) => buildTheoryCandidate(selectHypothesisForDomain(hypotheses, domain.id), domain, policy));
 }
 
 export { expandTheoryFamily, induceLocalTheories };

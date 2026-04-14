@@ -1,6 +1,6 @@
 ---
 chapter: 2
-title: Neuro-symbolic pipeline
+title: Neuro-symbolic pipeline and epistemic labor
 target: chapters/ch2-architecture.md
 dependsOn:
   - ../../specs/DS001-library-architecture.md
@@ -8,61 +8,59 @@ dependsOn:
   - ../../specs/DS006-library-usage.md
 ---
 
-# Plan CH2 - Neuro-symbolic pipeline
+# Plan CH2 - Neuro-symbolic pipeline and epistemic labor
 
 ## Chapter Intent
-Explain the architecture abstractly, without turning the chapter into a guide to repository files. The figure should show the four stages with minimal text and small internal glyphs, while the prose should unpack what happens inside each box, what kind of object enters and leaves that stage, and where neural versus symbolic discipline belongs.
+Explain the four-stage pipeline through the running example introduced in Chapter 1. The chapter must make the division of epistemic labor explicit: learned assistance is bounded to normalization and late conceptual articulation, while the symbolic core owns theory induction, neighborhood construction, frontier retention, and update.
 
 ## Paragraph Plan
 
 | Paragraph | Source files | Guidance |
 | --- | --- | --- |
-| P1 | `DS001 Introduction`, `DS001 Core Content` | Open with the general architectural principle: staged commitment and division of epistemic labor. |
-| P2 | `DS001 Core Content` | Introduce Figure 1 as the pipeline overview and explain that the labels are intentionally short because the text will unpack each stage. |
-| P3 | `DS001 Core Content`, `DS005 Introduction` | Explain observational lifting as the natural site of bounded neural assistance. Cite Mao only for typed and compositional neuro-symbolic motivation. |
-| P4 | `DS001 Core Content`, `DS002 Core Content` | Explain local theory induction as the symbolic stage that assembles schemas, invariants, rewrites, and compositions. Cite Duval only when discussing typed rewriting and composition. |
-| P5 | `DS001 Core Content`, `DS000 Core Content` | Explain local rulial exploration as neighborhood construction over nearby theories and explicit consequences. Cite Wolfram only for the rule-space orientation. |
-| P6 | `DS001 Core Content`, `DS005 Core Content` | Explain alignment and lexicalization as late stages, then close with the bounded role of learned assistance at ingestion and conceptual articulation. Cite Fong and Spivak only for structure-preserving translation. |
-| P7 | `DS006 Core Content` | Add one implementation-facing paragraph that explains the stable usage contract: source evidence, observer, and budgets in; canonical frontier bundle and CNL trace out. Keep it theory-first rather than file-centric. |
+| P1 | `DS001 Introduction`, `DS001 Core Content` | Open with the staged-commitment principle and connect it back to the Chapter 1 example. |
+| P2 | `DS001 Core Content` | Introduce Figure 1 as the pipeline overview with short stage labels. |
+| P3 | `DS001 Core Content`, `DS005 Introduction` | Explain observational lifting and the narrow role of learned assistance during normalization. |
+| P4 | `DS001 Core Content`, `DS002 Core Content` | Explain local theory induction as the symbolic stage where schemas, invariants, rewrites, and composition become explicit. Cite Duval only here. |
+| P5 | `DS001 Core Content`, `DS000 Core Content` | Explain local rulial exploration as neighborhood construction with retained consequences. Cite Wolfram only for the rule-space orientation. |
+| P6 | `DS001 Core Content`, `DS005 Core Content` | Explain alignment and lexicalization as late stages and clarify why LLM assistance belongs only at the boundaries. Cite Fong and Spivak for structure-preserving translation. |
+| P7 | `DS006 Core Content`, `DS005 Core Content` | Close with the stable usage contract and the fact that manual overrides and task tags configure the auxiliary learned paths without overriding the symbolic frontier. |
 
 ## Generated Chapter Template
 
-# 2. Neuro-symbolic pipeline
+# 2. Neuro-symbolic pipeline and epistemic labor
 
-The architecture is organized around staged commitment. Structured evidence is not forced immediately into one final ontology. Instead, the system passes through four stages that progressively change what kind of object is being manipulated and what kind of commitment is justified at that point.
+The pipeline exists to prevent premature collapse. The ambiguous workflow prefix from Chapter 1 should not move directly from text into a final ontology. Instead, it passes through four stages that change both the internal object being manipulated and the kind of epistemic commitment that is justified at that moment.
 
-Figure 1 summarizes this pipeline. The labels inside the boxes are intentionally brief. Their job is to identify the stage, while the surrounding prose explains the epistemic work performed inside each one.
+Figure 1 summarizes the pipeline. The stage labels inside the figure remain intentionally short. Their purpose is orientation. The surrounding prose explains what each stage actually contributes.
 
 ![Pipeline overview](assets/figure-1-pipeline.svg)
-*Figure 1. The four-stage pipeline from report to aligned local theory neighborhood. The figure uses short labels and internal glyphs; the text explains the theoretical role of each stage.*
+*Figure 1. The four-stage pipeline from report to aligned local theory neighborhood. The figure keeps labels short so the text can explain the epistemic role of each stage in full.*
 
 ## Stage 1. Observational lifting
 
-Observational lifting converts a report into several candidate observational hypotheses. This stage is naturally neuro-symbolic because natural language contains ellipsis, presupposition, lexical variation, coreference, and underdetermined event structure. A learned component may therefore help propose candidate event or relation structures, but those proposals must be converted into explicit typed and compositional neuro-symbolic concept records with provenance and uncertainty annotations before they can influence theory induction [MAO-2025].
+Observational lifting converts a report into several candidate observational hypotheses. This is the natural site of bounded learned assistance because raw text contains ellipsis, lexical variation, underdetermined event structure, and missing local roles. A learned component may therefore help normalize or propose candidate observational fragments, but those fragments must be turned into typed, compositional symbolic concept objects with provenance before they can affect theory induction [MAO-2025].
 
-The output of observational lifting is not a theory. It is a structured hypothesis about what may have been observed or asserted. This is the first safeguard against methodological collapse.
+The output of observational lifting is not a theory. It is a structured candidate account of what may have been observed, what was stated explicitly, and what remains unresolved. That separation is the first safeguard against methodological collapse.
 
 ## Stage 2. Local theory induction
 
-For each observational hypothesis, the system induces one or more candidate local theories. A local theory proposes a typed state schema, a family of rewrite templates, a set of invariants, and a discipline of admissible composition. This is the point where the symbolic side of the architecture dominates. Categorical rewriting is treated as typed local transformation rather than as an unstructured state diff, which is why compatibility and composition become first-class concerns [DUVAL-2011].
+For each observational hypothesis, the system induces one or more candidate local theories. A local theory proposes a typed state schema, a family of rewrite templates, a set of invariants, and a discipline of admissible composition. This is the stage where the symbolic side of the architecture dominates. Categorical rewriting is treated as typed local transformation rather than as an unstructured state diff, which is why compatibility and composition become first-class concerns [DUVAL-2011].
 
 ## Stage 3. Local rulial exploration
 
-Theories induced from the same observation are not treated as isolated outputs. They are organized into a local neighborhood through refinement, coarsening, refactorization, and observer shift. This stage separates robust consequences from theory-sensitive consequences and maintains a bounded frontier of theories that remain worth retaining. That neighborhood perspective is what makes the framework ruliological in an operational sense: it treats nearby spaces of possible rules as objects of study instead of rushing toward a single prematurely reified interpretation [WOLFRAM-2026].
+Theories induced from the same observation are not treated as isolated outputs. They are organized into a local neighborhood through refinement, coarsening, refactorization, and observer shift. The neighborhood separates robust consequences from theory-sensitive consequences and retains a bounded frontier of theories that remain worth tracking. That neighborhood perspective is what makes the framework ruliological in practice: it studies nearby rule-bearing possibilities instead of rushing toward one prematurely reified interpretation [WOLFRAM-2026].
 
 ## Stage 4. Alignment and lexicalization
 
-Only after a retained neighborhood exists does alignment become appropriate. At that point the system may compare a local theory with an external ontology, a domain model, or a previously learned concept library. Applied category theory matters here because the problem is not merely one of naming. It is a problem of category-level disciplined translation between structured regimes and of preserving meaningful relations under that translation [FONG-SPIVAK-2019].
+Only after a retained neighborhood exists does alignment become appropriate. At that point the system may compare retained theories with external ontologies, prior concept libraries, or domain repertoires. Applied category theory matters here because alignment is not merely naming. It is category-level disciplined translation between structured domains, with preservation of the relations that matter under that translation [FONG-SPIVAK-2019].
 
 Table 1 summarizes the epistemic role of the four stages.
 
-| Stage | Input | Output | Why this stage stays separate |
+| Stage | Input | Output | Why the stage stays separate |
 | --- | --- | --- | --- |
-| Observational lifting | Report text or other structured evidence | Several observational hypotheses | It keeps report and theory distinct. |
-| Local theory induction | One observational hypothesis | Several candidate local theories | It keeps typed schemas, rewrites, and invariants explicit. |
-| Local rulial exploration | Candidate theories plus observer/query family | Local theory neighborhood and retained frontier | It preserves plural local structure under bounded commitment. |
-| Alignment and lexicalization | Retained neighborhood | Aligned conceptual descriptions | It delays naming until symbolic structure already exists. |
+| Observational lifting | Report text or structured evidence | Several observational hypotheses | It keeps report and theory distinct. |
+| Local theory induction | One observational hypothesis | Several candidate local theories | It keeps schemas, rewrites, and invariants explicit. |
+| Local rulial exploration | Candidate theories plus observer and question family | Retained neighborhood and frontier | It preserves plural local structure under bounded commitment. |
+| Alignment and lexicalization | Retained neighborhood | Aligned conceptual articulation | It delays naming until symbolic structure exists. |
 
-In the reference implementation, learned assistance is confined to bounded lifting-friendly normalization before observational lifting and to late conceptual articulation after the frontier has already been retained. The retained frontier, the score profile, and the experiment metrics remain authoritative products of the symbolic core.
-
-The same staged discipline appears at the public usage surface. A host application supplies source text or segmented evidence together with source metadata, an observer profile, and explicit budgets. The system returns a bounded frontier bundle whose canonical projection still distinguishes source context, observations, local theories, transforms, equivalence classes, consequences, questions, and updates. This matters because the architecture is intended to be used as an auditable theory-frontier engine, not as a hidden text-to-label shortcut.
+The same staged discipline governs the public usage surface. A host application supplies source evidence, source metadata, an observer profile, and optional policy overrides. The system returns a canonical frontier bundle whose stable projection still distinguishes source context, observations, local theories, transforms, equivalence classes, questions, updates, and consequences. Optional Achilles-backed LLM calls remain configurable through explicit task tags, model tiers, and manual overrides, but they do not override the authoritative symbolic frontier.

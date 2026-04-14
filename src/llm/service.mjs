@@ -48,10 +48,16 @@ async function runTaggedPrompt({
   const config = createRuntimeConfig(configOverrides);
 
   if (!isTaskEnabled(taskType, config)) {
+    const taskOptions = buildTaskOptions(taskType, config, extraContext);
     return {
       status: 'skipped',
       reason: 'llm-feature-disabled',
       taskType,
+      taskFamily: taskOptions.taskFamily,
+      intent: taskOptions.context.intent,
+      tier: taskOptions.tier,
+      model: taskOptions.model,
+      tags: taskOptions.tags,
       config
     };
   }
@@ -68,6 +74,11 @@ async function runTaggedPrompt({
   return {
     status: 'completed',
     taskType,
+    taskFamily: taskOptions.taskFamily,
+    intent: taskOptions.context.intent,
+    tier: taskOptions.tier,
+    model: taskOptions.model,
+    tags: taskOptions.tags,
     config,
     dependencySource: agentRecord.dependencySource,
     dependencySpecifier: agentRecord.dependencySpecifier,
