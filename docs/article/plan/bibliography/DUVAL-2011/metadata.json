@@ -2,7 +2,9 @@
   "citationKey": "DUVAL-2011",
   "url": "https://arxiv.org/abs/1101.3417",
   "title": "Categorical Abstract Rewriting Systems and Functoriality of Graph Transformation",
-  "fetchedAt": "2026-04-14T16:18:01.491Z",
+  "fetchedAt": "2026-04-14T17:05:49.052Z",
   "fetchStatus": "fetched",
+  "bootstrapOnly": false,
+  "verificationMode": "source-backed",
   "sourceDigest": "b1a07f0e039c4968f5c95ab4b6017663634f6c45"
 }

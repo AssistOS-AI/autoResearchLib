@@ -4,7 +4,7 @@ Consider the short workflow note: "The item was logged, labeled, and the record 
 
 Ruliology studies what abstract rules do and how spaces of possible rules are organized [WOLFRAM-2026].
 
-Applied category theory studies disciplined composition and structure-preserving translation across domains [FONG-SPIVAK-2019].
+Applied category theory is presented through concrete real-world examples paired with explicit categorical structures, including databases, circuits, and dynamical systems [FONG-SPIVAK-2019].
 
 Recent neuro-symbolic work argues that learned systems are most useful when they still operate over typed and compositional conceptual carriers [MAO-2025].
 

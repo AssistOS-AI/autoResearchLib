@@ -260,6 +260,48 @@ async function ensureReferenceCache(baseDir, references, citationKey, force = fa
 
   await ensureDir(referenceDir);
 
+  if (reference.verificationMode === 'manual-waived') {
+    if (!force && existingMetadata && hasCachedSource) {
+      return {
+        citationKey,
+        reference,
+        referenceDir,
+        metadataPath,
+        sourceHtmlPath,
+        sourceTextPath,
+        checksPath: resolve(referenceDir, 'checks.json')
+      };
+    }
+
+    const text = reference.bootstrapText;
+    const html = `<!-- manual waiver cache for ${citationKey} -->`;
+    const sourceDigest = createHash('sha1').update(text).digest('hex');
+    const metadata = {
+      citationKey,
+      url: reference.url,
+      title: reference.title,
+      fetchedAt: new Date().toISOString(),
+      fetchStatus: 'manual-waived',
+      bootstrapOnly: false,
+      verificationMode: reference.verificationMode,
+      sourceDigest
+    };
+
+    await writeFile(sourceHtmlPath, html);
+    await writeFile(sourceTextPath, `${text.trim()}\n`);
+    await writeFile(metadataPath, JSON.stringify(metadata, null, 2));
+
+    return {
+      citationKey,
+      reference,
+      referenceDir,
+      metadataPath,
+      sourceHtmlPath,
+      sourceTextPath,
+      checksPath: resolve(referenceDir, 'checks.json')
+    };
+  }
+
   if (!force && existingMetadata && hasCachedSource) {
     return {
       citationKey,
@@ -306,6 +348,7 @@ async function ensureReferenceCache(baseDir, references, citationKey, force = fa
     fetchedAt: new Date().toISOString(),
     fetchStatus,
     bootstrapOnly: fetchStatus === 'bootstrap',
+    verificationMode: reference.verificationMode ?? 'source-backed',
     sourceDigest
   };
 
@@ -406,7 +449,12 @@ async function verifyCitationClaims({
         );
       }
 
-      const supportStatus = metadata?.fetchStatus === 'bootstrap' ? 'bootstrap-supported' : 'cached-source-supported';
+      const supportStatus =
+        metadata?.fetchStatus === 'manual-waived'
+          ? 'manual-waived'
+          : metadata?.fetchStatus === 'bootstrap'
+            ? 'bootstrap-supported'
+            : 'cached-source-supported';
 
       const record = {
         id,
@@ -417,9 +465,11 @@ async function verifyCitationClaims({
         supportStatus,
         profileId: profile.id,
         note:
-          supportStatus === 'bootstrap-supported'
-            ? 'Verified against bootstrap text; refresh the cached source before final publication.'
-            : null,
+          supportStatus === 'manual-waived'
+            ? 'Verified against a manually waived bootstrap source because automated source extraction is not yet reliable for this reference.'
+            : supportStatus === 'bootstrap-supported'
+              ? 'Verified against bootstrap text; refresh the cached source before final publication.'
+              : null,
         checkedAt: new Date().toISOString(),
         sourceDigest: metadata?.sourceDigest ?? null,
         sourceStatus: metadata?.fetchStatus ?? 'unknown',
@@ -462,6 +512,7 @@ async function verifyCitationClaims({
       citationKey,
       fetchStatus: metadata?.fetchStatus ?? 'unknown',
       bootstrapOnly: metadata?.bootstrapOnly ?? false,
+      verificationMode: metadata?.verificationMode ?? cache.reference.verificationMode ?? 'source-backed',
       claimCount: relevantClaims.length
     });
   }
@@ -472,7 +523,10 @@ async function verifyCitationClaims({
     references: usedKeys,
     claims: results,
     referenceSummaries,
-    bootstrapReferences: referenceSummaries.filter((entry) => entry.bootstrapOnly).map((entry) => entry.citationKey)
+    bootstrapReferences: referenceSummaries.filter((entry) => entry.bootstrapOnly).map((entry) => entry.citationKey),
+    manualWaivedReferences: referenceSummaries
+      .filter((entry) => entry.verificationMode === 'manual-waived')
+      .map((entry) => entry.citationKey)
   };
 }
 

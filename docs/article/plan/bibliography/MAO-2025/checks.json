@@ -30,10 +30,20 @@
       "normalizedClaim": "neuro-symbolic concept work contributes the insistence that learned components should still operate over typed and compositional conceptual structures mao-2025",
       "chapterFile": "ch5-conclusion.md",
       "status": "supported",
+      "supportStatus": "cached-source-supported",
       "profileId": "typed-neuro-symbolic-concepts",
       "note": null,
-      "checkedAt": "2026-04-14T16:18:01.470Z",
-      "sourceDigest": "684c599c1e430f0eeb2c222dffbd59a35e3c4529"
+      "checkedAt": "2026-04-14T17:05:49.030Z",
+      "sourceDigest": "684c599c1e430f0eeb2c222dffbd59a35e3c4529",
+      "sourceStatus": "fetched",
+      "supportSnippet": "To facilitate learning and reasoning, the concepts are typed and represented using a combination of symbolic programs and neural network representations.",
+      "supportSpan": "1257-1409",
+      "matchedKeywords": [
+        "concept",
+        "typed",
+        "symbolic",
+        "represented"
+      ]
     },
     {
       "id": "1e192049592cf97e9d9301e683039a911757752e",
@@ -63,10 +73,20 @@
       "normalizedClaim": "recent neuro-symbolic work argues that learned systems are most useful when they still operate over typed and compositional conceptual carriers mao-2025",
       "chapterFile": "ch1-introduction.md",
       "status": "supported",
+      "supportStatus": "cached-source-supported",
       "profileId": "typed-neuro-symbolic-concepts",
       "note": null,
-      "checkedAt": "2026-04-14T16:18:01.470Z",
-      "sourceDigest": "684c599c1e430f0eeb2c222dffbd59a35e3c4529"
+      "checkedAt": "2026-04-14T17:05:49.030Z",
+      "sourceDigest": "684c599c1e430f0eeb2c222dffbd59a35e3c4529",
+      "sourceStatus": "fetched",
+      "supportSnippet": "To facilitate learning and reasoning, the concepts are typed and represented using a combination of symbolic programs and neural network representations.",
+      "supportSpan": "1257-1409",
+      "matchedKeywords": [
+        "concept",
+        "typed",
+        "symbolic",
+        "represented"
+      ]
     },
     {
       "id": "7cf6b9043351e58a4f3ef96083c2d590d4ce1155",
@@ -74,11 +94,21 @@
       "normalizedClaim": "a learned component may therefore help normalize or propose candidate observational fragments but those fragments must be turned into typed compositional symbolic concept objects with provenance before they can affect theory induction mao-2025",
       "chapterFile": "ch2-architecture.md",
       "status": "supported",
+      "supportStatus": "cached-source-supported",
       "profileId": "typed-neuro-symbolic-concepts",
       "note": null,
-      "checkedAt": "2026-04-14T16:18:01.470Z",
-      "sourceDigest": "684c599c1e430f0eeb2c222dffbd59a35e3c4529"
+      "checkedAt": "2026-04-14T17:05:49.030Z",
+      "sourceDigest": "684c599c1e430f0eeb2c222dffbd59a35e3c4529",
+      "sourceStatus": "fetched",
+      "supportSnippet": "To facilitate learning and reasoning, the concepts are typed and represented using a combination of symbolic programs and neural network representations.",
+      "supportSpan": "1257-1409",
+      "matchedKeywords": [
+        "concept",
+        "typed",
+        "symbolic",
+        "represented"
+      ]
     }
   ],
-  "lastValidatedAt": "2026-04-14T16:18:01.471Z"
+  "lastValidatedAt": "2026-04-14T17:05:49.030Z"
 }

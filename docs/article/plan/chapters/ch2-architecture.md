@@ -23,7 +23,7 @@ Theories induced from the same observation are not treated as isolated outputs. 
 
 ## Stage 4. Alignment and lexicalization
 
-Only after a retained neighborhood exists does alignment become appropriate. At that point the system may compare retained theories with external ontologies, prior concept libraries, or domain repertoires. Applied category theory matters here because alignment is not merely naming. It is category-level disciplined translation between structured domains, with preservation of the relations that matter under that translation [FONG-SPIVAK-2019].
+Only after a retained neighborhood exists does alignment become appropriate. At that point the system may compare retained theories with external ontologies, prior concept libraries, or domain repertoires. Applied category theory matters here because it shows how concrete application settings such as databases, circuits, and dynamical systems can be organized through explicit categorical structure [FONG-SPIVAK-2019]. The current library uses that discipline only after the symbolic frontier is already explicit.
 
 Table 1 summarizes the epistemic role of the four stages.
 

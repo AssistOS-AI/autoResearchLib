@@ -11,9 +11,9 @@ The present repository implements these rungs as Experiments 4 through 7.
 | Experiment | Validation role | Primary claim | Current interpretation |
 | --- | --- | --- | --- |
 | Experiment 4 | Sensitivity and ablation | Nearby policy choices preserve conclusions; rescue and observer richness matter operationally | Robustness of the current symbolic policy |
-| Experiment 5 | Expanded benchmark | Frontier retention remains useful across seven workflow families and three lexical strata | Transfer beyond the original eighteen controlled cases |
-| Experiment 6 | Open-set novelty | Unseen or hybrid traces trigger higher uncertainty and more questioning than ordinary in-domain traces | Healthy uncertainty management, not full theory synthesis |
-| Experiment 7 | Multi-step questioning | Question budgets and policy choice change accuracy-entropy tradeoffs and recovery behavior | Explicit theory management over time |
+| Experiment 5 | Expanded benchmark | Frontier retention remains useful across seven workflow families and three lexical strata | Transfer beyond the original eighteen controlled cases, with per-domain diagnostics |
+| Experiment 6 | Open-set novelty | Unseen or hybrid traces trigger higher uncertainty and more questioning than ordinary in-domain traces | Healthy uncertainty management, not full theory synthesis, on a broader 14-case novelty layer |
+| Experiment 7 | Multi-step questioning | Question budgets and policy choice change accuracy-entropy tradeoffs and recovery behavior | Explicit theory management over time, with adversarial failure mechanics reported explicitly |
 
 This ladder also separates architectural claims from implementation claims. The architecture claims that retained frontiers, typed updates, and bounded pluralism are valuable methodological objects. The current implementation claims only what its experiments now support: the deterministic engine is robust over a nearby policy region, transfers to a broader benchmark, maintains healthier uncertainty on novelty cases than on in-domain cases, and supports meaningful multi-step question schedules under non-adversarial conditions. It does not yet claim full open-ended theory induction or broad superiority over large external systems on arbitrary corpora.
 

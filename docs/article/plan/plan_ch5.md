@@ -45,7 +45,7 @@ The optional auditability study is the right next human-facing experiment, but i
 
 Ruliology contributes the orientation toward spaces of possible rules and the consequences they generate [WOLFRAM-2026].
 
-Applied category theory contributes disciplined composition and structure-preserving translation between structured regimes [FONG-SPIVAK-2019].
+Applied category theory contributes a way to keep concrete application settings such as databases, circuits, and dynamical systems tied to explicit categorical structure [FONG-SPIVAK-2019].
 
 Categorical abstract rewriting contributes a precise language for typed local transformations and their compatibility [DUVAL-2011].
 

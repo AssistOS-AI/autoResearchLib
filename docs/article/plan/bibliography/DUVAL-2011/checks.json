@@ -41,10 +41,19 @@
       "normalizedClaim": "categorical abstract rewriting contributes a precise language for typed local transformations and their compatibility duval-2011",
       "chapterFile": "ch5-conclusion.md",
       "status": "supported",
+      "supportStatus": "cached-source-supported",
       "profileId": "categorical-rewriting",
       "note": null,
-      "checkedAt": "2026-04-14T16:18:01.492Z",
-      "sourceDigest": "b1a07f0e039c4968f5c95ab4b6017663634f6c45"
+      "checkedAt": "2026-04-14T17:05:49.054Z",
+      "sourceDigest": "b1a07f0e039c4968f5c95ab4b6017663634f6c45",
+      "sourceStatus": "fetched",
+      "supportSnippet": "[1101.3417] Categorical Abstract Rewriting Systems and Functoriality of Graph Transformation Skip to main content Learn about arXiv becoming an independent nonprofit.",
+      "supportSpan": "0-165",
+      "matchedKeywords": [
+        "rewriting",
+        "categorical",
+        "functoriality"
+      ]
     },
     {
       "id": "e52d9aee713a553ec0d69dcf49f775911614fc3d",
@@ -52,10 +61,19 @@
       "normalizedClaim": "categorical rewriting is treated as typed local transformation rather than as an unstructured state diff which is why compatibility and composition become first-class concerns duval-2011",
       "chapterFile": "ch2-architecture.md",
       "status": "supported",
+      "supportStatus": "cached-source-supported",
       "profileId": "categorical-rewriting",
       "note": null,
-      "checkedAt": "2026-04-14T16:18:01.492Z",
-      "sourceDigest": "b1a07f0e039c4968f5c95ab4b6017663634f6c45"
+      "checkedAt": "2026-04-14T17:05:49.054Z",
+      "sourceDigest": "b1a07f0e039c4968f5c95ab4b6017663634f6c45",
+      "sourceStatus": "fetched",
+      "supportSnippet": "[1101.3417] Categorical Abstract Rewriting Systems and Functoriality of Graph Transformation Skip to main content Learn about arXiv becoming an independent nonprofit.",
+      "supportSpan": "0-165",
+      "matchedKeywords": [
+        "rewriting",
+        "categorical",
+        "functoriality"
+      ]
     },
     {
       "id": "d0d6c2785be24de8b791084568f1c761aca88359",
@@ -74,11 +92,20 @@
       "normalizedClaim": "typed local transformation and compatibility therefore remain explicit as part of a categorical rewriting view rather than being hidden in a monolithic score duval-2011",
       "chapterFile": "ch3-data-model.md",
       "status": "supported",
+      "supportStatus": "cached-source-supported",
       "profileId": "categorical-rewriting",
       "note": null,
-      "checkedAt": "2026-04-14T16:18:01.492Z",
-      "sourceDigest": "b1a07f0e039c4968f5c95ab4b6017663634f6c45"
+      "checkedAt": "2026-04-14T17:05:49.054Z",
+      "sourceDigest": "b1a07f0e039c4968f5c95ab4b6017663634f6c45",
+      "sourceStatus": "fetched",
+      "supportSnippet": "[1101.3417] Categorical Abstract Rewriting Systems and Functoriality of Graph Transformation Skip to main content Learn about arXiv becoming an independent nonprofit.",
+      "supportSpan": "0-165",
+      "matchedKeywords": [
+        "rewriting",
+        "categorical",
+        "functoriality"
+      ]
     }
   ],
-  "lastValidatedAt": "2026-04-14T16:18:01.492Z"
+  "lastValidatedAt": "2026-04-14T17:05:49.054Z"
 }

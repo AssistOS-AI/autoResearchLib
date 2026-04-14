@@ -59,6 +59,8 @@ function parseReferenceSection(sectionMarkdown) {
       reference.url = value;
     } else if (field === 'bootstrap text') {
       reference.bootstrapText = value;
+    } else if (field === 'verification mode') {
+      reference.verificationMode = value;
     }
   }
 
@@ -69,6 +71,8 @@ function parseReferenceSection(sectionMarkdown) {
   if (reference.supportProfiles.length === 0) {
     throw new Error(`Bibliography entry ${citationKey} does not declare any support profiles.`);
   }
+
+  reference.verificationMode = reference.verificationMode ?? 'source-backed';
 
   return [citationKey, reference];
 }

@@ -2,7 +2,9 @@
   "citationKey": "SHANNON-1948",
   "url": "https://people.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf",
   "title": "A Mathematical Theory of Communication",
-  "fetchedAt": "2026-04-14T16:18:02.404Z",
-  "fetchStatus": "fetched",
-  "sourceDigest": "7fc2e0172f7dd75b9322ce4a62276640321f0506"
+  "fetchedAt": "2026-04-14T17:05:49.056Z",
+  "fetchStatus": "manual-waived",
+  "bootstrapOnly": false,
+  "verificationMode": "manual-waived",
+  "sourceDigest": "864b3662e2428fbed64a8664f8cc653b6c22c56a"
 }

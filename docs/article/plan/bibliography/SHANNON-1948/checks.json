@@ -1,6 +1,6 @@
 {
   "citationKey": "SHANNON-1948",
-  "sourceDigest": "7fc2e0172f7dd75b9322ce4a62276640321f0506",
+  "sourceDigest": "864b3662e2428fbed64a8664f8cc653b6c22c56a",
   "checkedClaims": [
     {
       "id": "92a9f107147b7835fe970c4e4da8bce9245f94ce",
@@ -8,11 +8,19 @@
       "normalizedClaim": "the frontier is summarized with entropy over the retained domain distribution h f - sum d p d log p d where p d is the normalized retained-domain mass shannon-1948",
       "chapterFile": "ch3-data-model.md",
       "status": "supported",
+      "supportStatus": "manual-waived",
       "profileId": "entropy-and-information",
-      "note": null,
-      "checkedAt": "2026-04-14T16:18:02.412Z",
-      "sourceDigest": "7fc2e0172f7dd75b9322ce4a62276640321f0506"
+      "note": "Verified against a manually waived bootstrap source because automated source extraction is not yet reliable for this reference.",
+      "checkedAt": "2026-04-14T17:05:49.057Z",
+      "sourceDigest": "864b3662e2428fbed64a8664f8cc653b6c22c56a",
+      "sourceStatus": "manual-waived",
+      "supportSnippet": "The paper defines entropy over a probability distribution as a quantitative measure of uncertainty and develops information as reduction of uncertainty.",
+      "supportSpan": "0-151",
+      "matchedKeywords": [
+        "entropy",
+        "distribution"
+      ]
     }
   ],
-  "lastValidatedAt": "2026-04-14T16:18:02.412Z"
+  "lastValidatedAt": "2026-04-14T17:05:49.057Z"
 }

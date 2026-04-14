@@ -23,7 +23,7 @@ Inside `<articleRoot>/plan/`, the current convention is:
 2. `plan_chN.md` - chapter plans with frontmatter, dependency lists, and generated chapter templates.
 3. `chapters/` - generated chapter markdown files used as authoritative HTML inputs.
 4. `bibliography.md` - editable bibliography source of truth.
-5. `bibliography/<citation-key>/` - fetched source cache plus checked-claims cache.
+5. `bibliography/<citation-key>/` - fetched source cache plus checked-claims cache, including support snippets and verification status.
 6. `assets.json` - declarative list of SVG assets to copy into `<articleRoot>/assets/`.
 7. `build-manifest.json` - generated build manifest.
 
@@ -35,7 +35,7 @@ Inside `<articleRoot>/plan/`, the current convention is:
 4. Refresh each generated chapter markdown file under `<articleRoot>/plan/chapters/` only when its plan file or one of its declared dependencies is newer, or when the build is forced.
 5. Copy article-facing SVG assets into `<articleRoot>/assets/` from the sources declared in `<articleRoot>/plan/assets.json`.
 6. Validate every copied SVG. If a figure contains overlapping labels, disconnected connectors, invalid geometry, or chart titles embedded inside the SVG, repair the source asset and rebuild.
-7. Verify citation support through `<articleRoot>/plan/bibliography/<citation-key>/`.
+7. Verify citation support through `<articleRoot>/plan/bibliography/<citation-key>/`, preferring cached or fetched source-backed support and marking any explicit manual waivers honestly.
 8. Rebuild `<articleRoot>/index.html` only when the plan files, bibliography source, generated chapters, copied assets, or bibliography validation artifacts are newer than the HTML output.
 9. Write or refresh `<articleRoot>/plan/build-manifest.json` with chapter refresh status, asset refresh status, bibliography checks, and the final HTML status.
 10. Emit browser-side article controls, including a print or save-PDF button, from the generated HTML.
@@ -64,8 +64,9 @@ The repository build code should remain deterministic. Structural review, plan r
 - Conceptual SVG diagrams must be visually clean: avoid overlapping lines, cramped labels, decorative clutter, and long sentence fragments inside figures.
 - Chart SVGs must not embed their own titles; the title belongs in the surrounding prose and Markdown caption. Legends must be laid out so labels do not overlap, stacking items vertically when that is the cleaner layout.
 - Bibliography verification should reuse cached checks whenever the claim text and cached source digest still match; new claims must be checked before the article is emitted.
+- Source-backed checks should store supporting snippets and spans. `manual-waived` references may use curated bootstrap text only when the bibliography entry explicitly declares that waiver.
 - Bibliography metadata and asset declarations must live under `<articleRoot>/plan/`, not as hardcoded data inside the skill implementation.
-- Generated HTML should include a native print or save-PDF path, but the skill must document honestly that final browser header and footer behavior remains browser-controlled.
+- Generated HTML should include a native print or save-PDF path, visible generator provenance, and an honest note that final browser header and footer behavior remains browser-controlled.
 
 ## Validation
 

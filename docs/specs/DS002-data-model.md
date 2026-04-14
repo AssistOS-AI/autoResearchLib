@@ -10,10 +10,10 @@ The framework revolves around four explicit objects.
 | --- | --- | --- |
 | `O(x)` | Observational family for report `x` | Serializable observational hypotheses with cues, support, ambiguity, and provenance |
 | `T(Oi, d)` | Local theory for hypothesis `Oi` and domain family `d` | State schema, invariants, rewrite templates, composition discipline, and named score profile |
-| `N(Oi)` | Local neighborhood around one observational hypothesis | Retained theories, local transforms, equivalence classes, robust consequences, and question candidates |
+| `N(O(x))` | Active neighborhood over the retained observational family | Retained theories from several observational hypotheses, local transforms, equivalence classes, robust consequences, and question candidates |
 | `F` | Active frontier | Bounded subset of theories retained after non-domination and rescue |
 
-The observational family for a report `x` is `O(x) = {O0, O1, ..., On}`. In the current implementation each observational hypothesis stores normalized source text, tokenization, explicit cues, inferred cues, a `supportByDomain` map, ambiguity notes, a confidence profile, and an optional `focusDomain`. A cue is the smallest typed unit that can later affect theory induction. Every cue records its identifier, cue type, specificity, weight, visibility policy, supporting source spans, and whether it was explicit or inferred.
+The observational family for a report `x` is `O(x) = {O0, O1, ..., On}`. In the current implementation each observational hypothesis stores normalized source text, tokenization, explicit cues, inferred cues, a `supportByDomain` map, ambiguity notes, a confidence profile, and an optional `focusDomain`. A cue is the smallest typed unit that can later affect theory induction. Every cue records its identifier, cue type, specificity, weight, visibility policy, and provenance. Explicit cues now preserve matched segment identifiers and absolute spans whenever segmented evidence is available, while inferred cues preserve the rule identifier that justified the inference. The focused provenance contract is specified in `DS012`.
 
 The current lift policy is parameterized but has a stable default. Domain support is computed as
 
@@ -40,25 +40,17 @@ The weighted scalar total is used only for ranking and entropy summaries. It doe
 
 Those weights are also configurable through the analysis policy. Experiment 4 now stress-tests nearby weight regions and reports how far conclusions move under those perturbations.
 
-The local neighborhood around one observational hypothesis is
+The active neighborhood is
 
-`N(Oi) = (Ti, Mi, Ei, Qi, Q)`
+`N(O(x)) = (T_mix, M, E, Q_cons, Q_ask)`
 
-where `Ti` is the expanded retained theory family, `Mi` is the local move set, `Ei` is the observer-relative equivalence-class family, `Qi` is the consequence profile, and `Q` is the question family currently available over that frontier. In the current implementation `Ti` includes each base theory plus nearby `refined`, `coarsened`, and `refactorized` variants. `Mi` records those typed moves explicitly. `Ei` groups theories that remain indistinguishable under the currently visible cues and visible state sequence. `Qi` splits into robust consequences, defined as invariant intersections across the retained frontier, and theory-sensitive consequences, defined as the invariant remainder of each retained theory. `Q` is the family of discriminating questions supplied by the active domain bundles and filtered through the current frontier.
+where `T_mix` is the expanded retained theory family gathered from the active observational hypotheses, `M` is the local move set, `E` is the observer-relative equivalence-class family, `Q_cons` is the consequence profile, and `Q_ask` is the question family currently available over that frontier. In the current implementation `T_mix` includes each base theory plus nearby `refined`, `coarsened`, and `refactorized` variants, and each retained theory still records its originating `hypothesisId`. The neighborhood is therefore not tied to a single `Oi`; it is the mixed retained region the library is currently managing. `M` records those typed moves explicitly. `E` groups theories that remain indistinguishable under the currently visible cues and visible state sequence. `Q_cons` splits into robust consequences, defined as invariant intersections across the retained frontier, and theory-sensitive consequences, defined as the invariant remainder of each retained theory. `Q_ask` is the family of discriminating questions supplied by the active domain bundles and filtered through the current frontier.
 
 The second budget object is the frontier budget `B_frontier`. The strict frontier is the set of non-dominated theories under the six named score dimensions. Theory `A` dominates theory `B` when every score dimension of `A` is at least the corresponding dimension of `B` and at least one dimension is strictly greater. The practical frontier is then widened by a rescue rule. If an entire domain disappears from the strict frontier but its best surviving theory is within rescue tolerance `tau_rescue = 0.08` of the best strict-frontier score, that best theory is reintroduced. The current frontier is then capped by the active frontier budget, which defaults to eight retained theories. The rescue rule is what keeps delayed commitment operational rather than merely rhetorical.
 
-The third budget object is the question budget `B_query`, which is external to a single analysis call but explicit in the questioning experiments. A `DiscriminatingQuestion` stores a prompt, an answer map by domain, the induced answer partition over the frontier, and expected information gain. Let `p(d)` be the normalized retained-domain distribution induced by frontier totals. The domain entropy is
+The third budget object is the question budget `B_query`, which is external to a single analysis call but explicit in the questioning experiments. The current implementation now evaluates question utility over retained **domain** mass and serializes both per-domain answer maps and answer partitions in the canonical CNL surface. The exact question object, entropy, information-gain, and adversarial-budget semantics are specified in `DS010`.
 
-`H(F) = - sum_d p(d) log p(d)`
-
-and the information gain of a question `q` is
-
-`IG(q) = H(F) - sum_a P(a | q) H(F | a)`
-
-where `a` ranges over the possible answers induced by the domain answer map. The selector chooses the question with maximal `IG(q)` under the current frontier. `RULIAL_NEIGHBORHOOD_UPDATE` then applies answer-dependent score deltas, rebuilds the frontier, recomputes equivalence classes and consequence profiles, and refreshes theory and domain entropy.
-
-Alignment has one precise operational role in the current implementation. It is not a hidden ontology matcher and it is not a late-stage rewrite of the symbolic result. Alignment utility is one named score dimension that estimates how well a retained theory could later be compared, articulated, or translated into a conceptual repertoire. When the alignment feature is disabled, that utility is removed from the weighted ranking but the canonical frontier object is otherwise preserved.
+Alignment has one precise operational role in the current implementation. It is not a hidden ontology matcher and it is not a late-stage rewrite of the symbolic result. Alignment utility is one named score dimension that estimates how well a retained theory could later be compared, articulated, or translated into a conceptual repertoire. When the alignment feature is disabled, that utility contribution is zeroed out of the weighted ranking rather than merely hidden from late lexical output.
 
 The stable external serialization of these objects is the canonical CNL surface. Source context, observations, hypotheses, theories, transforms, equivalence classes, score lines, questions, updates, and frontier membership are serialized as deterministic keyword-led lines. The CNL is therefore a stable projection of the same objects described here, not a parallel representation layer invented for documentation.
 
@@ -66,6 +58,6 @@ The stable external serialization of these objects is the canonical CNL surface.
 The data model is the backbone of the framework because it keeps theory management inspectable. The same objects govern library APIs, experiment artifacts, and article claims, which is why downstream prose can stay close to the actual mechanism instead of inventing a second narrative ontology.
 
 ### Critical Implementation Directives
-1. Keep named score dimensions, rescue tolerance, equivalence classes, question families, and update deltas explicit in machine-readable outputs.
+1. Keep named score dimensions, rescue tolerance, equivalence classes, mixed-frontier membership, question families, and update deltas explicit in machine-readable outputs.
 2. Treat `B_lift`, `B_frontier`, and `B_query` as distinct budget concepts even when they are configured by different parts of the current implementation.
 3. Preserve the canonical CNL projection as a stable audit surface for the same underlying objects.

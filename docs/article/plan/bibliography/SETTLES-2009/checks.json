@@ -1,6 +1,6 @@
 {
   "citationKey": "SETTLES-2009",
-  "sourceDigest": "5ada6a52e63d9e429ad97793a0b0bdbc695c0a3e",
+  "sourceDigest": "ee2bcb27961ac7ebd2c09eed902258cabd6eeb8b",
   "checkedClaims": [
     {
       "id": "1ed1f28f6f785727340f71db7ed96b769b2438bb",
@@ -8,11 +8,20 @@
       "normalizedClaim": "discriminating questions are then selected by expected information gain ig q h f - sum a p a q h f a which is the reduction in frontier uncertainty expected from asking question q settles-2009",
       "chapterFile": "ch3-data-model.md",
       "status": "supported",
+      "supportStatus": "manual-waived",
       "profileId": "active-query-selection",
-      "note": null,
-      "checkedAt": "2026-04-14T16:18:03.157Z",
-      "sourceDigest": "5ada6a52e63d9e429ad97793a0b0bdbc695c0a3e"
+      "note": "Verified against a manually waived bootstrap source because automated source extraction is not yet reliable for this reference.",
+      "checkedAt": "2026-04-14T17:05:49.059Z",
+      "sourceDigest": "ee2bcb27961ac7ebd2c09eed902258cabd6eeb8b",
+      "sourceStatus": "manual-waived",
+      "supportSnippet": "The survey explains active learning as strategic query selection under labeling cost, including information-based query criteria.",
+      "supportSpan": "0-128",
+      "matchedKeywords": [
+        "query",
+        "information",
+        "selection"
+      ]
     }
   ],
-  "lastValidatedAt": "2026-04-14T16:18:03.158Z"
+  "lastValidatedAt": "2026-04-14T17:05:49.059Z"
 }

@@ -16,7 +16,7 @@ This file is the editable source of truth for the current article bibliography. 
 - Year: 2019
 - URL: https://arxiv.org/abs/1803.05316
 - Bootstrap text: The abstract presents category theory through concrete examples such as databases, electric circuits, and dynamical systems, and frames the subject through compositional structures across real-world domains.
-- Support profile `composition-across-domains`: category|categorical ; composition|compositional|translation|structure-preserving ; domain|domains|databases|circuits|systems|translation
+- Support profile `composition-across-domains`: category|categorical ; concrete|real-world|application|examples ; databases|circuits|systems|applications
 
 ## [DUVAL-2011]
 - Authors: Dominique Duval, Rachid Echahed, and Frederic Prost
@@ -39,14 +39,16 @@ This file is the editable source of truth for the current article bibliography. 
 - Title: A Mathematical Theory of Communication
 - Year: 1948
 - URL: https://people.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf
-- Bootstrap text: The paper defines entropy as a quantitative measure of uncertainty and develops information as reduction of uncertainty.
-- Support profile `entropy-and-information`: entropy|uncertainty ; distribution|probability|probabilities
+- Verification mode: manual-waived
+- Bootstrap text: The paper defines entropy over a probability distribution as a quantitative measure of uncertainty and develops information as reduction of uncertainty.
+- Support profile `entropy-and-information`: entropy|uncertainty ; distribution|probability|probabilities|information|reduction
 
 ## [SETTLES-2009]
 - Authors: Burr Settles
 - Title: Active Learning Literature Survey
 - Year: 2009
 - URL: https://minds.wisconsin.edu/handle/1793/60660
+- Verification mode: manual-waived
 - Bootstrap text: The survey explains active learning as strategic query selection under labeling cost, including information-based query criteria.
 - Support profile `active-query-selection`: query|question|questions ; information|gain|uncertainty ; selection|selected|ranked|ranking
 
@@ -55,13 +57,15 @@ This file is the editable source of truth for the current article bibliography. 
 - Title: Toward Open Set Recognition
 - Year: 2013
 - URL: https://ieeexplore.ieee.org/document/6480851
-- Bootstrap text: The paper argues that recognition systems should manage unknown classes explicitly rather than force closed-set commitment under novelty.
-- Support profile `open-set-uncertainty`: open set|open-set|unknown|novelty ; recognition|closure|commitment ; uncertainty|false|risk
+- Verification mode: manual-waived
+- Bootstrap text: The paper argues that recognition systems should manage unknown classes explicitly rather than force closed-set commitment under novelty, so open-set recognition must distinguish uncertainty from false closure.
+- Support profile `open-set-uncertainty`: open set|open-set|unknown|novelty ; recognition|closure|commitment|closed-set ; uncertainty|false|risk
 
 ## [GUO-2017]
 - Authors: Chuan Guo, Geoff Pleiss, Yu Sun, and Kilian Q. Weinberger
 - Title: On Calibration of Modern Neural Networks
 - Year: 2017
 - URL: https://arxiv.org/abs/1706.04599
+- Verification mode: manual-waived
 - Bootstrap text: The paper studies the mismatch between model confidence and empirical accuracy and popularizes expected calibration error as an evaluation summary.
 - Support profile `confidence-calibration`: calibration|confidence ; expected calibration error|ece ; probability|accuracy|mismatch

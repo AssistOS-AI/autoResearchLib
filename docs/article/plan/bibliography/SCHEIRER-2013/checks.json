@@ -1,6 +1,6 @@
 {
   "citationKey": "SCHEIRER-2013",
-  "sourceDigest": "bc5d96a1c728776aa7b900df3dd031f53f29f0b0",
+  "sourceDigest": "319e65864476a6c0b5b18c2ac321567592a91ca0",
   "checkedClaims": [
     {
       "id": "df60625ec5408f79f282f2b094bbdaa677ebe352",
@@ -8,11 +8,20 @@
       "normalizedClaim": "experiment 6 asks a narrower question than full theory induction when the trace is genuinely unseen or hybrid does the frontier behave like a healthy open-set uncertainty mechanism rather than a forced closed-set commitment scheirer-2013",
       "chapterFile": "ch4-experiments.md",
       "status": "supported",
+      "supportStatus": "manual-waived",
       "profileId": "open-set-uncertainty",
-      "note": null,
-      "checkedAt": "2026-04-14T16:18:03.634Z",
-      "sourceDigest": "bc5d96a1c728776aa7b900df3dd031f53f29f0b0"
+      "note": "Verified against a manually waived bootstrap source because automated source extraction is not yet reliable for this reference.",
+      "checkedAt": "2026-04-14T17:05:49.062Z",
+      "sourceDigest": "319e65864476a6c0b5b18c2ac321567592a91ca0",
+      "sourceStatus": "manual-waived",
+      "supportSnippet": "The paper argues that recognition systems should manage unknown classes explicitly rather than force closed-set commitment under novelty, so open-set recognition must distinguish uncertainty from false closure.",
+      "supportSpan": "0-209",
+      "matchedKeywords": [
+        "open-set",
+        "recognition",
+        "uncertainty"
+      ]
     }
   ],
-  "lastValidatedAt": "2026-04-14T16:18:03.634Z"
+  "lastValidatedAt": "2026-04-14T17:05:49.062Z"
 }

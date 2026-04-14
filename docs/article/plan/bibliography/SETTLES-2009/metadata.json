@@ -2,7 +2,9 @@
   "citationKey": "SETTLES-2009",
   "url": "https://minds.wisconsin.edu/handle/1793/60660",
   "title": "Active Learning Literature Survey",
-  "fetchedAt": "2026-04-14T16:18:03.155Z",
-  "fetchStatus": "fetched",
-  "sourceDigest": "5ada6a52e63d9e429ad97793a0b0bdbc695c0a3e"
+  "fetchedAt": "2026-04-14T17:05:49.058Z",
+  "fetchStatus": "manual-waived",
+  "bootstrapOnly": false,
+  "verificationMode": "manual-waived",
+  "sourceDigest": "ee2bcb27961ac7ebd2c09eed902258cabd6eeb8b"
 }

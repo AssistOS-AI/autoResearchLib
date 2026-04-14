@@ -20,11 +20,12 @@ Open with a concrete ambiguous workflow prefix so the reader immediately underst
 | --- | --- | --- |
 | P1 | `DS000 Core Content` | Start with the concrete workflow prefix example and explain why it does not yet determine a unique local theory. No citation is needed here because the point is the article’s own motivating example. |
 | P2 | `DS000 Introduction` | Introduce ruliology, applied category theory, and neuro-symbolic concepts with one sentence and one citation per idea. |
-| P3 | `DS000 Introduction`, `DS000 Core Content` | State the report-observation-theory gap explicitly and explain why direct text-to-theory inference is methodologically unsound. |
-| P4 | `DS000 Core Content`, `DS001 Core Content` | Define the research objective as construction of a bounded local region of theory space rather than one premature final theory. |
-| P5 | `DS000 Core Content` | Define meta-rationality as disciplined non-reification backed by explicit frontier retention. |
-| P6 | `DS000 Core Content`, `DS008 Core Content` | Separate the contributions into conceptual, formal, and validation contributions. |
-| P7 | `DS000 Core Content`, `DS008 Core Content`, `DS005 Core Content` | State the current implementation boundary honestly: what is supported now and what remains open, especially novelty synthesis and adversarial questioning. |
+| P3 | `DS000 Introduction`, `DS000 Core Content` | Make the intensional-versus-compositional tension explicit: structured objects and typed rewrites are needed before composition becomes meaningful. |
+| P4 | `DS000 Introduction`, `DS000 Core Content` | State the report-observation-theory gap explicitly and explain why direct text-to-theory inference is methodologically unsound. |
+| P5 | `DS000 Core Content`, `DS001 Core Content` | Define the research objective as construction of a bounded local region of theory space rather than one premature final theory. |
+| P6 | `DS000 Core Content` | Define meta-rationality as disciplined non-reification backed by explicit frontier retention. |
+| P7 | `DS000 Core Content`, `DS008 Core Content` | Separate the contributions into conceptual, formal, and validation contributions. |
+| P8 | `DS000 Core Content`, `DS008 Core Content`, `DS005 Core Content` | State the current implementation boundary honestly: what is supported now and what remains open, especially novelty synthesis and adversarial questioning. |
 
 ## Generated Chapter Template
 
@@ -34,9 +35,11 @@ Consider the short workflow note: "The item was logged, labeled, and the record 
 
 Ruliology studies what abstract rules do and how spaces of possible rules are organized [WOLFRAM-2026].
 
-Applied category theory studies disciplined composition and structure-preserving translation across domains [FONG-SPIVAK-2019].
+Applied category theory is presented through concrete real-world examples paired with explicit categorical structures, including databases, circuits, and dynamical systems [FONG-SPIVAK-2019].
 
 Recent neuro-symbolic work argues that learned systems are most useful when they still operate over typed and compositional conceptual carriers [MAO-2025].
+
+The methodological tension is between intensional structure and extensional composition. Engineering practice starts from object-like states with fields, constraints, and admissible operations. Categorical discipline becomes useful only if it constrains how such structured objects compose rather than erasing their interior too early. The paper therefore treats typed local theories as first-class objects and composition as a discipline imposed on their admissible rewrites.
 
 These three ingredients become jointly useful only if one methodological distinction is preserved. A natural-language report is not yet the phenomenon itself, and it is not yet a theory of that phenomenon. A direct passage from text to final theory therefore conflates what was stated, what may have been observed, and what is being inferred. The central problem of the paper is how to move between those levels without erasing structure too early.
 

@@ -1,6 +1,6 @@
 {
   "citationKey": "GUO-2017",
-  "sourceDigest": "edbe03ba5087d847eeaa253ff1fff795fe208cf7",
+  "sourceDigest": "82cbbfa1746d6064f995d0ea34d56e4af41d1870",
   "checkedClaims": [
     {
       "id": "92f05f66d0228df1612fa7ce95bfd4a80e453801",
@@ -8,11 +8,20 @@
       "normalizedClaim": "calibration is also reported through expected calibration error to track how confidence matches empirical accuracy guo-2017",
       "chapterFile": "ch4-experiments.md",
       "status": "supported",
+      "supportStatus": "manual-waived",
       "profileId": "confidence-calibration",
-      "note": null,
-      "checkedAt": "2026-04-14T16:18:03.178Z",
-      "sourceDigest": "edbe03ba5087d847eeaa253ff1fff795fe208cf7"
+      "note": "Verified against a manually waived bootstrap source because automated source extraction is not yet reliable for this reference.",
+      "checkedAt": "2026-04-14T17:05:49.060Z",
+      "sourceDigest": "82cbbfa1746d6064f995d0ea34d56e4af41d1870",
+      "sourceStatus": "manual-waived",
+      "supportSnippet": "The paper studies the mismatch between model confidence and empirical accuracy and popularizes expected calibration error as an evaluation summary.",
+      "supportSpan": "0-146",
+      "matchedKeywords": [
+        "calibration",
+        "expected calibration error",
+        "accuracy"
+      ]
     }
   ],
-  "lastValidatedAt": "2026-04-14T16:18:03.178Z"
+  "lastValidatedAt": "2026-04-14T17:05:49.060Z"
 }

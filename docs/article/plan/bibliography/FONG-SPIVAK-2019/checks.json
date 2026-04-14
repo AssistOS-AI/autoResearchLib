@@ -56,7 +56,67 @@
       "note": null,
       "checkedAt": "2026-04-14T16:18:01.449Z",
       "sourceDigest": "fed65ac41c10ac15fc22b1f8c04e16634e51e149"
+    },
+    {
+      "id": "9a7c97b2aa48884e129bc889932bd7b7ace299e0",
+      "claimText": "Applied category theory is presented through concrete real-world examples paired with explicit categorical structures, including databases, circuits, and dynamical systems [FONG-SPIVAK-2019].",
+      "normalizedClaim": "applied category theory is presented through concrete real-world examples paired with explicit categorical structures including databases circuits and dynamical systems fong-spivak-2019",
+      "chapterFile": "ch1-introduction.md",
+      "status": "supported",
+      "supportStatus": "cached-source-supported",
+      "profileId": "composition-across-domains",
+      "note": null,
+      "checkedAt": "2026-04-14T17:05:49.006Z",
+      "sourceDigest": "fed65ac41c10ac15fc22b1f8c04e16634e51e149",
+      "sourceStatus": "fetched",
+      "supportSnippet": "The tour takes place over seven sketches, each pairing an evocative application, such as databases, electric circuits, or dynamical systems, with the exploration of a categorical structure, such as adjoint functors, enriched categories, or toposes.",
+      "supportSpan": "1197-1444",
+      "matchedKeywords": [
+        "categorical",
+        "application",
+        "databases"
+      ]
+    },
+    {
+      "id": "8d425da5e28d5e8ecc81f5de47456eae4c25b3ff",
+      "claimText": "Applied category theory matters here because it shows how concrete application settings such as databases, circuits, and dynamical systems can be organized through explicit categorical structure [FONG-SPIVAK-2019].",
+      "normalizedClaim": "applied category theory matters here because it shows how concrete application settings such as databases circuits and dynamical systems can be organized through explicit categorical structure fong-spivak-2019",
+      "chapterFile": "ch2-architecture.md",
+      "status": "supported",
+      "supportStatus": "cached-source-supported",
+      "profileId": "composition-across-domains",
+      "note": null,
+      "checkedAt": "2026-04-14T17:05:49.006Z",
+      "sourceDigest": "fed65ac41c10ac15fc22b1f8c04e16634e51e149",
+      "sourceStatus": "fetched",
+      "supportSnippet": "The tour takes place over seven sketches, each pairing an evocative application, such as databases, electric circuits, or dynamical systems, with the exploration of a categorical structure, such as adjoint functors, enriched categories, or toposes.",
+      "supportSpan": "1197-1444",
+      "matchedKeywords": [
+        "categorical",
+        "application",
+        "databases"
+      ]
+    },
+    {
+      "id": "a49deb611710d3c2e04e71eadcf2325925ad13bf",
+      "claimText": "Applied category theory contributes a way to keep concrete application settings such as databases, circuits, and dynamical systems tied to explicit categorical structure [FONG-SPIVAK-2019].",
+      "normalizedClaim": "applied category theory contributes a way to keep concrete application settings such as databases circuits and dynamical systems tied to explicit categorical structure fong-spivak-2019",
+      "chapterFile": "ch5-conclusion.md",
+      "status": "supported",
+      "supportStatus": "cached-source-supported",
+      "profileId": "composition-across-domains",
+      "note": null,
+      "checkedAt": "2026-04-14T17:05:49.006Z",
+      "sourceDigest": "fed65ac41c10ac15fc22b1f8c04e16634e51e149",
+      "sourceStatus": "fetched",
+      "supportSnippet": "The tour takes place over seven sketches, each pairing an evocative application, such as databases, electric circuits, or dynamical systems, with the exploration of a categorical structure, such as adjoint functors, enriched categories, or toposes.",
+      "supportSpan": "1197-1444",
+      "matchedKeywords": [
+        "categorical",
+        "application",
+        "databases"
+      ]
     }
   ],
-  "lastValidatedAt": "2026-04-14T16:18:01.449Z"
+  "lastValidatedAt": "2026-04-14T17:05:49.006Z"
 }

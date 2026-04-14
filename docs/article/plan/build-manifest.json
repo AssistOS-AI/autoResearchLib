@@ -4,7 +4,7 @@
   "articleRootPath": "/home/salboaie/work/autoResearchLib/docs/article",
   "baseDir": "/home/salboaie/work/autoResearchLib",
   "force": true,
-  "generatedAt": "2026-04-14T16:18:03.640Z",
+  "generatedAt": "2026-04-14T17:05:49.065Z",
   "chapters": [
     {
       "chapter": 1,
@@ -235,115 +235,212 @@
       {
         "citationKey": "WOLFRAM-2026",
         "claimText": "Ruliology studies what abstract rules do and how spaces of possible rules are organized [WOLFRAM-2026].",
-        "status": "verified",
+        "status": "cached-source-supported",
         "profileId": "rule-families-and-consequences",
-        "chapterFile": "ch1-introduction.md"
+        "chapterFile": "ch1-introduction.md",
+        "supportSnippet": "It’s all about studying rules, and what their consequences are. So why not the simple and obvious “ruliology”?",
+        "supportSpan": "2504-2613"
       },
       {
         "citationKey": "WOLFRAM-2026",
         "claimText": "That neighborhood perspective is what makes the framework ruliological in practice: it studies nearby rule-bearing possibilities instead of rushing toward one prematurely reified interpretation [WOLFRAM-2026].",
-        "status": "verified",
+        "status": "cached-source-supported",
         "profileId": "rule-families-and-consequences",
-        "chapterFile": "ch2-architecture.md"
+        "chapterFile": "ch2-architecture.md",
+        "supportSnippet": "It’s all about studying rules, and what their consequences are. So why not the simple and obvious “ruliology”?",
+        "supportSpan": "2504-2613"
       },
       {
         "citationKey": "WOLFRAM-2026",
         "claimText": "Ruliology contributes the orientation toward spaces of possible rules and the consequences they generate [WOLFRAM-2026].",
-        "status": "verified",
+        "status": "cached-source-supported",
         "profileId": "rule-families-and-consequences",
-        "chapterFile": "ch5-conclusion.md"
+        "chapterFile": "ch5-conclusion.md",
+        "supportSnippet": "It’s all about studying rules, and what their consequences are. So why not the simple and obvious “ruliology”?",
+        "supportSpan": "2504-2613"
       },
       {
         "citationKey": "FONG-SPIVAK-2019",
-        "claimText": "Applied category theory studies disciplined composition and structure-preserving translation across domains [FONG-SPIVAK-2019].",
-        "status": "verified",
+        "claimText": "Applied category theory is presented through concrete real-world examples paired with explicit categorical structures, including databases, circuits, and dynamical systems [FONG-SPIVAK-2019].",
+        "status": "cached-source-supported",
         "profileId": "composition-across-domains",
-        "chapterFile": "ch1-introduction.md"
+        "chapterFile": "ch1-introduction.md",
+        "supportSnippet": "The tour takes place over seven sketches, each pairing an evocative application, such as databases, electric circuits, or dynamical systems, with the exploration of a categorical structure, such as adjoint functors, enriched categories, or toposes.",
+        "supportSpan": "1197-1444"
       },
       {
         "citationKey": "FONG-SPIVAK-2019",
-        "claimText": "It is category-level disciplined translation between structured domains, with preservation of the relations that matter under that translation [FONG-SPIVAK-2019].",
-        "status": "verified",
+        "claimText": "Applied category theory matters here because it shows how concrete application settings such as databases, circuits, and dynamical systems can be organized through explicit categorical structure [FONG-SPIVAK-2019].",
+        "status": "cached-source-supported",
         "profileId": "composition-across-domains",
-        "chapterFile": "ch2-architecture.md"
+        "chapterFile": "ch2-architecture.md",
+        "supportSnippet": "The tour takes place over seven sketches, each pairing an evocative application, such as databases, electric circuits, or dynamical systems, with the exploration of a categorical structure, such as adjoint functors, enriched categories, or toposes.",
+        "supportSpan": "1197-1444"
       },
       {
         "citationKey": "FONG-SPIVAK-2019",
-        "claimText": "Applied category theory contributes disciplined composition and structure-preserving translation between structured regimes [FONG-SPIVAK-2019].",
-        "status": "verified",
+        "claimText": "Applied category theory contributes a way to keep concrete application settings such as databases, circuits, and dynamical systems tied to explicit categorical structure [FONG-SPIVAK-2019].",
+        "status": "cached-source-supported",
         "profileId": "composition-across-domains",
-        "chapterFile": "ch5-conclusion.md"
+        "chapterFile": "ch5-conclusion.md",
+        "supportSnippet": "The tour takes place over seven sketches, each pairing an evocative application, such as databases, electric circuits, or dynamical systems, with the exploration of a categorical structure, such as adjoint functors, enriched categories, or toposes.",
+        "supportSpan": "1197-1444"
       },
       {
         "citationKey": "MAO-2025",
         "claimText": "Recent neuro-symbolic work argues that learned systems are most useful when they still operate over typed and compositional conceptual carriers [MAO-2025].",
-        "status": "verified",
+        "status": "cached-source-supported",
         "profileId": "typed-neuro-symbolic-concepts",
-        "chapterFile": "ch1-introduction.md"
+        "chapterFile": "ch1-introduction.md",
+        "supportSnippet": "To facilitate learning and reasoning, the concepts are typed and represented using a combination of symbolic programs and neural network representations.",
+        "supportSpan": "1257-1409"
       },
       {
         "citationKey": "MAO-2025",
         "claimText": "A learned component may therefore help normalize or propose candidate observational fragments, but those fragments must be turned into typed, compositional symbolic concept objects with provenance before they can affect theory induction [MAO-2025].",
-        "status": "verified",
+        "status": "cached-source-supported",
         "profileId": "typed-neuro-symbolic-concepts",
-        "chapterFile": "ch2-architecture.md"
+        "chapterFile": "ch2-architecture.md",
+        "supportSnippet": "To facilitate learning and reasoning, the concepts are typed and represented using a combination of symbolic programs and neural network representations.",
+        "supportSpan": "1257-1409"
       },
       {
         "citationKey": "MAO-2025",
         "claimText": "Neuro-symbolic concept work contributes the insistence that learned components should still operate over typed and compositional conceptual structures [MAO-2025].",
-        "status": "verified",
+        "status": "cached-source-supported",
         "profileId": "typed-neuro-symbolic-concepts",
-        "chapterFile": "ch5-conclusion.md"
+        "chapterFile": "ch5-conclusion.md",
+        "supportSnippet": "To facilitate learning and reasoning, the concepts are typed and represented using a combination of symbolic programs and neural network representations.",
+        "supportSpan": "1257-1409"
       },
       {
         "citationKey": "DUVAL-2011",
         "claimText": "Categorical rewriting is treated as typed local transformation rather than as an unstructured state diff, which is why compatibility and composition become first-class concerns [DUVAL-2011].",
-        "status": "verified",
+        "status": "cached-source-supported",
         "profileId": "categorical-rewriting",
-        "chapterFile": "ch2-architecture.md"
+        "chapterFile": "ch2-architecture.md",
+        "supportSnippet": "[1101.3417] Categorical Abstract Rewriting Systems and Functoriality of Graph Transformation Skip to main content Learn about arXiv becoming an independent nonprofit.",
+        "supportSpan": "0-165"
       },
       {
         "citationKey": "DUVAL-2011",
         "claimText": "Typed local transformation and compatibility therefore remain explicit as part of a categorical rewriting view rather than being hidden in a monolithic score [DUVAL-2011].",
-        "status": "verified",
+        "status": "cached-source-supported",
         "profileId": "categorical-rewriting",
-        "chapterFile": "ch3-data-model.md"
+        "chapterFile": "ch3-data-model.md",
+        "supportSnippet": "[1101.3417] Categorical Abstract Rewriting Systems and Functoriality of Graph Transformation Skip to main content Learn about arXiv becoming an independent nonprofit.",
+        "supportSpan": "0-165"
       },
       {
         "citationKey": "DUVAL-2011",
         "claimText": "Categorical abstract rewriting contributes a precise language for typed local transformations and their compatibility [DUVAL-2011].",
-        "status": "verified",
+        "status": "cached-source-supported",
         "profileId": "categorical-rewriting",
-        "chapterFile": "ch5-conclusion.md"
+        "chapterFile": "ch5-conclusion.md",
+        "supportSnippet": "[1101.3417] Categorical Abstract Rewriting Systems and Functoriality of Graph Transformation Skip to main content Learn about arXiv becoming an independent nonprofit.",
+        "supportSpan": "0-165"
       },
       {
         "citationKey": "SHANNON-1948",
         "claimText": "The frontier is summarized with entropy over the retained domain distribution, `H(F) = - sum_d p(d) log p(d)`, where `p(d)` is the normalized retained-domain mass [SHANNON-1948].",
-        "status": "verified",
+        "status": "manual-waived",
         "profileId": "entropy-and-information",
-        "chapterFile": "ch3-data-model.md"
+        "chapterFile": "ch3-data-model.md",
+        "supportSnippet": "The paper defines entropy over a probability distribution as a quantitative measure of uncertainty and develops information as reduction of uncertainty.",
+        "supportSpan": "0-151"
       },
       {
         "citationKey": "SETTLES-2009",
         "claimText": "Discriminating questions are then selected by expected information gain, `IG(q) = H(F) - sum_a P(a | q) H(F | a)`, which is the reduction in frontier uncertainty expected from asking question `q` [SETTLES-2009].",
-        "status": "verified",
+        "status": "manual-waived",
         "profileId": "active-query-selection",
-        "chapterFile": "ch3-data-model.md"
+        "chapterFile": "ch3-data-model.md",
+        "supportSnippet": "The survey explains active learning as strategic query selection under labeling cost, including information-based query criteria.",
+        "supportSpan": "0-128"
       },
       {
         "citationKey": "GUO-2017",
         "claimText": "Calibration is also reported through expected calibration error to track how confidence matches empirical accuracy [GUO-2017].",
-        "status": "verified",
+        "status": "manual-waived",
         "profileId": "confidence-calibration",
-        "chapterFile": "ch4-experiments.md"
+        "chapterFile": "ch4-experiments.md",
+        "supportSnippet": "The paper studies the mismatch between model confidence and empirical accuracy and popularizes expected calibration error as an evaluation summary.",
+        "supportSpan": "0-146"
       },
       {
         "citationKey": "SCHEIRER-2013",
         "claimText": "Experiment 6 asks a narrower question than full theory induction: when the trace is genuinely unseen or hybrid, does the frontier behave like a healthy open-set uncertainty mechanism rather than a forced closed-set commitment [SCHEIRER-2013]?",
-        "status": "verified",
+        "status": "manual-waived",
         "profileId": "open-set-uncertainty",
-        "chapterFile": "ch4-experiments.md"
+        "chapterFile": "ch4-experiments.md",
+        "supportSnippet": "The paper argues that recognition systems should manage unknown classes explicitly rather than force closed-set commitment under novelty, so open-set recognition must distinguish uncertainty from false closure.",
+        "supportSpan": "0-209"
       }
+    ],
+    "referenceSummaries": [
+      {
+        "citationKey": "WOLFRAM-2026",
+        "fetchStatus": "fetched",
+        "bootstrapOnly": false,
+        "verificationMode": "source-backed",
+        "claimCount": 3
+      },
+      {
+        "citationKey": "FONG-SPIVAK-2019",
+        "fetchStatus": "fetched",
+        "bootstrapOnly": false,
+        "verificationMode": "source-backed",
+        "claimCount": 3
+      },
+      {
+        "citationKey": "MAO-2025",
+        "fetchStatus": "fetched",
+        "bootstrapOnly": false,
+        "verificationMode": "source-backed",
+        "claimCount": 3
+      },
+      {
+        "citationKey": "DUVAL-2011",
+        "fetchStatus": "fetched",
+        "bootstrapOnly": false,
+        "verificationMode": "source-backed",
+        "claimCount": 3
+      },
+      {
+        "citationKey": "SHANNON-1948",
+        "fetchStatus": "manual-waived",
+        "bootstrapOnly": false,
+        "verificationMode": "manual-waived",
+        "claimCount": 1
+      },
+      {
+        "citationKey": "SETTLES-2009",
+        "fetchStatus": "manual-waived",
+        "bootstrapOnly": false,
+        "verificationMode": "manual-waived",
+        "claimCount": 1
+      },
+      {
+        "citationKey": "GUO-2017",
+        "fetchStatus": "manual-waived",
+        "bootstrapOnly": false,
+        "verificationMode": "manual-waived",
+        "claimCount": 1
+      },
+      {
+        "citationKey": "SCHEIRER-2013",
+        "fetchStatus": "manual-waived",
+        "bootstrapOnly": false,
+        "verificationMode": "manual-waived",
+        "claimCount": 1
+      }
+    ],
+    "bootstrapReferences": [],
+    "manualWaivedReferences": [
+      "SHANNON-1948",
+      "SETTLES-2009",
+      "GUO-2017",
+      "SCHEIRER-2013"
     ]
   },
   "html": {
