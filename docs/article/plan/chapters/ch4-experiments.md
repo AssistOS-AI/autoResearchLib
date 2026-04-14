@@ -2,7 +2,7 @@
 
 The paper now validates a ladder of claims rather than one undifferentiated promise. The early experiments still test the structural core of the framework: richer observation, question-driven frontier contraction, and recoverability under cue masking. The newer experiments then test robustness to policy variation, transfer across a larger benchmark, healthy uncertainty under novelty, and multi-step recoverability under different questioning conditions. This matters because the architecture is broader than the current implementation, and the article should not imply that one experiment settles every aspect of the proposal.
 
-The empirical program now has three dataset layers. The first is the original eighteen-case controlled corpus across package, sample, and manuscript workflows. The second is an expanded seven-domain benchmark with controlled, paraphrased, and noisy strata, yielding 102 benchmark cases and 204 evaluated test traces over four prefix depths. The third is a novelty layer with unseen and hybrid cases evaluated against the same deterministic core. Multi-step questioning then reuses the paraphrased and noisy benchmark slices to test budgeted recovery over time.
+The empirical program now has three dataset layers. The first is the original eighteen-case controlled corpus across package, sample, and manuscript workflows. The second is an expanded seven-domain benchmark with controlled, paraphrased, and noisy strata, yielding 102 benchmark cases and 204 evaluated test traces over four segment depths. The third is a novelty layer with 14 unseen and hybrid base cases evaluated against the same deterministic core. Multi-step questioning then reuses the paraphrased and noisy benchmark slices to test budgeted recovery over time.
 
 Table 3 summarizes the seven experiments and their role in the validation ladder.
 
@@ -56,14 +56,26 @@ Table 5 shows the stratum-level summary. Across all three strata, frontier-top a
 | noisy | 68 | 0.765 | 0.765 | 0.794 | 0.794 | 0.926 | 0.073 |
 | paraphrased | 68 | 0.765 | 0.779 | 0.794 | 0.794 | 0.912 | 0.067 |
 
-Figure 11 compares the main policies across the three strata. The benchmark also shows the expected prefix-depth story: at Prefix 1 the frontier still preserves truth better than it ranks it, while later prefixes let both ranking and retention approach full resolution. This is a stronger empirical basis than the original eighteen-case corpus because the benchmark now includes broader lexical variation, more workflow families, and explicit external baselines.
+The benchmark is now instrumented strongly enough to show where transfer is still uneven. Table 5b reports per-domain frontier precision, recall, F1, and mean truth rank. The weakest families remain the ones whose local cues overlap most with adjacent workflow structures, but even there the retained truth rank stays well below full collapse because the correct family usually survives somewhere on the frontier.
+
+| Domain | Support | Precision | Recall | F1 | Mean truth rank |
+| --- | --- | --- | --- | --- | --- |
+| compliance | 24 | 1 | 0.75 | 0.857 | 1.545 |
+| incident | 24 | 1 | 0.75 | 0.857 | 1.87 |
+| maintenance | 24 | 1 | 0.75 | 0.857 | 1 |
+| manuscript | 36 | 0.78 | 0.889 | 0.831 | 1.111 |
+| package | 36 | 0.507 | 0.944 | 0.66 | 1.056 |
+| procurement | 24 | 1 | 0.75 | 0.857 | 1 |
+| sample | 36 | 1 | 0.667 | 0.8 | 1.667 |
+
+Figure 11 compares the main policies across the three strata. The benchmark also shows the expected segment-depth story: at Segment 1 the frontier still preserves truth better than it ranks it, while later stages let both ranking and retention approach full resolution. This is a stronger empirical basis than the original eighteen-case corpus because the benchmark now includes broader lexical variation, more workflow families, explicit external baselines, and domain-level error diagnostics.
 
 ![Expanded benchmark accuracy by stratum](assets/figure-11-benchmark-accuracy.svg)
 *Figure 11. Accuracy and frontier-truth retention across controlled, paraphrased, and noisy benchmark strata.*
 
 ## Experiment 6. Open-set novelty and false-closure control
 
-Experiment 6 asks a narrower question than full theory induction: when the trace is genuinely unseen or hybrid, does the frontier behave like a healthy open-set uncertainty mechanism rather than a forced closed-set commitment [SCHEIRER-2013]? The current novelty layer does not synthesize a brand-new theory family. It measures whether novelty increases uncertainty, frontier width, and question demand without producing the same warning profile on ordinary in-domain traces.
+Experiment 6 asks a narrower question than full theory induction: when the trace is genuinely unseen or hybrid, does the frontier behave like a healthy open-set uncertainty mechanism rather than a forced closed-set commitment [SCHEIRER-2013]? The current novelty layer does not synthesize a brand-new theory family. It measures whether novelty increases uncertainty, frontier width, and question demand without producing the same warning profile on ordinary in-domain traces, and it now does so on a broader novelty set that spans clinical, legal, quality, logistics, hiring, and explicit hybrid traces.
 
 Table 6 shows the result. In-domain traces are flagged as open-set candidates only 0.052 of the time, while open-set traces are flagged at 0.533 and hybrid traces at 0.417. Mean entropy rises from 0.073 in-domain to 0.847 on open-set traces. This is the right direction for a commitment-control mechanism.
 
@@ -80,7 +92,7 @@ Figure 12 shows the same comparison graphically. The strongest novelty response 
 
 ## Experiment 7. Multi-step questioning budgets
 
-Experiment 7 extends the single-step questioning result into an explicit budgeted protocol. The benchmark traces are evaluated under budgets of 0, 1, 2, and 3 questions and under three question policies: information gain, a cheaper top-domain heuristic, and a random policy. The study contrasts clean evidence, masked evidence with noisy answers, and masked evidence with adversarial answers.
+Experiment 7 extends the single-step questioning result into an explicit budgeted protocol. The benchmark traces are evaluated under budgets of 0, 1, 2, and 3 answered questions and under three question policies: information gain, a cheaper top-domain heuristic, and a random policy. The study contrasts clean evidence, masked evidence with noisy answers, and masked evidence with adversarial answers. The adversarial condition is fixed as a worst-branch policy that chooses the answer most likely to damage correctness and truth retention.
 
 Table 7 shows the noisy condition, where the comparison is most useful. Under masked noisy evidence, the information-gain policy raises final accuracy from 0.5 at budget 0 to 0.691 at budget 2, while the random policy reaches only 0.588 at the same budget. Clean evidence reaches full recovery quickly, which confirms that the multi-step protocol is not merely adding redundant queries.
 
@@ -99,7 +111,7 @@ Table 7 shows the noisy condition, where the comparison is most useful. Under ma
 | top-domain | 2 | 0.603 | 0.676 | 0.408 | 0.294 |
 | top-domain | 3 | 0.603 | 0.706 | 0.343 | 0.294 |
 
-Figure 13 shows accuracy versus budget under the hardest adversarial condition, and Figure 14 shows the corresponding entropy curve. The important negative result is visible as well as the positive one: under adversarial answers, all policies degrade sharply after budget 0. Information gain still drives entropy lower than the random policy, but it does not recover accuracy in the same way it does under clean or noisy answers. This is a real current limitation of the implementation, not a rhetorical footnote.
+Figure 13 shows accuracy versus budget under the hardest adversarial condition, and Figure 14 shows the corresponding entropy curve. The important negative result is visible as well as the positive one: under adversarial answers, all policies degrade sharply after budget 0. Information gain still drives entropy lower than the random policy, but it does not recover accuracy in the same way it does under clean or noisy answers. At budget 2, the information-gain policy still delivers mean information gain 0.634 and mean entropy reduction per question 0.747, yet its harmful-question rate rises to 0.574. This is a real current limitation of the implementation, not a rhetorical footnote.
 
 ![Accuracy versus question budget under adversarial evidence](assets/figure-13-accuracy-budget.svg)
 *Figure 13. Accuracy versus question budget under masked adversarial evidence for information-gain, top-domain, and random questioning policies.*

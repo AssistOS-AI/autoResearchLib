@@ -22,7 +22,7 @@
       "supportStatus": "cached-source-supported",
       "profileId": "rule-families-and-consequences",
       "note": null,
-      "checkedAt": "2026-04-14T17:05:48.963Z",
+      "checkedAt": "2026-04-14T17:44:37.970Z",
       "sourceDigest": "3ea306230b354d525256212831ce3d65e511ba55",
       "sourceStatus": "fetched",
       "supportSnippet": "It’s all about studying rules, and what their consequences are. So why not the simple and obvious “ruliology”?",
@@ -42,7 +42,7 @@
       "supportStatus": "cached-source-supported",
       "profileId": "rule-families-and-consequences",
       "note": null,
-      "checkedAt": "2026-04-14T17:05:48.958Z",
+      "checkedAt": "2026-04-14T17:44:37.964Z",
       "sourceDigest": "3ea306230b354d525256212831ce3d65e511ba55",
       "sourceStatus": "fetched",
       "supportSnippet": "It’s all about studying rules, and what their consequences are. So why not the simple and obvious “ruliology”?",
@@ -73,7 +73,7 @@
       "supportStatus": "cached-source-supported",
       "profileId": "rule-families-and-consequences",
       "note": null,
-      "checkedAt": "2026-04-14T17:05:48.960Z",
+      "checkedAt": "2026-04-14T17:44:37.967Z",
       "sourceDigest": "3ea306230b354d525256212831ce3d65e511ba55",
       "sourceStatus": "fetched",
       "supportSnippet": "It’s all about studying rules, and what their consequences are. So why not the simple and obvious “ruliology”?",
@@ -85,5 +85,5 @@
       ]
     }
   ],
-  "lastValidatedAt": "2026-04-14T17:05:48.963Z"
+  "lastValidatedAt": "2026-04-14T17:44:37.970Z"
 }

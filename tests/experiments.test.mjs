@@ -80,12 +80,16 @@ test('generated experiments preserve the intended validation signal', async () =
   assert.ok(noRescueAblation.truthRetentionRate < baselineAblation.truthRetentionRate);
   assert.ok(experiment4.sensitivitySamples.every((row) => row.topAccuracy >= 0.98));
   assert.ok(experiment5.summaryByStratum.every((row) => row.frontierRetentionRate >= row.frontierTopAccuracy));
+  assert.equal(experiment5.summaryByDomain.length, 7);
+  assert.ok(experiment5.confusionMatrix.length > 0);
   assert.ok(benchmarkPrefix2.frontierTopAccuracy > benchmarkPrefix1.frontierTopAccuracy);
   assert.ok(openSetNovelty.openSetCandidateRate > inDomainNovelty.openSetCandidateRate);
   assert.ok(openSetNovelty.meanEntropy > inDomainNovelty.meanEntropy);
+  assert.ok(experiment6.summaryByNovelFamily.length >= 6);
   assert.ok(cleanIgBudget2.finalAccuracy > cleanIgBudget0.finalAccuracy);
   assert.ok(noisyIgBudget2.finalAccuracy > noisyRandomBudget2.finalAccuracy);
   assert.ok(adverseIgBudget1.meanEntropy < adverseRandomBudget1.meanEntropy);
+  assert.ok(experiment7.stepRows.length > 0);
 
   const usageBefore = await readFile(new URL('../experiments/experiment2/usage-example-before.cnl', import.meta.url), 'utf8');
   const usageAfter = await readFile(new URL('../experiments/experiment2/usage-example-after.cnl', import.meta.url), 'utf8');

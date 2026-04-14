@@ -26,4 +26,6 @@ test('generated article html includes browser-side print and pdf controls', asyn
   assert.match(html, /data-article-action="print"/);
   assert.match(html, /window\.__articlePrint/);
   assert.match(html, /Print \/ Save PDF/);
+  assert.match(html, /browser-managed PDF headers and footers remain browser-controlled/i);
+  assert.match(html, /<meta name="generator" content="article-build skill v1\.0"/);
 });

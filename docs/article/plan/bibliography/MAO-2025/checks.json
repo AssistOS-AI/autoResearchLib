@@ -33,7 +33,7 @@
       "supportStatus": "cached-source-supported",
       "profileId": "typed-neuro-symbolic-concepts",
       "note": null,
-      "checkedAt": "2026-04-14T17:05:49.030Z",
+      "checkedAt": "2026-04-14T17:44:38.018Z",
       "sourceDigest": "684c599c1e430f0eeb2c222dffbd59a35e3c4529",
       "sourceStatus": "fetched",
       "supportSnippet": "To facilitate learning and reasoning, the concepts are typed and represented using a combination of symbolic programs and neural network representations.",
@@ -76,7 +76,7 @@
       "supportStatus": "cached-source-supported",
       "profileId": "typed-neuro-symbolic-concepts",
       "note": null,
-      "checkedAt": "2026-04-14T17:05:49.030Z",
+      "checkedAt": "2026-04-14T17:44:38.018Z",
       "sourceDigest": "684c599c1e430f0eeb2c222dffbd59a35e3c4529",
       "sourceStatus": "fetched",
       "supportSnippet": "To facilitate learning and reasoning, the concepts are typed and represented using a combination of symbolic programs and neural network representations.",
@@ -97,7 +97,7 @@
       "supportStatus": "cached-source-supported",
       "profileId": "typed-neuro-symbolic-concepts",
       "note": null,
-      "checkedAt": "2026-04-14T17:05:49.030Z",
+      "checkedAt": "2026-04-14T17:44:38.018Z",
       "sourceDigest": "684c599c1e430f0eeb2c222dffbd59a35e3c4529",
       "sourceStatus": "fetched",
       "supportSnippet": "To facilitate learning and reasoning, the concepts are typed and represented using a combination of symbolic programs and neural network representations.",
@@ -110,5 +110,5 @@
       ]
     }
   ],
-  "lastValidatedAt": "2026-04-14T17:05:49.030Z"
+  "lastValidatedAt": "2026-04-14T17:44:38.018Z"
 }

@@ -11,7 +11,7 @@
       "supportStatus": "manual-waived",
       "profileId": "open-set-uncertainty",
       "note": "Verified against a manually waived bootstrap source because automated source extraction is not yet reliable for this reference.",
-      "checkedAt": "2026-04-14T17:05:49.062Z",
+      "checkedAt": "2026-04-14T17:44:38.048Z",
       "sourceDigest": "319e65864476a6c0b5b18c2ac321567592a91ca0",
       "sourceStatus": "manual-waived",
       "supportSnippet": "The paper argues that recognition systems should manage unknown classes explicitly rather than force closed-set commitment under novelty, so open-set recognition must distinguish uncertainty from false closure.",
@@ -23,5 +23,5 @@
       ]
     }
   ],
-  "lastValidatedAt": "2026-04-14T17:05:49.062Z"
+  "lastValidatedAt": "2026-04-14T17:44:38.048Z"
 }

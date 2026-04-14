@@ -8,6 +8,8 @@ Applied category theory is presented through concrete real-world examples paired
 
 Recent neuro-symbolic work argues that learned systems are most useful when they still operate over typed and compositional conceptual carriers [MAO-2025].
 
+The methodological tension is between intensional structure and extensional composition. Engineering practice starts from object-like states with fields, constraints, and admissible operations. Categorical discipline becomes useful only if it constrains how such structured objects compose rather than erasing their interior too early. The paper therefore treats typed local theories as first-class objects and composition as a discipline imposed on their admissible rewrites.
+
 These three ingredients become jointly useful only if one methodological distinction is preserved. A natural-language report is not yet the phenomenon itself, and it is not yet a theory of that phenomenon. A direct passage from text to final theory therefore conflates what was stated, what may have been observed, and what is being inferred. The central problem of the paper is how to move between those levels without erasing structure too early.
 
 The proposed objective is not final-label prediction. The objective is construction of a bounded local region of theory space around the available evidence. The system should first lift text into structured observational hypotheses, then induce several candidate local theories, then organize those theories into a neighborhood with explicit relations of refinement, coarsening, refactorization, and observer-relative equivalence.
