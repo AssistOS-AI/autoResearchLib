@@ -19,10 +19,19 @@
       "normalizedClaim": "ruliology contributes the orientation toward spaces of possible rules and the consequences they generate wolfram-2026",
       "chapterFile": "ch5-conclusion.md",
       "status": "supported",
+      "supportStatus": "cached-source-supported",
       "profileId": "rule-families-and-consequences",
       "note": null,
-      "checkedAt": "2026-04-14T16:18:01.374Z",
-      "sourceDigest": "3ea306230b354d525256212831ce3d65e511ba55"
+      "checkedAt": "2026-04-14T16:55:35.265Z",
+      "sourceDigest": "3ea306230b354d525256212831ce3d65e511ba55",
+      "sourceStatus": "fetched",
+      "supportSnippet": "It’s all about studying rules, and what their consequences are. So why not the simple and obvious “ruliology”?",
+      "supportSpan": "2504-2613",
+      "matchedKeywords": [
+        "ruliology",
+        "rule",
+        "consequence"
+      ]
     },
     {
       "id": "3890e9cabafc17b10b7cfcb792ca9a1dd13e0d22",
@@ -30,10 +39,19 @@
       "normalizedClaim": "ruliology studies what abstract rules do and how spaces of possible rules are organized wolfram-2026",
       "chapterFile": "ch1-introduction.md",
       "status": "supported",
+      "supportStatus": "cached-source-supported",
       "profileId": "rule-families-and-consequences",
       "note": null,
-      "checkedAt": "2026-04-14T16:18:01.374Z",
-      "sourceDigest": "3ea306230b354d525256212831ce3d65e511ba55"
+      "checkedAt": "2026-04-14T16:55:35.260Z",
+      "sourceDigest": "3ea306230b354d525256212831ce3d65e511ba55",
+      "sourceStatus": "fetched",
+      "supportSnippet": "It’s all about studying rules, and what their consequences are. So why not the simple and obvious “ruliology”?",
+      "supportSpan": "2504-2613",
+      "matchedKeywords": [
+        "ruliology",
+        "rule",
+        "consequence"
+      ]
     },
     {
       "id": "2420c32ddc2260cbee331f6679ebeb330ecf1195",
@@ -52,11 +70,20 @@
       "normalizedClaim": "that neighborhood perspective is what makes the framework ruliological in practice it studies nearby rule-bearing possibilities instead of rushing toward one prematurely reified interpretation wolfram-2026",
       "chapterFile": "ch2-architecture.md",
       "status": "supported",
+      "supportStatus": "cached-source-supported",
       "profileId": "rule-families-and-consequences",
       "note": null,
-      "checkedAt": "2026-04-14T16:18:01.374Z",
-      "sourceDigest": "3ea306230b354d525256212831ce3d65e511ba55"
+      "checkedAt": "2026-04-14T16:55:35.262Z",
+      "sourceDigest": "3ea306230b354d525256212831ce3d65e511ba55",
+      "sourceStatus": "fetched",
+      "supportSnippet": "It’s all about studying rules, and what their consequences are. So why not the simple and obvious “ruliology”?",
+      "supportSpan": "2504-2613",
+      "matchedKeywords": [
+        "ruliology",
+        "rule",
+        "consequence"
+      ]
     }
   ],
-  "lastValidatedAt": "2026-04-14T16:18:01.374Z"
+  "lastValidatedAt": "2026-04-14T16:55:35.265Z"
 }

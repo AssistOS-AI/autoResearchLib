@@ -113,15 +113,15 @@ The important result is whether performance remains in a broad neighborhood rath
 
 function ablationFigureLabel(id) {
   return {
-    baseline: 'Baseline',
-    'coarse-observer': 'Coarse obs.',
-    'no-inferred-cues': 'No inferred',
-    'frontier-4': 'Frontier 4',
-    'frontier-12': 'Frontier 12',
+    baseline: 'Base',
+    'coarse-observer': 'Coarse',
+    'no-inferred-cues': 'No inf.',
+    'frontier-4': 'F=4',
+    'frontier-12': 'F=12',
     'no-domain-rescue': 'No rescue',
-    'no-equivalence': 'No equivalence',
-    'no-alignment': 'No alignment',
-    'no-questions': 'No questions'
+    'no-equivalence': 'No eq.',
+    'no-alignment': 'No align',
+    'no-questions': 'No Q'
   }[id] ?? id;
 }
 

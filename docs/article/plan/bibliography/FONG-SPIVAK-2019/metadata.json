@@ -2,7 +2,8 @@
   "citationKey": "FONG-SPIVAK-2019",
   "url": "https://arxiv.org/abs/1803.05316",
   "title": "Seven Sketches in Compositionality: An Invitation to Applied Category Theory",
-  "fetchedAt": "2026-04-14T16:18:01.447Z",
+  "fetchedAt": "2026-04-14T16:55:35.298Z",
   "fetchStatus": "fetched",
+  "bootstrapOnly": false,
   "sourceDigest": "fed65ac41c10ac15fc22b1f8c04e16634e51e149"
 }

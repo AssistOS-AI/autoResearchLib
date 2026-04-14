@@ -13,7 +13,7 @@ Table 3 summarizes the seven experiments and their role in the validation ladder
 | Experiment 3 | Cue masking and recovery | 72 traces | Retained frontiers preserve recoverability under masked cues. |
 | Experiment 4 | Sensitivity and ablation | 153 traces | Nearby policy choices preserve conclusions; coarse observation and rescue removal matter. |
 | Experiment 5 | Expanded benchmark transfer | 204 traces | Frontier retention transfers across seven domains and three lexical strata. |
-| Experiment 6 | Open-set novelty | 171 traces | Novelty increases uncertainty and question demand more than in-domain traces. |
+| Experiment 6 | Open-set novelty | 195 traces | Novelty increases uncertainty and question demand more than in-domain traces. |
 | Experiment 7 | Multi-step questioning | 2448 traces | Clean and noisy recovery improve with budget; adversarial answers remain hard. |
 
 Experiments 1 through 3 still provide the structural foundation. On Prefix 2 traces, the rich observer raises mean top-domain accuracy above the coarse observer while lowering frontier entropy. Single-step questioning then lowers entropy further on the retained ambiguous subset. Under cue masking, the lexical and single-theory baselines collapse early, but the retained frontier still preserves enough structure for one question to recover a substantially better answer. Those three studies establish that the retained frontier is not decorative. It changes what can still be recovered later.
@@ -29,6 +29,8 @@ Table 4 shows the ablation results. The baseline keeps top accuracy at 0.98 with
 | Baseline policy | 0.98 | 1 | 0.073 | 0 | 1 |
 | Coarse observer | 0.614 | 0.922 | 0.854 | 0 | 0.634 |
 | No inferred cues | 0.98 | 1 | 0.103 | 0 | 1 |
+| Frontier limit 4 | 0.98 | 0.98 | 0.031 | 0.02 | 1 |
+| Frontier limit 12 | 0.98 | 1 | 0.073 | 0 | 1 |
 | No domain rescue | 0.98 | 0.98 | 0 | 0.02 | 1 |
 | No equivalence classes | 0.98 | 1 | 0.073 | 0 | 1 |
 | No alignment utility | 0.98 | 1 | 0.073 | 0 | 1 |
@@ -63,13 +65,13 @@ Figure 11 compares the main policies across the three strata. The benchmark also
 
 Experiment 6 asks a narrower question than full theory induction: when the trace is genuinely unseen or hybrid, does the frontier behave like a healthy open-set uncertainty mechanism rather than a forced closed-set commitment [SCHEIRER-2013]? The current novelty layer does not synthesize a brand-new theory family. It measures whether novelty increases uncertainty, frontier width, and question demand without producing the same warning profile on ordinary in-domain traces.
 
-Table 6 shows the result. In-domain traces are flagged as open-set candidates only 0.052 of the time, while open-set traces are flagged at 0.667 and hybrid traces at 0.5. Mean entropy rises from 0.073 in-domain to 1.288 on open-set traces. This is the right direction for a commitment-control mechanism.
+Table 6 shows the result. In-domain traces are flagged as open-set candidates only 0.052 of the time, while open-set traces are flagged at 0.533 and hybrid traces at 0.417. Mean entropy rises from 0.073 in-domain to 0.847 on open-set traces. This is the right direction for a commitment-control mechanism.
 
 | Condition | Traces | Open-set flag | False closure | Questions | Entropy |
 | --- | --- | --- | --- | --- | --- |
-| hybrid | 6 | 0.5 | 0 | 0.5 | 0.397 |
+| hybrid | 12 | 0.417 | 0 | 0.417 | 0.527 |
 | in-domain | 153 | 0.052 | 0 | 0.052 | 0.073 |
-| open-set | 12 | 0.667 | 0 | 0.667 | 1.288 |
+| open-set | 30 | 0.533 | 0 | 0.533 | 0.847 |
 
 Figure 12 shows the same comparison graphically. The strongest novelty response appears at earlier prefixes, where the framework retains wider frontiers and more question demand. Later prefixes can still collapse incorrectly on some unseen cases, which is why the article should describe this as healthy uncertainty management rather than as proof of new local-theory synthesis.
 
