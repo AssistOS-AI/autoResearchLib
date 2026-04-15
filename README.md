@@ -52,15 +52,31 @@ The project uses only built-in Node.js APIs for the deterministic path. Achilles
 ```bash
 npm test
 npm run validate
+npm run demo
 ```
 
 The article build is intentionally agent-orchestrated through the reusable `article-build` skill. Publication builds are not exposed as npm shortcuts or documented as a CLI workflow because article repair, bibliography judgment, and figure review belong to the agent operating the skill rather than to a blind export command.
+
+## Demo and auditability browser
+
+The repository now includes a dependency-free demo runtime that works as a browser over the real experiment artifacts in `experiments/` and reruns documented examples through the same `analyzeEvidence(...)` and `applyEvidenceUpdate(...)` surface used by the experiments and tests. The demo server exposes experiment metadata, generated reports, SVG figures, raw JSON/CSV/CNL artifacts, trace views, branch-aware question updates, and canonical CNL export. It no longer maintains a separate study-mode data path or demo-only scenario adapters.
+
+Start it with:
+
+```bash
+npm run demo
+```
+
+The browser UI is served from `demo/public/`, while the canonical artifact loader, server runtime, trace compression, and graph view models now live under `demo/runtime/`. The reusable library surface remains under `src/`, including the generic trace collector used by `analyzeEvidence(...)`. The demo now has four simple tabs: `About`, `Results`, `Run`, and `Graph`. `About` shows the real `description.md` text for the experiment, `Results` shows the generated report, tables, and figures, `Run` shows the exact input plus the live library bundle for one documented example, and `Graph` renders the same run as a navigable rulial map with zoom/font/fullscreen controls. The same server also exposes the generated article at `/article/`.
+
+For a quick manual pass, start the demo, inspect the `About` and `Results` tabs for each experiment, run the default documented example, and then check four things: the input text matches a real experiment case, the `Run` tab shows the actual library output instead of a demo-only summary form, the `Graph` tab stays readable under zoom and fullscreen, and branchable runs create child traces with preserved lineage and updated entropy/budget metadata.
 
 ## Repository layout
 
 | Path | Purpose |
 | --- | --- |
 | `src/` | Core library, domain bundles, and reporting helpers |
+| `demo/runtime/` | Demo runtime, canonical experiment catalog, server, trace compression, and graph view models |
 | `tests/` | Node.js test suite for frontier behavior and experiment summaries |
 | `data/inputs/` | Controlled workflow cases used by the reproducible experiments |
 | `experiments/experiment1/` | Observer comparison outputs, CSV tables, SVG figures, and generated Markdown report |
@@ -70,6 +86,8 @@ The article build is intentionally agent-orchestrated through the reusable `arti
 | `experiments/experiment5/` | Expanded seven-domain benchmark outputs and external baseline comparisons |
 | `experiments/experiment6/` | Open-set novelty and false-closure outputs |
 | `experiments/experiment7/` | Multi-step questioning-budget and recoverability outputs |
+| `demo/public/` | Static browser UI for the auditability demo |
+| `scripts/run-demo.mjs` | Launches the dependency-free demo server and UI |
 | `docs/specs/` | Vision, architecture, data model, experimental protocol, article synchronization, LLM strategy, usage, and validation specs |
 | `skills/article-build/` | Reusable article build skill implementation owned by the agent workflow |
 | `docs/article/index.html` | Generated article built from chapter markdown, experiment outputs, and external SVGs |

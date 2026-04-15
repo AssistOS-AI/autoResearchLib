@@ -66,7 +66,7 @@
       "supportStatus": "cached-source-supported",
       "profileId": "composition-across-domains",
       "note": null,
-      "checkedAt": "2026-04-14T17:44:37.993Z",
+      "checkedAt": "2026-04-15T17:13:37.590Z",
       "sourceDigest": "fed65ac41c10ac15fc22b1f8c04e16634e51e149",
       "sourceStatus": "fetched",
       "supportSnippet": "The tour takes place over seven sketches, each pairing an evocative application, such as databases, electric circuits, or dynamical systems, with the exploration of a categorical structure, such as adjoint functors, enriched categories, or toposes.",
@@ -86,7 +86,7 @@
       "supportStatus": "cached-source-supported",
       "profileId": "composition-across-domains",
       "note": null,
-      "checkedAt": "2026-04-14T17:44:37.993Z",
+      "checkedAt": "2026-04-15T17:13:37.590Z",
       "sourceDigest": "fed65ac41c10ac15fc22b1f8c04e16634e51e149",
       "sourceStatus": "fetched",
       "supportSnippet": "The tour takes place over seven sketches, each pairing an evocative application, such as databases, electric circuits, or dynamical systems, with the exploration of a categorical structure, such as adjoint functors, enriched categories, or toposes.",
@@ -106,7 +106,7 @@
       "supportStatus": "cached-source-supported",
       "profileId": "composition-across-domains",
       "note": null,
-      "checkedAt": "2026-04-14T17:44:37.994Z",
+      "checkedAt": "2026-04-15T17:13:37.590Z",
       "sourceDigest": "fed65ac41c10ac15fc22b1f8c04e16634e51e149",
       "sourceStatus": "fetched",
       "supportSnippet": "The tour takes place over seven sketches, each pairing an evocative application, such as databases, electric circuits, or dynamical systems, with the exploration of a categorical structure, such as adjoint functors, enriched categories, or toposes.",
@@ -118,5 +118,5 @@
       ]
     }
   ],
-  "lastValidatedAt": "2026-04-14T17:44:37.994Z"
+  "lastValidatedAt": "2026-04-15T17:13:37.590Z"
 }

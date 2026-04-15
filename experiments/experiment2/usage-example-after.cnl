@@ -3,7 +3,7 @@ SOURCE doc="sample-generic" span="0-99" mode="segments"
 SEGMENT id="SEG1" span="0-50"
 SEGMENT id="SEG2" span="52-99"
 OBSERVER id="rich"
-BUDGET hypotheses=4 theories=8
+BUDGET hypotheses=4 theories=8 query_limit="unbounded" query_used=1
 CONTEXT key="caseId" value="sample-generic"
 CONTEXT key="groundTruthDomain" value="sample"
 CONTEXT key="prefixDepth" value=2

@@ -4,7 +4,8 @@ import {
   analyzeText,
   analyzeEvidence,
   applyDiscriminatingAnswer,
-  applyEvidenceUpdate
+  applyEvidenceUpdate,
+  createTraceCollector
 } from '../src/index.mjs';
 
 test('coarse analysis retains multiple plausible domains and proposes a question', () => {
@@ -113,4 +114,78 @@ test('applyEvidenceUpdate emits canonical update families after an answered ques
   assert.ok(updatedBundle.canonicalFamilies.includes('FRONTIER_RETAIN'));
   assert.match(updatedBundle.canonicalCnl, /^UPDATE /m);
   assert.match(updatedBundle.canonicalCnl, /^FRONTIER_RETAIN /m);
+});
+
+test('trace collector captures staged analysis events without changing the usage bundle', () => {
+  const traceCollector = createTraceCollector({ purpose: 'analysis-test' });
+  const bundle = analyzeEvidence(
+    {
+      sourceId: 'trace-demo',
+      segments: [
+        'The item was registered and placed in the queue.',
+        'A label was attached and the record was updated.'
+      ]
+    },
+    {
+      observerId: 'coarse',
+      runId: 'trace_demo_p2_coarse',
+      queryBudget: 2,
+      traceCollector
+    }
+  );
+  const trace = traceCollector.exportTrace();
+  const kinds = new Set(trace.rawEvents.map((event) => event.kind));
+
+  assert.equal(bundle.run.queryBudgetLimit, 2);
+  assert.equal(bundle.run.queryBudgetConsumed, 0);
+  assert.ok(trace.snapshots.some((snapshot) => snapshot.stage === 'completed'));
+
+  for (const kind of [
+    'run.started',
+    'source.segment.loaded',
+    'cue.explicit.matched',
+    'hypothesis.created',
+    'theory.base.induced',
+    'neighborhood.expanded',
+    'frontier.updated',
+    'question.selected',
+    'alignment.completed',
+    'run.completed'
+  ]) {
+    assert.ok(kinds.has(kind), `Expected trace event kind ${kind}`);
+  }
+});
+
+test('query budgets and branch lineage stay explicit on evidence updates', () => {
+  const bundle = analyzeEvidence(
+    'The item was registered and placed in the queue. A label was attached and the record was updated.',
+    {
+      observerId: 'coarse',
+      runId: 'budget_demo_root',
+      queryBudget: 1
+    }
+  );
+  const branched = applyEvidenceUpdate(bundle, 'yes', {
+    runId: 'budget_demo_branch'
+  });
+  const zeroBudgetBundle = analyzeEvidence(
+    'The item was registered and placed in the queue. A label was attached and the record was updated.',
+    {
+      observerId: 'coarse',
+      queryBudget: 0
+    }
+  );
+
+  assert.equal(branched.run.parentRunId, 'budget_demo_root');
+  assert.equal(branched.run.queryBudgetLimit, 1);
+  assert.equal(branched.run.queryBudgetConsumed, 1);
+  assert.equal(branched.run.branchTransition.kind, 'question-answer');
+  assert.equal(branched.run.branchTransition.questionId, bundle.analysis.neighborhood.recommendedQuestion.id);
+  assert.match(bundle.canonicalCnl, /^BUDGET .*query_limit=1 .*query_used=0$/m);
+  assert.match(branched.canonicalCnl, /^BUDGET .*query_limit=1 .*query_used=1$/m);
+  assert.match(branched.canonicalCnl, /^RUN id="budget_demo_branch" parent="budget_demo_root"$/m);
+  assert.throws(
+    () => applyEvidenceUpdate(zeroBudgetBundle, 'yes'),
+    /Question budget exhausted/
+  );
 });

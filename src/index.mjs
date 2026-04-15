@@ -28,6 +28,7 @@ export { buildNeighborhood, summarizeNeighborhood } from './core/neighborhood.mj
 export { observationalLift } from './core/observation.mjs';
 export { applyQuestionAnswer, scoreDiscriminatingQuestions, suggestDiscriminatingQuestion } from './core/questioning.mjs';
 export { induceLocalTheories } from './core/theory.mjs';
+export { createTraceCollector } from './trace/traceCollector.mjs';
 export {
   defaultDomains,
   getDomainById,

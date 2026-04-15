@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>autoResearchLib Demo</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">autoResearchLib demo</p>
+        <h1>Canonical experiment browser</h1>
+        <p class="lead">Browse the real experiment artifacts, then rerun one documented example through the library and inspect the graph.</p>
+      </div>
+      <div class="header-tools">
+        <p id="status" class="status">Loading experiment catalog...</p>
+        <a class="article-link" href="/article/" target="_blank" rel="noreferrer">Open article</a>
+      </div>
+    </header>
+
+    <main class="app-shell">
+      <section class="panel control-panel">
+        <div class="control-row">
+          <label class="field demo-field">
+            <span>Experiment</span>
+            <select id="experiment-select"></select>
+          </label>
+          <label class="field example-field">
+            <span>Real example</span>
+            <select id="example-select"></select>
+          </label>
+          <button id="run-button" class="primary-button" type="button">Run example</button>
+        </div>
+        <div id="experiment-summary" class="demo-summary"></div>
+      </section>
+
+      <section id="result-shell" class="panel result-shell">
+        <div class="main-tabs" id="main-tabs">
+          <button type="button" class="main-tab active" data-tab="about">About</button>
+          <button type="button" class="main-tab" data-tab="results">Results</button>
+          <button type="button" class="main-tab" data-tab="run">Run</button>
+          <button type="button" class="main-tab" data-tab="graph">Graph</button>
+        </div>
+
+        <section id="tab-about" class="tab-panel active">
+          <div id="about-content" class="tab-content"></div>
+        </section>
+
+        <section id="tab-results" class="tab-panel">
+          <div id="results-content" class="tab-content"></div>
+        </section>
+
+        <section id="tab-run" class="tab-panel">
+          <div id="run-content" class="tab-content"></div>
+        </section>
+
+        <section id="tab-graph" class="tab-panel">
+          <div class="graph-toolbar">
+            <div id="graph-filters" class="graph-filters"></div>
+            <div class="graph-actions">
+              <button type="button" class="tool-button" id="zoom-out-button">-</button>
+              <button type="button" class="tool-button" id="zoom-in-button">+</button>
+              <button type="button" class="tool-button" id="font-out-button">A-</button>
+              <button type="button" class="tool-button" id="font-in-button">A+</button>
+              <button type="button" class="tool-button" id="center-stage-button">Center</button>
+              <button type="button" class="tool-button" id="reset-view-button">Reset</button>
+              <button type="button" class="tool-button" id="fullscreen-button">Fullscreen</button>
+            </div>
+          </div>
+          <div id="graph-summary" class="graph-summary"></div>
+          <div id="graph-stage" class="graph-stage">
+            <div id="graph-viewport" class="graph-viewport">
+              <div id="graph-canvas" class="graph-canvas"></div>
+            </div>
+          </div>
+          <div id="selected-node-panel" class="selected-node-panel"></div>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

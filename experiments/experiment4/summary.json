@@ -159,6 +159,10 @@
       "meanEntropy": 0.073,
       "meanFrontierWidth": 4.105,
       "rescueTolerance": 0.0709,
+      "hypothesisSelection": {
+        "focusRatio": 0.3104,
+        "ambiguityRatio": 0.4556
+      },
       "supportWeights": {
         "generic": 0.2742,
         "explicit": 1,
@@ -182,6 +186,10 @@
       "meanEntropy": 0.08,
       "meanFrontierWidth": 4.118,
       "rescueTolerance": 0.0854,
+      "hypothesisSelection": {
+        "focusRatio": 0.3049,
+        "ambiguityRatio": 0.3627
+      },
       "supportWeights": {
         "generic": 0.2764,
         "explicit": 1,
@@ -205,6 +213,10 @@
       "meanEntropy": 0.049,
       "meanFrontierWidth": 4.046,
       "rescueTolerance": 0.0289,
+      "hypothesisSelection": {
+        "focusRatio": 0.3103,
+        "ambiguityRatio": 0.4893
+      },
       "supportWeights": {
         "generic": 0.2218,
         "explicit": 1,
@@ -228,6 +240,10 @@
       "meanEntropy": 0.049,
       "meanFrontierWidth": 4.052,
       "rescueTolerance": 0.0409,
+      "hypothesisSelection": {
+        "focusRatio": 0.304,
+        "ambiguityRatio": 0.4664
+      },
       "supportWeights": {
         "generic": 0.2663,
         "explicit": 1,
@@ -251,6 +267,10 @@
       "meanEntropy": 0.064,
       "meanFrontierWidth": 4.085,
       "rescueTolerance": 0.0706,
+      "hypothesisSelection": {
+        "focusRatio": 0.3197,
+        "ambiguityRatio": 0.3446
+      },
       "supportWeights": {
         "generic": 0.197,
         "explicit": 1,
@@ -274,6 +294,10 @@
       "meanEntropy": 0.048,
       "meanFrontierWidth": 4.052,
       "rescueTolerance": 0.0302,
+      "hypothesisSelection": {
+        "focusRatio": 0.3386,
+        "ambiguityRatio": 0.4162
+      },
       "supportWeights": {
         "generic": 0.3522,
         "explicit": 1,
@@ -297,6 +321,10 @@
       "meanEntropy": 0.049,
       "meanFrontierWidth": 4.059,
       "rescueTolerance": 0.0492,
+      "hypothesisSelection": {
+        "focusRatio": 0.3772,
+        "ambiguityRatio": 0.3342
+      },
       "supportWeights": {
         "generic": 0.3888,
         "explicit": 1,
@@ -320,6 +348,10 @@
       "meanEntropy": 0.049,
       "meanFrontierWidth": 4.059,
       "rescueTolerance": 0.0531,
+      "hypothesisSelection": {
+        "focusRatio": 0.3061,
+        "ambiguityRatio": 0.4893
+      },
       "supportWeights": {
         "generic": 0.371,
         "explicit": 1,
@@ -343,6 +375,10 @@
       "meanEntropy": 0.12,
       "meanFrontierWidth": 4.183,
       "rescueTolerance": 0.0922,
+      "hypothesisSelection": {
+        "focusRatio": 0.2113,
+        "ambiguityRatio": 0.4727
+      },
       "supportWeights": {
         "generic": 0.2461,
         "explicit": 1,
@@ -366,6 +402,10 @@
       "meanEntropy": 0.049,
       "meanFrontierWidth": 4.052,
       "rescueTolerance": 0.0476,
+      "hypothesisSelection": {
+        "focusRatio": 0.3841,
+        "ambiguityRatio": 0.43
+      },
       "supportWeights": {
         "generic": 0.3141,
         "explicit": 1,
@@ -389,6 +429,10 @@
       "meanEntropy": 0.049,
       "meanFrontierWidth": 4.046,
       "rescueTolerance": 0.0292,
+      "hypothesisSelection": {
+        "focusRatio": 0.34,
+        "ambiguityRatio": 0.3049
+      },
       "supportWeights": {
         "generic": 0.2245,
         "explicit": 1,
@@ -412,6 +456,10 @@
       "meanEntropy": 0.064,
       "meanFrontierWidth": 4.092,
       "rescueTolerance": 0.073,
+      "hypothesisSelection": {
+        "focusRatio": 0.3502,
+        "ambiguityRatio": 0.5031
+      },
       "supportWeights": {
         "generic": 0.2466,
         "explicit": 1,
@@ -435,6 +483,10 @@
       "meanEntropy": 0.144,
       "meanFrontierWidth": 4.248,
       "rescueTolerance": 0.0981,
+      "hypothesisSelection": {
+        "focusRatio": 0.224,
+        "ambiguityRatio": 0.4091
+      },
       "supportWeights": {
         "generic": 0.3137,
         "explicit": 1,
@@ -458,6 +510,10 @@
       "meanEntropy": 0.098,
       "meanFrontierWidth": 4.144,
       "rescueTolerance": 0.0965,
+      "hypothesisSelection": {
+        "focusRatio": 0.3567,
+        "ambiguityRatio": 0.5477
+      },
       "supportWeights": {
         "generic": 0.2552,
         "explicit": 1,
@@ -481,6 +537,10 @@
       "meanEntropy": 0.049,
       "meanFrontierWidth": 4.052,
       "rescueTolerance": 0.0347,
+      "hypothesisSelection": {
+        "focusRatio": 0.243,
+        "ambiguityRatio": 0.3777
+      },
       "supportWeights": {
         "generic": 0.2951,
         "explicit": 1,
@@ -504,6 +564,10 @@
       "meanEntropy": 0.049,
       "meanFrontierWidth": 4.046,
       "rescueTolerance": 0.0365,
+      "hypothesisSelection": {
+        "focusRatio": 0.2889,
+        "ambiguityRatio": 0.339
+      },
       "supportWeights": {
         "generic": 0.1846,
         "explicit": 1,
@@ -527,6 +591,10 @@
       "meanEntropy": 0.115,
       "meanFrontierWidth": 4.176,
       "rescueTolerance": 0.093,
+      "hypothesisSelection": {
+        "focusRatio": 0.2097,
+        "ambiguityRatio": 0.5231
+      },
       "supportWeights": {
         "generic": 0.3463,
         "explicit": 1,
@@ -550,6 +618,10 @@
       "meanEntropy": 0.049,
       "meanFrontierWidth": 4.046,
       "rescueTolerance": 0.0462,
+      "hypothesisSelection": {
+        "focusRatio": 0.3668,
+        "ambiguityRatio": 0.3318
+      },
       "supportWeights": {
         "generic": 0.2275,
         "explicit": 1,
@@ -573,6 +645,10 @@
       "meanEntropy": 0.081,
       "meanFrontierWidth": 4.118,
       "rescueTolerance": 0.0746,
+      "hypothesisSelection": {
+        "focusRatio": 0.3144,
+        "ambiguityRatio": 0.516
+      },
       "supportWeights": {
         "generic": 0.3442,
         "explicit": 1,
@@ -596,6 +672,10 @@
       "meanEntropy": 0.049,
       "meanFrontierWidth": 4.059,
       "rescueTolerance": 0.0494,
+      "hypothesisSelection": {
+        "focusRatio": 0.2456,
+        "ambiguityRatio": 0.5248
+      },
       "supportWeights": {
         "generic": 0.3742,
         "explicit": 1,
@@ -619,6 +699,10 @@
       "meanEntropy": 0.049,
       "meanFrontierWidth": 4.052,
       "rescueTolerance": 0.029,
+      "hypothesisSelection": {
+        "focusRatio": 0.2006,
+        "ambiguityRatio": 0.4819
+      },
       "supportWeights": {
         "generic": 0.3316,
         "explicit": 1,
@@ -642,6 +726,10 @@
       "meanEntropy": 0.049,
       "meanFrontierWidth": 4.046,
       "rescueTolerance": 0.0471,
+      "hypothesisSelection": {
+        "focusRatio": 0.2441,
+        "ambiguityRatio": 0.3718
+      },
       "supportWeights": {
         "generic": 0.1874,
         "explicit": 1,
@@ -665,6 +753,10 @@
       "meanEntropy": 0.105,
       "meanFrontierWidth": 4.157,
       "rescueTolerance": 0.0928,
+      "hypothesisSelection": {
+        "focusRatio": 0.3089,
+        "ambiguityRatio": 0.4443
+      },
       "supportWeights": {
         "generic": 0.309,
         "explicit": 1,
@@ -688,6 +780,10 @@
       "meanEntropy": 0.049,
       "meanFrontierWidth": 4.046,
       "rescueTolerance": 0.0533,
+      "hypothesisSelection": {
+        "focusRatio": 0.2987,
+        "ambiguityRatio": 0.4007
+      },
       "supportWeights": {
         "generic": 0.2163,
         "explicit": 1,

@@ -11,7 +11,7 @@
       "supportStatus": "manual-waived",
       "profileId": "active-query-selection",
       "note": "Verified against a manually waived bootstrap source because automated source extraction is not yet reliable for this reference.",
-      "checkedAt": "2026-04-14T17:44:38.045Z",
+      "checkedAt": "2026-04-15T17:13:37.640Z",
       "sourceDigest": "ee2bcb27961ac7ebd2c09eed902258cabd6eeb8b",
       "sourceStatus": "manual-waived",
       "supportSnippet": "The survey explains active learning as strategic query selection under labeling cost, including information-based query criteria.",
@@ -23,5 +23,5 @@
       ]
     }
   ],
-  "lastValidatedAt": "2026-04-14T17:44:38.045Z"
+  "lastValidatedAt": "2026-04-15T17:13:37.640Z"
 }

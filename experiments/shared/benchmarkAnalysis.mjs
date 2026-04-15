@@ -23,7 +23,17 @@ function stringSeed(value) {
 function analyzeBenchmarkCase(
   caseRecord,
   prefixDepth,
-  { observerId = 'rich', domains = benchmarkDomains, policy, masked = false, frontierLimit, maxHypotheses } = {}
+  {
+    observerId = 'rich',
+    domains = benchmarkDomains,
+    policy,
+    masked = false,
+    frontierLimit,
+    maxHypotheses,
+    queryBudget,
+    traceCollector,
+    runId
+  } = {}
 ) {
   const segments = buildBenchmarkPrefixSegments(caseRecord, prefixDepth, masked);
 
@@ -48,7 +58,9 @@ function analyzeBenchmarkCase(
       policy,
       frontierLimit,
       maxHypotheses,
-      runId: `${caseRecord.id}_${masked ? 'masked' : 'clean'}_p${prefixDepth}_${observerId}`
+      queryBudget,
+      traceCollector,
+      runId: runId ?? `${caseRecord.id}_${masked ? 'masked' : 'clean'}_p${prefixDepth}_${observerId}`
     }
   );
 }
@@ -144,7 +156,9 @@ function runQuestionBudget(
     policy,
     masked = false,
     frontierLimit,
-    maxHypotheses
+    maxHypotheses,
+    traceCollector,
+    runId
   }
 ) {
   const initialBundle = analyzeBenchmarkCase(caseRecord, prefixDepth, {
@@ -153,7 +167,10 @@ function runQuestionBudget(
     policy,
     masked,
     frontierLimit,
-    maxHypotheses
+    maxHypotheses,
+    queryBudget: budget,
+    traceCollector,
+    runId
   });
   const rng = createSeededRng(stringSeed(`${caseRecord.id}:${prefixDepth}:${questionPolicy}:${answerMode}:${masked}`));
   let bundle = initialBundle;
@@ -169,7 +186,11 @@ function runQuestionBudget(
     const predictedBefore = topDomain(bundle.analysis);
     const entropyBefore = bundle.analysis.neighborhood.domainEntropy;
     const observedAnswer = observedAnswerForMode(bundle, caseRecord, question, answerMode, stepIndex, rng);
-    bundle = applyEvidenceUpdate(bundle, observedAnswer, { questionId: question.id });
+    bundle = applyEvidenceUpdate(bundle, observedAnswer, {
+      questionId: question.id,
+      traceCollector,
+      runId: runId ?? initialBundle.run.id
+    });
     const predictedAfter = topDomain(bundle.analysis);
     const entropyAfter = bundle.analysis.neighborhood.domainEntropy;
     const truthRetainedAfter = caseRecord.groundTruthDomain

@@ -49,6 +49,24 @@ function sanitizeToken(value, fallback = 'run') {
   return normalized || fallback;
 }
 
+function normalizeNonNegativeInteger(value) {
+  if (value === null || value === undefined || value === '') {
+    return null;
+  }
+
+  const normalized = Number(value);
+
+  if (!Number.isFinite(normalized)) {
+    return null;
+  }
+
+  return Math.max(0, Math.floor(normalized));
+}
+
+function normalizeBranchTransition(value) {
+  return value && typeof value === 'object' ? { ...value } : null;
+}
+
 function buildSegmentSpans(segments) {
   const records = [];
   let start = 0;
@@ -132,17 +150,50 @@ function createRunId(inputRecord, observerId, metadata = {}) {
 
 function buildRunRecord(inputRecord, options = {}) {
   const observerId = options.observerId ?? 'coarse';
+  const queryBudgetLimit = normalizeNonNegativeInteger(options.queryBudgetLimit ?? options.queryBudget);
 
   return {
     id: options.runId ?? createRunId(inputRecord, observerId, inputRecord.metadata),
     observerId,
     maxHypotheses: options.maxHypotheses ?? 4,
     frontierLimit: options.frontierLimit ?? 8,
+    queryBudgetLimit,
+    queryBudgetConsumed: normalizeNonNegativeInteger(options.queryBudgetConsumed) ?? 0,
     sourceId: inputRecord.sourceId,
     sourceSpan: inputRecord.sourceSpan,
     metadata: inputRecord.metadata,
     mode: inputRecord.mode,
+    parentRunId: options.parentRunId ?? null,
+    branchTransition: normalizeBranchTransition(options.branchTransition),
     preparation: options.preparation ?? null
+  };
+}
+
+function buildUpdatedRunRecord(bundle, options, selectedQuestion, observedAnswer) {
+  const previousRun = bundle.run;
+  const nextRunId = options.runId ?? previousRun.id;
+  const isBranch = options.parentRunId !== undefined || nextRunId !== previousRun.id;
+  const parentRunId = options.parentRunId ?? (isBranch ? previousRun.id : previousRun.parentRunId ?? null);
+  const queryBudgetLimit =
+    normalizeNonNegativeInteger(options.queryBudgetLimit ?? options.queryBudget) ?? previousRun.queryBudgetLimit ?? null;
+  const queryBudgetConsumed = previousRun.queryBudgetConsumed + (selectedQuestion ? 1 : 0);
+
+  return {
+    ...previousRun,
+    id: nextRunId,
+    frontierLimit: options.frontierLimit ?? bundle.run.frontierLimit,
+    queryBudgetLimit,
+    queryBudgetConsumed,
+    parentRunId,
+    branchTransition:
+      normalizeBranchTransition(options.branchTransition) ??
+      (isBranch
+        ? {
+            kind: selectedQuestion ? 'question-answer' : 'frontier-update',
+            questionId: selectedQuestion?.id ?? null,
+            observedAnswer: selectedQuestion ? observedAnswer : null
+          }
+        : previousRun.branchTransition ?? null)
   };
 }
 
@@ -202,6 +253,140 @@ function frontierIds(analysis) {
   return analysis.neighborhood.frontier.map((theory) => theory.id);
 }
 
+function analysisTraceMetrics(analysis) {
+  return {
+    domainEntropy: analysis.neighborhood.domainEntropy,
+    theoryEntropy: analysis.neighborhood.theoryEntropy,
+    frontierWidth: analysis.neighborhood.frontier.length,
+    topDomain: analysis.neighborhood.domainDistribution[0]?.domainId ?? null,
+    topTheory: analysis.neighborhood.frontier[0]?.id ?? null
+  };
+}
+
+function emitRunStartTrace(traceCollector, inputRecord, runRecord) {
+  if (!traceCollector?.emit || !traceCollector?.snapshot) {
+    return;
+  }
+
+  traceCollector.setContext?.({
+    runId: runRecord.id,
+    parentRunId: runRecord.parentRunId ?? null
+  });
+
+  const sourceSnapshotId = traceCollector.snapshot(
+    'source',
+    {
+      run: runRecord,
+      input: {
+        sourceId: inputRecord.sourceId,
+        sourceSpan: inputRecord.sourceSpan,
+        mode: inputRecord.mode,
+        metadata: inputRecord.metadata,
+        segments: inputRecord.segmentSpans
+      }
+    },
+    {
+      summary: 'Source intake'
+    }
+  );
+
+  traceCollector.emit({
+    stage: 'source',
+    kind: 'run.started',
+    importance: 'high',
+    summary: `Run ${runRecord.id} started`,
+    objectRefs: {
+      runIds: [runRecord.id]
+    },
+    payload: {
+      observerId: runRecord.observerId,
+      sourceId: runRecord.sourceId
+    },
+    snapshotId: sourceSnapshotId
+  });
+
+  for (const segment of inputRecord.segmentSpans) {
+    traceCollector.emit({
+      stage: 'source',
+      kind: 'source.segment.loaded',
+      summary: `Loaded ${segment.id}`,
+      objectRefs: {
+        runIds: [runRecord.id],
+        segmentIds: [segment.id]
+      },
+      payload: {
+        span: segment.span,
+        text: segment.text
+      },
+      snapshotId: sourceSnapshotId
+    });
+  }
+}
+
+function emitCompletedTrace(traceCollector, inputRecord, runRecord, analysis, serialized) {
+  if (!traceCollector?.emit || !traceCollector?.snapshot) {
+    return;
+  }
+
+  const completedSnapshotId = traceCollector.snapshot(
+    'completed',
+    {
+      run: runRecord,
+      input: {
+        sourceId: inputRecord.sourceId,
+        sourceSpan: inputRecord.sourceSpan,
+        metadata: inputRecord.metadata
+      },
+      analysis: {
+        frontierIds: frontierIds(analysis),
+        domainDistribution: analysis.neighborhood.domainDistribution,
+        recommendedQuestion: analysis.neighborhood.recommendedQuestion,
+        questionUpdate: analysis.questionUpdate ?? null
+      },
+      canonical: {
+        lineCount: serialized.canonicalLines.length,
+        families: serialized.canonicalFamilies,
+        cnl: serialized.canonicalCnl
+      }
+    },
+    {
+      summary: 'Completed materialization',
+      metrics: analysisTraceMetrics(analysis)
+    }
+  );
+
+  traceCollector.emit({
+    stage: 'completed',
+    kind: 'completed.materialized',
+    summary: 'Canonical CNL bundle materialized',
+    objectRefs: {
+      runIds: [runRecord.id],
+      theoryIds: frontierIds(analysis),
+      questionIds: analysis.neighborhood.recommendedQuestion ? [analysis.neighborhood.recommendedQuestion.id] : []
+    },
+    payload: {
+      canonicalFamilies: serialized.canonicalFamilies,
+      canonicalLineCount: serialized.canonicalLines.length
+    },
+    metrics: analysisTraceMetrics(analysis),
+    snapshotId: completedSnapshotId
+  });
+
+  traceCollector.emit({
+    stage: 'completed',
+    kind: 'run.completed',
+    importance: 'high',
+    summary: `Run ${runRecord.id} completed`,
+    objectRefs: {
+      runIds: [runRecord.id]
+    },
+    payload: {
+      canonicalLineCount: serialized.canonicalLines.length
+    },
+    snapshotId: completedSnapshotId
+  });
+}
+
 function serializePreparation(lines, preparation) {
   lines.push(cnlLine('PREPARATION', { status: preparation.status, task: 'ingestion-normalization' }));
 
@@ -225,7 +410,7 @@ function serializePreparation(lines, preparation) {
 function serializeAnalysisToCNL({ analysis, inputRecord, runRecord, previousAnalysis = null }) {
   const lines = [];
 
-  lines.push(cnlLine('RUN', { id: runRecord.id }));
+  lines.push(cnlLine('RUN', { id: runRecord.id, parent: runRecord.parentRunId }));
   lines.push(
     cnlLine('SOURCE', {
       doc: runRecord.sourceId,
@@ -242,7 +427,9 @@ function serializeAnalysisToCNL({ analysis, inputRecord, runRecord, previousAnal
   lines.push(
     cnlLine('BUDGET', {
       hypotheses: runRecord.maxHypotheses,
-      theories: runRecord.frontierLimit
+      theories: runRecord.frontierLimit,
+      query_limit: runRecord.queryBudgetLimit ?? 'unbounded',
+      query_used: runRecord.queryBudgetConsumed ?? 0
     })
   );
 
@@ -526,19 +713,22 @@ function serializeAnalysisToCNL({ analysis, inputRecord, runRecord, previousAnal
 function analyzeEvidence(input, options = {}) {
   const inputRecord = prepareEvidenceInput(input);
   const runRecord = buildRunRecord(inputRecord, options);
+  emitRunStartTrace(options.traceCollector, inputRecord, runRecord);
   const analysis = analyzeText(inputRecord.text, {
     observerId: runRecord.observerId,
     domains: options.domains,
     maxHypotheses: runRecord.maxHypotheses,
     frontierLimit: runRecord.frontierLimit,
     policy: options.policy,
-    segmentSpans: inputRecord.segmentSpans
+    segmentSpans: inputRecord.segmentSpans,
+    traceCollector: options.traceCollector
   });
   const serialized = serializeAnalysisToCNL({
     analysis,
     inputRecord,
     runRecord
   });
+  emitCompletedTrace(options.traceCollector, inputRecord, runRecord, analysis, serialized);
 
   return {
     usageMode: 'canonical-cnl',
@@ -559,19 +749,30 @@ function applyEvidenceUpdate(bundle, observedAnswer, options = {}) {
     throw new Error(`Question "${options.questionId}" is not available on the current frontier.`);
   }
 
+  if (
+    selectedQuestion &&
+    bundle.run.queryBudgetLimit !== null &&
+    bundle.run.queryBudgetLimit !== undefined &&
+    bundle.run.queryBudgetConsumed >= bundle.run.queryBudgetLimit
+  ) {
+    throw new Error(
+      `Question budget exhausted for run "${bundle.run.id}": ${bundle.run.queryBudgetConsumed}/${bundle.run.queryBudgetLimit} answers already applied.`
+    );
+  }
+
+  const updatedRunRecord = buildUpdatedRunRecord(bundle, options, selectedQuestion, observedAnswer);
+  emitRunStartTrace(options.traceCollector, bundle.input, updatedRunRecord);
+
   const updatedAnalysis = options.questionId
-    ? applyQuestionToAnalysis(bundle.analysis, selectedQuestion, observedAnswer, frontierLimit)
-    : applyDiscriminatingAnswer(bundle.analysis, observedAnswer, frontierLimit);
-  const updatedRunRecord = {
-    ...bundle.run,
-    frontierLimit
-  };
+    ? applyQuestionToAnalysis(bundle.analysis, selectedQuestion, observedAnswer, frontierLimit, options.traceCollector)
+    : applyDiscriminatingAnswer(bundle.analysis, observedAnswer, frontierLimit, options.traceCollector);
   const serialized = serializeAnalysisToCNL({
     analysis: updatedAnalysis,
     inputRecord: bundle.input,
     runRecord: updatedRunRecord,
     previousAnalysis: bundle.analysis
   });
+  emitCompletedTrace(options.traceCollector, bundle.input, updatedRunRecord, updatedAnalysis, serialized);
 
   return {
     ...bundle,
